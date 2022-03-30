@@ -5,7 +5,7 @@
 2 #_nseas
 6 6 #_months/season
 2 # number of subseasons
-7.5 #_spawning month
+7 #_spawning month
 2 #_Nsexes
 15 #_Nages
 2 ##_N_areas
