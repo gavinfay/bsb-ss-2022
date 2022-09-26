@@ -5,8 +5,8 @@
 1 # MSY: 1= set to F(SPR); 2=calc F(MSY); 3=set to F(Btgt); 4=set to F(endyr) 
 0.4 # SPR target (e.g. 0.40)
 0.342 # Biomass target (e.g. 0.40)
-#_Bmark_years: beg_bio, end_bio, beg_selex, end_selex, beg_relF, end_relF, beg_recruits, end_recruits (enter actual year, or values of 0 or -integer to be rel. endyr)
- 0 0 0 0 0 0 1957 2007
+#_Bmark_years: beg_bio, end_bio, beg_selex, end_selex, beg_relF, end_relF, beg_mvt, end_mvt, beg_recruits, end_recruits (enter actual year, or values of 0 or -integer to be rel. endyr)
+ 0 0 0 0 0 0 0 0 1957 2007  
 #  2007 2007 2007 2007 2007 2007 1957 2007 # after processing 
 1 #Bmark_relF_Basis: 1 = use year range; 2 = set relF same as forecast below
 #
