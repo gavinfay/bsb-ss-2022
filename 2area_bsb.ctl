@@ -1,6 +1,6 @@
 #C Black sea bass assessment for spatial and seasonal model, 2022 implementation of Fay/Cadrin/McNamee 2016 model in 3.24u
 #C area 1 = inshore N, area 2 = inshore S
-#C_SS-V3.30.19
+#C_SS-V3.30.20
 
 0 #read weight at age file
 2  #_N_Growth_Patterns, one for north, one for south
@@ -61,7 +61,7 @@
 
 
 #_LO	HI	INIT	PRIOR	SD	PR_type	PHASE	env-var	use_dev	dev_minyr	dev_maxyr	dev_stddev	Block	Block_Fxn									
-#female,	growth	pattern	1																			
+#female, growth pattern 1																			
 0.1	0.45	0.4	0.25	99	0	-6	0	0	0	0	0	0	0	#	NatM_p_1_Fem_GP:1_							
 1	20	9.26	10	99	0	-1	0	0	0	0	0	0	0	#	Lmin-Fem_GP_1_							
 40	100	65	65	99	0	5	0	0	0	0	0	0	0	#	Lmax-Fem_GP_1_							
@@ -74,43 +74,43 @@
 -10	10	-0.576	-1	0.8	0	-3	0	0	0	0	0	0	0	#	Matslp-Fem							
 -3	3	1	1	0.8	0	-3	0	0	0	0	0	0	0	#	Eggs1-Fem							
 -3	3	0	0	0.8	0	-3	0	0	0	0	0	0	0	#	Eggs2-Fem							
-#female,	growth	pattern	2																			
--3	3	0	0	0.8	0	-3	0	0	0	0	0	0	0	#	natM	for	M	offset	mal	=	female*exp(male	param)
--3	3	-0.24	-0.24	99	0	-4	0	0	0	0	0	0	0	#	Lmin	M						
--3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	Lmax	M						
--3	3	0	0	99	0	4	0	0	0	0	0	0	0	#	VBK	M						
--3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	CV-yng	M						
--3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	CV-old	M						
+#female, growth	pattern	2																			
+-3	3	0	0	0.8	0	-3	0	0	0	0	0	0	0	#	natM_for_M_offset_mal=female*exp(male_param)
+-3	3	-0.24	-0.24	99	0	-4	0	0	0	0	0	0	0	#	Lmin_M						
+-3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	Lmax_M						
+-3	3	0	0	99	0	4	0	0	0	0	0	0	0	#	VBK_M						
+-3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	CV-yng_M						
+-3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	CV-old_M						
 -3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	Wtlen1-Fem							
 -3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	Wtlen2-Fem							
 -3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	Mat50-Fem							
 -3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	Matslp-Fem							
 -3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	Eggs1-Fem							
 -3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	Eggs2-Fem							
-#_male,	growth	pattern	1																			
--3	3	0	0	0.8	0	-3	0	0	0	0	0	0	0	#	natM	for	M	offset	mal	=	female*exp(male	param)
--3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	Lmin	M						
--3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	Lmax	M						
--3	3	0	0	99	0	5	0	0	0	0	0	0	0	#	VBK	M						
--3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	CV-yng	M						
--3	3	0	0	99	0	5	0	0	0	0	0	0	0	#	CV-old	M						
+#_male,	growth pattern 1																			
+-3	3	0	0	0.8	0	-3	0	0	0	0	0	0	0	#	natM_for_M_offset_mal=female*exp(male_param)
+-3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	Lmin_M						
+-3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	Lmax_M						
+-3	3	0	0	99	0	5	0	0	0	0	0	0	0	#	VBK_M					
+-3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	CV-yng_M						
+-3	3	0	0	99	0	5	0	0	0	0	0	0	0	#	CV-old_M						
 -3	3	1.08E-05	0	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen1-Mal							
--3	4	3.062	3	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen2-Mal							param)
-#_male,	growth	pattern	2																			
--3	3	0	0	0.8	0	-3	0	0	0	0	0	0	0	#	natM	for	M	offset	mal	=	female*exp(male	
--3	3	-0.24	-0.24	99	0	-5	0	0	0	0	0	0	0	#	Lmin	M						
--3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	Lmax	M						
--3	3	0	0	99	0	5	0	0	0	0	0	0	0	#	VBK	M						
--3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	CV-yng	M						
--3	3	0	0	99	0	5	0	0	0	0	0	0	0	#	CV-old	M						
+-3	4	3.062	3	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen2-Mal param
+#_male, growth pattern 2																			
+-3	3	0	0	0.8	0	-3	0	0	0	0	0	0	0	#	natM_for_M_offset_mal=female*exp(male_param)
+-3	3	-0.24	-0.24	99	0	-5	0	0	0	0	0	0	0	#	Lmin_M						
+-3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	Lmax_M						
+-3	3	0	0	99	0	5	0	0	0	0	0	0	0	#	VBK_M					
+-3	3	0	0	99	0	-5	0	0	0	0	0	0	0	#	CV-yng_M						
+-3	3	0	0	99	0	5	0	0	0	0	0	0	0	#	CV-old_M						
 -3	3	1.08E-05	0	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen1-Mal							
 -3	4	3.062	3	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen2-Mal							
-#Hermaphroditism		parameters																				
-#	inflection	about	4																			
-0	20	4	4	99	0	7	0	0	0	0	0	0	0	#	Inflection	age	for	fem-male				
-#	std	deviation	in		age																	
-0.1	10	2	2	99	0	7	0	0	0	0	0	0	0	#	std.	dev	(in	age)	for	distribution	of	fem-male
-0.2	1	0.99	0.95	0.8	0	-3	0	0	0	0	0	0	0	#	asymptotic	rate						
+#Hermaphroditism parameters																				
+#	inflection about 4																			
+0	20	4	4	99	0	7	0	0	0	0	0	0	0	#	Inflection_age_for_fem-male				
+#	std	deviation in age																	
+0.1	10	2	2	99	0	7	0	0	0	0	0	0	0	#	std_dev_(in	age)_for_distribution_of_fem-male
+0.2	1	0.99	0.95	0.8	0	-3	0	0	0	0	0	0	0	#	asymptotic_rate						
 
 #C Recruitment distributions
 #C across settlement patterns
@@ -214,200 +214,201 @@
 
 
 #_Q_setup
+#_1:  link type: (1=simple q, 1 parm; 2=mirror simple q, 1 mirrored parm; 3=q and power, 2 parm)
+#_2:  extra input for link, i.e. mirror fleet
+#_3:  0/1 to select extra sd parameter
+#_4:  0/1 for biasadj or not
+#_5:  0/1 to float
 #fleet	type	info	extrasd	bias_adj	float			
-13	3	0	0	1	0	#RI	Spr		
-14	3	0	0	1	0	#NJ	Spr		
-15	3	0	0	1	0	#Alb	Nrth	Spr	
-16	3	0	0	1	0	#Alb	Sth	Spr	
-#17	1	0	0	1	1	#Dummy			
-#18	1	0	0	1	1	#Dummy			
-19	3	0	0	1	0	#MA	1		
-20	3	0	0	1	0	#RI	1		
-21	3	0	0	1	0	#CT	1		
-22	3	0	0	1	0	#NY	1		
-23	3	0	0	1	0	#NJ	1		
-24	3	0	0	1	0	#DE	1		
-25	3	0	0	1	0	#MD	1		
-26	3	0	0	1	0	#VIMS	1		
-27	3	0	0	1	0	#NEAMAP	N	Spr	
-28	3	0	0	1	0	#NEAMAP	N	Fall	
-29	3	0	0	1	0	#NEAMAP	S	Spr	
-30	3	0	0	1	0	#NEAMAP	S	Fall	
-31	3	0	0	1	0	#GS	Index		
-32	3	0	0	1	0	#NEFSC	Wint	Nrth	
-33	3	0	0	1	0	#NEFSC	Wint	Sth	
-34	3	0	0	1	0	#MA	Spr		
-35	3	0	0	1	0	#MA	Fll		
-36	3	0	0	1	0	#CT	Spr		
-37	3	0	0	1	0	#Bigelow	Spr	Nrth	
-38	3	0	0	1	0	#Bigelow	Spr	Sth	
-39	3	0	0	1	0	#NEAMAP	Sth	Spr	1
-40	3	0	0	1	0	#MRIP	CPUE	Nrth	Spr
-41	3	0	0	1	0	#MRIP	CPUE	Nrth	Fll
-42	3	0	0	1	0	#MRIP	CPUE	Sth	Spr
-43	3	0	0	1	0	#MRIP	CPUE	Sth	Fll
+13	3	0	0	1	0	#MA_Spr		
+14	3	0	0	1	0	#MA_Fll		
+15	3	0	0	1	0	#MA_1		
+16	3	0	0	1	0	#RI_Spr		
+17	3	0	0	1	0	#RI_1		
+18	3	0	0	1	0	#CT_Spr		
+19	3	0	0	1	0	#CT_1		
+20	3	0	0	1	0	#NY_1		
+21	3	0	0	1	0	#NJ_Spr		
+22	3	0	0	1	0	#NJ_1		
+23	3	0	0	1	0	#DE_1		
+24	3	0	0	1	0	#MD_1		
+25	3	0	0	1	0	#VIMS_1		
+26	3	0	0	1	0	#NEAMAP_N_Spr	
+27	3	0	0	1	0	#NEAMAP_S_Spr	
+28	3	0	0	1	0	#NEAMAP_Sth_Spr_1
+29	3	0	0	1	0	#NEAMAP_N_Fall	
+30	3	0	0	1	0	#NEAMAP_S_Fall	
+31	3	0	0	1	0	#Alb_Nrth_Spr	
+32	3	0	0	1	0	#Alb_Sth_Spr	
+#33	1	0	0	1	1	#Dummy			
+#34	1	0	0	1	1	#Dummy
+35	3	0	0	1	0	#Bigelow_Spr_Nrth	
+36	3	0	0	1	0	#Bigelow_Spr_Sth	
+37	3	0	0	1	0	#NEFSC_Wint_Nrth	
+38	3	0	0	1	0	#NEFSC_Wint_Sth	
+39	3	0	0	1	0	#GS_Index		
+40	3	0	0	1	0	#MRIP_CPUE_Nrth_Spr
+41	3	0	0	1	0	#MRIP_CPUE_Sth_Spr
+42	3	0	0	1	0	#MRIP_CPUE_Nrth_Fll
+43	3	0	0	1	0	#MRIP_CPUE_Sth_Fll
 -9999 0 0 0 0 0
 
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 
+
 #_Q_parms(if_any)  
 #_LO	HI	INIT	PRIOR	SD	PR_type	PHASE	env-var	use_dev	dev_minyr	dev_maxyr	dev_stddev	Block	Block_Fxn
--35	10	-7	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	RI	trawl			
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	RI	trawl		
--35	10	-7	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	NJ	trawl			
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	NJ	trawl		
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	Albatross	Spr	North		
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	Albatross	Spr	North	
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	Albatross	Spr	South		
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	Albatross	Spr	South	
--35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	MA	1			
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param	MA	1		
--35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	RI	1			
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param	RI	1		
--35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	CT	1			
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param	CT	1		
--35	10	-12	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	NY	1			
--10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param	NY	1		
--35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	NJ	1			
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param	NJ	1		
--35	10	-12	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	DE	1			
--10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param	DE	1		
--35	10	-12	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	MD	1			
--10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param	MD	1		
--35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	VIMS	1			
--10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param	VIMS	1		
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	NEAMAP	North	Spr		
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	NEAMAP	North	Spr	
--35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	NEAMAP	NOrth	Fall		
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	NEAMAP	NOrth	Fall	
--35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	NEAMAP	South	Spr		
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	NEAMAP	South	Spr	
--35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	NEAMAP	South	Fall		
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	NEAMAP	South	Fall	
--35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	GSWI				
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	GSWI			
--35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	NEFSC	Winter	BTS	North	
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	NEFSC	Winter	BTS	North
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	NEFSC	Winter	BTS	South	
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	NEFSC	Winter	BTS	South
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	MA	Spring	1+		
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	MA	Spring	1+	
--35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q	MA	Fall			
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	MA	Fall		
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	CT	Spring	1+		
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	CT	Spring	1+	
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	Bigelow	North	SPring		
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	Bigelow	North	SPring	
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	Bigelow	South	Spring		
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	Bigelow	South	Spring	
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	NEAMAP	South	Spring	Age	1s
--10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	NEAMAP	South	Spring	Age1s
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	North	Rec	CPUE	Spr	
--10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	North	Rec	CPUE	Spr
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	North	Rec	CPUE	Fall	
--10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	North	Rec	CPUE	Fall
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	South	Rec	CPUE	Spr	
--10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	South	Rec	CPUE	Spr
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q	South	Rec	CPUE	Fall	
--10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power	param,	South	Rec	CPUE	Fall
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q MA	Spring 1+ (13)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, MA Spring 1+ (13)	
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q MA Fall (14)			
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, MA Fall (14)
+-35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q MA 1 (15)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	MA 1 (15)	
+-35	10	-7	0	99	0	1	0	0	0	0	0	0	0	#	ln_q RI trawl (16)			
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, RI trawl (16)
+-35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q RI	1 (17)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	RI 1 (17)	
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q CT	Spring 1+ (18)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, CT Spring 1+ (18)	
+-35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q CT	1 (19)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	CT 1 (19)	
+-35	10	-12	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NY	1 (20)			
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	NY 1 (20)
+-35	10	-7	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NJ trawl (21)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NJ trawl (21)			
+-35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q NJ	1 (22)			
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	NJ 1 (22)		
+-35	10	-12	0	99	0	1	0	0	0	0	0	0	0	#	ln_q DE	1 (23)		
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	DE 1 (23)	
+-35	10	-12	0	99	0	1	0	0	0	0	0	0	0	#	ln_q MD	1 (24)		
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	MD 1 (24)	
+-35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q VIMS 1	(25)	
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	VIMS 1 (25)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NEAMAP	North Spr (26)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEAMAP North Spr (26)
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q NEAMAP	South Spr (27)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEAMAP South Spr (27)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NEAMAP	South Spring Age 1s (28)
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEAMAP South Spring Age1s (28)
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q NEAMAP	North Fall (29)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEAMAP NOrth Fall (29)	
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q NEAMAP	South Fall (30)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEAMAP South Fall (30)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q Albatross Spr North (31)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, Albatross Spr North (31)	
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q Albatross Spr South (32)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, Albatross Spr South (32)	
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q Bigelow North Spring (35)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, Bigelow North SPring (35)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q Bigelow South Spring (36)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, Bigelow South Spring (36)	
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q NEFSC Winter BTS North	(37)
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEFSC Winter BTS North (37)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NEFSC Winter BTS South	(38)
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEFSC Winter BTS South (38)
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q GSWI (39)
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, GSWI (39)			
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q North Rec CPUE Spr	(40)
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, North Rec CPUE Spr (40)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q South Rec CPUE Spr	(41)
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, South Rec CPUE Spr (41)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q North Rec CPUE Fall (42)
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, North Rec CPUE Fall (42)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q South Rec CPUE Fall (43)
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, South Rec CPUE Fall (43)
 
 
 #_size_selex_types
 #_Pattern Discard Male Special
- 1 1 0 0 # 1
- 1 1 0 0 # 1
- 1 1 0 0 # 1
- 1 1 0 0 # 1
- #24 1 0 0 # 1
- #24 1 0 0 # 1
- 1 1 0 0 # 1
- 1 1 0 0 # 1
- 1 1 0 0 # 1
- 1 1 0 0 # 1
- 1 1 0 0 # 1
- 1 1 0 0 # 1
- #24 1 0 0 # 1
- #24 1 0 0 # 1
- 1 1 0 0 # 1
- 1 1 0 0 # 1
- 24 0 0 0 # RI Trawl
- 24 0 0 0 # NJ Trawl
- 24 0 0 0 # Alb SprN
- 24 0 0 0 # Alb SprS
-  0 0 0 0 #Dummy
-  0 0 0 0 #Dummy
- 0 0 0 0 #MA 1
- 0 0 0 0 #RI 1
- 0 0 0 0 #CT 1
- 0 0 0 0 #NY 1
- 0 0 0 0 #NJ 1
- 0 0 0 0 #DE 1
- 0 0 0 0 #MD 1
- 0 0 0 0 #VIMS 1
- 24 0 0 0 # NEAMAP N Spring
- 24 0 0 0 # NEAMAP N fall
- 24 0 0 0 # NEAMAP S Spring
- 24 0 0 0 #  NEAMAP S fall
- 31 0 0 0 # GSWI index on recruit devs
- 24 0 0 0 # NEFSC Winter BTS North
- 24 0 0 0 # NEFSC Winter BTS South
+ 1 1 0 0 # North trawl 1
+ 1 1 0 0 # South trawl 1
+ 1 1 0 0 # North trawl 2
+ 1 1 0 0 # North trawl 2
+ 1 1 0 0 # North nontrawl 1
+ 1 1 0 0 # South nontrawl 1
+ 1 1 0 0 # North nontrawl 2
+ 1 1 0 0 # South nontrawl 2
+ 1 1 0 0 # North rec 1
+ 1 1 0 0 # South rec 1
+ 1 1 0 0 # North rec 2
+ 1 1 0 0 # South rec 2
  24 0 0 0 # MA trawl 1+ survey spring
  24 0 0 0 # MA trawl 1+ survey fall
+ 0 0 0 0 # MA 1
+ 24 0 0 0 # RI Trawl
+ 0 0 0 0 # RI 1
  24 0 0 0 # CT spring trawl Age 1+ 
+ 0 0 0 0 # CT 1
+ 0 0 0 0 # NY 1
+ 24 0 0 0 # NJ Trawl
+ 0 0 0 0 # NJ 1
+ 0 0 0 0 # DE 1
+ 0 0 0 0 # MD 1
+ 0 0 0 0 # VIMS 1
+ 24 0 0 0 # NEAMAP N Spring
+ 24 0 0 0 # NEAMAP S Spring
+ 0 0 0 0 # NEAMAP S Spring Age 1
+ 24 0 0 0 # NEAMAP N fall
+ 24 0 0 0 #  NEAMAP S fall
+ 24 0 0 0 # Alb SprN
+ 24 0 0 0 # Alb SprS
+  0 0 0 0 # Dummy
+  0 0 0 0 # Dummy
  24 0 0 0 # Bigelow North Spring
  24 0 0 0 # Bigelow South Spring
- 0 0 0 0 # NEAMAP S Spring Age 1
+ 24 0 0 0 # NEFSC Winter BTS North
+ 24 0 0 0 # NEFSC Winter BTS South
+ 31 0 0 0 # GSWI index on recruit devs
  5 0 0 5  # RecCPUE_North_Spring
+ 5 0 0 11 # RecCPUE_South_Spring 
  5 0 0 6  # RecCPUE_North_Fall
- 5 0 0 11 # RecCPUE_South_Spring
  5 0 0 12 # RecCPUE_South_Fall
  
 
-
 #_age_selex_types
 #_Pattern Discard Male Special
-11 0 0 0 # 1
-11 0 0 0 # 2
-11 0 0 0 # 1
-11 0 0 0 # 2
-11 0 0 0 # 1
-11 0 0 0 # 2
-11 0 0 0 # 1
-11 0 0 0 # 2
-11 0 0 0 # 1
-11 0 0 0 # 2
-11 0 0 0 # 1
-11 0 0 0 # 2
-11 0 0 0 # RI_SPR
-11 0 0 0 # NJ
-11 0 0 0 # NEFSC_N
-11 0 0 0 # NEFSC_S
-10 0 0 0 # dummy fleets for age data, Age 0 selex = 0
-10 0 0 0 # dummy fleets for age data, Age 0 selex = 0
+11 0 0 0 # North trawl 1
+11 0 0 0 # South trawl 1
+11 0 0 0 # North trawl 2
+11 0 0 0 # South trawl 2
+11 0 0 0 # North nontrawl 1
+11 0 0 0 # South nontrawl 1
+11 0 0 0 # North nontrawl 2
+11 0 0 0 # South nontrawl 2
+11 0 0 0 # North rec 1
+11 0 0 0 # South rec 1
+11 0 0 0 # North rec 2
+11 0 0 0 # South rec 2
+11 0 0 0 # MATRWL_SPR
+11 0 0 0 # MATRWL_FLL
 11 0 0 0 # MA1s
+11 0 0 0 # RI_SPR
 11 0 0 0 # RI1s
+11 0 0 0 # CT_SPR
 11 0 0 0 # CT1s
 11 0 0 0 # NY1s
+11 0 0 0 # NJ
 11 0 0 0 # NJ1s
 11 0 0 0 # DE 1s
 11 0 0 0 # MD1s
 11 0 0 0 # VIMS 1s
 11 0 0 0 # NEAMAP_N_Spr
-11 0 0 0 # NEAMAP_N_Fll
 11 0 0 0 # NEAMAP_S_Spr
+11 0 0 0 # NEAMAP_S_Spr_Age_1s
+11 0 0 0 # NEAMAP_N_Fll
 11 0 0 0 # NEAMAP_S_Fll
-10 0 0 0 # GSWI
-11 0 0 0 # NMFS_Wint_N
-11 0 0 0 # NMFS_Wint_S
-11 0 0 0 # MATRWL_SPR
-11 0 0 0 # MATRWL_FLL
-11 0 0 0 # CT_SPR
+11 0 0 0 # NEFSC_N
+11 0 0 0 # NEFSC_S
+10 0 0 0 # dummy fleets for age data, Age 0 selex = 0
+10 0 0 0 # dummy fleets for age data, Age 0 selex = 0
 11 0 0 0 # Bigelow_N
 11 0 0 0 # Bigelow_S
-11 0 0 0 # NEAMAP_S_Spr_Age_1s
+11 0 0 0 # NMFS_Wint_N
+11 0 0 0 # NMFS_Wint_S
+10 0 0 0 # GSWI
 11 0 0 0 # RecCPUE_North_Spring
-11 0 0 0 # RecCPUE_North_Fall
 11 0 0 0 # RecCPUE_South_Spring
+11 0 0 0 # RecCPUE_North_Fall
 11 0 0 0 # RecCPUE_South_Fall
 
 
@@ -533,7 +534,7 @@
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2
 0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0
-																									
+																										
 													
 #RI	SPring	Trawl											
 5	59	25	65	99	0	2	0	0	0	0	0.5	0	0
@@ -1034,44 +1035,44 @@
 3 42 0
 3 43 0
 4 1 0.75
-4 2 1
-4 3 0.5
-4 4 0.5
+4 2 0.5
+4 3 1
+4 4 1
 4 5 0.5
-4 6 1
+4 6 0.25
 4 7 0.5
 4 8 1
-4 9 0.25
+4 9 0.5
 4 10 1
 4 11 1
 4 12 1
-4 13 0.5
-4 14 0.15
-4 15 0.2
-4 16 1
+4 13 1
+4 14 1
+4 15 1
+4 16 0.5
 4 17 1
-4 18 1
+4 18 0.1
 4 19 1
 4 20 1
-4 21 1
+4 21 0.15
 4 22 1
 4 23 1
 4 24 1
 4 25 1
-4 26 1
+4 26 0.5
 4 27 0.5
-4 28 0.5
+4 28 1
 4 29 0.5
 4 30 0.5
-4 31 0
+4 31 0.2
 4 32 1
 4 33 1
 4 34 1
 4 35 1
-4 36 0.1
+4 36 1
 4 37 1
 4 38 1
-4 39 1
+4 39 0
 4 40 1
 4 41 1
 4 42 1
@@ -1214,25 +1215,25 @@
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  wtfreq_method
 5 1 1 0.4 1   #down weight age data via lambda instead of var adjustment to preserve sample size structure
-5 7 1 0.4 1   #down weight age data via lambda instead of var adjustment to preserve sample size structure
-5 17 1 0.4 1  #down weight age data via lambda instead of var adjustment to preserve sample size structure
-5 18 1 0.4 1  #down weight age data via lambda instead of var adjustment to preserve sample size structure
-1 19 1 0 1   # turn off MA age 1s
-1 20 1 0 1    #turn off RI age 1s because these data are in RI Spring trawl index, fleet 13
-1 21 1 0 1   # turn off CT age 1s
-1 23 1 0 1   # turn off NJ age 1s
-1 28 1 0 1   # turn off Neamap Nrth Fall 
-4 28 1 0 1    # turn off NEAMAP North Fall lengths
-1 29 1 0 1    # turn off NEAMAP Spring South index
-4 29 1 0 1    # turn off NEAMAP Spring South lengths
+5 2 1 0.4 1   #down weight age data via lambda instead of var adjustment to preserve sample size structure
+1 14 1 0 1   # turn off MA Fll surv
+4 14 1 0 1    # turn off MA Fll lengths
+1 15 1 0 1   # turn off MA age 1s
+1 17 1 0 1    #turn off RI age 1s because these data are in RI Spring trawl index, fleet 13
+1 19 1 0 1   # turn off CT age 1s
+1 22 1 0 1   # turn off NJ age 1s
+1 25 1 0 1  #Turn off VIMS
+1 27 1 0 1    # turn off NEAMAP Spring South index
+4 27 1 0 1    # turn off NEAMAP Spring South lengths
+1 29 1 0 1   # turn off Neamap Nrth Fall 
+4 29 1 0 1    # turn off NEAMAP North Fall lengths
 1 30 1 0 1   # turn off NEAMAP Sth Fall
 4 30 1 0 1    # turn off NEAMAP Fall South lengths
-1 31 1 0 1    # turn off GSWI index on recruitment
-1 35 1 0 1   # turn off MA Fll surv
-4 35 1 0 1    # turn off MA Fll lengths
-1 32 1 0 1   #turn off North winter BTS
-4 32 1 0 1   #turn off North winter BTS lengths
-1 26 1 0 1  #Turn off VIMS
+5 33 1 0.4 1  #down weight age data via lambda instead of var adjustment to preserve sample size structure
+5 34 1 0.4 1  #down weight age data via lambda instead of var adjustment to preserve sample size structure
+1 37 1 0 1   #turn off North winter BTS
+4 37 1 0 1   #turn off North winter BTS lengths
+1 39 1 0 1    # turn off GSWI index on recruitment
 -9999 1 1 1 1
 
 0 # read specs for more stddev reporting
