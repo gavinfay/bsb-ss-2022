@@ -1,6 +1,6 @@
 #C Black sea bass 2016 in v3.30.19
 bsb.dat
-2area_bsb.ctl 
+2area_bsb.ctl
 0 # 0=use init values in control file; 1=use ss3.par
 1 # run display detail (0,1,2)
 1 # detailed age-structured reports in REPORT.SSO (0,1) 
@@ -26,6 +26,7 @@ bsb.dat
 1 # 0.4 # Fraction (X) for Depletion denominator (e.g. 0.4)
 1 # SPR_report_basis:  0=skip; 1=(1-SPR)/(1-SPR_tgt); 2=(1-SPR)/(1-SPR_MSY); 3=(1-SPR)/(1-SPR_Btarget); 4=rawSPR
 4 # F_report_units: 0=skip; 1=exploitation(Bio); 2=exploitation(Num); 3=sum(Frates); 4=true F for range of ages
+4 7 #_min and max age over which average F will be calculated
 0 # F_report_basis: 0=raw; 1=F/Fspr; 2=F/Fmsy ; 3=F/Fbtgt
 0 #MCMC output details
 0 #Age-length-key tolerance level
