@@ -255,66 +255,65 @@
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 
 #_Q_parms(if_any)  
-#_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn  #  parm_name
-		   -35 			  10 			-8 			   0 			99 			   0 		  1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q MA Spring 1+ (13) 
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, MA Spring 1+ (13) 
-		   -35 			  10 			-8			   0 			99 			   0   		 -1 		 0		    0		   0		  0 		 0 			0 		   0  #  ln_q MA Fall (14)   
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, MA Fall (14)
-		   -35 			  10 		   -12			   0 			99 			   0   		 -1 		 0		    0		   0		  0 		 0 			0 		   0  #  ln_q MA 1 (15) 
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param MA 1 (15) 
-		   -35 			  10 			-7			   0 			99 			   0 		  1 		 0		    0		   0		  0			 0		    0		   0  #  ln_q RI trawl (16)   
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, RI trawl (16)
-		   -35 			  10 		   -12			   0 			99 			   0   		 -1 		 0		    0		   0		  0 		 0 			0 		   0  #  ln_q RI 1 (17)  
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param RI 1 (17) 
-		   -35 			  10 			-8			   0 			99 			   0 		  1 		 0		    0		   0		  0			 0		    0		   0  #  ln_q CT Spring 1+ (18)  
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, CT Spring 1+ (18) 
-		   -35 			  10 		   -12 			   0  			99 			   0 		 -1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q CT 1 (19)  
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param CT 1 (19) 
-		   -35 			  10 		   -12 			   0  			99 			   0 		  1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q NY 1 (20)   
-		   -10 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0		  0 		 0 			0 		   0  #  power_param NY 1 (20)
-		   -35			  10 			-7			   0 			99 			   0 		  1 		 0		    0		   0		  0			 0		    0		   0  #  ln_q NJ trawl (21)  
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, NJ trawl (21)   
-		   -35 			  10 		   -12 			   0  			99 			   0 		 -1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q NJ 1 (22)   
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param NJ 1 (22)  
-		   -35 			  10 		   -12 			   0  			99 			   0 		  1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q DE 1 (23)  
-		   -10 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0		  0 		 0 			0 		   0  #  power_param DE 1 (23) 
-		   -35 			  10 		   -12 			   0  			99 			   0 		  1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q MD 1 (24)  
-		   -10 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0		  0 		 0 			0 		   0  #  power_param MD 1 (24) 
-		   -35 			  10 		   -12 			   0  			99 			   0 		 -1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q VIMS 1 (25) 
-		   -10 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0		  0 		 0 			0 		   0  #  power_param VIMS 1 (25)
-		   -35 			  10 			-8 			   0 			99 			   0 		  1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q NEAMAP North Spr (26) 
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, NEAMAP North Spr (26)
-		   -35 			  10 			-8 			   0 			99 			   0 		 -1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q NEAMAP South Spr (27) 
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, NEAMAP South Spr (27)
-		   -35 			  10 			-8 			   0 			99 			   0 		  1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q NEAMAP South Spring Age 1s (28)
-		   -10 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0		  0 		 0 			0 		   0  #  power_param, NEAMAP South Spring Age1s (28)
-		   -35 			  10 			-8 			   0 			99 			   0 		 -1 		 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q NEAMAP North Fall (29) 
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, NEAMAP NOrth Fall (29) 
-		   -35 			  10 			-8 			   0 			99 			   0 		 -1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q NEAMAP South Fall (30)  
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, NEAMAP South Fall (30)
-		   -35 			  10 			-8 			   0 			99 			   0 		  1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q Albatross Spr North (31)  
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, Albatross Spr North (31) 
-		   -35 			  10 			-8 			   0 			99 			   0 		  1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q Albatross Spr South (32)  
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, Albatross Spr South (32) 
-		   -35 			  10 			-8 			   0 			99 			   0 		  1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q Bigelow North Spring (35)  
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, Bigelow North SPring (35)
-		   -35 			  10 			-8 			   0 			99 			   0 		  1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q Bigelow South Spring (36) 
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, Bigelow South Spring (36) 
-		   -35 			  10 			-8 			   0 			99 			   0 		 -1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q NEFSC Winter BTS North (37)
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, NEFSC Winter BTS North (37)
-		   -35 			  10 			-8 			   0 			99 			   0 		  1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q NEFSC Winter BTS South (38)
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, NEFSC Winter BTS South (38)
-		   -35 			  10 			-8 			   0 			99 			   0 		 -1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q GSWI (39)
-			 0 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, GSWI (39)   
-		   -35 			  10 			-8 			   0 			99 			   0 		  1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q North Rec CPUE Spr (40)
-		   -10 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, North Rec CPUE Spr (40)
-		   -35 			  10 			-8 			   0 			99 			   0 		  1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q South Rec CPUE Spr (41)
-		   -10 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, South Rec CPUE Spr (41)
-		   -35 			  10 			-8 			   0 			99 			   0 		  1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q North Rec CPUE Fall (42)
-		   -10 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, North Rec CPUE Fall (42)
-		   -35 			  10 			-8 			   0 			99 			   0 		  1			 0 			0 		   0 		  0 		 0 			0 		   0  #  ln_q South Rec CPUE Fall (43)
-		   -10 			  10 			 0 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 		 0 			0 		   0  #  power_param, South Rec CPUE Fall (43)
-
+#_LO	HI	INIT	PRIOR	SD	PR_type	PHASE	env-var	use_dev	dev_minyr	dev_maxyr	dev_stddev	Block	Block_Fxn
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q MA	Spring 1+ (13)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, MA Spring 1+ (13)	
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q MA Fall (14)			
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, MA Fall (14)
+-35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q MA 1 (15)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	MA 1 (15)	
+-35	10	-7	0	99	0	1	0	0	0	0	0	0	0	#	ln_q RI trawl (16)			
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, RI trawl (16)
+-35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q RI	1 (17)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	RI 1 (17)	
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q CT	Spring 1+ (18)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, CT Spring 1+ (18)	
+-35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q CT	1 (19)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	CT 1 (19)	
+-35	10	-12	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NY	1 (20)			
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	NY 1 (20)
+-35	10	-7	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NJ trawl (21)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NJ trawl (21)			
+-35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q NJ	1 (22)			
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	NJ 1 (22)		
+-35	10	-12	0	99	0	1	0	0	0	0	0	0	0	#	ln_q DE	1 (23)		
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	DE 1 (23)	
+-35	10	-12	0	99	0	1	0	0	0	0	0	0	0	#	ln_q MD	1 (24)		
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	MD 1 (24)	
+-35	10	-12	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q VIMS 1	(25)	
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param	VIMS 1 (25)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NEAMAP	North Spr (26)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEAMAP North Spr (26)
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q NEAMAP	South Spr (27)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEAMAP South Spr (27)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NEAMAP	South Spring Age 1s (28)
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEAMAP South Spring Age1s (28)
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q NEAMAP	North Fall (29)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEAMAP NOrth Fall (29)	
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q NEAMAP	South Fall (30)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEAMAP South Fall (30)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q Albatross Spr North (31)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, Albatross Spr North (31)	
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q Albatross Spr South (32)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, Albatross Spr South (32)	
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q Bigelow North Spring (35)		
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, Bigelow North SPring (35)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q Bigelow South Spring (36)	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, Bigelow South Spring (36)	
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q NEFSC Winter BTS North	(37)
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEFSC Winter BTS North (37)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NEFSC Winter BTS South	(38)
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEFSC Winter BTS South (38)
+-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q GSWI (39)
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, GSWI (39)			
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q North Rec CPUE Spr	(40)
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, North Rec CPUE Spr (40)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q South Rec CPUE Spr	(41)
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, South Rec CPUE Spr (41)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q North Rec CPUE Fall (42)
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, North Rec CPUE Fall (42)
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q South Rec CPUE Fall (43)
+-10	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, South Rec CPUE Fall (43)
 
 #_size_selex_types
 #_Pattern Discard Male Special
@@ -411,346 +410,346 @@
 
 
 #
-#_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn  #  parm_name
+#_LO	HI	INIT	PRIOR	SD	PR_type	PHASE	env-var	use_dev	dev_minyr	dev_maxyr	dev_stddev	Block	Block_Fxn
 # 1   North_Trawl_1 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5	 		1 		   2  #	 Size_inflection_North_Trawl_1(1)
-		  0.01 			   9 		   5.1     		   5 			99 			   0 		  2 		 0		    0		   0 		  0    	   0.5  		1 		   2  #  Size_95%width_North_Trawl_1(1)             
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5	 		1 		   2  #	 Retain_L_infl_North_Trawl_1(1)
-		  0.01 			   9 			 7 			   5 			99 			   0 		  2 		 0 			0 		   0		  0 	   0.5 			1 		   2  #  Retain_L_width_North_Trawl_1(1)
-		  0.01 			   1 			 1 			0.99 			99 			   0 		  5 		 0 		   	2 		1989 	   2015 	   0.4 			0 		   0  #  Retain_L_asymptote_logit_North_Trawl_1(1)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Retain_L_maleoffset_North_Trawl_1(1)
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Trawl_1 (1)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2 #_Size_95%width_North_Trawl_1 (1)													
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Trawl_1(1)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Trawl_1(1)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 # 2   South_Trawl_1 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5	 		1 		   2  #	 Size_inflection_South_trawl_1(2)
-		  0.01 			  20		   5.1     		   5 			99 			   0 		  2 		 0		    0		   0 		  0    	   0.5  		1 		   2  #  Size_95%width_South_trawl_1(2)            
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5	 		1 		   2  #	 Retain_L_infl_South_trawl_1(2)
-		  0.01 			   9 			 7 			   5 			99 			   0 		  2 		 0 			0 		   0		  0 	   0.5 			1 		   2  #  Retain_L_width_South_trawl_1(2)
-		  0.01 			   1 			 1 			0.99 			99 			   0 		  5 		 0 		   	2 		1989 	   2015 	   0.4 			0 		   0  #  Retain_L_asymptote_logit_South_trawl_1(2)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Retain_L_maleoffset_South_trawl_1(2)            
-# 3   North_Trawl_2 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5	 		1 		   2  #	 Size_inflection_North_Trawl_2(3)
-		  0.01 			  20		   5.1     		   5 			99 			   0 		  2 		 0		    0		   0 		  0    	   0.5  		1 		   2  #  Size_95%width_North_Trawl_2(3)            
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5	 		1 		   2  #	 Retain_L_infl_North_Trawl_2(3)
-		  0.01 			   9 			 7 			   5 			99 			   0 		  2 		 0 			0 		   0		  0 	   0.5 			1 		   2  #  Retain_L_width_North_Trawl_2(3)
-		  0.01 			   1 			 1 			0.99 			99 			   0 		  5 		 0 		   	2 		1989 	   2015 	   0.4 			0 		   0  #  Retain_L_asymptote_logit_North_Trawl_2(3)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Retain_L_maleoffset_North_Trawl_2(3)
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_trawl_1(2)
+0.01	20	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_trawl_1(2)													
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_trawl_1(2)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_trawl_1(2)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_trawl_1(2)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_trawl_1(2)
+# 3   North_Trawl_2 LenSelex													
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Trawl_2(3)
+0.01	20	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_North_Trawl_2(3)													
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Trawl_2(3)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Trawl_2(3)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Trawl_2(3)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_2(3)
 # 4   South_Trawl_2 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5	 		1 		   2  #	 Size_inflection_South_trawl_2(4)
-		  0.01 			   9 		   5.1     		   5 			99 			   0 		  2 		 0		    0		   0 		  0    	   0.5  		1 		   2  #  Size_95%width_South_trawl_2(4)            
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5	 		1 		   2  #	 Retain_L_infl_South_trawl_2(4)
-		  0.01			   9 			 7 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_width_South_trawl_2(4)
-		  0.01 			   1 			 1 			0.99 		 	99 			   0 		  5 		 0 			2 		1989	   2015		   0.4		    0 		   0  #  Retain_L_asymptote_logit_South_trawl_2(4)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4			 0		    0		   0		  0		   0.5		    0 		   0  #	 Retain_L_maleoffset_South_trawl_2(4)          
-# 5   North_Nontrawl_1 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_inflection_North_Nontrawl_1(5)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_95%width_North_Nontrawl_1(5)          
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_infl_North_Nontrawl_1(5)
-		  0.01			   9 			 7 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_width_North_Nontrawl_1(5)
-		  0.01 			   1 			 1 			0.99 		 	99 			   0 		  5 		 0 			2 		1989	   2015		   0.4		    0 		   0  #  Retain_L_asymptote_logit_North_Nontrawl_1(5)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4			 0		    0		   0		  0		   0.5		    0 		   0  #	 Retain_L_maleoffset_North_Nontrawl_1(5)
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_trawl_2(4)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_trawl_2(4)													
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_trawl_2(4)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_trawl_2(4)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_trawl_2(4)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_trawl_2(4)
+# 5   North_Nontrawl_1 LenSelex													
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Nontrawl_1(5)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_North_Nontrawl_1(5)
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Nontrawl_1(5)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Nontrawl_1(5)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Nontrawl_1(5)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Nontrawl_1(5)
 # 6   South_Nontrawl_2 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_inflection_South_Nontrawl_1(6)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_95%width_South_Nontrawl_1(6)             
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_infl_South_Nontrawl_1(6)
-		  0.01			   9 			 7 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_width_South_Nontrawl_1(6)
-		  0.01 			   1 			 1 			0.99 		 	99 			   0 		  5 		 0 			2 		1989	   2015		   0.4		    0 		   0  #  Retain_L_asymptote_logit_South_Nontrawl_1(6)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4			 0		    0		   0		  0		   0.5		    0 		   0  #	 Retain_L_maleoffset_South_Nontrawl_1(6)             
-# 7   North_Nontrawl_2 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_inflection_North_Nontrawl_2(7)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_95%width_North_Nontrawl_2(7)          
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_infl_North_Nontrawl_2(7)
-		  0.01			   9 			 7 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_width_North_Nontrawl_2(7)
-		  0.01 			   1 			 1 			0.99 		 	99 			   0 		  5 		 0 			2 		1989	   2015		   0.4		    0 		   0  #  Retain_L_asymptote_logit_North_Nontrawl_2(7)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4			 0		    0		   0		  0		   0.5		    0 		   0  #	 Retain_L_maleoffset_North_Nontrawl_2(7)
-# 9   South_Nontrawl_2 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_inflection_South_Nontrawl_2(8)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_95%width_South_Nontrawl_2(8)          
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_infl_South_Nontrawl_2(8)
-		  0.01			   9 			 7 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_width_South_Nontrawl_2(8)
-		  0.01 			   1 			 1 			0.99 		 	99 			   0 		  5 		 0 			2 		1989	   2015		   0.4		    0 		   0  #  Retain_L_asymptote_logit_South_Nontrawl_2(8)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4			 0		    0		   0		  0		   0.5		    0 		   0  #	 Retain_L_maleoffset_South_Nontrawl_2(8)
-# 9 North_Rec_1 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_inflection_North_Rec_1(9)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_95%width_North_Rec_1(9)            
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_infl_North_Rec_1(9)
-		  0.01			   9 			 7 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_width_North_Rec_1(9)
-		  0.01 			   1 			 1 			0.99 		 	99 			   0 		  5 		 0 			2 		1989	   2015		   0.4		    0 		   0  #  Retain_L_asymptote_logit_North_Rec_1(9)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4			 0		    0		   0		  0		   0.5		    0 		   0  #	 Retain_L_maleoffset_North_Rec_1(9)
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_Nontrawl_1(6)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_Nontrawl_1(6)
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_Nontrawl_1(6)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_Nontrawl_1(6)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_Nontrawl_1(6)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_Nontrawl_1(6)
+# 7   North_Nontrawl_2 LenSelex													
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Nontrawl_2(7)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_North_Nontrawl_2(7)
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Nontrawl_2(7)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Nontrawl_2(7)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Nontrawl_2(7)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Nontrawl_2(7)
+# 8   South_Nontrawl_2 LenSelex
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_Nontrawl_2(8)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_Nontrawl_2(8)
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_Nontrawl_2(8)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_Nontrawl_2(8)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_Nontrawl_2(8)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_Nontrawl_2(8)
+# 9 North_Rec_1 LenSelex													
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Rec_1(9)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_North_Rec_1(9)												
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Rec_1(9)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Rec_1(9)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Rec_1(9)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Rec_1(9)
 # 10   South_Rec_1 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_inflection_South_Rec_1(10)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_95%width_South_Rec_1(10)            
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_infl_South_Rec_1(10)
-		  0.01			   9 			 7 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_width_South_Rec_1(10)
-		  0.01 			   1 			 1 			0.99 		 	99 			   0 		  5 		 0 			2 		1989	   2015		   0.4		    0 		   0  #  Retain_L_asymptote_logit_South_Rec_1(10)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4			 0		    0		   0		  0		   0.5		    0 		   0  #	 Retain_L_maleoffset_South_Rec_1(10)   
-# 11   North_Rec_2 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_inflection_North_Rec_2(11)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_95%width_North_Rec_2(11)            
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_infl_North_Rec_2(11)
-		  0.01 			   9 			 7 			   5 			99 			   0		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_width_North_Rec_2(11)
-		  0.01 			   1 			 1	 		0.99 			99 			   0 		  5 		 0		    2 		1989 	   2015 	   0.4 			0 		   0  #  Retain_L_asymptote_logit_North_Rec_2(11)
-		   -10 			   0 			 0 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Retain_L_maleoffset_North_Rec_2(11)   
-# 12   South_Rec_2 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5		    1 		   2  #  Size_inflection_South_Rec_2(12)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 		 	0 		   0 		  0 	   0.5 	    	1 		   2  #  Size_95%width_South_Rec_2(12)             
-			 5 			  59 			15 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			1 		   2  #  Retain_L_infl_South_Rec_2(12)
-		  0.01 			   9 		     7 			   5 			99 			   0 		  2 		 0 		 	0 		   0 		  0 	   0.5 	    	1 		   2  #  Retain_L_width_South_Rec_2(12)
-		  0.01 			   1 		     1 			0.99 			99 			   0 		  5 		 0 			2 		1989 	   2015 	   0.4 			0 		   0  #  Retain_L_asymptote_logit_South_Rec_2(12)
-		   -10 			  10 			 0 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Retain_L_maleoffset_South_Rec_2(12)  
-# 13   MA_Spring_Trawl LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_peak_MA_Spring_Trawl(13)
-		   -10 			   4 			-2 			   0		    99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_top_logit_MA_Spring_Trawl(13)
-		  0.01 			   9 		   5.1 			   5	 		99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_ascend_se_MA_Spring_Trawl(13)
-		  0.01 			   9 		   5.9 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_descend_se_MA_Spring_Trawl(13)
-           -10 			  10 			-2 		   -1.15 			99 			   0 		  2 		 0 			0		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_start_logit_MA_Spring_Trawl(13)
-		   -10 			  10 		    -9 		   -0.35 			99 			   0 		  3 		 0 			0 		   0 		  0 	   0.5		    0 		   2  #  Size_DblN_end_logit_MA_Spring_Trawl(13) 
-# 14   MA_Fall_Trawl LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		 -2	  	     0			0		   0		  0	       0.5			0		   2  #  Size_DblN_peak_MA_Fall_Trawl(14)
-		   -10 			   4 			-2 			   0		    99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_top_logit_MA_Fall_Trawl(14)
-		  0.01 			   9 		   5.1 			   5	 		99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_ascend_se_MA_Fall_Trawl(14)
-		  0.01 			   9 		   5.9 			   5 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_descend_se_MA_Fall_Trawl(14)
-           -10 			  10 			-2 		   -1.15 			99 			   0 		 -2 		 0 			0		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_start_logit_MA_Fall_Trawl(14)
-		   -10 			  10 		    -9 		   -0.35 			99 			   0 		 -3 		 0 			0 		   0 		  0 	   0.5		    0 		   2  #  Size_DblN_end_logit_MA_Fall_Trawl(14)
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_Rec_1(10)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_Rec_1(10)													
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_Rec_1(10)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_Rec_1(10)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_Rec_1(10)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_Rec_1(10)
+# 11   North_Rec_2 LenSelex													
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Rec_2(11)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_North_Rec_2(11)													
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Rec_2(11)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Rec_2(11)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Rec_2(11)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Rec_2(11)
+# 12   South_Rec_2 LenSelex																										
+5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_Rec_2(12)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_Rec_2(12)													
+5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_Rec_2(12)
+0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_Rec_2(12)
+0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_Rec_2(12)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_Rec_2(12)
+# 13   MA_Spring_Trawl LenSelex										
+5	59	25	65	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_peak_MA_Spring_Trawl(13)
+-10	4	-2	0	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_top_logit_MA_Spring_Trawl(13)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_ascend_se_MA_Spring_Trawl(13)
+0.01	9	5.9	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_descend_se_MA_Spring_Trawl(13)
+-10	10	-2	-1.15	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_start_logit_MA_Spring_Trawl(13)
+-10	10	-9	-0.35	99	0	3	0	0	0	0	0.5	0	2	#_Size_DblN_end_logit_MA_Spring_Trawl(13)
+# 14   MA_Fall_Trawl LenSelex													
+5	59	25	65	99	0	-2	0	0	0	0	0.5	0	2	#_Size_DblN_peak_MA_Fall_Trawl(14)
+-10	4	-2	0	99	0	-2	0	0	0	0	0.5	0	2	#_Size_DblN_top_logit_MA_Fall_Trawl(14)
+0.01	9	5.1	5	99	0	-2	0	0	0	0	0.5	0	2	#_Size_DblN_ascend_se_MA_Fall_Trawl(14)
+0.01	9	5.9	5	99	0	-2	0	0	0	0	0.5	0	2	#_Size_DblN_descend_se_MA_Fall_Trawl(14)
+-10	10	-2	-1.15	99	0	-2	0	0	0	0	0.5	0	2	#_Size_DblN_start_logit_MA_Fall_Trawl(14)
+-10	10	-9	-0.35	99	0	-3	0	0	0	0	0.5	0	2	#_Size_DblN_end_logit_MA_Fall_Trawl(14)																										
 # 15   MA_Trawl_14cm_1 LenSelex
-# 16   RI_Trawl LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_peak_RI_Trawl(16)
-		   -10 			   4 			-2 			   0		    99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_top_logit_RI_Trawl(16)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_ascend_se_RI_Trawl(16)
-		  0.01 			   9 		   5.9 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_descend_se_RI_Trawl(16)
-           -10 			  10 			-2 		   -1.15 			99 			   0 		  2 		 0 			0		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_start_logit_RI_Trawl(16)
-		   -10 			  10 		    -9 		   -0.35 			99 			   0 		  3 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Size_DblN_end_logit_RI_Trawl(16)
+# 16   RI_Trawl LenSelex										
+5	59	25	65	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_peak_RI_Trawl(16)
+-10	4	-2	0	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_top_logit_RI_Trawl(16)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_ascend_se_RI_Trawl(16)
+0.01	9	5.9	5	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_descend_se_RI_Trawl(16)
+-10	10	-2	-1.15	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_start_logit_RI_Trawl(16)
+-10	10	-9	-0.35	99	0	3	0	0	0	0	0.5	0	0	#_Size_DblN_end_logit_RI_Trawl(16)
 # 17   RI_Trawl_Age1_1 LenSelex
 # 18   CT_Trawl_oneplus LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_peak_CT_Trawl_oneplus(18)
-		   -10 			   4 			-2 			   0		    99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_top_logit_CT_Trawl_oneplus(18)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_ascend_se_CT_Trawl_oneplus(18)
-		  0.01 			   9 		   5.9 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_descend_se_CT_Trawl_oneplus(18)
-           -10 			  10 			-2 		   -1.15 			99 			   0 		  2 		 0 			0		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_start_logit_CT_Trawl_oneplus(18)
-		   -10 			  10 		    -9 		   -0.35 			99 			   0 		  3 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Size_DblN_end_logit_CT_Trawl_oneplus(18)
+5	59	25	65	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_peak_CT_Trawl_oneplus(18)
+-10	4	-2	0	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_top_logit_CT_Trawl_oneplus(18)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_ascend_se_CT_Trawl_oneplus(18)
+0.01	9	5.9	5	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_descend_se_CT_Trawl_oneplus(18)
+-10	10	-2	-1.15	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_start_logit_CT_Trawl_oneplus(18)
+-10	10	-9	-0.35	99	0	3	0	0	0	0	0.5	0	0	#_Size_DblN_end_logit_CT_Trawl_oneplus(18)
 # 19   CT_160mm_GeoMean_1 LenSelex
 # 20   NY_Age1_StdIndex_1 LenSelex
 # 21   NJ_Trawl LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_peak_NJ_Trawl(21)
-		   -10 			   4 			-2 			   0		    99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_top_logit_NJ_Trawl(21)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_ascend_se_NJ_Trawl(21)
-		  0.01 			   9 		   5.9 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_descend_se_NJ_Trawl(21)
-           -10 			  10 			-2 		   -1.15 			99 			   0 		  2 		 0 			0		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_start_logit_NJ_Trawl(21)
-		   -10 			  10 		    -9 		   -0.35 			99 			   0 		  3 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Size_DblN_end_logit_NJ_Trawl(21)
+5	59	25	65	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_peak_NJ_Trawl(21)
+-10	4	-2	0	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_top_logit_NJ_Trawl(21)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_ascend_se_NJ_Trawl(21)
+0.01	9	5.9	5	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_descend_se_NJ_Trawl(21)
+-10	10	-2	-1.15	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_start_logit_NJ_Trawl(21)
+-10	10	-9	-0.35	99	0	3	0	0	0	0	0.5	0	0	#_Size_DblN_end_logit_NJ_Trawl(21)
 # 22   NJ_Age1_GeoMean_1 LenSelex 
 # 23   DE_CPT_Age1_GeoMean_1 LenSelex
 # 24   MD_Age1_LOGMEAN_1 LenSelex
 # 25   VIMS_Age1_GeoMean_1 LenSelex
-# 26   North_NEAMAP_1 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_peak_North_NEAMAP_1(26)
-		   -10 			   4 			-2 			   0 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_top_logit_North_NEAMAP_1(26)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_ascend_se_North_NEAMAP_1(26)
-		  0.01 			   9 		   5.9 			   5 			99		 	   0 		  2 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Size_DblN_descend_se_North_NEAMAP_1(26)
-		   -10 			  10 		 	-2 		   -1.15 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_start_logit_North_NEAMAP_1(26)
-		   -10 			  10 			-9 		   -0.35 			99 			   0 		  3 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_end_logit_North_NEAMAP_1(26)  
-#   South_NEAMAP_1 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_peak_South_NEAMAP_1(27)
-		   -10 			   4 			-2 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_top_logit_South_NEAMAP_1(27)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_ascend_se_South_NEAMAP_1(27)
-		  0.01 			   9 		   5.9 			   5 			99		 	   0 		 -2 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Size_DblN_descend_se_South_NEAMAP_1(27)
-		   -10 			  10 		 	-2 		   -1.15 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_start_logit_South_NEAMAP_1(27)
-		   -10 			  10 			-9 		   -0.35 			99 			   0 		 -3 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_end_logit_South_NEAMAP_1(27)
+# 26   North_NEAMAP_1 LenSelex												
+5	59	25	65	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_peak_North_NEAMAP_1(26)
+-10	4	-2	0	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_top_logit_North_NEAMAP_1(26)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_ascend_se_North_NEAMAP_1(26)
+0.01	9	5.9	5	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_descend_se_North_NEAMAP_1(26)
+-10	10	-2	-1.15	99	0	2	0	0	0	0	0.5	0	0	#_Size_DblN_start_logit_North_NEAMAP_1(26)
+-10	10	-9	-0.35	99	0	3	0	0	0	0	0.5	0	0	#_Size_DblN_end_logit_North_NEAMAP_1(26)
+# 27   South_NEAMAP_1 LenSelex													
+5	59	25	65	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_peak_South_NEAMAP_1(27)
+-10	4	-2	0	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_top_logit_South_NEAMAP_1(27)
+0.01	9	5.1	5	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_ascend_se_South_NEAMAP_1(27)
+0.01	9	5.9	5	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_descend_se_South_NEAMAP_1(27)
+-10	10	-2	-1.15	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_start_logit_South_NEAMAP_1(27)
+-10	10	-9	-0.35	99	0	-3	0	0	0	0	0.5	0	0	#_Size_DblN_end_logit_South_NEAMAP_1(27)
 # 28   South_NEAMAP_Spring_Age1 LenSelex
 # 29   North_NEAMAP_2 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_peak_North_NEAMAP_2(29)
-		   -10 			   4 			-2 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_top_logit_North_NEAMAP_2(29)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_ascend_se_North_NEAMAP_2(29)
-		  0.01 			   9 		   5.9 			   5 			99		 	   0 		 -2 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Size_DblN_descend_se_North_NEAMAP_2(29)
-		   -10 			  10 		 	-2 		   -1.15 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_start_logit_North_NEAMAP_2(29)
-		   -10 			  10 			-9 		   -0.35 			99 			   0 		 -3 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_end_logit_North_NEAMAP_2(29)
+5	59	25	65	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_peak_North_NEAMAP_2(29)
+-10	4	-2	0	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_top_logit_North_NEAMAP_2(29)
+0.01	9	5.1	5	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_ascend_se_North_NEAMAP_2(29)
+0.01	9	5.9	5	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_descend_se_North_NEAMAP_2(29)
+-10	10	-2	-1.15	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_start_logit_North_NEAMAP_2(29)
+-10	10	-9	-0.35	99	0	-3	0	0	0	0	0.5	0	0	#_Size_DblN_end_logit_North_NEAMAP_2(29)
 # 30   South_NEAMAP_2 LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_peak_South_NEAMAP_2(30)
-		   -10 			   4 			-2 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_top_logit_South_NEAMAP_2(30)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_ascend_se_South_NEAMAP_2(30)
-		  0.01 			   9 		   5.9 			   5 			99		 	   0 		 -2 		 0 			0 		   0 		  0 	   0.5		    0 		   0  #  Size_DblN_descend_se_South_NEAMAP_2(30)
-		   -10 			  10 		 	-2 		   -1.15 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_start_logit_South_NEAMAP_2(30)
-		   -10 			  10 			-9 		   -0.35 			99 			   0 		 -3 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  Size_DblN_end_logit_South_NEAMAP_2(30) 
-# 31   NEFSC_Spring_North LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_peak_NEFSC_Spring_North(31)
-		   -10 			   4 			-2 			   0 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_top_logit_NEFSC_Spring_North(31)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_ascend_se_NEFSC_Spring_North(31)
-		  0.01 			   9 		   5.9 			   5 			99		 	   0 		  2 		 0 			0 		   0 		  0 	   0.5		    0 		   2  #  Size_DblN_descend_se_NEFSC_Spring_North(31)
-		   -10 			  10 		 	-2 		   -1.15 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_start_logit_NEFSC_Spring_North(31)
-		   -10 			  10 			-9 		   -0.35 			99 			   0 		  3 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_end_logit_NEFSC_Spring_North(31)
-# 32   NEFSC_Spring_South LenSelex
-			 5 			  59 			25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_peak_NEFSC_Spring_South(32)
-		   -10 			   4 			-2 			   0 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_top_logit_NEFSC_Spring_South(32)
-		  0.01 			   9 		   5.1 			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_ascend_se_NEFSC_Spring_South(32)
-		  0.01 			   9 		   5.9 			   5 			99		 	   0 		  2 		 0 			0 		   0 		  0 	   0.5		    0 		   2  #  Size_DblN_descend_se_NEFSC_Spring_South(32)
-		   -10 			  10 		 	-2 		   -1.15 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_start_logit_NEFSC_Spring_South(32)
-		   -10 			  10 			-9 		   -0.35 			99 			   0 		  3 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_end_logit_NEFSC_Spring_South(32)
+5	59	25	65	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_peak_South_NEAMAP_2(30)
+-10	4	-2	0	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_top_logit_South_NEAMAP_2(30)
+0.01	9	5.1	5	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_ascend_se_South_NEAMAP_2(30)
+0.01	9	5.9	5	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_descend_se_South_NEAMAP_2(30)
+-10	10	-2	-1.15	99	0	-2	0	0	0	0	0.5	0	0	#_Size_DblN_start_logit_South_NEAMAP_2(30)
+-10	10	-9	-0.35	99	0	-3	0	0	0	0	0.5	0	0	#_Size_DblN_end_logit_South_NEAMAP_2(30)
+# 31   NEFSC_Spring_North LenSelex										
+5	59	25	65	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_peak_NEFSC_Spring_North(31)
+-10	4	-2	0	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_top_logit_NEFSC_Spring_North(31)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_ascend_se_NEFSC_Spring_North(31)
+0.01	9	5.9	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_descend_se_NEFSC_Spring_North(31)
+-10	10	-2	-1.15	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_start_logit_NEFSC_Spring_North(31)
+-10	10	-9	-0.35	99	0	3	0	0	0	0	0.5	0	2	#_Size_DblN_end_logit_NEFSC_Spring_North(31)
+# 32   NEFSC_Spring_South LenSelex													
+5	59	25	65	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_peak_NEFSC_Spring_South(32)
+-10	4	-2	0	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_top_logit_NEFSC_Spring_South(32)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_ascend_se_NEFSC_Spring_South(32)
+0.01	9	5.9	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_descend_se_NEFSC_Spring_South(32)
+-10	10	-2	-1.15	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_start_logit_NEFSC_Spring_South(32)
+-10	10	-9	-0.35	99	0	3	0	0	0	0	0.5	0	2	#_Size_DblN_end_logit_NEFSC_Spring_South(32)
 # 33   Dummy_Age_North_2 LenSelex
 # 34   Dummy_Age_South_2 LenSelex
-# 35   Bigelow_Nrth_Spr LenSelex
-			 5 			  59 		    25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_peak_Bigelow_Nrth_Spr(35)
-		   -10 			   4 			-2 			   0 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_top_logit_Bigelow_Nrth_Spr(35)
-		  0.01 			   9 		   5.1			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_ascend_se_Bigelow_Nrth_Spr(35)
-		  0.01 			   9 		   5.9 			   5 			99 			   0 		  2 		 0 			0 		   0		  0 	   0.5 			0 		   2  #  Size_DblN_descend_se_Bigelow_Nrth_Spr(35)
-		   -10 			  10 			-2 		   -1.15 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_start_logit_Bigelow_Nrth_Spr(35)
-		   -10 			  10 			-9		   -0.35 			99 			   0 		  3 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_end_logit_Bigelow_Nrth_Spr(35)
-# 36   Bigelow_Sth_Spr LenSelex
-			 5 			  59 		    25 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_peak_Bigelow_Sth_Spr(36)
-		   -10 			   4 			-2 			   0 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_top_logit_Bigelow_Sth_Spr(36)
-		  0.01 			   9 		   5.1			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_ascend_se_Bigelow_Sth_Spr(36)
-		  0.01 			   9 		   5.9 			   5 			99 			   0 		  2 		 0 			0 		   0		  0 	   0.5 			0 		   2  #  Size_DblN_descend_se_Bigelow_Sth_Spr(36)
-		   -10 			  10 			-2 		   -1.15 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_start_logit_Bigelow_Sth_Spr(36)
-		   -10 			  10 			-9		   -0.35 			99 			   0 		  3 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_end_logit_Bigelow_Sth_Spr(36) 
-# 37   North_Winter_BTS LenSelex
-			 5 			  59 		    22 			  65 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_peak_North_Winter_BTS(37)
-		   -10 			   4 		  -1.4 			   0 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_top_logit_North_Winter_BTS(37)
-		  0.01 			   9 		  0.22			   5 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_ascend_se_North_Winter_BTS(37)
-		  0.01 			   9 		     3 			   5 			99 			   0 		 -2 		 0 			0 		   0		  0 	   0.5 			0 		   2  #  Size_DblN_descend_se_North_Winter_BTS(37)
-		   -10 			  10 		 -0.05 	   	   -1.15 			99 			   0 		 -2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_start_logit_North_Winter_BTS(37)
-		   -10 			  10 		 -1.93		   -0.35 			99 			   0 		 -3 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_end_logit_North_Winter_BTS(37) 
-# 38   South_Winter_BTS LenSelex
-			 5 			  59 		  22.9 			  65 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_peak_South_Winter_BTS(38)
-		   -10 			   4 			-4 			   0 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_top_logit_South_Winter_BTS(38)
-		  0.01 			   9 		  2.46			   5 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_ascend_se_South_Winter_BTS(38)
-		  0.01 			   9 		  2.55 			   5 			99 			   0 		  2 		 0 			0 		   0		  0 	   0.5 			0 		   2  #  Size_DblN_descend_se_South_Winter_BTS(38)
-		   -10 			  10 		 -1.49 	   	   -1.15 			99 			   0 		  2 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_start_logit_South_Winter_BTS(38)
-		   -10 			  10 		 0.112		   -0.35 			99 			   0 		  3 		 0 			0 		   0 		  0 	   0.5 			0 		   2  #  Size_DblN_end_logit_South_Winter_BTS(38)
+# 35   Bigelow_Nrth_Spr LenSelex												
+5	59	25	65	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_peak_Bigelow_Nrth_Spr(35)
+-10	4	-2	0	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_top_logit_Bigelow_Nrth_Spr(35)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_ascend_se_Bigelow_Nrth_Spr(35)
+0.01	9	5.9	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_descend_se_Bigelow_Nrth_Spr(35)
+-10	10	-2	-1.15	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_start_logit_Bigelow_Nrth_Spr(35)
+-10	10	-9	-0.35	99	0	3	0	0	0	0	0.5	0	2	#_Size_DblN_end_logit_Bigelow_Nrth_Spr(35)
+# 36   Bigelow_Sth_Spr LenSelex													
+5	59	25	65	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_peak_Bigelow_Sth_Spr(36)
+-10	4	-2	0	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_top_logit_Bigelow_Sth_Spr(36)
+0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_ascend_se_Bigelow_Sth_Spr(36)
+0.01	9	5.9	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_descend_se_Bigelow_Sth_Spr(36)
+-10	10	-2	-1.15	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_start_logit_Bigelow_Sth_Spr(36)
+-10	10	-9	-0.35	99	0	3	0	0	0	0	0.5	0	2	#_Size_DblN_end_logit_Bigelow_Sth_Spr(36)
+# 37   North_Winter_BTS LenSelex											
+5	59	22	65	99	0	-2	0	0	0	0	0.5	0	2	#_Size_DblN_peak_North_Winter_BTS(37)
+-10	4	-1.4	0	99	0	-2	0	0	0	0	0.5	0	2	#_Size_DblN_top_logit_North_Winter_BTS(37)
+0.01	9	0.22	5	99	0	-2	0	0	0	0	0.5	0	2	#_Size_DblN_ascend_se_North_Winter_BTS(37)
+0.01	9	3	5	99	0	-2	0	0	0	0	0.5	0	2	#_Size_DblN_descend_se_North_Winter_BTS(37)
+-10	10	-0.05	-1.15	99	0	-2	0	0	0	0	0.5	0	2	#_Size_DblN_start_logit_North_Winter_BTS(37)
+-10	10	-1.93	-0.35	99	0	-3	0	0	0	0	0.5	0	2	#_Size_DblN_end_logit_North_Winter_BTS(37)
+# 38   South_Winter_BTS LenSelex													
+5	59	22.9	65	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_peak_South_Winter_BTS(38)
+-10	4	-4	0	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_top_logit_South_Winter_BTS(38)
+0.01	9	2.46	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_ascend_se_South_Winter_BTS(38)
+0.01	9	2.55	5	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_descend_se_South_Winter_BTS(38)
+-10	10	-1.49	-1.15	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_start_logit_South_Winter_BTS(38)
+-10	10	0.112	-0.35	99	0	3	0	0	0	0	0.5	0	2	#_Size_DblN_end_logit_South_Winter_BTS(38)
 # 39   GSWI LenSelex
-# 40   Rec_CPUE_North_1 LenSelex
-		   -10 			  10 			1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  SizeSel_P1_Rec_CPUE_North_1(40)
-		   -10 			  10 		   35 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5			0 		   0  #  SizeSel_P2_Rec_CPUE_North_1(40)
+# 40   Rec_CPUE_North_1 LenSelex												
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_SizeSel_P1_Rec_CPUE_North_1(40)
+-10	10	35	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_SizeSel_P2_Rec_CPUE_North_1(40)
 # 41   Rec_CPUE_South_1 LenSelex
-		   -10 			  10 			1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  SizeSel_P1_Rec_CPUE_South_1(41)
-		   -10 			  10 		   35 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5			0 		   0  #  SizeSel_P2_Rec_CPUE_South_1(41) 
-# 43    Rec_CPUE_North_2 LenSelex
-		   -10 			  10 			1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  SizeSel_P1_Rec_CPUE_North_2(42)
-		   -10 			  10 		   35 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5			0 		   0  #  SizeSel_P2_Rec_CPUE_North_2(42) 
-# 43   Rec_CPUE_South_2 LenSelex 
-		   -10 			  10 			1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  SizeSel_P1_Rec_CPUE_South_2(43)
-		   -10 			  10 		   35 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5			0 		   0  #  SizeSel_P2_Rec_CPUE_South_2(43)
-            
-
-
-# 1   North_Trawl_1 AgeSelex
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Trawl_1(1)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Trawl_1(1)
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_SizeSel_P1_Rec_CPUE_South_1(41)
+-10	10	35	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_SizeSel_P2_Rec_CPUE_South_1(41)
+# 42    Rec_CPUE_North_2 LenSelex													
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_SizeSel_P1_Rec_CPUE_North_2(42)
+-10	10	35	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_SizeSel_P2_Rec_CPUE_North_2(42)													
+# 43   Rec_CPUE_South_2 LenSelex 													
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_SizeSel_P1_Rec_CPUE_South_2(43)
+-10	10	35	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_SizeSel_P2_Rec_CPUE_South_2(43)
+													
+																																	
+													
+# 1   North_Trawl_1 AgeSelex																								
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Trawl_1(1)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Trawl_1(1)
 # 2   South_Trawl_1 AgeSelex
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Trawl_1(2)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Trawl_1(2)
-# 3   North_Trawl_2 AgeSelex            
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Trawl_2(3)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Trawl_2(3)
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_trawl_1(2)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_trawl_1(2)
+# 3   North_Trawl_2 AgeSelex  													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Trawl_2(3)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Trawl_2(3)
 # 4   South_Trawl_2 AgeSelex
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Trawl_2(4)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Trawl_2(4)
-# 5   North_Nontrawl_1 AgeSelex             
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Nontrawl_1(5)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Nontrawl_1(5)
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_trawl_2(4)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_trawl_2(4)
+# 5   North_Nontrawl_1 AgeSelex 													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Nontrawl_1(5)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Nontrawl_1(5)
 # 6   South_Nontrawl_1 AgeSelex
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Nontrawl_1(6)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Nontrawl_1(6)
-# 7   North_Nontrawl_2 AgeSelex           
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Nontrawl_2(7)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Nontrawl_2(7)
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_Nontrawl_1(6)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_Nontrawl_1(6)
+# 7   North_Nontrawl_2 AgeSelex 													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Nontrawl_2(7)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Nontrawl_2(7)
 # 8   South_Nontrawl_2 AgeSelex
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Nontrawl_2(8)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Nontrawl_2(8)
-# 9   North_Rec_1 AgeSelex            
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Rec_1(9)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Rec_1(9)
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_Nontrawl_2(8)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_Nontrawl_2(8)
+# 9   North_Rec_1 AgeSelex 													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Rec_1(9)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Rec_1(9)
 # 10   South_Rec_1 AgeSelex
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Rec_1(10)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Rec_1(10)
-# 11   North_Rec_2 AgeSelex            
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Rec_2(11)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_Rec_2(11)
-# 12   South_Rec_2 AgeSelex                       
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Rec_2(12)
-		  -10 			  10 		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_Rec_2(12)
-# 13   MA_Spring_Trawl AgeSelex          
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0		  0 	   0.5 			0 		   0  #  MA_Spring_Trawl(13)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  MA_Spring_Trawl(13)
-# 14   MA_Fall_Trawl AgeSelex             
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0		  0 	   0.5 			0 		   0  #  MA_Fall_Trawl(14)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  MA_Fall_Trawl(14)
-# 15   MA_Trawl_14cm_1 AgeSelex            
-		  -10 			  10 		  	1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0		  0 	   0.5 			0 		   0  #  MA_Trawl_14cm_1(15)
-		  -10 			  10 		  1.5		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  MA_Trawl_14cm_1(15)
-# 16   RI_Trawl AgeSelex            
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0		  0 	   0.5 			0 		   0  #  RI_Trawl(16)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  RI_Trawl(16)
-# 17   RI_Trawl_Age1_1 AgeSelex            
-		  -10 			  10 		  	1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0		  0 	   0.5 			0 		   0  #  RI_Trawl_Age1_1(17)
-		  -10 			  10 		  1.5		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  RI_Trawl_Age1_1(17)
-# 18   CT_Trawl_oneplus AgeSelex            
-		  -10 			  10 		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0		  0 	   0.5 			0 		   0  #  CT_Trawl_oneplus(18)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  CT_Trawl_oneplus(18)
-# 19   CT_160mm_GeoMean_1 AgeSelex            
-		  -10 			  10 		  	1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0		  0 	   0.5 			0 		   0  #  CT_160mm_GeoMean_1(19)
-		  -10 			  10 		  1.5		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  CT_160mm_GeoMean_1(19)
-# 20   NY_Age1_StdIndex_1 AgeSelex             
-		  -10 			  10 		  	1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0		  0 	   0.5 			0 		   0  #  NY_Age1_StdIndex_1(20)
-		  -10 			  10 		  1.5		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  NY_Age1_StdIndex_1(20)
-# 21   NJ_Trawl AgeSelex            
-		  -10 			  10	 	  0.1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  NJ_Trawl(21)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  NJ_Trawl(21)
-# 22   NJ_Age1_GeoMean_1 AgeSelex           
-		  -10 			  10	 	    1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  NJ_Age1_GeoMean_1(22)
-		  -10 			  10 		  1.5		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  NJ_Age1_GeoMean_1(22)
-# 23   DE_CPT_Age1_GeoMean_1 AgeSelex                      
-		  -10 			  10	 	    1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  DE_CPT_Age1_GeoMean_1(23)
-		  -10 			  10 		  1.5		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  DE_CPT_Age1_GeoMean_1(23)
-# 24   MD_Age1_LOGMEAN_1 AgeSelex                        
-		  -10 			  10	 	    1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  MD_Age1_LOGMEAN_1(24)
-		  -10 			  10 		  1.5		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  MD_Age1_LOGMEAN_1(24)
-# 25   VIMS_Age1_GeoMean_1 AgeSelex                          
-		  -10 			  10	 	    1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  VIMS_Age1_GeoMean_1(25)
-		  -10 			  10 		  1.5		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  VIMS_Age1_GeoMean_1(25)
-# 26   North_NEAMAP_1 AgeSelex                          
-		  -10 			  10	 	  0.1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  North_NEAMAP_1(26)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  North_NEAMAP_1(26)
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_Rec_1(10)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_Rec_1(10)
+# 11   North_Rec_2 AgeSelex   													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Rec_2(11)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Rec_2(11)
+# 12   South_Rec_2 AgeSelex  																								
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_Rec_2(12)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_Rec_2(12)
+# 13   MA_Spring_Trawl AgeSelex    										
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_MA_Spring_Trawl(13)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_MA_Spring_Trawl(13)
+# 14   MA_Fall_Trawl AgeSelex													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_MA_Fall_Trawl(14)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_MA_Fall_Trawl(14)
+# 15   MA_Trawl_14cm_1 AgeSelex 											
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_MA_Trawl_14cm_1(15)
+-10	10	1.5	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_MA_Trawl_14cm_1(15)
+# 16   RI_Trawl AgeSelex 											
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_RI_Trawl(16)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_RI_Trawl(16)
+# 17   RI_Trawl_Age1_1 AgeSelex 													
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_RI_Trawl_Age1_1(17)
+-10	10	1.5	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_RI_Trawl_Age1_1(17)
+# 18   CT_Trawl_oneplus AgeSelex 											
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_CT_Trawl_oneplus(18)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_CT_Trawl_oneplus(18)
+# 19   CT_160mm_GeoMean_1 AgeSelex  												
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_CT_160mm_GeoMean_1(19)
+-10	10	1.5	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_CT_160mm_GeoMean_1(19)
+# 20   NY_Age1_StdIndex_1 AgeSelex  												
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_NY_Age1_StdIndex_1(20)
+-10	10	1.5	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_NY_Age1_StdIndex_1(20)
+# 21   NJ_Trawl AgeSelex 												
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_NJ_Trawl(21)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_NJ_Trawl(21)
+# 22   NJ_Age1_GeoMean_1 AgeSelex 												
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_NJ_Age1_GeoMean_1(22)
+-10	10	1.5	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_NJ_Age1_GeoMean_1(22)
+# 23   DE_CPT_Age1_GeoMean_1 AgeSelex  											
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_DE_CPT_Age1_GeoMean_1(23)
+-10	10	1.5	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_DE_CPT_Age1_GeoMean_1(23)
+# 24   MD_Age1_LOGMEAN_1 AgeSelex 												
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_MD_Age1_LOGMEAN_1(24)
+-10	10	1.5	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_MD_Age1_LOGMEAN_1(24)
+# 25   VIMS_Age1_GeoMean_1 AgeSelex 												
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_VIMS_Age1_GeoMean_1(25)
+-10	10	1.5	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_VIMS_Age1_GeoMean_1(25)
+# 26   North_NEAMAP_1 AgeSelex   											
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_NEAMAP_1(26)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_NEAMAP_1(26)
 # 27   South_NEAMAP_1 AgeSelex
-		  -10 			  10	 	  0.1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  South_NEAMAP_1(27)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  South_NEAMAP_1(27)
-# 28   South_NEAMAP_Spring_Age1 AgeSelex                    
-		  -10 			  10	 	    1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_NEAMAP_Spring_Age1(28)
-		  -10 			  10 		  1.5		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  South_NEAMAP_Spring_Age1(28)
-# 29   North_NEAMAP_2 AgeSelex             
-		  -10 			  10	 	  0.1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  North_NEAMAP_2(29)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  North_NEAMAP_2(29)
-# 300   South_NEAMAP_2 AgeSelex             
-		  -10 			  10	 	  0.1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  South_NEAMAP_2(30)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  South_NEAMAP_2(30)
-# 31   NEFSC_Spring_North AgeSelex          
-		  -10 			  10	 	  0.1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  NEFSC_Spring_North(31)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  NEFSC_Spring_North(31)
-# 32   NEFSC_Spring_South AgeSelex          
-		  -10 			  10	 	  0.1		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5 			0 		   0  #  NEFSC_Spring_South(32)
-		  -10 			  10 		   20		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  NEFSC_Spring_South(32)
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_NEAMAP_1(27)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_NEAMAP_1(27)
+# 28   South_NEAMAP_Spring_Age1 AgeSelex							
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_NEAMAP_Spring_Age1(28)
+-10	10	1.5	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_NEAMAP_Spring_Age1(28)
+# 29   North_NEAMAP_2 AgeSelex  													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_NEAMAP_2(29)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_NEAMAP_2(29)
+# 30   South_NEAMAP_2 AgeSelex 
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_NEAMAP_2(30)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_NEAMAP_2(30)
+# 31   NEFSC_Spring_North AgeSelex										
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_NEFSC_Spring_North(31)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_NEFSC_Spring_North(31)
+# 32   NEFSC_Spring_South AgeSelex  											
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_NEFSC_Spring_South(32)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_NEFSC_Spring_South(32)
 # 33   Dummy_Age_North_2 AgeSelex
 # 34   Dummy_Age_South_2 AgeSelex
-# 35   Bigelow_Nrth_Spr AgeSelex           
-		  -10 			  10		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Bigelow_Nrth_Spr(35)
-		  -10 			  10		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Bigelow_Nrth_Spr(35)
-# 36   Bigelow_Sth_Spr AgeSelex          
-		  -10 			  10		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Bigelow_Sth_Spr(36)
-		  -10 			  10		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Bigelow_Sth_Spr(36)            
-# 37   North_Winter_BTS AgeSelex            
-		  -10 			  10		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  North_Winter_BTS(37)
-		  -10 			  10		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  North_Winter_BTS(37)
-# 38   South_Winter_BTS AgeSelex             
-		  -10 			  10		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  South_Winter_BTS(38)
-		  -10 			  10		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  South_Winter_BTS(38)
+# 35   Bigelow_Nrth_Spr AgeSelex 										
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Bigelow_Nrth_Spr(35)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Bigelow_Nrth_Spr(35)													
+# 36   Bigelow_Sth_Spr AgeSelex  										
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Bigelow_Sth_Spr(36)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Bigelow_Sth_Spr(36)												
+# 37   North_Winter_BTS AgeSelex 												
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Winter_BTS(37)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_North_Winter_BTS(37)
+# 38   South_Winter_BTS AgeSelex 													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_Winter_BTS(38)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_South_Winter_BTS(38)
 # 39   GSWI AgeSelex
-# 40   Rec_CPUE_North_1 AgeSelex         
-		  -10 			  10		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Rec_CPUE_North_1(40)
-		  -10 			  10		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Rec_CPUE_North_1(40)
-# 41   Rec_CPUE_South_1 AgeSelex             
-		  -10 			  10		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Rec_CPUE_South_1(41)
-		  -10 			  10		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Rec_CPUE_South_1(41)
-# 42   Rec_CPUE_North_2 AgeSelex             
-		  -10 			  10		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Rec_CPUE_North_2(42)
-		  -10 			  10		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Rec_CPUE_North_2(42)
-# 43   Rec_CPUE_South_2 AgeSelex             
-		  -10 			  10		  0.1 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Rec_CPUE_South_2(43)
-		  -10 			  10		   20 		   -0.35 			99 			   0 		 -4 		 0 			0 		   0 		  0 	   0.5		 	0 		   0  #  Rec_CPUE_South_2(43)
+# 40   Rec_CPUE_North_1 AgeSelex  											
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Rec_CPUE_North_1(40)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Rec_CPUE_North_1(40)
+# 41   Rec_CPUE_South_1 AgeSelex 													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Rec_CPUE_North_2(41)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Rec_CPUE_North_2(41)
+# 42   Rec_CPUE_North_2 AgeSelex													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Rec_CPUE_South_1(42)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Rec_CPUE_South_1(42)
+# 43   Rec_CPUE_South_2 AgeSelex 													
+-10	10	0.1	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Rec_CPUE_South_2(43)
+-10	10	20	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Rec_CPUE_South_2(43)
 
 0 #_2D AR selectivity
 
