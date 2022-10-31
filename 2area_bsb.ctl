@@ -113,13 +113,12 @@
 0.2 1 0.99 0.95 0.8 0 -3 0 0 0 0 0 0 0 # asymptotic_rate      
 
 #C Recruitment distributions
-#C across settlement patterns
 #C RecrDist-settlement-1_
--8 8 -1.1 0 99 -1 2 0 2 1989 2014 0.7 0 0 # 
+ -8 8 -1.1 0 99 0 2 0 2 1989 2014 5 0 0 # 
 #C RecrDist-settlement-2_
--4 4 0 0 99 -1 -3 0 0 0 0 0 0 0 # 
+ -4 4 -4 0 99 0 -1 0 0 0 0 0.5 0 0 # 
 #Cohort growth dev
- 0.1 3 1 1 99 -1 -3 0 0 0 0 0 0 0 #CohortGrowDev
+ 0.1 3 1 1 99 0 -3 0 0 0 0 0.5 0 0#CohortGrowDev
 
 #C Movement parameters
  -15 15 15 0 99 0 5 0 0 0 0 0 0 0 # MoveParm_A_seas_1_GP_1from_2to_1
@@ -176,7 +175,7 @@
  1988 #_first_yr_fullbias_adj_in_MPD; begin of plateau
  2012 #_last_yr_fullbias_adj_in_MPD
  2020 #_end_yr_for_ramp_in_MPD (can be in forecast to shape ramp, but SS sets bias_adj to 0.0 for fcast yrs)
- 1 #_max_bias_adj_in_MPD (typical ~0.8; -3 sets all years to 0.0; -2 sets all non-forecast yrs w/ estimated recdevs to 1.0; -1 sets biasadj=1.0 for all yrs w/ recdevs)
+ 0.98 #_max_bias_adj_in_MPD (typical ~0.8; -3 sets all years to 0.0; -2 sets all non-forecast yrs w/ estimated recdevs to 1.0; -1 sets biasadj=1.0 for all yrs w/ recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -15 #min rec_dev
  15 #max rec_dev
@@ -416,84 +415,84 @@
 0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2 #_Size_95%width_North_Trawl_1 (1)													
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Trawl_1(1)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 # 2   South_Trawl_1 LenSelex
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_trawl_1(2)
 0.01	20	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_trawl_1(2)													
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_trawl_1(2)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_trawl_1(2)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_trawl_1(2)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_South_trawl_1(2)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_trawl_1(2)
 # 3   North_Trawl_2 LenSelex													
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Trawl_2(3)
 0.01	20	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_North_Trawl_2(3)													
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Trawl_2(3)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Trawl_2(3)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Trawl_2(3)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_2(3)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_2(3)
 # 4   South_Trawl_2 LenSelex
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_trawl_2(4)
 0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_trawl_2(4)													
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_trawl_2(4)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_trawl_2(4)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_trawl_2(4)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_South_trawl_2(4)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_trawl_2(4)
 # 5   North_Nontrawl_1 LenSelex													
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Nontrawl_1(5)
 0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_North_Nontrawl_1(5)
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Nontrawl_1(5)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Nontrawl_1(5)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Nontrawl_1(5)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Nontrawl_1(5)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Nontrawl_1(5)
 # 6   South_Nontrawl_2 LenSelex
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_Nontrawl_1(6)
 0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_Nontrawl_1(6)
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_Nontrawl_1(6)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_Nontrawl_1(6)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_Nontrawl_1(6)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_South_Nontrawl_1(6)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_Nontrawl_1(6)
 # 7   North_Nontrawl_2 LenSelex													
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Nontrawl_2(7)
 0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_North_Nontrawl_2(7)
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Nontrawl_2(7)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Nontrawl_2(7)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Nontrawl_2(7)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Nontrawl_2(7)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Nontrawl_2(7)
 # 8   South_Nontrawl_2 LenSelex
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_Nontrawl_2(8)
 0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_Nontrawl_2(8)
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_Nontrawl_2(8)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_Nontrawl_2(8)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_Nontrawl_2(8)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_South_Nontrawl_2(8)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_Nontrawl_2(8)
 # 9 North_Rec_1 LenSelex													
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Rec_1(9)
 0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_North_Rec_1(9)												
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Rec_1(9)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Rec_1(9)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Rec_1(9)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Rec_1(9)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Rec_1(9)
 # 10   South_Rec_1 LenSelex
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_Rec_1(10)
 0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_Rec_1(10)													
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_Rec_1(10)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_Rec_1(10)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_Rec_1(10)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_South_Rec_1(10)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_Rec_1(10)
 # 11   North_Rec_2 LenSelex													
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_North_Rec_2(11)
 0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_North_Rec_2(11)													
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_North_Rec_2(11)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_North_Rec_2(11)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_North_Rec_2(11)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Rec_2(11)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Rec_2(11)
 # 12   South_Rec_2 LenSelex																										
 5	59	25	65	99	0	2	0	0	0	0	0.5	1	2	#_Size_inflection_South_Rec_2(12)
 0.01	9	5.1	5	99	0	2	0	0	0	0	0.5	1	2	#_Size_95%width_South_Rec_2(12)													
 5	59	15	65	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_infl_South_Rec_2(12)
 0.01	9	7	5	99	0	2	0	0	0	0	0.5	1	2	#_Retain_L_width_South_Rec_2(12)
-0.01	1	1	0.99	99	0	5	0	2	1989	2015	0.4	0	0	#_Retain_L_asymptote_logit_South_Rec_2(12)
+-10	10	10	4.59512	99	0	5	0	2	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_South_Rec_2(12)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_South_Rec_2(12)
 # 13   MA_Spring_Trawl LenSelex										
 5	59	25	65	99	0	2	0	0	0	0	0.5	0	2	#_Size_DblN_peak_MA_Spring_Trawl(13)
