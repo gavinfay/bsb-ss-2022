@@ -75,18 +75,18 @@
 -3 3 1 1 0.8 0 -3 0 0 0 0 0 0 0 # Eggs1-Fem       
 -3 3 0 0 0.8 0 -3 0 0 0 0 0 0 0 # Eggs2-Fem       
 #female, growth pattern 2                   
--3 3 0 0 0.8 0 -3 0 0 0 0 0 0 0 # natM_for_M_offset_mal=female*exp(male_param)
--3 3 -0.24 -0.24 99 0 -4 0 0 0 0 0 0 0 # Lmin_M      
--3 3 0 0 99 0 -4 0 0 0 0 0 0 0 # Lmax_M      
--3 3 0 0 99 0 4 0 0 0 0 0 0 0 # VBK_M      
--3 3 0 0 99 0 -4 0 0 0 0 0 0 0 # CV-yng_M      
--3 3 0 0 99 0 -5 0 0 0 0 0 0 0 # CV-old_M      
--3 3 0 0 99 0 -4 0 0 0 0 0 0 0 # Wtlen1-Fem       
--3 3 0 0 99 0 -4 0 0 0 0 0 0 0 # Wtlen2-Fem       
--3 3 0 0 99 0 -4 0 0 0 0 0 0 0 # Mat50-Fem       
--3 3 0 0 99 0 -4 0 0 0 0 0 0 0 # Matslp-Fem       
--3 3 0 0 99 0 -4 0 0 0 0 0 0 0 # Eggs1-Fem       
--3 3 0 0 99 0 -4 0 0 0 0 0 0 0 # Eggs2-Fem       
+-3 3 0 0 0.8 6 -3 0 0 0 0 0.5 0 0 # natM_for_M_offset_mal=female*exp(male_param)
+-3 3 -0.24 -0.24 99 6 -4 0 0 0 0 0.5 0 0 # Lmin_M      
+-3 3 0 0 99 6 -4 0 0 0 0 0.5 0 0 # Lmax_M      
+-3 3 0 0 99 6 4 0 0 0 0 0.5 0 0 # VBK_M      
+-3 3 0 0 99 6 -4 0 0 0 0 0.5 0 0 # CV-yng_M      
+-3 3 0 0 99 6 -5 0 0 0 0 0.5 0 0 # CV-old_M      
+-3 3 1.08E-05 0 0.8 6 -3 0 0 0 0 0.5 0 0 # Wtlen1-Fem       
+-3 4 3.062 3 0.8 6 -3 0 0 0 0 0.5 0 0 # Wtlen2-Fem     
+-10 100 20.79 1 0.8 6 -3 0 0 0 0 0.5 0 0 # Mat50-Fem       
+-10 10 -0.576 -1 0.8 6 -3 0 0 0 0 0.5 0 0 # Matslp-Fem     
+-3 3 1 1 0.8 6 -3 0 0 0 0 0.5 0 0 # Eggs1-Fem       
+-3 3 0 0 0.8 6 -3 0 0 0 0 0.5 0 0 # Eggs2-Fem     
 #_male, growth pattern 1                   
 -3 3 0 0 0.8 0 -3 0 0 0 0 0 0 0 # natM_for_M_offset_mal=female*exp(male_param)
 -3 3 0 0 99 0 -5 0 0 0 0 0 0 0 # Lmin_M      
