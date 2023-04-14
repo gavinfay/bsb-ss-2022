@@ -11,6 +11,9 @@ load("C:/Users/Jason.McNamee/OneDrive - State of Rhode Island/Z Drive stuff/ASMF
 library(dplyr)
 library(tidyverse)
 
+# define length bins
+Lbins <- c(seq(2,48,2),52,58,64,70)
+
 ##Start collecting re-organized data in a list
 SS_BSB_dat = list(
   
@@ -668,7 +671,197 @@ SS_BSB_dat = list(
       values_fill = list(N_AB1B2 = 0)) %>%
     add_column(Seas = 4, Index = 41, Gender = 0, 
                Part = 0, NSamp = tapply(rec.CAL$N_AB1B2, list(rec.CAL$REGION, rec.CAL$Year, rec.CAL$SEMESTER), sum)[2,,1], 
-               .after = "Year") %>% data.frame  ###Note, there is fall LF data for recCPUE, but no fall index, not sure what to do
+               .after = "Year") %>% data.frame,  ###Note, there is fall LF data for recCPUE, but no fall index, not sure what to do
+
+  "###############################################",
+  "##  Age Composition Data",
+  "###############################################",
+  "#AC_North_Trawl_1",
+  N.Trawl.spr.AC = fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "NORTH" & fishery.alfreq.region.sem.gr$SEMESTER == 1 & fishery.alfreq.region.sem.gr$GEAR == "TRAWL", c(-1,-3,-4)] %>%
+    add_column(Lbin_lo = findInterval(unlist(fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "NORTH" & fishery.alfreq.region.sem.gr$SEMESTER == 1 & fishery.alfreq.region.sem.gr$GEAR == "TRAWL", 5]), Lbins)) %>%
+    select(-LENGTH) %>%
+    group_by(YEAR, Lbin_lo, AGE) %>%
+    summarise(NUMAGE = sum(NUMAGE)) %>%
+    complete(AGE = 0:31, fill = list(NUMAGE = 0)) %>%
+    pivot_wider(
+      names_from = AGE,
+      names_sort = T,
+      values_from = NUMAGE,
+      values_fn = sum,
+      values_fill = list(NUMAGE = 0)) %>%
+    mutate(Lbin_hi = Lbin_lo, .after = "Lbin_lo") %>%
+    add_column(Nsamp = rowSums(.[4:35]), .after = "Lbin_hi") %>%
+    add_column(Seas = 4, Flt = 1, Gender = 3,
+               Part = 0, Ageerr = 1,
+               .after = "YEAR") %>% 
+    na.omit() %>% data.frame,
+  "#AC_South_Trawl_1",
+  S.Trawl.spr.AC = fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "SOUTH" & fishery.alfreq.region.sem.gr$SEMESTER == 1 & fishery.alfreq.region.sem.gr$GEAR == "TRAWL", c(-1,-3,-4)] %>%
+    add_column(Lbin_lo = findInterval(unlist(fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "SOUTH" & fishery.alfreq.region.sem.gr$SEMESTER == 1 & fishery.alfreq.region.sem.gr$GEAR == "TRAWL", 5]), Lbins)) %>%
+    select(-LENGTH) %>%
+    group_by(YEAR, Lbin_lo, AGE) %>%
+    summarise(NUMAGE = sum(NUMAGE)) %>%
+    complete(AGE = 0:31, fill = list(NUMAGE = 0)) %>%
+    pivot_wider(
+      names_from = AGE,
+      names_sort = T,
+      values_from = NUMAGE,
+      values_fn = sum,
+      values_fill = list(NUMAGE = 0)) %>%
+    mutate(Lbin_hi = Lbin_lo, .after = "Lbin_lo") %>%
+    add_column(Nsamp = rowSums(.[4:35]), .after = "Lbin_hi") %>%
+    add_column(Seas = 4, Flt = 2, Gender = 3,
+               Part = 0, Ageerr = 1,
+               .after = "YEAR") %>% 
+    na.omit() %>% data.frame,
+  "#AC_North_Trawl_2",
+  N.Trawl.fall.AC = fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "NORTH" & fishery.alfreq.region.sem.gr$SEMESTER == 2 & fishery.alfreq.region.sem.gr$GEAR == "TRAWL", c(-1,-3,-4)] %>%
+    add_column(Lbin_lo = findInterval(unlist(fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "NORTH" & fishery.alfreq.region.sem.gr$SEMESTER == 2 & fishery.alfreq.region.sem.gr$GEAR == "TRAWL", 5]), Lbins)) %>%
+    select(-LENGTH) %>%
+    group_by(YEAR, Lbin_lo, AGE) %>%
+    summarise(NUMAGE = sum(NUMAGE)) %>%
+    complete(AGE = 0:31, fill = list(NUMAGE = 0)) %>%
+    pivot_wider(
+      names_from = AGE,
+      names_sort = T,
+      values_from = NUMAGE,
+      values_fn = sum,
+      values_fill = list(NUMAGE = 0)) %>%
+    mutate(Lbin_hi = Lbin_lo, .after = "Lbin_lo") %>%
+    add_column(Nsamp = rowSums(.[4:35]), .after = "Lbin_hi") %>%
+    add_column(Seas = 10, Flt = 3, Gender = 3,
+               Part = 0, Ageerr = 1,
+               .after = "YEAR") %>% 
+    na.omit() %>% data.frame, 
+  "#AC_South_Trawl_2",
+  S.Trawl.fall.AC = fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "SOUTH" & fishery.alfreq.region.sem.gr$SEMESTER == 2 & fishery.alfreq.region.sem.gr$GEAR == "TRAWL", c(-1,-3,-4)] %>%
+    add_column(Lbin_lo = findInterval(unlist(fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "SOUTH" & fishery.alfreq.region.sem.gr$SEMESTER == 2 & fishery.alfreq.region.sem.gr$GEAR == "TRAWL", 5]), Lbins)) %>%
+    select(-LENGTH) %>%
+    group_by(YEAR, Lbin_lo, AGE) %>%
+    summarise(NUMAGE = sum(NUMAGE)) %>%
+    complete(AGE = 0:31, fill = list(NUMAGE = 0)) %>%
+    pivot_wider(
+      names_from = AGE,
+      names_sort = T,
+      values_from = NUMAGE,
+      values_fn = sum,
+      values_fill = list(NUMAGE = 0)) %>%
+    mutate(Lbin_hi = Lbin_lo, .after = "Lbin_lo") %>%
+    add_column(Nsamp = rowSums(.[4:35]), .after = "Lbin_hi") %>%
+    add_column(Seas = 10, Flt = 4, Gender = 3,
+               Part = 0, Ageerr = 1,
+               .after = "YEAR") %>% 
+    na.omit() %>% data.frame,
+  "#AC_North_NonTrawl_1",
+  N.NonTrawl.spr.AC = fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "NORTH" & fishery.alfreq.region.sem.gr$SEMESTER == 1 & fishery.alfreq.region.sem.gr$GEAR != "TRAWL", c(-1,-3,-4)] %>%
+    add_column(Lbin_lo = findInterval(unlist(fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "NORTH" & fishery.alfreq.region.sem.gr$SEMESTER == 1 & fishery.alfreq.region.sem.gr$GEAR != "TRAWL", 5]), Lbins)) %>%
+    select(-LENGTH) %>%
+    group_by(YEAR, Lbin_lo, AGE) %>%
+    summarise(NUMAGE = sum(NUMAGE)) %>%
+    complete(AGE = 0:31, fill = list(NUMAGE = 0)) %>%
+    pivot_wider(
+      names_from = AGE,
+      names_sort = T,
+      values_from = NUMAGE,
+      values_fn = sum,
+      values_fill = list(NUMAGE = 0)) %>%
+    mutate(Lbin_hi = Lbin_lo, .after = "Lbin_lo") %>%
+    add_column(Nsamp = rowSums(.[4:35]), .after = "Lbin_hi") %>%
+    add_column(Seas = 4, Flt = 5, Gender = 3,
+               Part = 0, Ageerr = 1,
+               .after = "YEAR") %>% 
+    na.omit() %>% data.frame,
+  "#AC_South_NonTrawl_1",
+  S.Trawl.spr.AC = fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "SOUTH" & fishery.alfreq.region.sem.gr$SEMESTER == 1 & fishery.alfreq.region.sem.gr$GEAR != "TRAWL", c(-1,-3,-4)] %>%
+    add_column(Lbin_lo = findInterval(unlist(fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "SOUTH" & fishery.alfreq.region.sem.gr$SEMESTER == 1 & fishery.alfreq.region.sem.gr$GEAR != "TRAWL", 5]), Lbins)) %>%
+    select(-LENGTH) %>%
+    group_by(YEAR, Lbin_lo, AGE) %>%
+    summarise(NUMAGE = sum(NUMAGE)) %>%
+    complete(AGE = 0:31, fill = list(NUMAGE = 0)) %>%
+    pivot_wider(
+      names_from = AGE,
+      names_sort = T,
+      values_from = NUMAGE,
+      values_fn = sum,
+      values_fill = list(NUMAGE = 0)) %>%
+    mutate(Lbin_hi = Lbin_lo, .after = "Lbin_lo") %>%
+    add_column(Nsamp = rowSums(.[4:35]), .after = "Lbin_hi") %>%
+    add_column(Seas = 4, Flt = 6, Gender = 3,
+               Part = 0, Ageerr = 1,
+               .after = "YEAR") %>% 
+    na.omit() %>% data.frame,
+  "#AC_North_NonTrawl_2",
+  N.Trawl.fall.AC = fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "NORTH" & fishery.alfreq.region.sem.gr$SEMESTER == 2 & fishery.alfreq.region.sem.gr$GEAR != "TRAWL", c(-1,-3,-4)] %>%
+    add_column(Lbin_lo = findInterval(unlist(fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "NORTH" & fishery.alfreq.region.sem.gr$SEMESTER == 2 & fishery.alfreq.region.sem.gr$GEAR != "TRAWL", 5]), Lbins)) %>%
+    select(-LENGTH) %>%
+    group_by(YEAR, Lbin_lo, AGE) %>%
+    summarise(NUMAGE = sum(NUMAGE)) %>%
+    complete(AGE = 0:31, fill = list(NUMAGE = 0)) %>%
+    pivot_wider(
+      names_from = AGE,
+      names_sort = T,
+      values_from = NUMAGE,
+      values_fn = sum,
+      values_fill = list(NUMAGE = 0)) %>%
+    mutate(Lbin_hi = Lbin_lo, .after = "Lbin_lo") %>%
+    add_column(Nsamp = rowSums(.[4:35]), .after = "Lbin_hi") %>%
+    add_column(Seas = 10, Flt = 7, Gender = 3,
+               Part = 0, Ageerr = 1,
+               .after = "YEAR") %>% 
+    na.omit() %>% data.frame,
+  "#AC_South_NonTrawl_2",
+  S.Trawl.fall.AC = fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "SOUTH" & fishery.alfreq.region.sem.gr$SEMESTER == 2 & fishery.alfreq.region.sem.gr$GEAR != "TRAWL", c(-1,-3,-4)] %>%
+    add_column(Lbin_lo = findInterval(unlist(fishery.alfreq.region.sem.gr[fishery.alfreq.region.sem.gr$REGION == "SOUTH" & fishery.alfreq.region.sem.gr$SEMESTER == 2 & fishery.alfreq.region.sem.gr$GEAR != "TRAWL", 5]), Lbins)) %>%
+    select(-LENGTH) %>%
+    group_by(YEAR, Lbin_lo, AGE) %>%
+    summarise(NUMAGE = sum(NUMAGE)) %>%
+    complete(AGE = 0:31, fill = list(NUMAGE = 0)) %>%
+    pivot_wider(
+      names_from = AGE,
+      names_sort = T,
+      values_from = NUMAGE,
+      values_fn = sum,
+      values_fill = list(NUMAGE = 0)) %>%
+    mutate(Lbin_hi = Lbin_lo, .after = "Lbin_lo") %>%
+    add_column(Nsamp = rowSums(.[4:35]), .after = "Lbin_hi") %>%
+    add_column(Seas = 10, Flt = 8, Gender = 3,
+               Part = 0, Ageerr = 1,
+               .after = "YEAR") %>% 
+    na.omit() %>% data.frame,
+  "#AC_North_NEFSC",
+  N.NEFSC.spr.AC = nefsc.CAA[nefsc.CAA$STOCK_ABBREV == "NORTH" & nefsc.CAA$SEASON == "SPRING", c(-1,-2,-3,-7,-8)] %>%
+    group_by(YEAR, AGE) %>%
+    ungroup() %>%
+    complete(AGE = 0:31, fill = list(NO_AT_AGE = 0)) %>%
+    pivot_wider(
+      names_from = AGE,
+      names_sort = T,
+      values_from = NO_AT_AGE,
+      values_fn = sum,
+      values_fill = list(NO_AT_AGE = 0)) %>% 
+    na.omit() %>% 
+    add_column(Seas = 4, Flt = -31, Gender = 0,
+               Part = 2, Ageerr = 1,
+               Lbin_lo = 1, Lbin_hi = 28,
+               NSamp = 25,
+               .after = "YEAR") %>% data.frame,
+  "#AC_South_NEFSC",
+  S.NEFSC.spr.AC = nefsc.CAA[nefsc.CAA$STOCK_ABBREV == "SOUTH" & nefsc.CAA$SEASON == "SPRING", c(-1,-2,-3,-7,-8)] %>%
+    group_by(YEAR, AGE) %>%
+    ungroup() %>%
+    complete(AGE = 0:31, fill = list(NO_AT_AGE = 0)) %>%
+    pivot_wider(
+      names_from = AGE,
+      names_sort = T,
+      values_from = NO_AT_AGE,
+      values_fn = sum,
+      values_fill = list(NO_AT_AGE = 0)) %>% 
+    na.omit() %>% 
+    add_column(Seas = 4, Flt = -32, Gender = 0,
+               Part = 2, Ageerr = 1,
+               Lbin_lo = 1, Lbin_hi = 28,
+               NSamp = 25,
+               .after = "YEAR") %>% data.frame
   
 )
 
