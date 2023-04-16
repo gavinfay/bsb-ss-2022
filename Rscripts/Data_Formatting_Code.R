@@ -222,278 +222,408 @@ SS_BSB_dat1 = list(
   add_column(Seas = 1, fleet = 10, 
              .after = "YEAR") %>%
   add_column(CV = 0.3, 
-             .after = "Discards") %>% data.frame,
+             .after = "Discards") %>% data.frame)
 
+#create lookup table for commercial fleets
+fishery_ids <- expand.grid(stock = c("NORTH","SOUTH"),
+                           semester = 1:2,
+                           gear = c("trawl", "non-trawl")) |>
+  tibble() |>
+  mutate_if(is.factor, as.character) |>
+  mutate(index = 1:8) |>
+  I()
+fishery_ids
+
+
+### length frequency of catch
+
+# landings by mkt category, needed to weight the length comps
+comland <- comland.region.sem.mkt.gr |>
+  ungroup() |>
+  clean_names() |>
+  mutate(gear = ifelse(bsb_gear_cat1=="TRAWL","trawl","non-trawl")) |>
+  select(-bsb_gear_cat1) |>
+  left_join(fishery_ids) |>
+  I()
+comland
+
+
+comlens <- comlen.region.sem.mkt.gr |>
+  ungroup() |>
+  clean_names() |>
+  mutate(gear = ifelse(bsb_gear_cat1=="TRAWL","trawl","non-trawl")) |>
+  select(-bsb_gear_cat1) |>
+  left_join(comland) |>
+  mutate(cal = numlen*land_mt,
+         season = ifelse(semester==1,4,10)) |>
+  select(-semester) |>
+  left_join(lenbins) |>
+  group_by(index, year, ibin, season) |>
+  summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
+  group_by(index, year, season) |>
+  mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
+  ungroup() |>
+  mutate(gender = 0,
+         part = 2,
+         nsamp = 25) |> #we don't have the sample sizes so dummy value for now
+  I()
+#comlens
+fishery_lens <- comlens  
+
+# recreational lengths
+
+recfishery_ids <- expand.grid(region = c("North","South"),
+                              semester = 1:2) |>
+  tibble() |>
+  mutate_if(is.factor,as.character) |>
+  mutate(index = 9:12)
+recfishery_ids  
+
+reclens <- rec.exp.ab1b2.len |>
+  clean_names() |>
+  left_join(recfishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  rename(length = l_cm_bin) |>
+  select(-semester, 
+         -n_ab1b2,
+         -region) |>
+  pivot_longer(cols = c("n_ab1","n_b2"),
+               names_to = "part",
+               values_to = "cal") |>
+  filter(cal>0) |>
+  mutate(part = as.numeric(ifelse(part == "n_ab1",2,1))) |>
+  left_join(lenbins) |>
+  group_by(index, year, ibin, season, part) |>
+  summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
+  group_by(index, year, season, part) |>
+  mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
+  ungroup() |>
+  mutate(gender = 0,
+         nsamp = 25) |> #we don't have the sample sizes so dummy value for now
+  I()
+reclens
+fishery_lens <- bind_rows(comlens, reclens)  
   
-"###############################################",
-"##  Length Frequency Data",
-"###############################################",
-"#LF_North_Trawl_1",
+# commercial discards
+disc_lens <- comdisc.len |>
+  clean_names() |>
+  rename(gear = bsb_fleet) |>
+  mutate(gear = tolower(gear)) |>
+  select(-bsb_gear_cat) |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  left_join(lenbins) |>
+  select(-semester,-stock,-region,-length) |>
+  group_by(index, year, season, source, ibin) |>
+  summarize(cal = n(), .groups = "drop") |>
+  group_by(index, year, season, source) |>
+  mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
+  ungroup() |>
+  mutate(gender = 0,
+         part = 1,
+         index = ifelse(source == "CFRF",-1*index,index),
+         nsamp = 25) |> #we don't have the sample sizes so dummy value for now
+  select(-source) |>
+  I()
+disc_lens
 
-NTrawl.spr.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "NORTH" & comlen.region.sem.mkt.gr$SEMESTER == 1 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ,c(-1,-2,-3,-5)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = NUMLEN,
-    values_fn = sum,
-    values_fill = list(NUMLEN = 0)) %>%
-  add_column(Seas = 4, Flt = 1, Gender = 0,
-             Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ), sum)[1,,1,2]),
-             .after = "YEAR") %>% data.frame,  ##There are UNKNOWNs in the stock area, not sure what to do with these, for now ignored, note: missing years90, 91, 94, 95, 98
-"#LF_South_Trawl_1",
-STrawl.spr.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "SOUTH" & comlen.region.sem.mkt.gr$SEMESTER == 1 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ,c(-1,-2,-3,-5)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = NUMLEN,
-    values_fn = sum,
-    values_fill = list(NUMLEN = 0)) %>%
-  add_column(Seas = 4, Flt = 2, Gender = 0,
-             Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ), sum)[2,,1,2]),
-             .after = "YEAR") %>% data.frame,
-"#LF_North_Trawl_2",
-NTrawl.fall.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "NORTH" & comlen.region.sem.mkt.gr$SEMESTER == 2 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ,c(-1,-2,-3,-5)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = NUMLEN,
-    values_fn = sum,
-    values_fill = list(NUMLEN = 0)) %>%
-  add_column(Seas = 10, Flt = 3, Gender = 0,
-             Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ), sum)[1,,2,2]),
-             .after = "YEAR") %>% data.frame,  ##Note: missing years 89-94, 98, 2000, 2002
-"#LF_South_Trawl_2",
-STrawl.fall.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "SOUTH" & comlen.region.sem.mkt.gr$SEMESTER == 2 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ,c(-1,-2,-3,-5)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = NUMLEN,
-    values_fn = sum,
-    values_fill = list(NUMLEN = 0)) %>%
-  add_column(Seas = 10, Flt = 4, Gender = 0,
-             Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ), sum)[2,,2,2]),
-             .after = "YEAR") %>% data.frame,  ##Note: missing years 2001
-"#LF_North_NonTrawl_1",
-N.NonTrawl.spr.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "NORTH" & comlen.region.sem.mkt.gr$SEMESTER == 1 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ,c(-1,-2,-3,-5)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = NUMLEN,
-    values_fn = sum,
-    values_fill = list(NUMLEN = 0)) %>%
-  add_column(Seas = 4, Flt = 5, Gender = 0,
-             Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ), sum)[1,,1,2]),
-             .after = "YEAR") %>% data.frame,  ##Note: missing years89,90, 93, 94, 96-98, 2000, 2001, 2010, 2017-19, 2021
-"#LF_South_NonTrawl_1",
-S.NonTrawl.spr.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "SOUTH" & comlen.region.sem.mkt.gr$SEMESTER == 1 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ,c(-1,-2,-3,-5)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = NUMLEN,
-    values_fn = sum,
-    values_fill = list(NUMLEN = 0)) %>%
-  add_column(Seas = 4, Flt = 6, Gender = 0,
-             Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ), sum)[2,,1,2]),
-             .after = "YEAR") %>% data.frame,  ##Note: missing 89, 90, 92-94
-"#LF_North_NonTrawl_2",
-N.NonTrawl.fall.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "NORTH" & comlen.region.sem.mkt.gr$SEMESTER == 2 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ,c(-1,-2,-3,-5)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = NUMLEN,
-    values_fn = sum,
-    values_fill = list(NUMLEN = 0)) %>%
-  add_column(Seas = 10, Flt = 7, Gender = 0,
-             Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ), sum)[1,,2,2]),
-             .after = "YEAR") %>% data.frame,  ##Note: missing years 89-97, 99, 2001, 2002, 2011, 2015, 2016, 2018, 2020, 2021
-"#LF_South_NonTrawl_2",
-S.NonTrawl.fall.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "SOUTH" & comlen.region.sem.mkt.gr$SEMESTER == 2 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ,c(-1,-2,-3,-5)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = NUMLEN,
-    values_fn = sum,
-    values_fill = list(NUMLEN = 0)) %>%
-  add_column(Seas = 10, Flt = 8, Gender = 0,
-             Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ), sum)[2,,2,2]),
-             .after = "YEAR") %>% data.frame,  ##Note: missing years 2001
-"#LF_North_Rec_1",
-NRec.spr.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "North" & rec.exp.ab1b2.len$SEMESTER == 1 ,c(-2,-3,-6,-7)] %>%
-  pivot_wider(
-    names_from = L_CM_BIN,
-    names_sort = T,
-    values_from = N_AB1,
-    values_fn = sum,
-    values_fill = list(N_AB1 = 0)) %>%
-  add_column(Seas = 4, Flt = 9, Gender = 0,
-             Part = 2, NSamp = tapply(rec.exp.ab1b2.len$N_AB1, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[1,,1],
-             .after = "YEAR") %>% data.frame,  ##I used the data labeled expanded, think this is correct
-"#LF_South_Rec_1",
-SRec.spr.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "South" & rec.exp.ab1b2.len$SEMESTER == 1 ,c(-2,-3,-6,-7)] %>%
-  pivot_wider(
-    names_from = L_CM_BIN,
-    names_sort = T,
-    values_from = N_AB1,
-    values_fn = sum,
-    values_fill = list(N_AB1 = 0)) %>%
-  add_column(Seas = 4, Flt = 10, Gender = 0,
-             Part = 2, NSamp = tapply(rec.exp.ab1b2.len$N_AB1, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[2,,1],
-             .after = "YEAR") %>% data.frame,
-"#LF_North_Rec_2",
-NRec.fall.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "North" & rec.exp.ab1b2.len$SEMESTER == 2 ,c(-2,-3,-6,-7)] %>%
-  pivot_wider(
-    names_from = L_CM_BIN,
-    names_sort = T,
-    values_from = N_AB1,
-    values_fn = sum,
-    values_fill = list(N_AB1 = 0)) %>%
-  add_column(Seas = 10, Flt = 11, Gender = 0,
-             Part = 2, NSamp = tapply(rec.exp.ab1b2.len$N_AB1, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[1,,2],
-             .after = "YEAR") %>% data.frame,
-"#LF_South_Rec_2",
-SRec.fall.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "South" & rec.exp.ab1b2.len$SEMESTER == 2 ,c(-2,-3,-6,-7)] %>%
-  pivot_wider(
-    names_from = L_CM_BIN,
-    names_sort = T,
-    values_from = N_AB1,
-    values_fn = sum,
-    values_fill = list(N_AB1 = 0)) %>%
-  add_column(Seas = 10, Flt = 12, Gender = 0,
-             Part = 2, NSamp = tapply(rec.exp.ab1b2.len$N_AB1, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[2,,2],
-             .after = "YEAR") %>% data.frame,
-"#LF_North_Trawl_Disc_1",
-NTrawl.spr.Disc.LF = comdisc.len[comdisc.len$REGION == "North" & comdisc.len$SEMESTER == 1 & comdisc.len$BSB.FLEET == "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = LENGTH,
-    values_fn = length,
-    values_fill = list(LENGTH = 0)) %>%
-  add_column(Seas = 4, Flt = 1, Gender = 0,
-             Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET == "TRAWL" ), length)[1,,1,2]),
-             .after = "YEAR") %>% data.frame,
-"#LF_South_Trawl_Disc_1",
-STrawl.spr.Disc.LF = comdisc.len[comdisc.len$REGION == "South" & comdisc.len$SEMESTER == 1 & comdisc.len$BSB.FLEET == "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = LENGTH,
-    values_fn = length,
-    values_fill = list(LENGTH = 0)) %>%
-  add_column(Seas = 4, Flt = 2, Gender = 0,
-             Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET == "TRAWL" ), length)[2,,1,2]),
-             .after = "YEAR") %>% data.frame,
-"#LF_North_Trawl_Disc_2",
-NTrawl.fall.Disc.LF = comdisc.len[comdisc.len$REGION == "North" & comdisc.len$SEMESTER == 2 & comdisc.len$BSB.FLEET == "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = LENGTH,
-    values_fn = length,
-    values_fill = list(LENGTH = 0)) %>%
-  add_column(Seas = 10, Flt = 3, Gender = 0,
-             Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET == "TRAWL" ), length)[1,,2,2]),
-             .after = "YEAR") %>% data.frame,
-"#LF_South_Trawl_Disc_2",
-STrawl.fall.Disc.LF = comdisc.len[comdisc.len$REGION == "South" & comdisc.len$SEMESTER == 2 & comdisc.len$BSB.FLEET == "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = LENGTH,
-    values_fn = length,
-    values_fill = list(LENGTH = 0)) %>%
-  add_column(Seas = 10, Flt = 4, Gender = 0,
-             Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET == "TRAWL" ), length)[2,,2,2]),
-             .after = "YEAR") %>% data.frame,
+fishery_lens <- bind_rows(comlens, reclens, disc_lens)
 
-"#LF_North_NonTrawl_Disc_1",
-N.NonTrawl.spr.Disc.LF = comdisc.len[comdisc.len$REGION == "North" & comdisc.len$SEMESTER == 1 & comdisc.len$BSB.FLEET != "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = LENGTH,
-    values_fn = length,
-    values_fill = list(LENGTH = 0)) %>%
-  add_column(Seas = 4, Flt = 5, Gender = 0,
-             Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET != "TRAWL" ), length)[1,,1,2]),
-             .after = "YEAR") %>% data.frame,
-"#LF_South_NonTrawl_Disc_1",
-S.NonTrawl.spr.Disc.LF = comdisc.len[comdisc.len$REGION == "South" & comdisc.len$SEMESTER == 1 & comdisc.len$BSB.FLEET != "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = LENGTH,
-    values_fn = length,
-    values_fill = list(LENGTH = 0)) %>%
-  add_column(Seas = 4, Flt = 6, Gender = 0,
-             Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET != "TRAWL" ), length)[2,,1,2]),
-             .after = "YEAR") %>% data.frame,
-"#LF_North_NonTrawl_Disc_2",
-N.NonTrawl.fall.Disc.LF = comdisc.len[comdisc.len$REGION == "North" & comdisc.len$SEMESTER == 2 & comdisc.len$BSB.FLEET != "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = LENGTH,
-    values_fn = length,
-    values_fill = list(LENGTH = 0)) %>%
-  add_column(Seas = 10, Flt = 7, Gender = 0,
-             Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET != "TRAWL" ), length)[1,,2,2]),
-             .after = "YEAR") %>% data.frame,
-"#LF_South_NonTrawl_Disc_2",
-S.NonTrawl.fall.Disc.LF = comdisc.len[comdisc.len$REGION == "South" & comdisc.len$SEMESTER == 2 & comdisc.len$BSB.FLEET != "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
-  pivot_wider(
-    names_from = LENGTH,
-    names_sort = T,
-    values_from = LENGTH,
-    values_fn = length,
-    values_fill = list(LENGTH = 0)) %>%
-  add_column(Seas = 10, Flt = 8, Gender = 0,
-             Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET != "TRAWL" ), length)[2,,2,2]),
-             .after = "YEAR") %>% data.frame,
-"#LF_North_Rec_Disc_1",
-NRec.spr.Disc.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "North" & rec.exp.ab1b2.len$SEMESTER == 1 ,c(-2,-3,-5,-7)] %>%
-  pivot_wider(
-    names_from = L_CM_BIN,
-    names_sort = T,
-    values_from = N_B2,
-    values_fn = sum,
-    values_fill = list(N_B2 = 0)) %>%
-  add_column(Seas = 4, Flt = 9, Gender = 0,
-             Part = 1, NSamp = tapply(rec.exp.ab1b2.len$N_B2, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[1,,1],
-             .after = "YEAR") %>% data.frame,
-"#LF_South_Rec_Disc_1",
-SRec.spr.Disc.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "South" & rec.exp.ab1b2.len$SEMESTER == 1 ,c(-2,-3,-5,-7)] %>%
-  pivot_wider(
-    names_from = L_CM_BIN,
-    names_sort = T,
-    values_from = N_B2,
-    values_fn = sum,
-    values_fill = list(N_B2 = 0)) %>%
-  add_column(Seas = 4, Flt = 10, Gender = 0,
-             Part = 1, NSamp = tapply(rec.exp.ab1b2.len$N_B2, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[2,,1],
-             .after = "YEAR") %>% data.frame,
-"#LF_North_Rec_Disc_2",
-NRec.fall.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "North" & rec.exp.ab1b2.len$SEMESTER == 2 ,c(-2,-3,-5,-7)] %>%
-  pivot_wider(
-    names_from = L_CM_BIN,
-    names_sort = T,
-    values_from = N_B2,
-    values_fn = sum,
-    values_fill = list(N_B2 = 0)) %>%
-  add_column(Seas = 10, Flt = 11, Gender = 0,
-             Part = 1, NSamp = tapply(rec.exp.ab1b2.len$N_B2, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[1,,2],
-             .after = "YEAR") %>% data.frame,
-"#LF_South_Rec_2",
-SRec.fall.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "South" & rec.exp.ab1b2.len$SEMESTER == 2 ,c(-2,-3,-5,-7)] %>%
-  pivot_wider(
-    names_from = L_CM_BIN,
-    names_sort = T,
-    values_from = N_B2,
-    values_fn = sum,
-    values_fill = list(N_B2 = 0)) %>%
-  add_column(Seas = 10, Flt = 12, Gender = 0,
-             Part = 1, NSamp = tapply(rec.exp.ab1b2.len$N_B2, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[2,,2],
-             .after = "YEAR") %>% data.frame)
+
+ fillbins <- unique(lenbins$ibin)[!unique(lenbins$ibin) %in% fishery_lens$ibin]
+ filllens <- fishery_lens |>
+   slice(1:length(fillbins)) |>
+   mutate(cal = 0,
+          ibin = fillbins) |>
+   I()
+ 
+fishery_lens <- fishery_lens |>
+  bind_rows(filllens) |>
+  pivot_wider(names_from = ibin,
+              names_prefix = "bin_",
+              values_from = cal,
+              names_sort = TRUE,
+              values_fill = 0
+  ) |>
+  #Yr Seas Flt/Svy Gender Part Nsamp datavector(female-male)
+  select(year, season, index, gender, part, nsamp, everything()) |>
+  I()
+fishery_lens2 <- fishery_lens |>
+  select(-(1:6)) |>
+  mutate_all(.funs = function(x) 0*x) |>
+  rename_with(.fn = function(x) str_c("m_",x))
+fishery_lens_write <- bind_cols(fishery_lens, fishery_lens2)  
+
+
+# "###############################################",
+# "##  Length Frequency Data",
+# "###############################################",
+# "#LF_North_Trawl_1",
+# 
+# NTrawl.spr.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "NORTH" & comlen.region.sem.mkt.gr$SEMESTER == 1 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ,c(-1,-2,-3,-5)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 4, Flt = 1, Gender = 0,
+#              Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ), sum)[1,,1,2]),
+#              .after = "YEAR") %>% data.frame,  ##There are UNKNOWNs in the stock area, not sure what to do with these, for now ignored, note: missing years90, 91, 94, 95, 98
+# "#LF_South_Trawl_1",
+# STrawl.spr.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "SOUTH" & comlen.region.sem.mkt.gr$SEMESTER == 1 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ,c(-1,-2,-3,-5)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 4, Flt = 2, Gender = 0,
+#              Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ), sum)[2,,1,2]),
+#              .after = "YEAR") %>% data.frame,
+# "#LF_North_Trawl_2",
+# NTrawl.fall.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "NORTH" & comlen.region.sem.mkt.gr$SEMESTER == 2 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ,c(-1,-2,-3,-5)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 10, Flt = 3, Gender = 0,
+#              Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ), sum)[1,,2,2]),
+#              .after = "YEAR") %>% data.frame,  ##Note: missing years 89-94, 98, 2000, 2002
+# "#LF_South_Trawl_2",
+# STrawl.fall.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "SOUTH" & comlen.region.sem.mkt.gr$SEMESTER == 2 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ,c(-1,-2,-3,-5)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 10, Flt = 4, Gender = 0,
+#              Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 == "TRAWL" ), sum)[2,,2,2]),
+#              .after = "YEAR") %>% data.frame,  ##Note: missing years 2001
+# "#LF_North_NonTrawl_1",
+# N.NonTrawl.spr.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "NORTH" & comlen.region.sem.mkt.gr$SEMESTER == 1 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ,c(-1,-2,-3,-5)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 4, Flt = 5, Gender = 0,
+#              Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ), sum)[1,,1,2]),
+#              .after = "YEAR") %>% data.frame,  ##Note: missing years89,90, 93, 94, 96-98, 2000, 2001, 2010, 2017-19, 2021
+# "#LF_South_NonTrawl_1",
+# S.NonTrawl.spr.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "SOUTH" & comlen.region.sem.mkt.gr$SEMESTER == 1 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ,c(-1,-2,-3,-5)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 4, Flt = 6, Gender = 0,
+#              Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ), sum)[2,,1,2]),
+#              .after = "YEAR") %>% data.frame,  ##Note: missing 89, 90, 92-94
+# "#LF_North_NonTrawl_2",
+# N.NonTrawl.fall.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "NORTH" & comlen.region.sem.mkt.gr$SEMESTER == 2 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ,c(-1,-2,-3,-5)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 10, Flt = 7, Gender = 0,
+#              Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ), sum)[1,,2,2]),
+#              .after = "YEAR") %>% data.frame,  ##Note: missing years 89-97, 99, 2001, 2002, 2011, 2015, 2016, 2018, 2020, 2021
+# "#LF_South_NonTrawl_2",
+# S.NonTrawl.fall.LF = comlen.region.sem.mkt.gr[comlen.region.sem.mkt.gr$STOCK == "SOUTH" & comlen.region.sem.mkt.gr$SEMESTER == 2 & comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ,c(-1,-2,-3,-5)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 10, Flt = 8, Gender = 0,
+#              Part = 2, NSamp = na.omit(tapply(comlen.region.sem.mkt.gr$NUMLEN, list(comlen.region.sem.mkt.gr$STOCK, comlen.region.sem.mkt.gr$YEAR, comlen.region.sem.mkt.gr$SEMESTER, comlen.region.sem.mkt.gr$BSB.GEAR.CAT1 != "TRAWL" ), sum)[2,,2,2]),
+#              .after = "YEAR") %>% data.frame,  ##Note: missing years 2001
+# "#LF_North_Rec_1",
+# NRec.spr.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "North" & rec.exp.ab1b2.len$SEMESTER == 1 ,c(-2,-3,-6,-7)] %>%
+#   pivot_wider(
+#     names_from = L_CM_BIN,
+#     names_sort = T,
+#     values_from = N_AB1,
+#     values_fn = sum,
+#     values_fill = list(N_AB1 = 0)) %>%
+#   add_column(Seas = 4, Flt = 9, Gender = 0,
+#              Part = 2, NSamp = tapply(rec.exp.ab1b2.len$N_AB1, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[1,,1],
+#              .after = "YEAR") %>% data.frame,  ##I used the data labeled expanded, think this is correct
+# "#LF_South_Rec_1",
+# SRec.spr.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "South" & rec.exp.ab1b2.len$SEMESTER == 1 ,c(-2,-3,-6,-7)] %>%
+#   pivot_wider(
+#     names_from = L_CM_BIN,
+#     names_sort = T,
+#     values_from = N_AB1,
+#     values_fn = sum,
+#     values_fill = list(N_AB1 = 0)) %>%
+#   add_column(Seas = 4, Flt = 10, Gender = 0,
+#              Part = 2, NSamp = tapply(rec.exp.ab1b2.len$N_AB1, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[2,,1],
+#              .after = "YEAR") %>% data.frame,
+# "#LF_North_Rec_2",
+# NRec.fall.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "North" & rec.exp.ab1b2.len$SEMESTER == 2 ,c(-2,-3,-6,-7)] %>%
+#   pivot_wider(
+#     names_from = L_CM_BIN,
+#     names_sort = T,
+#     values_from = N_AB1,
+#     values_fn = sum,
+#     values_fill = list(N_AB1 = 0)) %>%
+#   add_column(Seas = 10, Flt = 11, Gender = 0,
+#              Part = 2, NSamp = tapply(rec.exp.ab1b2.len$N_AB1, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[1,,2],
+#              .after = "YEAR") %>% data.frame,
+# "#LF_South_Rec_2",
+# SRec.fall.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "South" & rec.exp.ab1b2.len$SEMESTER == 2 ,c(-2,-3,-6,-7)] %>%
+#   pivot_wider(
+#     names_from = L_CM_BIN,
+#     names_sort = T,
+#     values_from = N_AB1,
+#     values_fn = sum,
+#     values_fill = list(N_AB1 = 0)) %>%
+#   add_column(Seas = 10, Flt = 12, Gender = 0,
+#              Part = 2, NSamp = tapply(rec.exp.ab1b2.len$N_AB1, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[2,,2],
+#              .after = "YEAR") %>% data.frame,
+# "#LF_North_Trawl_Disc_1",
+# NTrawl.spr.Disc.LF = comdisc.len[comdisc.len$REGION == "North" & comdisc.len$SEMESTER == 1 & comdisc.len$BSB.FLEET == "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = LENGTH,
+#     values_fn = length,
+#     values_fill = list(LENGTH = 0)) %>%
+#   add_column(Seas = 4, Flt = 1, Gender = 0,
+#              Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET == "TRAWL" ), length)[1,,1,2]),
+#              .after = "YEAR") %>% data.frame,
+# "#LF_South_Trawl_Disc_1",
+# STrawl.spr.Disc.LF = comdisc.len[comdisc.len$REGION == "South" & comdisc.len$SEMESTER == 1 & comdisc.len$BSB.FLEET == "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = LENGTH,
+#     values_fn = length,
+#     values_fill = list(LENGTH = 0)) %>%
+#   add_column(Seas = 4, Flt = 2, Gender = 0,
+#              Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET == "TRAWL" ), length)[2,,1,2]),
+#              .after = "YEAR") %>% data.frame,
+# "#LF_North_Trawl_Disc_2",
+# NTrawl.fall.Disc.LF = comdisc.len[comdisc.len$REGION == "North" & comdisc.len$SEMESTER == 2 & comdisc.len$BSB.FLEET == "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = LENGTH,
+#     values_fn = length,
+#     values_fill = list(LENGTH = 0)) %>%
+#   add_column(Seas = 10, Flt = 3, Gender = 0,
+#              Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET == "TRAWL" ), length)[1,,2,2]),
+#              .after = "YEAR") %>% data.frame,
+# "#LF_South_Trawl_Disc_2",
+# STrawl.fall.Disc.LF = comdisc.len[comdisc.len$REGION == "South" & comdisc.len$SEMESTER == 2 & comdisc.len$BSB.FLEET == "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = LENGTH,
+#     values_fn = length,
+#     values_fill = list(LENGTH = 0)) %>%
+#   add_column(Seas = 10, Flt = 4, Gender = 0,
+#              Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET == "TRAWL" ), length)[2,,2,2]),
+#              .after = "YEAR") %>% data.frame,
+# 
+# "#LF_North_NonTrawl_Disc_1",
+# N.NonTrawl.spr.Disc.LF = comdisc.len[comdisc.len$REGION == "North" & comdisc.len$SEMESTER == 1 & comdisc.len$BSB.FLEET != "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = LENGTH,
+#     values_fn = length,
+#     values_fill = list(LENGTH = 0)) %>%
+#   add_column(Seas = 4, Flt = 5, Gender = 0,
+#              Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET != "TRAWL" ), length)[1,,1,2]),
+#              .after = "YEAR") %>% data.frame,
+# "#LF_South_NonTrawl_Disc_1",
+# S.NonTrawl.spr.Disc.LF = comdisc.len[comdisc.len$REGION == "South" & comdisc.len$SEMESTER == 1 & comdisc.len$BSB.FLEET != "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = LENGTH,
+#     values_fn = length,
+#     values_fill = list(LENGTH = 0)) %>%
+#   add_column(Seas = 4, Flt = 6, Gender = 0,
+#              Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET != "TRAWL" ), length)[2,,1,2]),
+#              .after = "YEAR") %>% data.frame,
+# "#LF_North_NonTrawl_Disc_2",
+# N.NonTrawl.fall.Disc.LF = comdisc.len[comdisc.len$REGION == "North" & comdisc.len$SEMESTER == 2 & comdisc.len$BSB.FLEET != "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = LENGTH,
+#     values_fn = length,
+#     values_fill = list(LENGTH = 0)) %>%
+#   add_column(Seas = 10, Flt = 7, Gender = 0,
+#              Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET != "TRAWL" ), length)[1,,2,2]),
+#              .after = "YEAR") %>% data.frame,
+# "#LF_South_NonTrawl_Disc_2",
+# S.NonTrawl.fall.Disc.LF = comdisc.len[comdisc.len$REGION == "South" & comdisc.len$SEMESTER == 2 & comdisc.len$BSB.FLEET != "TRAWL" ,c(-2,-3,-4,-6, -7)] %>%
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = LENGTH,
+#     values_fn = length,
+#     values_fill = list(LENGTH = 0)) %>%
+#   add_column(Seas = 10, Flt = 8, Gender = 0,
+#              Part = 1, NSamp = na.omit(tapply(comdisc.len$LENGTH, list(comdisc.len$REGION, comdisc.len$YEAR, comdisc.len$SEMESTER, comdisc.len$BSB.FLEET != "TRAWL" ), length)[2,,2,2]),
+#              .after = "YEAR") %>% data.frame,
+# "#LF_North_Rec_Disc_1",
+# NRec.spr.Disc.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "North" & rec.exp.ab1b2.len$SEMESTER == 1 ,c(-2,-3,-5,-7)] %>%
+#   pivot_wider(
+#     names_from = L_CM_BIN,
+#     names_sort = T,
+#     values_from = N_B2,
+#     values_fn = sum,
+#     values_fill = list(N_B2 = 0)) %>%
+#   add_column(Seas = 4, Flt = 9, Gender = 0,
+#              Part = 1, NSamp = tapply(rec.exp.ab1b2.len$N_B2, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[1,,1],
+#              .after = "YEAR") %>% data.frame,
+# "#LF_South_Rec_Disc_1",
+# SRec.spr.Disc.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "South" & rec.exp.ab1b2.len$SEMESTER == 1 ,c(-2,-3,-5,-7)] %>%
+#   pivot_wider(
+#     names_from = L_CM_BIN,
+#     names_sort = T,
+#     values_from = N_B2,
+#     values_fn = sum,
+#     values_fill = list(N_B2 = 0)) %>%
+#   add_column(Seas = 4, Flt = 10, Gender = 0,
+#              Part = 1, NSamp = tapply(rec.exp.ab1b2.len$N_B2, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[2,,1],
+#              .after = "YEAR") %>% data.frame,
+# "#LF_North_Rec_Disc_2",
+# NRec.fall.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "North" & rec.exp.ab1b2.len$SEMESTER == 2 ,c(-2,-3,-5,-7)] %>%
+#   pivot_wider(
+#     names_from = L_CM_BIN,
+#     names_sort = T,
+#     values_from = N_B2,
+#     values_fn = sum,
+#     values_fill = list(N_B2 = 0)) %>%
+#   add_column(Seas = 10, Flt = 11, Gender = 0,
+#              Part = 1, NSamp = tapply(rec.exp.ab1b2.len$N_B2, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[1,,2],
+#              .after = "YEAR") %>% data.frame,
+# "#LF_South_Rec_2",
+# SRec.fall.LF = rec.exp.ab1b2.len[rec.exp.ab1b2.len$REGION == "South" & rec.exp.ab1b2.len$SEMESTER == 2 ,c(-2,-3,-5,-7)] %>%
+#   pivot_wider(
+#     names_from = L_CM_BIN,
+#     names_sort = T,
+#     values_from = N_B2,
+#     values_fn = sum,
+#     values_fill = list(N_B2 = 0)) %>%
+#   add_column(Seas = 10, Flt = 12, Gender = 0,
+#              Part = 1, NSamp = tapply(rec.exp.ab1b2.len$N_B2, list(rec.exp.ab1b2.len$REGION, rec.exp.ab1b2.len$YEAR, rec.exp.ab1b2.len$SEMESTER), sum)[2,,2],
+#              .after = "YEAR") %>% data.frame)
 
 ## index lengths code starts here.
 
@@ -1005,6 +1135,17 @@ xx <- map(SS_BSB_dat1, write.table,
           col.names = FALSE,
           append = TRUE)
 #capture.output(print(SS_BSB_dat1), file = file.path("SS_BSB_dat.txt"))
+
+
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Fishery Length Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(fishery_lens_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+
 
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("##  Index Length Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
