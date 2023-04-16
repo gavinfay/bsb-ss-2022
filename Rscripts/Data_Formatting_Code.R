@@ -995,7 +995,16 @@ SS_BSB_dat_age = list(
   
 )
 
-capture.output(print(SS_BSB_dat1), file = file.path("SS_BSB_dat.txt"))
+# write to file
+# GF NB that print does not work for tables - as it truncates the output
+write("###", file = file.path("SS_BSB_dat.txt"))
+xx <- map(SS_BSB_dat1, write.table,
+          file = file.path("SS_BSB_dat.txt"),
+          row.names = FALSE,
+          quote = FALSE,
+          col.names = FALSE,
+          append = TRUE)
+#capture.output(print(SS_BSB_dat1), file = file.path("SS_BSB_dat.txt"))
 
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("##  Index Length Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
@@ -1005,5 +1014,11 @@ write.table(len_data_write,
             append = TRUE, 
             row.names = FALSE,
             col.names = FALSE)
-            
-capture.output(print(SS_BSB_dat_age), file = file.path("SS_BSB_dat.txt"), append = TRUE)
+
+#capture.output(print(SS_BSB_dat_age, quote = FALSE), file = file.path("SS_BSB_dat.txt"), append = TRUE)
+xx <- map(SS_BSB_dat_age, write.table,
+          file = file.path("SS_BSB_dat.txt"),
+          row.names = FALSE,
+          quote = FALSE,
+          col.names = FALSE,
+          append = TRUE)
