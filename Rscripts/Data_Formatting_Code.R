@@ -251,6 +251,7 @@ comland
 comlens <- comlen.region.sem.mkt.gr |>
   ungroup() |>
   clean_names() |>
+  filter(stock %in% c("NORTH", "SOUTH")) |> #about 240 fish that don't have a region (UNK) assigned to them
   mutate(gear = ifelse(bsb_gear_cat1=="TRAWL","trawl","non-trawl")) |>
   select(-bsb_gear_cat1) |>
   left_join(comland) |>
@@ -630,7 +631,7 @@ fishery_lens_write <- bind_cols(fishery_lens, fishery_lens2)
 objects <- c("MA.spr.CAL","MA.fall.CAL",
              "RI.spr.CAL","RI.fall.CAL",
              "CT.spr.CAL","CT.fall.CAL")
-survey_index <- c(13, 14, 16, 17, 18, 19)
+survey_index <- c(13, 14, 15, 16, 17, 18)
 state_survey_lens <- map_dfr(objects, function(x) get(x)|>clean_names()|>
                                select(-season) |> mutate_if(is.character, as.numeric),
                              .id = "index") |>
@@ -643,7 +644,7 @@ state_survey_lens
 nj <- NJ.CAL |>
   clean_names() |>
   mutate(season = 4,
-         index = 21) |>
+         index = 20) |>
   mutate_if(is.character,as.numeric)
 
 state_survey_lens <- bind_rows(state_survey_lens, nj) |>
@@ -739,10 +740,10 @@ neamap_lens <- map_dfr(objects, function(x) get(x)|>clean_names(),
                              .id = "index") |>
   mutate(season = ifelse(index==1,4,10),
          index = case_when(
+           index == 1 & bsb_region == "NORTH" ~ 24,
+           index == 1 & bsb_region == "SOUTH" ~ 25,
            index == 1 & bsb_region == "NORTH" ~ 26,
-           index == 1 & bsb_region == "SOUTH" ~ 27,
-           index == 1 & bsb_region == "NORTH" ~ 29,
-           index == 1 & bsb_region == "SOUTH" ~ 30),
+           index == 1 & bsb_region == "SOUTH" ~ 27),
          length = as.numeric(as.character(length_cm))) |>
   select(-bsb_region, -length_cm, -prop_length)
 #neamap_lens
@@ -797,10 +798,10 @@ nefsc_lens <- nefsc.CAL |>
   clean_names() |>
   mutate(season = ifelse(season=="SPRING",4,10),
          index = case_when(
-           series == "ALBATROSS" & stock_abbrev == "NORTH" ~ 31,
-           series == "ALBATROSS" & stock_abbrev == "SOUTH" ~ 32,
-           series == "BIGELOW" & stock_abbrev == "NORTH" ~ 35,
-           series == "BIGELOW" & stock_abbrev == "SOUTH" ~ 36),
+           series == "ALBATROSS" & stock_abbrev == "NORTH" ~ 28,
+           series == "ALBATROSS" & stock_abbrev == "SOUTH" ~ 29,
+           series == "BIGELOW" & stock_abbrev == "NORTH" ~ 30,
+           series == "BIGELOW" & stock_abbrev == "SOUTH" ~ 31),
          cal = no_at_length) |>
   select(year, season, index, length, cal)
 #nsamp missing here too
@@ -859,10 +860,10 @@ rec_cpue_lens <- rec.CAL |>
   mutate(season = ifelse(semester==1,4,10),
          index = case_when(
            #GF - not sure why these have their own numbering, should be the same index as the catch
-           season == 4 & region == "North" ~ 40,
-           season == 4 & region == "South" ~ 41,
-           season == 10 & region == "North" ~ 42,
-           season == 10 & region == "South" ~ 43)) |>
+           season == 4 & region == "North" ~ 35,
+           season == 4 & region == "South" ~ 36,
+           season == 10 & region == "North" ~ 37,
+           season == 10 & region == "South" ~ 38)) |>
   rename(length = length_cm,
          cal = n_ab1b2) |>
   select(year, season, index, length, cal)
