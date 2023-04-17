@@ -742,8 +742,8 @@ neamap_lens <- map_dfr(objects, function(x) get(x)|>clean_names(),
          index = case_when(
            index == 1 & bsb_region == "NORTH" ~ 24,
            index == 1 & bsb_region == "SOUTH" ~ 25,
-           index == 1 & bsb_region == "NORTH" ~ 26,
-           index == 1 & bsb_region == "SOUTH" ~ 27),
+           index == 2 & bsb_region == "NORTH" ~ 26,
+           index == 2 & bsb_region == "SOUTH" ~ 27),
          length = as.numeric(as.character(length_cm))) |>
   select(-bsb_region, -length_cm, -prop_length)
 #neamap_lens
