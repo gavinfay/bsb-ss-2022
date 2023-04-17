@@ -109,44 +109,44 @@ SS_BSB_dat1 = list(
   "#_MA_Fall_Trawl",
   MA.fall.std = data.frame(year = MA.fall.agg[MA.fall.agg$Type == "Std", 1], seas = "10", index = "14",obs = MA.fall.agg[MA.fall.agg$Type == "Std", 2], CV = MA.fall.agg[MA.fall.agg$Type == "Std", 5]),
   "#_RI_Spring_Trawl",
-  RI.spr.std = data.frame(year = RI.spr.agg[RI.spr.agg$Type == "Std", 1], seas = "4", index = "16",obs = RI.spr.agg[RI.spr.agg$Type == "Std", 2], CV = RI.spr.agg[RI.spr.agg$Type == "Std", 5]),
+  RI.spr.std = data.frame(year = RI.spr.agg[RI.spr.agg$Type == "Std", 1], seas = "4", index = "15",obs = RI.spr.agg[RI.spr.agg$Type == "Std", 2], CV = RI.spr.agg[RI.spr.agg$Type == "Std", 5]),
   "#_RI_Fall_Trawl",
-  RI.fall.std = data.frame(year = RI.fall.agg[RI.fall.agg$Type == "Std", 1], seas = "10", index = "17",obs = RI.fall.agg[RI.fall.agg$Type == "Std", 2], CV = RI.fall.agg[RI.fall.agg$Type == "Std", 5]),  #survey is new, how to number?
+  RI.fall.std = data.frame(year = RI.fall.agg[RI.fall.agg$Type == "Std", 1], seas = "10", index = "16",obs = RI.fall.agg[RI.fall.agg$Type == "Std", 2], CV = RI.fall.agg[RI.fall.agg$Type == "Std", 5]),  #survey is new, how to number?
   "#_CT_Spring_Trawl",
-  CT.spr.std = data.frame(year = CT.spr.agg[CT.spr.agg$Type == "Std", 1], seas = "4", index = "18",obs = CT.spr.agg[CT.spr.agg$Type == "Std", 2], CV = CT.spr.agg[CT.spr.agg$Type == "Std", 5]),
+  CT.spr.std = data.frame(year = CT.spr.agg[CT.spr.agg$Type == "Std", 1], seas = "4", index = "17",obs = CT.spr.agg[CT.spr.agg$Type == "Std", 2], CV = CT.spr.agg[CT.spr.agg$Type == "Std", 5]),
   "#_CT_Fall_Trawl",
-  CT.fall.std = data.frame(year = CT.fall.agg[CT.fall.agg$Type == "Std", 1], seas = "10", index = "19",obs = CT.fall.agg[CT.fall.agg$Type == "Std", 2], CV = CT.fall.agg[CT.fall.agg$Type == "Std", 5]),
+  CT.fall.std = data.frame(year = CT.fall.agg[CT.fall.agg$Type == "Std", 1], seas = "10", index = "18",obs = CT.fall.agg[CT.fall.agg$Type == "Std", 2], CV = CT.fall.agg[CT.fall.agg$Type == "Std", 5]),
   "#_NY_Spring_Trawl_Age1",
-  NY.mean = data.frame(year = NY.agg[, 1], seas = "4", index = "20",obs = NY.agg[, 2], CV = NY.agg[, 4]),
+  NY.mean = data.frame(year = NY.agg[, 1], seas = "4", index = "19",obs = NY.agg[, 2], CV = NY.agg[, 4]),
   "#_NJ_Trawl",
-  NJ.mean = data.frame(year = NJ[, 1], seas = "4", index = "21",obs = NJ[, 2], CV = NJ[, 4]),
+  NJ.mean = data.frame(year = NJ[, 1], seas = "4", index = "20",obs = NJ[, 2], CV = NJ[, 4]),
   "#_DE_Trawl",
-  DE.mean = data.frame(year = DE.agg[-13, 1], seas = "4", index = "23",obs = DE.agg[-13, 2], CV = DE.agg[-13, 4]),  #Note: DE doesn't have a CV so CV is actually a SE, removed missing 1990 (the - row 13)
+  DE.mean = data.frame(year = DE.agg[-13, 1], seas = "4", index = "21",obs = DE.agg[-13, 2], CV = DE.agg[-13, 3]) |> filter(se!=0),  #Note: DE doesn't have a CV so CV is actually a SE, removed missing 1990 (the - row 13)
   "#_MD_Trawl",
-  MD.mean = data.frame(year = MD.agg[, 1], seas = "4", index = "24",obs = MD.agg[, 3], CV = MD.agg[, 4]),  #Note: MD doesn't have a CV so CV is actually a SE, also index is a "LogMean"
+  MD.mean = data.frame(year = MD.agg[, 1], seas = "4", index = "22",obs = MD.agg[, 3], CV = MD.agg[, 4]) |> filter(YEAR!=1996),  #Note: MD doesn't have a CV so CV is actually a SE, also index is a "LogMean"
   "#_VIMS_Trawl",
-  VA.mean = data.frame(year = vims.agg[-32, 1], seas = "4", index = "25",obs = vims.agg[-32, 2], CV = 0.67),  #Note: No uncertainty estimate so just added 0.67 from previous dat file
+  VA.mean = data.frame(year = vims.agg[-32, 1], seas = "4", index = "23",obs = vims.agg[-32, 2], CV = 0.67),  #Note: No uncertainty estimate so just added 0.67 from previous dat file
   "#_NEAMAP_N_Spring_Trawl",
-  NEAMAP.N.spr.mean = data.frame(year = neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 2], seas = "4", index = "26",obs = neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 3], CV = neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 5]/neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 3]), 
+  NEAMAP.N.spr.mean = data.frame(year = neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 2], seas = "4", index = "24",obs = neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 3], CV = neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 5]/neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 3]), 
   "#_NEAMAP_S_Spring_Trawl",
-  NEAMAP.S.spr.mean = data.frame(year = neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 2], seas = "4", index = "27",obs = neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 3], CV = neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 5]/neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 3]),
+  NEAMAP.S.spr.mean = data.frame(year = neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 2], seas = "4", index = "25",obs = neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 3], CV = neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 5]/neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 3]),
   "#_NEAMAP_N_Fall_Trawl",
-  NEAMAP.N.fall.mean = data.frame(year = neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 2], seas = "10", index = "29",obs = neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 3], CV = neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 5]/neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 3]), 
+  NEAMAP.N.fall.mean = data.frame(year = neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 2], seas = "10", index = "26",obs = neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 3], CV = neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 5]/neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 3]), 
   "#_NEAMAP_S_Fall_Trawl",
-  NEAMAP.S.fall.mean = data.frame(year = neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 2], seas = "10", index = "30",obs = neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 3], CV = neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 5]/neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 3]),
+  NEAMAP.S.fall.mean = data.frame(year = neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 2], seas = "10", index = "27",obs = neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 3], CV = neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 5]/neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 3]),
   "#_NEFSC_N_Spring_Trawl",
-  NEFSC.N.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 3], seas = "4", index = "31",obs = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 9], CV = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 12]), 
+  NEFSC.N.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 3], seas = "4", index = "28",obs = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 9], CV = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 12]), 
   "#_NEFSC_S_Spring_Trawl",
-  NEFSC.S.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 3], seas = "4", index = "32",obs = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 9], CV = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 12]),
+  NEFSC.S.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 3], seas = "4", index = "29",obs = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 9], CV = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 12]),
   "#_Bigelow_N_Spring_Trawl",
-  Big.N.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 3], seas = "4", index = "35",obs = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 9], CV = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 12]), 
+  Big.N.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 3], seas = "4", index = "30",obs = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 9], CV = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 12]), 
   "#_Bigelow_S_Spring_Trawl",
-  Big.S.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 3], seas = "4", index = "36",obs = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 9], CV = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 12]),
+  Big.S.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 3], seas = "4", index = "31",obs = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 9], CV = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 12]),
   ####NOTE: Winter survey not broken N-S, so couldn't update, but should be the same as before?
   "#_RecCPUE_N_spr",
-  RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "40",obs = RecCPA.agg[RecCPA.agg$Region == "North", 3], CV = 0.38), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "35",obs = RecCPA.agg[RecCPA.agg$Region == "North", 3], CV = 0.38), #Note: Using previous average for RecCPUE CV until can get from Jeff
   "#_RecCPUE_S_spr",
-  RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "41",obs = RecCPA.agg[RecCPA.agg$Region == "South", 3], CV = 0.25), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "36",obs = RecCPA.agg[RecCPA.agg$Region == "South", 3], CV = 0.25), #Note: Using previous average for RecCPUE CV until can get from Jeff
   
   "###############################################",
   "##  Discard Data",
