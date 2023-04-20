@@ -201,25 +201,25 @@ SS_BSB_dat1 = list(
              .after = "Discards") %>% data.frame,
   "#Disc_North_Rec_1",
   N.Rec.spr.Disc = rec.agg.region.sem %>% filter(REGION == "North", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Discards=sum(B2_dead)/1000) %>%
-  add_column(Seas = 1, fleet = 9, 
+  add_column(Seas = 4, fleet = 9, 
              .after = "YEAR") %>%
   add_column(CV = 0.3, 
              .after = "Discards") %>% data.frame,  ###Just made up CV for now, need to discuss and B2_dead or all B2s
   "#Disc_South_Rec_1",
   S.Rec.spr.Disc = rec.agg.region.sem %>% filter(REGION == "South", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Discards=sum(B2_dead)/1000) %>%
-  add_column(Seas = 1, fleet = 10, 
+  add_column(Seas = 4, fleet = 10, 
              .after = "YEAR") %>%
   add_column(CV = 0.3, 
              .after = "Discards") %>% data.frame,
   "#Disc_North_Rec_2",
   N.Rec.fall.Disc = rec.agg.region.sem %>% filter(REGION == "North", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Discards=sum(B2_dead)/1000) %>%
-  add_column(Seas = 1, fleet = 11, 
+  add_column(Seas = 10, fleet = 11, 
              .after = "YEAR") %>%
   add_column(CV = 0.3, 
              .after = "Discards") %>% data.frame,  
   "#Disc_South_Rec_2",
   S.Rec.fall.Disc = rec.agg.region.sem %>% filter(REGION == "South", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Discards=sum(B2_dead)/1000) %>%
-  add_column(Seas = 1, fleet = 10, 
+  add_column(Seas = 10, fleet = 12, 
              .after = "YEAR") %>%
   add_column(CV = 0.3, 
              .after = "Discards") %>% data.frame)
@@ -796,12 +796,15 @@ neamap_lens <- map_dfr(objects, function(x) get(x)|>clean_names(),
 
 nefsc_lens <- nefsc.CAL |>
   clean_names() |>
-  mutate(season = ifelse(season=="SPRING",4,10),
+  #filter(season!="SPRING") |>.  #getting rid of winter
+  mutate(
          index = case_when(
            series == "ALBATROSS" & stock_abbrev == "NORTH" ~ 28,
            series == "ALBATROSS" & stock_abbrev == "SOUTH" ~ 29,
            series == "BIGELOW" & stock_abbrev == "NORTH" ~ 30,
            series == "BIGELOW" & stock_abbrev == "SOUTH" ~ 31),
+          index = ifelse(season == "WINTER" & stock_abbrev == "SOUTH",33,index),
+         season = 4, # only have spring & winter right now. ifelse(season=="SPRING",4,10),
          cal = no_at_length) |>
   select(year, season, index, length, cal)
 #nsamp missing here too
