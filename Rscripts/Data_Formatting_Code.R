@@ -973,8 +973,10 @@ nefsc_ac <- nefsc.CAA |>
   clean_names() |>
   mutate(season = ifelse(season == "SPRING",4,10),
          index = case_when(
-           stock_abbrev == "NORTH" ~ -31,
-           stock_abbrev == "SOUTH" ~ -32,
+           (stock_abbrev == "NORTH" & year < 2009) ~ -28,
+           (stock_abbrev == "SOUTH" & year < 2009) ~ -29,
+           (stock_abbrev == "NORTH" & year >= 2009) ~ -30,
+           (stock_abbrev == "SOUTH" & year >= 2009) ~ -31,
          ), caa = no_at_age) |>
   filter(season == 4) |>
   group_by(year, season, index, age) |> 
