@@ -144,9 +144,9 @@ SS_BSB_dat1 = list(
   Big.S.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 3], seas = "4", index = "31",obs = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 9], CV = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 12]),
   ####NOTE: Winter survey not broken N-S, so couldn't update, but should be the same as before?
   "#_RecCPUE_N_spr",
-  RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "35",obs = RecCPA.agg[RecCPA.agg$Region == "North", 3], CV = 0.38), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "9",obs = RecCPA.agg[RecCPA.agg$Region == "North", 3], CV = 0.38), #Note: Using previous average for RecCPUE CV until can get from Jeff
   "#_RecCPUE_S_spr",
-  RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "36",obs = RecCPA.agg[RecCPA.agg$Region == "South", 3], CV = 0.25), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "11",obs = RecCPA.agg[RecCPA.agg$Region == "South", 3], CV = 0.25), #Note: Using previous average for RecCPUE CV until can get from Jeff
   
   "###############################################",
   "##  Discard Data",
