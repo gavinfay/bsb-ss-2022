@@ -13,6 +13,7 @@ library(janitor)
 ##Load data
 load(file.path(here::here(),"data","BSB.Index.Data.For.SS.RDATA"))
 load(file.path(here::here(),"data","BSB.Fishery.Data.For.SS.RDATA"))
+load(file.path(here::here(),"data","BSB.Age.Data.With.Sex.For.SS.RDATA"))
 
 # define length bins & a length lookup
 Lbins <- c(seq(2,48,2),52,58,64,70)
@@ -1009,6 +1010,104 @@ fishery_ac2 <-  fishery_ac |>
 fishery_ac_write <- bind_cols(fishery_ac, fishery_ac2)
 
 
+## sex disaggregated age data
+fishery_agelens <- fishery.age.data |>
+  clean_names() |>
+  left_join(lenbins) |>
+  mutate(sex = case_when(
+    sex %in% c("F", "FEMALE") ~ 1,
+    sex %in% c("M", "MALE") ~ 2,
+    TRUE ~ 0)) |>
+  filter(region != "UNK") |> #some unknown region entries
+  group_by(year, region, semester, sex, ibin, age) |>
+  summarize(num = n()) |>
+  # complete(age = 0:15, fill = list(num = 0)) |>
+  # arrange(year, region, semester, sex, ibin, age) |>
+  # pivot_wider(names_from = age,
+  #             names_prefix = "bin_",
+  #             names_sort = TRUE,
+  #             values_from = num,
+  #             values_fill = 0) |>
+  I()
+#fishery_agelens
+unsexed_ageatlen <- fishery_agelens |>
+  ungroup() |>
+  filter(sex == 0) |>
+  group_by(year, region, semester, sex, ibin) |>
+  mutate(nsamp = sum(num, na.rm=TRUE)) |>
+  ungroup() |>
+  #complete(age = 0:15, fill = list(num = 0)) |>
+  pivot_wider(names_from = age,
+              names_prefix = "age_",
+              names_sort = TRUE,
+              values_from = num,
+              values_fill = 0) |>
+  mutate(index = case_when(
+    region == "NORTH" & semester == 1 ~ 1,
+    region == "SOUTH" & semester == 1 ~ 2,
+    region == "NORTH" & semester == 2 ~ 3,
+    region == "SOUTH" & semester == 2 ~ 4,
+    ),
+    part = 2,
+    ageerr= 1, 
+    #nsamp = 25,
+    lobin = ibin,
+    month = ifelse(semester==1,4,10)) |>
+  select(-region,-semester) |>
+  select(year, month, index, sex, part, ageerr, lobin, ibin, nsamp, everything()) |>
+  arrange(year, month, index, ibin) |>
+  I()
+#unsexed_ageatlen  
+#add empty male columns
+unsexed_ageatlen2 <-  unsexed_ageatlen |>
+  select(-(1:9)) |>
+  mutate_all(.funs = function(x) 0*x) |>
+  rename_with(.fn = function(x) str_c("m_",x))
+unsexed_ageatlen_write <- bind_cols(unsexed_ageatlen, unsexed_ageatlen2)
+#unsexed_ageatlen_write 
+
+## format the sexed parts
+sexed_ageatlen <- fishery_agelens |>
+  ungroup() |>
+  filter(sex != 0) |>
+  group_by(year, region, semester, sex, ibin) |>
+  complete(age = 0:15, fill = list(num = 0)) |>
+  #ungroup() |>
+  #group_by(year, region, semester, sex, ibin) |>
+  mutate(nsamp = sum(num, na.rm=TRUE)) |>
+  ungroup() |>
+  mutate(sex_age = paste(age, sex, sep = "_")) |>
+  select(-age) |>
+  pivot_wider(names_from = sex_age,
+              names_prefix = "age_",
+              names_sort = FALSE, #TRUE,
+              values_from = num,
+              values_fill = 0
+              ) |>
+  mutate(index = case_when(
+    region == "NORTH" & semester == 1 ~ 1,
+    region == "SOUTH" & semester == 1 ~ 2,
+    region == "NORTH" & semester == 2 ~ 3,
+    region == "SOUTH" & semester == 2 ~ 4,
+  ),
+  part = 2,
+  ageerr= 1, 
+  #nsamp = 25,
+  lobin = ibin,
+  month = ifelse(semester==1,4,10)) |>
+  select(-region,-semester) |>
+  select(year, month, index, sex, part, ageerr, lobin, ibin, nsamp, everything()) |>
+  arrange(year, month, index, ibin) |>
+  I()
+sexed_ageatlen
+t(sexed_ageatlen[1,])
+
+colnames(unsexed_ageatlen_write) <- c(colnames(unsexed_ageatlen_write)[1:9],colnames(sexed_ageatlen)[-(1:9)])
+fishery_ageatlen_write <- bind_rows(unsexed_ageatlen_write, sexed_ageatlen) |>
+  arrange(year, month, index, sex, ibin)
+
+
+
 
 
 # write to file
@@ -1046,7 +1145,7 @@ write.table(len_data_write,
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("##  Age Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
-write.table(fishery_ac_write, 
+write.table(fishery_ageatlen_write, #ac_write, 
             file = "SS_BSB_dat.txt", 
             append = TRUE, 
             row.names = FALSE,
