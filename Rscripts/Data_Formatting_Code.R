@@ -1198,10 +1198,91 @@ index_ageatlen_write <- bind_rows(unsexed_ageatlen_write, sexed_ageatlen) |>
   arrange(year, month, index, sex, ibin)
 
 
+####### get the ghost age comps #######
+## fishery data
+lentemp <- fishery_lens %>% pivot_longer(cols = -(1:6), names_to = c("dummy","ibin"), names_sep = "_", values_to = "lprop") %>% select(-dummy)
+lentemp2 <- lentemp %>% 
+  #filter(year == 2014) %>% 
+  mutate(age = 0,
+         ibin = as.numeric(ibin)) %>% 
+  group_by(year, season, index, gender, part, ibin) %>% 
+  complete(age = 0:15) %>% 
+  fill(nsamp, lprop)
+## get the total ages (aggregated by sex)
+nu_agelens <- fishery.age.data |>
+  clean_names() |>
+  mutate(gear = ifelse(gear == "TRAWL", "trawl", "non-trawl")) |>
+  left_join(lenbins) |>
+  filter(region != "UNK") |> #some unknown region entries
+  group_by(year, region, semester, gear, ibin, age) |>
+  summarize(num = n()) |>
+  ungroup() |>
+  group_by(year, region, semester, gear, ibin) |>
+  complete(age = 0:15, fill = list(num = 0)) |>
+  mutate(nsamp = sum(num, na.rm=TRUE),
+         aprop = num/nsamp) |>
+  ungroup() |>
+  # pivot_wider(names_from = age,
+  #             names_prefix = "age_",
+  #             names_sort = TRUE,
+  #             values_from = num,
+  #             values_fill = 0) |>
+  mutate(index = case_when(
+    region == "NORTH" & semester == 1 & gear == "trawl" ~ 1,
+    region == "SOUTH" & semester == 1 & gear == "trawl"  ~ 2,
+    region == "NORTH" & semester == 2 & gear == "trawl"  ~ 3,
+    region == "SOUTH" & semester == 2 & gear == "trawl"  ~ 4,
+    region == "NORTH" & semester == 1 & gear == "non-trawl" ~ 5,
+    region == "SOUTH" & semester == 1 & gear == "non-trawl"  ~ 6,
+    region == "NORTH" & semester == 2 & gear == "non-trawl"  ~ 7,
+    region == "SOUTH" & semester == 2 & gear == "non-trawl"  ~ 8,    
+  ),
+  #part = 2,
+  #ageerr= 1, 
+  #nsamp = 25,
+  #lobin = ibin,
+  season = ifelse(semester==1,4,10)) |>
+  select(-region,-semester, -num, -nsamp) |>
+  #select(year, month, index, sex, part, ageerr, lobin, ibin, nsamp, everything()) |>
+  arrange(year, season, index, ibin) |>
+  I()
+#nu_agelens
+nu_agecomp <- lentemp2 %>% left_join(nu_agelens) %>% 
+  ungroup() %>% 
+  mutate(aprop = ifelse(is.na(aprop),0,aprop),
+         aprop2 = lprop*aprop) %>% 
+  group_by(year, season, index, gender, part, age) %>% 
+  summarize(caa = sum(aprop2)) |>
+  ungroup() |>
+  group_by(year, season, index, gender, part) %>% 
+  mutate(caa = caa/sum(caa)) %>% 
+  pivot_wider(names_from = age,
+              names_prefix = "age_",
+              names_sort = TRUE,
+              values_from = caa,
+              values_fill = 0) |>
+  I()
+ghost_fishery_agecomp_write <- nu_agecomp %>% 
+  ungroup() %>% 
+  drop_na() %>% 
+  filter(index %in% 1:8) %>% 
+  mutate(index = -1*index, 
+         lo = 1,
+         hi = 28,
+         nsamp = 25,
+         ageerr = 1) %>% 
+  select(year, season, index, gender, part, ageerr, lo, hi, nsamp, everything()) |>
+  I()
+#ghost_fishery_agecomp_write
+#add empty male columns
+ghost2 <- ghost_fishery_agecomp_write |>
+  select(-(1:9)) |>
+  mutate_all(.funs = function(x) 0*x) |>
+  rename_with(.fn = function(x) str_c("m_",x))
+ghost_fishery_agecomp_write <- bind_cols(ghost_fishery_agecomp_write, ghost2)
 
 
-
-
+##############################
 # write to file
 # GF NB that print does not work for tables - as it truncates the output
 write("###", file = file.path("SS_BSB_dat.txt"))
@@ -1243,6 +1324,15 @@ write.table(fishery_ageatlen_write, #ac_write,
             row.names = FALSE,
             col.names = FALSE)
 write.table(index_ageatlen_write, #ac_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Ghost Age Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(ghost_fishery_agecomp_write, #ac_write, 
             file = "SS_BSB_dat.txt", 
             append = TRUE, 
             row.names = FALSE,
