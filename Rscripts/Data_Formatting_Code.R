@@ -256,6 +256,7 @@ comlens <- comlen.region.sem.mkt.gr |>
   mutate(gear = ifelse(bsb_gear_cat1=="TRAWL","trawl","non-trawl")) |>
   select(-bsb_gear_cat1) |>
   left_join(comland) |>
+  filter(!is.na(index)) |> # remove one(!) fish of length bin 32 in 2008, semester 2, trawl, unclassified market category, because no corresponding weight
   mutate(cal = numlen*land_mt,
          season = ifelse(semester==1,4,10)) |>
   select(-semester) |>
@@ -864,10 +865,10 @@ rec_cpue_lens <- rec.CAL |>
   mutate(season = ifelse(semester==1,4,10),
          index = case_when(
            #GF - not sure why these have their own numbering, should be the same index as the catch
-           season == 4 & region == "North" ~ 35,
-           season == 4 & region == "South" ~ 36,
-           season == 10 & region == "North" ~ 37,
-           season == 10 & region == "South" ~ 38)) |>
+           season == 4 & region == "North" ~ 9, #35,
+           season == 4 & region == "South" ~ 10, #36,
+           season == 10 & region == "North" ~ 11, #37,
+           season == 10 & region == "South" ~ 12)) |> #38)) |>
   rename(length = length_cm,
          cal = n_ab1b2) |>
   select(year, season, index, length, cal)
