@@ -98,7 +98,7 @@ SS_BSB_dat1 = list(
                .after = "Catch") %>% data.frame,  ###Just made up CV for now, need to discuss
   "#_South_Rec_2",
   S.Rec.fall.Cat = rec.agg.region.sem %>% filter(REGION == "South", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Catch=sum(AB1)/1000) %>%
-    add_column(Seas = 1, fleet = 12, 
+    add_column(Seas = 2, fleet = 12, 
                .after = "YEAR") %>%
     add_column(CV = 0.3, 
                .after = "Catch") %>% data.frame,
