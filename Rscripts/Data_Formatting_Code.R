@@ -282,6 +282,7 @@ recfishery_ids <- expand.grid(region = c("North","South"),
   mutate(index = 9:12)
 recfishery_ids  
 
+rec.exp.ab1b2.len$nsamp <- rec.ab1.len$SampleSize # include sample size from other dataset
 reclens <- rec.exp.ab1b2.len |>
   clean_names() |>
   left_join(recfishery_ids) |>
@@ -296,16 +297,41 @@ reclens <- rec.exp.ab1b2.len |>
   filter(cal>0) |>
   mutate(part = as.numeric(ifelse(part == "n_ab1",2,1))) |>
   left_join(lenbins) |>
-  group_by(index, year, ibin, season, part) |>
+  group_by(index, year, ibin, season, part, nsamp) |>
   summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
   group_by(index, year, season, part) |>
   mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
   ungroup() |>
-  mutate(gender = 0,
-         nsamp = 25) |> #we don't have the sample sizes so dummy value for now
+  mutate(gender = 0) |>
   I()
 reclens
-fishery_lens <- bind_rows(comlens, reclens)  
+
+# extract sample size for discard
+reclensdisc <- rec.b2.len |>
+  clean_names() |>
+  left_join(recfishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  mutate(nsamp = sample_size) |>
+  rename(length = l_cm_bin) |>
+  select(-disposition, 
+         -data_source,
+         -semester,
+         -region,
+         -sample_size_scaled,
+         -sample_size) |>
+  filter(nsamp > 0) |>
+  left_join(lenbins) |>
+  group_by(index, year, ibin, season) |>
+  select(-length) |>
+  mutate(part = 1) |>
+  distinct(index, year, ibin, season, part, nsamp) |>
+  I()
+
+# integrate discard sample size  
+reclens <- reclens |> 
+  left_join(reclensdisc) 
+
+fishery_lens <- bind_rows(comlens, reclens)    
   
 # commercial discards
 disc_lens <- comdisc.len |>
