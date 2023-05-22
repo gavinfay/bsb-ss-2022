@@ -14,6 +14,7 @@ library(janitor)
 load(file.path(here::here(),"data","BSB.Index.Data.For.SS.RDATA"))
 load(file.path(here::here(),"data","BSB.Fishery.Data.For.SS.RDATA"))
 load(file.path(here::here(),"data","BSB.Age.Data.With.Sex.For.SS.RDATA"))
+load(file.path(here::here(), "data","BSB.Biological.Data.RDATA"))
 
 # define length bins & a length lookup
 Lbins <- c(seq(2,48,2),52,58,64,70)
@@ -254,6 +255,7 @@ comlens <- comlen.region.sem.mkt.gr |>
   clean_names() |>
   filter(stock %in% c("NORTH", "SOUTH")) |> #about 240 fish that don't have a region (UNK) assigned to them
   mutate(gear = ifelse(bsb_gear_cat1=="TRAWL","trawl","non-trawl")) |>
+  filter(stock != "UNK") |>
   select(-bsb_gear_cat1) |>
   left_join(comland) |>
   filter(!is.na(index)) |> # remove one(!) fish of length bin 32 in 2008, semester 2, trawl, unclassified market category, because no corresponding weight
@@ -261,16 +263,36 @@ comlens <- comlen.region.sem.mkt.gr |>
          season = ifelse(semester==1,4,10)) |>
   select(-semester) |>
   left_join(lenbins) |>
-  group_by(index, year, ibin, season) |>
+  group_by(index, year, ibin, season, mktnm) |>
   summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
   group_by(index, year, season) |>
   mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
   ungroup() |>
   mutate(gender = 0,
-         part = 2,
-         nsamp = 25) |> #we don't have the sample sizes so dummy value for now
+         part = 2) |>
   I()
 #comlens
+
+# comlens sample size
+comlens_samp <- comlen.nsamp.region.sem.mkt.gr |>
+  ungroup() |>
+  clean_names() |>
+  filter(stock %in% c("NORTH", "SOUTH")) |>
+  mutate(gear = ifelse(bsb_gear_cat2=="TRAWL","trawl","non-trawl")) |>
+  filter(stock != "UNK") |>
+  select(-bsb_gear_cat2) |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10), nsamp = nsamples) |>
+  group_by(index, year, season, mktnm) |>
+  summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
+  I()
+
+# combine comlens and sample sizes
+comlens <- comlens |>
+          left_join(comlens_samp) |>
+          select(-mktnm) |>
+          na.omit() # jumbo mkt is missing for some years in fleet 5
+
 fishery_lens <- comlens  
 
 # recreational lengths
@@ -282,7 +304,6 @@ recfishery_ids <- expand.grid(region = c("North","South"),
   mutate(index = 9:12)
 recfishery_ids  
 
-rec.exp.ab1b2.len$nsamp <- rec.ab1.len$SampleSize # include sample size from other dataset
 reclens <- rec.exp.ab1b2.len |>
   clean_names() |>
   left_join(recfishery_ids) |>
@@ -297,41 +318,66 @@ reclens <- rec.exp.ab1b2.len |>
   filter(cal>0) |>
   mutate(part = as.numeric(ifelse(part == "n_ab1",2,1))) |>
   left_join(lenbins) |>
-  group_by(index, year, ibin, season, part, nsamp) |>
+  group_by(index, year, ibin, season, part) |>
   summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
   group_by(index, year, season, part) |>
   mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
   ungroup() |>
-  mutate(gender = 0) |>
+  mutate(gender = 0) |> 
   I()
 reclens
+
+# extract sample size for harvest
+reclensharv <- rec.ab1.len |>
+	clean_names() |>
+	left_join(recfishery_ids) |>
+	mutate(season = ifelse(semester==1,4,10)) |>
+	rename(nsamp = sample_size) |>
+	rename(length = l_cm_bin) |>
+	select(-semester,
+			-n_ab1,
+			-region) |>	
+  left_join(lenbins) |>
+	group_by(index, year, ibin, season) |>
+	summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
+	mutate(part = 2) |>
+	I()
+reclensharv
 
 # extract sample size for discard
 reclensdisc <- rec.b2.len |>
   clean_names() |>
   left_join(recfishery_ids) |>
   mutate(season = ifelse(semester==1,4,10)) |>
-  mutate(nsamp = sample_size) |>
+  rename(nsamp = sample_size) |>
   rename(length = l_cm_bin) |>
+  filter(nsamp > 0) |>
   select(-disposition, 
          -data_source,
          -semester,
          -region,
-         -sample_size_scaled,
-         -sample_size) |>
-  filter(nsamp > 0) |>
+         -sample_size_scaled) |>
   left_join(lenbins) |>
   group_by(index, year, ibin, season) |>
-  select(-length) |>
+  summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
   mutate(part = 1) |>
-  distinct(index, year, ibin, season, part, nsamp) |>
   I()
+reclensdisc
 
 # integrate discard sample size  
-reclens <- reclens |> 
-  left_join(reclensdisc) 
+reclens <- reclens |>
+	left_join(reclensharv) |>
+	left_join(reclensdisc) |>
+  na.omit() |> # missing sample sizes for discards in certain years
+  I()
 
-fishery_lens <- bind_rows(comlens, reclens)    
+fishery_lens <- bind_rows(comlens, reclens)
+
+# clean for discards
+fishery_ids <- fishery_ids |>
+  mutate(region = ifelse(stock == "NORTH","North","South")) |>
+  select(-stock)
+fishery_ids
   
 # commercial discards
 disc_lens <- comdisc.len |>
