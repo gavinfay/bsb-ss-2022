@@ -124,7 +124,7 @@ SS_BSB_dat1 = list(
   "#_DE_Trawl",
   DE.mean = data.frame(year = DE.agg[-13, 1], seas = "4", index = "21",obs = DE.agg[-13, 2], CV = DE.agg[-13, 3]) |> filter(se!=0),  #Note: DE doesn't have a CV so CV is actually a SE, removed missing 1990 (the - row 13)
   "#_MD_Trawl",
-  MD.mean = data.frame(year = MD.agg[, 1], seas = "4", index = "22",obs = MD.agg[, 3], CV = MD.agg[, 4]) |> filter(YEAR!=1996),  #Note: MD doesn't have a CV so CV is actually a SE, also index is a "LogMean"
+  MD.mean = data.frame(year = MD.agg[, 1], seas = "4", index = "22",obs = exp(MD.agg[, 3]), CV = MD.agg[, 4]) |> filter(YEAR!=1996),  #Note: MD doesn't have a CV so CV is actually a SE, also index is a "LogMean"
   "#_VIMS_Trawl",
   VA.mean = data.frame(year = vims.agg[-32, 1], seas = "4", index = "23",obs = vims.agg[-32, 2], CV = 0.67),  #Note: No uncertainty estimate so just added 0.67 from previous dat file
   "#_NEAMAP_N_Spring_Trawl",
