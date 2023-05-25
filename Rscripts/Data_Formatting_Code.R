@@ -1012,19 +1012,19 @@ nefsc_lens <- nefsc_lens |>
   #              .after = "YEAR") %>% data.frame,
   ####NOTE: Winter survey not broken N-S, so couldn't update, but should be the same as before?
 
-rec_cpue_lens <- rec.exp.ab1b2.len |>
-  clean_names() |>
-  mutate(season = ifelse(semester==1,4,10),
-         index = case_when(
-           #GF - not sure why these have their own numbering, should be the same index as the catch
-           season == 4 & region == "North" ~ 9, #35,
-           season == 4 & region == "South" ~ 10, #36,
-           season == 10 & region == "North" ~ 11, #37,
-           season == 10 & region == "South" ~ 12)) |> #38)) |>
-  rename(length = l_cm_bin,
-         cal = n_ab1b2) |>
-  group_by(index, year, season, length, cal) |>
-  summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop")
+# rec_cpue_lens <- rec.CAL |>
+#   clean_names() |>
+#   mutate(season = ifelse(semester==1,4,10),
+#          index = case_when(
+#            #GF - not sure why these have their own numbering, should be the same index as the catch
+#            season == 4 & region == "North" ~ 9, #35,
+#            season == 4 & region == "South" ~ 10, #36,
+#            season == 10 & region == "North" ~ 11, #37,
+#            season == 10 & region == "South" ~ 12)) |> #38)) |>
+#   rename(length = length_cm,
+#          cal = n_ab1b2) |>
+#   select(year, season, index, length, cal)
+
 
 # "#LF_RecCPUE_N_spr",
 #   RecCPUE.N.spr.LF = rec.CAL[rec.CAL$REGION == "North" & rec.CAL$SEMESTER == "1",c(-2,-3)] %>% 
@@ -1053,8 +1053,8 @@ rec_cpue_lens <- rec.exp.ab1b2.len |>
 # now put the lengths together, create proportions by length bin, and put in ss format
 len_data <- bind_rows(state_survey_lens, 
                       neamap_lens, 
-                      nefsc_lens, 
-                      rec_cpue_lens) |>
+                      nefsc_lens) |> 
+                      # rec_cpue_lens) |>
   left_join(lenbins) |>
   select(-length)
 # no observations in bin 28 so create dummy table to fill these columns
