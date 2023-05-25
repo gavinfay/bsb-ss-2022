@@ -744,7 +744,8 @@ state_survey_lens <- map_dfr(objects, function(x) get(x)|>clean_names()|>
 state_survey_lens
 
 samp_objects <- c("MA.fall", "MA.spr",
-                  "RI.fall", "RI.spr") # CT?
+                  "RI.fall", "RI.spr",
+                  "LIS.fall", "LIS.spr")
 state_samp <- map_dfr(samp_objects, function(x) get(x) |> clean_names(),
                       .id = "index") |>
   mutate(index = survey_index[as.integer(index)],
@@ -756,7 +757,6 @@ state_samp <- map_dfr(samp_objects, function(x) get(x) |> clean_names(),
 
 state_survey_lens <- state_survey_lens |>
   left_join(state_samp) |>
-  mutate(nsamp = ifelse(is.na(nsamp), 25, nsamp)) |>
   na.omit()
 
 nj <- NJ.CAL |>
