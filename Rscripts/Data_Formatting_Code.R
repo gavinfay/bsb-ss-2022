@@ -12,9 +12,11 @@ library(janitor)
 
 ##Load data
 load(file.path(here::here(),"data","BSB.Index.Data.For.SS.RDATA"))
+load(file.path(here::here(), "data","BSB.Index.Data.For.ESS.RDATA"))
 load(file.path(here::here(),"data","BSB.Fishery.Data.For.SS.RDATA"))
 load(file.path(here::here(),"data","BSB.Age.Data.With.Sex.For.SS.RDATA"))
 load(file.path(here::here(), "data","BSB.Biological.Data.RDATA"))
+
 
 # define length bins & a length lookup
 Lbins <- c(seq(2,48,2),52,58,64,70)
@@ -255,7 +257,6 @@ comlens <- comlen.region.sem.mkt.gr |>
   clean_names() |>
   filter(stock %in% c("NORTH", "SOUTH")) |> #about 240 fish that don't have a region (UNK) assigned to them
   mutate(gear = ifelse(bsb_gear_cat1=="TRAWL","trawl","non-trawl")) |>
-  filter(stock != "UNK") |>
   select(-bsb_gear_cat1) |>
   left_join(comland) |>
   filter(!is.na(index)) |> # remove one(!) fish of length bin 32 in 2008, semester 2, trawl, unclassified market category, because no corresponding weight
@@ -269,7 +270,7 @@ comlens <- comlen.region.sem.mkt.gr |>
   mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
   ungroup() |>
   mutate(gender = 0,
-         part = 2) |>
+         part = 2) |> 
   I()
 #comlens
 
@@ -289,9 +290,10 @@ comlens_samp <- comlen.nsamp.region.sem.mkt.gr |>
 
 # combine comlens and sample sizes
 comlens <- comlens |>
-          left_join(comlens_samp) |>
-          select(-mktnm) |>
-          na.omit() # jumbo mkt is missing for some years in fleet 5
+  left_join(comlens_samp, by = c("index", "year", "season", "mktnm")) |>
+  group_by(index, year, ibin, season, gender, part) |>
+  summarise(cal =  sum(cal, na.rm = TRUE), nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
+  I()
 
 fishery_lens <- comlens  
 
@@ -329,19 +331,19 @@ reclens
 
 # extract sample size for harvest
 reclensharv <- rec.ab1.len |>
-	clean_names() |>
-	left_join(recfishery_ids) |>
-	mutate(season = ifelse(semester==1,4,10)) |>
-	rename(nsamp = sample_size) |>
-	rename(length = l_cm_bin) |>
-	select(-semester,
-			-n_ab1,
-			-region) |>	
+  clean_names() |>
+  left_join(recfishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  rename(nsamp = sample_size) |>
+  rename(length = l_cm_bin) |>
+  select(-semester,
+         -n_ab1,
+         -region) |>	
   left_join(lenbins) |>
-	group_by(index, year, ibin, season) |>
-	summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
-	mutate(part = 2) |>
-	I()
+  group_by(index, year, ibin, season) |>
+  summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 2) |>
+  I()
 reclensharv
 
 # extract sample size for discard
@@ -366,19 +368,13 @@ reclensdisc
 
 # integrate discard sample size  
 reclens <- reclens |>
-	left_join(reclensharv) |>
-	left_join(reclensdisc) |>
+  left_join(reclensharv) |>
+  left_join(reclensdisc) |>
   na.omit() |> # missing sample sizes for discards in certain years
   I()
 
 fishery_lens <- bind_rows(comlens, reclens)
 
-# clean for discards
-fishery_ids <- fishery_ids |>
-  mutate(region = ifelse(stock == "NORTH","North","South")) |>
-  select(-stock)
-fishery_ids
-  
 # commercial discards
 disc_lens <- comdisc.len |>
   clean_names() |>
@@ -388,7 +384,7 @@ disc_lens <- comdisc.len |>
   left_join(fishery_ids) |>
   mutate(season = ifelse(semester==1,4,10)) |>
   left_join(lenbins) |>
-  select(-semester,-stock,-region,-length) |>
+  select(-semester,-region,-length) |>
   group_by(index, year, season, source, ibin) |>
   summarize(cal = n(), .groups = "drop") |>
   group_by(index, year, season, source) |>
@@ -396,9 +392,40 @@ disc_lens <- comdisc.len |>
   ungroup() |>
   mutate(gender = 0,
          part = 1,
-         index = ifelse(source == "CFRF",-1*index,index),
-         nsamp = 25) |> #we don't have the sample sizes so dummy value for now
+         index = ifelse(source == "CFRF",-1*index,index)) |>
   select(-source) |>
+  I()
+disc_lens
+
+# sample size for comdisc.len
+comdisc_samp_trawl <- comdisc.nhaul.fleet |>
+  clean_names() |>
+  select(-non_trawl) |>
+  mutate(gear = "trawl") |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  group_by(index, year, season) |>
+  summarize(nsamp = sum(trawl, na.rm = TRUE), .groups = "drop") |>
+  I()
+comdisc_samp_trawl
+
+comdisc_samp_nontrawl<- comdisc.nhaul.fleet |>
+  clean_names() |>
+  select(-trawl) |>
+  mutate(gear = "non-trawl") |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  group_by(index, year, season) |>
+  summarize(nsamp = sum(non_trawl, na.rm = TRUE), .groups = "drop") |>
+  I()
+comdisc_samp_nontrawl
+
+disc_lens <- disc_lens |>
+  left_join(comdisc_samp_trawl, by = c("index", "year", "season")) |> # joins only by index, year, season
+  left_join(comdisc_samp_nontrawl, by = c("index", "year", "season")) |>
+  mutate(nsamp_temp = ifelse(index < 0, 25, NA)) |># sample size for CFRF?
+  rowwise() |> mutate(nsamp = sum(nsamp.x, nsamp.y, nsamp_temp, na.rm = TRUE)) |>
+  select(-nsamp.x, -nsamp.y, -nsamp_temp) |> 
   I()
 disc_lens
 
@@ -715,15 +742,39 @@ state_survey_lens <- map_dfr(objects, function(x) get(x)|>clean_names()|>
          #part = 0,
          )
 state_survey_lens
+
+samp_objects <- c("MA.fall", "MA.spr",
+                  "RI.fall", "RI.spr",
+                  "LIS.fall", "LIS.spr")
+state_samp <- map_dfr(samp_objects, function(x) get(x) |> clean_names(),
+                      .id = "index") |>
+  mutate(index = survey_index[as.integer(index)],
+         season = ifelse(month > 6, 4, 10)) |>
+  group_by(index, year, season) |>
+  summarise(nsamp = sum(tot_n, na.rm = TRUE), .groups = "drop") |>
+  mutate_if(is.factor, as.character) |>
+  mutate_if(is.character, as.numeric) 
+
+state_survey_lens <- state_survey_lens |>
+  left_join(state_samp) |>
+  na.omit()
+
 nj <- NJ.CAL |>
   clean_names() |>
   mutate(season = 4,
          index = 20) |>
   mutate_if(is.character,as.numeric)
 
+nj_samp <- NJ.June |>
+  clean_names() |>
+  group_by(year) |>
+  summarise(nsamp = sum(tot_n), .groups = "drop")
+
+nj <- nj |>
+  left_join(nj_samp)
+
 state_survey_lens <- bind_rows(state_survey_lens, nj) |>
   select(-semester)
-##nsamp
 ## gender
 ## part
 
@@ -822,6 +873,20 @@ neamap_lens <- map_dfr(objects, function(x) get(x)|>clean_names(),
   select(-bsb_region, -length_cm, -prop_length)
 #neamap_lens
 
+neamap_samp <- neamap.all |>
+  clean_names() |>
+  mutate(season = ifelse(season == "Fall",10,4),
+         index = case_when(
+           season == 4 & bsb_region == "NORTH" ~ 24,
+           season == 4 & bsb_region == "SOUTH" ~ 25,
+           season == 10 & bsb_region == "NORTH" ~ 26,
+           season == 10 & bsb_region == "SOUTH" ~ 27)) |>
+  group_by(index, year, season) |>
+  summarise(nsamp = sum(tot_n, na.rm = TRUE), .groups = "drop")
+
+neamap_lens <- neamap_lens |>
+  left_join(neamap_samp)
+
 # 
 #   "#LF_NEAMAP_N_Spring_Trawl",
 #   NEAMAP.N.spr.LF = neamap.spr.lfreq[neamap.spr.lfreq$BSB.Region == "NORTH",c(-1,-3,-4,-5,-8)] %>% 
@@ -881,7 +946,22 @@ nefsc_lens <- nefsc.CAL |>
          season = 4, # only have spring & winter right now. ifelse(season=="SPRING",4,10),
          cal = no_at_length) |>
   select(year, season, index, length, cal)
-#nsamp missing here too
+
+nefsc_samp <- nefsc.pos.tows |>
+  clean_names() |>
+  mutate(index = case_when(
+          year < 2009 & stock_abbrev == "NORTH" ~ 28,
+          year < 2009 & stock_abbrev == "SOUTH" ~ 29,
+          year >= 2009 & stock_abbrev == "NORTH" ~ 30,
+          year >= 2009 & stock_abbrev == "SOUTH" ~ 31),
+         index = ifelse(season == "WINTER" & stock_abbrev == "SOUTH", 33, index),
+         season = 4) |>
+  group_by(index, year, season) |>
+  summarise(nsamp = sum(stations_pos_catch, na.rm = TRUE), .groups = "drop")
+
+nefsc_lens <- nefsc_lens |>
+  left_join(nefsc_samp)
+
 #nefsc_lens
 
 #winter survey not split N/S
@@ -932,18 +1012,19 @@ nefsc_lens <- nefsc.CAL |>
   #              .after = "YEAR") %>% data.frame,
   ####NOTE: Winter survey not broken N-S, so couldn't update, but should be the same as before?
 
-rec_cpue_lens <- rec.CAL |>
-  clean_names() |>
-  mutate(season = ifelse(semester==1,4,10),
-         index = case_when(
-           #GF - not sure why these have their own numbering, should be the same index as the catch
-           season == 4 & region == "North" ~ 9, #35,
-           season == 4 & region == "South" ~ 10, #36,
-           season == 10 & region == "North" ~ 11, #37,
-           season == 10 & region == "South" ~ 12)) |> #38)) |>
-  rename(length = length_cm,
-         cal = n_ab1b2) |>
-  select(year, season, index, length, cal)
+# rec_cpue_lens <- rec.CAL |>
+#   clean_names() |>
+#   mutate(season = ifelse(semester==1,4,10),
+#          index = case_when(
+#            #GF - not sure why these have their own numbering, should be the same index as the catch
+#            season == 4 & region == "North" ~ 9, #35,
+#            season == 4 & region == "South" ~ 10, #36,
+#            season == 10 & region == "North" ~ 11, #37,
+#            season == 10 & region == "South" ~ 12)) |> #38)) |>
+#   rename(length = length_cm,
+#          cal = n_ab1b2) |>
+#   select(year, season, index, length, cal)
+
 
 # "#LF_RecCPUE_N_spr",
 #   RecCPUE.N.spr.LF = rec.CAL[rec.CAL$REGION == "North" & rec.CAL$SEMESTER == "1",c(-2,-3)] %>% 
@@ -972,8 +1053,8 @@ rec_cpue_lens <- rec.CAL |>
 # now put the lengths together, create proportions by length bin, and put in ss format
 len_data <- bind_rows(state_survey_lens, 
                       neamap_lens, 
-                      nefsc_lens, 
-                      rec_cpue_lens) |>
+                      nefsc_lens) |> 
+                      # rec_cpue_lens) |>
   left_join(lenbins) |>
   select(-length)
 # no observations in bin 28 so create dummy table to fill these columns
@@ -985,7 +1066,7 @@ bigfish <- len_data |>
 # now create proportions by bin and wrangle into ss shape
 len_data <-  len_data |>
   bind_rows(bigfish) |>
-  group_by(index, year, season, ibin) |>
+  group_by(index, year, season, ibin, nsamp) |>
   summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
   group_by(index, year, season) |>
   mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
@@ -997,10 +1078,10 @@ len_data <-  len_data |>
               values_fill = 0
               ) |>
   mutate(gender = 0,
-         part = 0,
-         nsamp = 25) |> #we don't have the sample sizes so dummy value for now
+         part = 0) |>
   #Yr Seas Flt/Svy Gender Part Nsamp datavector(female-male)
   select(year, season, index, gender, part, nsamp, everything()) |>
+  filter(nsamp > 0) |>
   I()
 #len_data
 len_data2 <- len_data |>
