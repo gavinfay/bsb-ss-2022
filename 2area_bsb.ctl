@@ -61,51 +61,50 @@
 
 
 #_LO HI INIT PRIOR SD PR_type PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn         
-#female, growth pattern 1                   
-0.1  0.45   0.4       0.25   99   0   -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP:1_       
-1    20     9.26      10     99   0   -1 0 0 0 0 0 0 0 # Lmin-Fem_GP_1_       
-40   100    49.2      65     99   0   5  0 0 0 0 0 0 0 # Lmax-Fem_GP_1_       
-0.02 0.65   0.276     0.18   99   0   4  0 0 0 0 0 0 0 # VBK-Fem_GP_1_       
-0.01 0.5    0.25      0.3    99   0   4  0 0 0 0 0 0 0 # CV_yng-Fem_GP_1_       
-0.01 0.5    0.01      0.04   99   0   -4 0 0 0 0 0 0 0 # CV_old       
--3   3      8.95E-06  0      0.8  0   -3 0 0 0 0 0 0 0 # Wtlen1-Fem       
--3   4      3.139     3      0.8  0   -3 0 0 0 0 0 0 0 # Wtlen2-Fem       
--10  100    22.49     1      0.8  0   -3 0 0 0 0 0 0 0 # Mat50-Fem       
--10  10     -0.542    -1     0.8  0   -3 0 0 0 0 0 0 0 # Matslp-Fem       
--3   3      1         1      0.8  0   -3 0 0 0 0 0 0 0 # Eggs1-Fem       
--3   3      0         0      0.8  0   -3 0 0 0 0 0 0 0 # Eggs2-Fem       
-#female, growth pattern 2                   
-0.1  0.45   0.4       0.25   99   0   -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP:2_       
-1    20     9.26      10     99   0   -1 0 0 0 0 0 0 0 # Lmin-Fem_GP_2_       
-40   100    59.2      65     99   0   5  0 0 0 0 0 0 0 # Lmax-Fem_GP_2_       
-0.02 0.65   0.176     0.18   99   0   4  0 0 0 0 0 0 0 # VBK-Fem_GP_2_       
-0.01 0.5    0.25      0.3    99   0   4  0 0 0 0 0 0 0 # CV_yng-Fem_GP_2_       
-0.01 0.5    0.01      0.04   99   0   -4 0 0 0 0 0 0 0 # CV_old       
--3   3      1.03E-05  0      0.8  0   -3 0 0 0 0 0 0 0 # Wtlen1-Fem       
--3   4      3.081     3      0.8  0   -3 0 0 0 0 0 0 0 # Wtlen2-Fem       
--10  100    21.47     1      0.8  0   -3 0 0 0 0 0 0 0 # Mat50-Fem       
--10  10     -0.361    -1     0.8  0   -3 0 0 0 0 0 0 0 # Matslp-Fem       
--3   3      1         1      0.8  0   -3 0 0 0 0 0 0 0 # Eggs1-Fem       
--3   3      0         0      0.8  0   -3 0 0 0 0 0 0 0 # Eggs2-Fem     
-#_male, growth pattern 1                   
--3   3      0         0      0.8  0   -3 0 0 0 0 0 0 0 # natM_for_M_offset_mal=female*exp(male_param)
-1    20     9.26      10     99   0   -1 0 0 0 0 0 0 0 # Lmin-Male_GP_1_       
-40   100    60.9      65     99   0   5  0 0 0 0 0 0 0 # Lmax-Male_GP_1_       
-0.02 0.65   0.202     0.18   99   0   4  0 0 0 0 0 0 0 # VBK-Male_GP_1_       
-0.01 0.5    0.25      0.3    99   0   4  0 0 0 0 0 0 0 # CV_yng-Male_GP_1_       
-0.01 0.5    0.01      0.04   99   0   -4 0 0 0 0 0 0 0 # CV_old-Male       
--3   3      8.95E-06  0      0.8  0   -3 0 0 0 0 0 0 0 # Wtlen1-Male       
--3   4      3.139     3      0.8  0   -3 0 0 0 0 0 0 0 # Wtlen2-Male       
-
-#_male, growth pattern 2                   
--3   3      0         0      0.8  0   -3 0 0 0 0 0 0 0 # natM_for_M_offset_mal=female*exp(male_param)
-1    20     9.26      10     99   0   -1 0 0 0 0 0 0 0 # Lmin-Male_GP_1_       
-40   100    63.1      65     99   0   5  0 0 0 0 0 0 0 # Lmax-Male_GP_1_       
-0.02 0.65   0.183     0.18   99   0   4  0 0 0 0 0 0 0 # VBK-Male_GP_1_       
-0.01 0.5    0.25      0.3    99   0   4  0 0 0 0 0 0 0 # CV_yng-Male_GP_1_       
-0.01 0.5    0.01      0.04   99   0   -4 0 0 0 0 0 0 0 # CV_old-Male       
--3   3      1.03E-05  0      0.8  0   -3 0 0 0 0 0 0 0 # Wtlen1-Male       
--3   4      3.081     3      0.8  0   -3 0 0 0 0 0 0 0 # Wtlen2-Male
+#female,	growth	pattern	1																		
+0.1	0.45	0.4	0.25	99	0	-6	0	0	0	0	0	0	0	#	NatM_p_1_Fem_GP:1_						
+1	20	9.26	10	99	0	-1	0	0	0	0	0	0	0	#	Lmin-Fem_GP_1_						
+40	100	49.2	65	99	0	5	0	0	0	0	0	0	0	#	Lmax-Fem_GP_1_						
+0.02	0.65	0.276	0.18	99	0	4	0	0	0	0	0	0	0	#	VBK-Fem_GP_1_						
+0.01	0.5	0.25	0.3	99	0	4	0	0	0	0	0	0	0	#	CV_yng-Fem_GP_1_						
+0.01	0.5	0.01	0.04	99	0	-4	0	0	0	0	0	0	0	#	CV_old						
+-3	3	8.95E-06	0	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen1-Fem						
+-3	4	3.139	3	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen2-Fem						
+-10	100	22.49	1	0.8	0	-3	0	0	0	0	0	0	0	#	Mat50-Fem						
+-10	10	-0.542	-1	0.8	0	-3	0	0	0	0	0	0	0	#	Matslp-Fem						
+-3	3	1	1	0.8	0	-3	0	0	0	0	0	0	0	#	Eggs1-Fem						
+-3	3	0	0	0.8	0	-3	0	0	0	0	0	0	0	#	Eggs2-Fem						
+#female,	growth	pattern	2											
+-3	3	0	0	0.8	0	-6	0	0	0	0	0	0	0	#	natM
+-3	3	0	0	99	0	-1	0	0	0	0	0	0	0	#	Lmin
+-3	3	0.185	0	99	0	5	0	0	0	0	0	0	0	#	Lmax
+-3	3	-0.45	0	99	0	4	0	0	0	0	0	0	0	#	VBK
+-3	3	0	0	99	0	4	0	0	0	0	0	0	0	#	CV-yng
+-3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	CV-old
+-3	3	1.03E-05	0	99	0	-3	0	0	0	0	0	0	0	#	Wtlen1-Fem
+-3	3	3.081	0	99	0	-3	0	0	0	0	0	0	0	#	Wtlen2-Fem
+-3	3	21.47	0	99	0	-3	0	0	0	0	0	0	0	#	Mat50-Fem
+-3	3	-0.361	0	99	0	-3	0	0	0	0	0	0	0	#	Matslp-Fem
+-3	3	1	1	99	0	-3	0	0	0	0	0	0	0	#	Eggs1-Fem
+-3	3	0	0	99	0	-3	0	0	0	0	0	0	0	#	Eggs2-Fem						
+#_male,	growth	pattern	1																		
+-3	3	0	0	0.8	0	-3	0	0	0	0	0	0	0	#	natM	for	M	offset	mal	=	female*exp(male
+-3	3	0	0	99	0	-1	0	0	0	0	0	0	0	#	Lmin	M					
+-3	3	0.213	0	99	0	5	0	0	0	0	0	0	0	#	Lmax	M					
+-3	3	-0.312	0	99	0	4	0	0	0	0	0	0	0	#	VBK	M					
+-3	3	0	0	99	0	4	0	0	0	0	0	0	0	#	CV-yng	M					
+-3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	CV-old	M					
+-3	3	8.95E-06	0	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen1-Mal						
+-3	4	3.139	3	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen2-Mal	param)					
+#_male,	growth	pattern	2																		
+-3	3	0	0	0.8	0	-3	0	0	0	0	0	0	0	#	natM	for	M	offset	mal	=	female*exp(male
+-3	3	0	0	99	0	-1	0	0	0	0	0	0	0	#	Lmin	M					
+-3	3	0.2488	0	99	0	5	0	0	0	0	0	0	0	#	Lmax	M					
+-3	3	-0.4109	0	99	0	4	0	0	0	0	0	0	0	#	VBK	M					
+-3	3	0	0	99	0	4	0	0	0	0	0	0	0	#	CV-yng	M					
+-3	3	0	0	99	0	-4	0	0	0	0	0	0	0	#	CV-old	M					
+-3	3	1.03E-05	0	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen1-Mal						
+-3	4	3.081	3	0.8	0	-3	0	0	0	0	0	0	0	#	Wtlen2-Mal						
 
 #Hermaphroditism parameters                    
 # inflection about 4                   
