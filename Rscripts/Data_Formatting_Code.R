@@ -25,7 +25,7 @@ lenbins <- tibble(length = 1:100,
                   ibin = sapply(length,function(x) max(which(Lbins<x)))) |>
   mutate(ibin = ifelse(ibin==-Inf,1,ibin)) |>
   I()
-               
+
 ##Start collecting re-organized data in a list
 SS_BSB_dat1 = list(
   
@@ -80,7 +80,7 @@ SS_BSB_dat1 = list(
                .after = "YEAR") %>%
     add_column(CV = 0.01, 
                .after = "Catch") %>% data.frame,
-
+  
   "#_North_Rec_1",
   N.Rec.spr.Cat = rec.agg.region.sem %>% filter(REGION == "North", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Catch=sum(AB1)/1000) %>%
     add_column(Seas = 1, fleet = 9, 
@@ -181,52 +181,52 @@ SS_BSB_dat1 = list(
                .after = "Discards") %>% data.frame,
   "#Disc_North_NonTrawl_1",
   N.NonTrawl.spr.Disc = comdisc.gr.sem %>% filter(REGION == "NORTH", SEMESTER == 1, FLEET == "NON-TRAWL") %>% group_by(YEAR) %>% summarise(Discards=sum(Dead.Disc.mt)) %>%
-  add_column(Seas = 4, fleet = 5, 
-             .after = "YEAR") %>%
-  add_column(CV = 0.3, 
-             .after = "Discards") %>% data.frame,  
+    add_column(Seas = 4, fleet = 5, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame,  
   "#Disc_South_NonTrawl_1",
   S.NonTrawl.spr.Disc = comdisc.gr.sem %>% filter(REGION == "SOUTH", SEMESTER == 1, FLEET == "NON-TRAWL") %>% group_by(YEAR) %>% summarise(Discards=sum(Dead.Disc.mt)) %>%
-  add_column(Seas = 4, fleet = 6, 
-             .after = "YEAR") %>%
-  add_column(CV = 0.3, 
-             .after = "Discards") %>% data.frame,
+    add_column(Seas = 4, fleet = 6, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame,
   "#Disc_North_NonTrawl_2",
   N.NonTrawl.fall.Disc = comdisc.gr.sem %>% filter(REGION == "NORTH", SEMESTER == 2, FLEET == "NON-TRAWL") %>% group_by(YEAR) %>% summarise(Discards=sum(Dead.Disc.mt)) %>%
-  add_column(Seas = 10, fleet = 7, 
-             .after = "YEAR") %>%
-  add_column(CV = 0.3, 
-             .after = "Discards") %>% data.frame,  
+    add_column(Seas = 10, fleet = 7, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame,  
   "#Disc_South_NonTrawl_2",
   S.NonTrawl.spr.Disc = comdisc.gr.sem %>% filter(REGION == "SOUTH", SEMESTER == 2, FLEET == "NON-TRAWL") %>% group_by(YEAR) %>% summarise(Discards=sum(Dead.Disc.mt)) %>%
-  add_column(Seas = 10, fleet = 8, 
-             .after = "YEAR") %>%
-  add_column(CV = 0.3, 
-             .after = "Discards") %>% data.frame,
+    add_column(Seas = 10, fleet = 8, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame,
   "#Disc_North_Rec_1",
   N.Rec.spr.Disc = rec.agg.region.sem %>% filter(REGION == "North", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Discards=sum(B2_dead)/1000) %>%
-  add_column(Seas = 4, fleet = 9, 
-             .after = "YEAR") %>%
-  add_column(CV = 0.3, 
-             .after = "Discards") %>% data.frame,  ###Just made up CV for now, need to discuss and B2_dead or all B2s
+    add_column(Seas = 4, fleet = 9, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame,  ###Just made up CV for now, need to discuss and B2_dead or all B2s
   "#Disc_South_Rec_1",
   S.Rec.spr.Disc = rec.agg.region.sem %>% filter(REGION == "South", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Discards=sum(B2_dead)/1000) %>%
-  add_column(Seas = 4, fleet = 10, 
-             .after = "YEAR") %>%
-  add_column(CV = 0.3, 
-             .after = "Discards") %>% data.frame,
+    add_column(Seas = 4, fleet = 10, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame,
   "#Disc_North_Rec_2",
   N.Rec.fall.Disc = rec.agg.region.sem %>% filter(REGION == "North", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Discards=sum(B2_dead)/1000) %>%
-  add_column(Seas = 10, fleet = 11, 
-             .after = "YEAR") %>%
-  add_column(CV = 0.3, 
-             .after = "Discards") %>% data.frame,  
+    add_column(Seas = 10, fleet = 11, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame,  
   "#Disc_South_Rec_2",
   S.Rec.fall.Disc = rec.agg.region.sem %>% filter(REGION == "South", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Discards=sum(B2_dead)/1000) %>%
-  add_column(Seas = 10, fleet = 12, 
-             .after = "YEAR") %>%
-  add_column(CV = 0.3, 
-             .after = "Discards") %>% data.frame)
+    add_column(Seas = 10, fleet = 12, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame)
 
 #create lookup table for commercial fleets
 fishery_ids <- expand.grid(stock = c("NORTH","SOUTH"),
@@ -432,21 +432,27 @@ disc_lens
 fishery_lens <- bind_rows(comlens, reclens, disc_lens)
 
 
- fillbins <- unique(lenbins$ibin)[!unique(lenbins$ibin) %in% fishery_lens$ibin]
- filllens <- fishery_lens |>
-   slice(1:length(fillbins)) |>
-   mutate(cal = 0,
-          ibin = fillbins) |>
-   I()
- 
+fillbins <- unique(lenbins$ibin)[!unique(lenbins$ibin) %in% fishery_lens$ibin]
+filllens <- fishery_lens |>
+  slice(1:length(fillbins)) |>
+  mutate(cal = 0,
+         ibin = fillbins) |>
+  I()
+
 fishery_lens <- fishery_lens |>
   bind_rows(filllens) |>
+  group_by(index, year, ibin, season, gender, part, nsamp) |>
+  summarise(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
+  ungroup() |>
   pivot_wider(names_from = ibin,
               names_prefix = "bin_",
               values_from = cal,
               names_sort = TRUE,
               values_fill = 0
   ) |>
+  group_by(index, year, season, gender, part) |>
+  summarize(across(c(nsamp, everything()), sum)) |>
+  ungroup() |>
   #Yr Seas Flt/Svy Gender Part Nsamp datavector(female-male)
   select(year, season, index, gender, part, nsamp, everything()) |>
   I()
@@ -740,7 +746,7 @@ state_survey_lens <- map_dfr(objects, function(x) get(x)|>clean_names()|>
          season = ifelse(semester==1,4,10),
          #gender = 0,
          #part = 0,
-         )
+  )
 state_survey_lens
 
 samp_objects <- c("MA.fall", "MA.spr",
@@ -783,86 +789,86 @@ state_survey_lens <- bind_rows(state_survey_lens, nj) |>
 # MA trawl
 #  "#LF_MA_Spring_Trawl",
 #  MA.spr.LF <- MA.spr.lfreq[,c(-2,-3)] %>% 
-    # pivot_wider(
-    #   names_from = Length.cm,
-    #   names_sort = T,
-    #   values_from = Num.len,
-    #   values_fn = sum,
-    #   values_fill = list(Num.len = 0)) %>%
-  #   add_column(Seas = 4, Index = 13, Gender = 0, 
-  #              Part = 0, NSamp = tapply(MA.spr.lfreq$Num.len, MA.spr.lfreq$Year, sum), 
-  #              .after = "Year") %>% data.frame, 
-  # "#LF_MA_Fall_Trawl",
-  # MA.fall.LF = MA.fall.lfreq[,c(-2,-3)] %>% 
-  #   pivot_wider(
-  #     names_from = Length.cm,
-  #     names_sort = T,
-  #     values_from = Num.len,
-  #     values_fn = sum,
-  #     values_fill = list(Num.len = 0)) %>%
-  #   add_column(Seas = 10, Index = 14, Gender = 0, 
-  #              Part = 0, NSamp = tapply(MA.fall.lfreq$Num.len, MA.fall.lfreq$Year, sum), 
-  #              .after = "Year") %>% data.frame,
-  # "#LF_RI_Spring_Trawl",
-  # RI.spr.LF = RI.spr.lfreq[,c(-2,-3, -4)] %>% 
-  #   pivot_wider(
-  #     names_from = Length.cm,
-  #     names_sort = T,
-  #     values_from = Num.len,
-  #     values_fn = sum,
-  #     values_fill = list(Num.len = 0)) %>%
-  #   add_column(Seas = 4, Index = 16, Gender = 0, 
-  #              Part = 0, NSamp = tapply(RI.spr.lfreq$Num.len, RI.spr.lfreq$Year, sum), 
-  #              .after = "Year") %>% data.frame,
-  # "#LF_RI_Fall_Trawl",
-  # RI.fall.LF = RI.fall.lfreq[,c(-2,-3,-4)] %>% 
-  #   pivot_wider(
-  #     names_from = Length.cm,
-  #     names_sort = T,
-  #     values_from = Num.len,
-  #     values_fn = sum,
-  #     values_fill = list(Num.len = 0)) %>%
-  #   add_column(Seas = 10, Index = "17", Gender = 0, 
-  #              Part = 0, NSamp = tapply(RI.fall.lfreq$Num.len, RI.fall.lfreq$Year, sum), 
-  #              .after = "Year") %>% data.frame,
-  # "#LF_CT_Spring_Trawl",
-  # CT.spr.LF = CT.spr.lfreq[,c(-2,-3)] %>% 
-  #   pivot_wider(
-  #     names_from = Length.cm,
-  #     names_sort = T,
-  #     values_from = Num.len,
-  #     values_fn = sum,
-  #     values_fill = list(Num.len = 0)) %>%
-  #   add_column(Seas = 4, Index = 18, Gender = 0, 
-  #              Part = 0, NSamp = tapply(CT.spr.lfreq$Num.len, CT.spr.lfreq$Year, sum), 
-  #              .after = "Year") %>% data.frame,
-  # "#LF_CT_Fall_Trawl",
-  # CT.fall.LF = CT.fall.lfreq[,c(-2,-3)] %>% 
-  #   pivot_wider(
-  #     names_from = Length.cm,
-  #     names_sort = T,
-  #     values_from = Num.len,
-  #     values_fn = sum,
-  #     values_fill = list(Num.len = 0)) %>%
-  #   add_column(Seas = 10, Index = "19", Gender = 0, 
-  #              Part = 0, NSamp = tapply(CT.fall.lfreq$Num.len, CT.fall.lfreq$Year, sum), 
-  #              .after = "Year") %>% data.frame,
-  # "#LF_NJ_Trawl",
-  # NJ.mean.LF = NJ.lfreq[,c(-2)] %>% 
-  #   pivot_wider(
-  #     names_from = Length.cm,
-  #     names_sort = T,
-  #     values_from = Num.len,
-  #     values_fn = sum,
-  #     values_fill = list(Num.len = 0)) %>%
-  #   add_column(Seas = 4, Index = 21, Gender = 0, 
-  #              Part = 0, NSamp = tapply(NJ.lfreq$Num.len, NJ.lfreq$Year, sum), 
-  #              .after = "Year") %>% data.frame,
+# pivot_wider(
+#   names_from = Length.cm,
+#   names_sort = T,
+#   values_from = Num.len,
+#   values_fn = sum,
+#   values_fill = list(Num.len = 0)) %>%
+#   add_column(Seas = 4, Index = 13, Gender = 0, 
+#              Part = 0, NSamp = tapply(MA.spr.lfreq$Num.len, MA.spr.lfreq$Year, sum), 
+#              .after = "Year") %>% data.frame, 
+# "#LF_MA_Fall_Trawl",
+# MA.fall.LF = MA.fall.lfreq[,c(-2,-3)] %>% 
+#   pivot_wider(
+#     names_from = Length.cm,
+#     names_sort = T,
+#     values_from = Num.len,
+#     values_fn = sum,
+#     values_fill = list(Num.len = 0)) %>%
+#   add_column(Seas = 10, Index = 14, Gender = 0, 
+#              Part = 0, NSamp = tapply(MA.fall.lfreq$Num.len, MA.fall.lfreq$Year, sum), 
+#              .after = "Year") %>% data.frame,
+# "#LF_RI_Spring_Trawl",
+# RI.spr.LF = RI.spr.lfreq[,c(-2,-3, -4)] %>% 
+#   pivot_wider(
+#     names_from = Length.cm,
+#     names_sort = T,
+#     values_from = Num.len,
+#     values_fn = sum,
+#     values_fill = list(Num.len = 0)) %>%
+#   add_column(Seas = 4, Index = 16, Gender = 0, 
+#              Part = 0, NSamp = tapply(RI.spr.lfreq$Num.len, RI.spr.lfreq$Year, sum), 
+#              .after = "Year") %>% data.frame,
+# "#LF_RI_Fall_Trawl",
+# RI.fall.LF = RI.fall.lfreq[,c(-2,-3,-4)] %>% 
+#   pivot_wider(
+#     names_from = Length.cm,
+#     names_sort = T,
+#     values_from = Num.len,
+#     values_fn = sum,
+#     values_fill = list(Num.len = 0)) %>%
+#   add_column(Seas = 10, Index = "17", Gender = 0, 
+#              Part = 0, NSamp = tapply(RI.fall.lfreq$Num.len, RI.fall.lfreq$Year, sum), 
+#              .after = "Year") %>% data.frame,
+# "#LF_CT_Spring_Trawl",
+# CT.spr.LF = CT.spr.lfreq[,c(-2,-3)] %>% 
+#   pivot_wider(
+#     names_from = Length.cm,
+#     names_sort = T,
+#     values_from = Num.len,
+#     values_fn = sum,
+#     values_fill = list(Num.len = 0)) %>%
+#   add_column(Seas = 4, Index = 18, Gender = 0, 
+#              Part = 0, NSamp = tapply(CT.spr.lfreq$Num.len, CT.spr.lfreq$Year, sum), 
+#              .after = "Year") %>% data.frame,
+# "#LF_CT_Fall_Trawl",
+# CT.fall.LF = CT.fall.lfreq[,c(-2,-3)] %>% 
+#   pivot_wider(
+#     names_from = Length.cm,
+#     names_sort = T,
+#     values_from = Num.len,
+#     values_fn = sum,
+#     values_fill = list(Num.len = 0)) %>%
+#   add_column(Seas = 10, Index = "19", Gender = 0, 
+#              Part = 0, NSamp = tapply(CT.fall.lfreq$Num.len, CT.fall.lfreq$Year, sum), 
+#              .after = "Year") %>% data.frame,
+# "#LF_NJ_Trawl",
+# NJ.mean.LF = NJ.lfreq[,c(-2)] %>% 
+#   pivot_wider(
+#     names_from = Length.cm,
+#     names_sort = T,
+#     values_from = Num.len,
+#     values_fn = sum,
+#     values_fill = list(Num.len = 0)) %>%
+#   add_column(Seas = 4, Index = 21, Gender = 0, 
+#              Part = 0, NSamp = tapply(NJ.lfreq$Num.len, NJ.lfreq$Year, sum), 
+#              .after = "Year") %>% data.frame,
 objects <- c("neamap.spr.CAL",
              "neamap.fall.CAL"
-             )
+)
 neamap_lens <- map_dfr(objects, function(x) get(x)|>clean_names(),
-                             .id = "index") |>
+                       .id = "index") |>
   mutate(season = ifelse(index==1,4,10),
          index = case_when(
            index == 1 & bsb_region == "NORTH" ~ 24,
@@ -937,80 +943,81 @@ nefsc_lens <- nefsc.CAL |>
   clean_names() |>
   #filter(season!="SPRING") |>.  #getting rid of winter
   mutate(
-         index = case_when(
-           series == "ALBATROSS" & stock_abbrev == "NORTH" ~ 28,
-           series == "ALBATROSS" & stock_abbrev == "SOUTH" ~ 29,
-           series == "BIGELOW" & stock_abbrev == "NORTH" ~ 30,
-           series == "BIGELOW" & stock_abbrev == "SOUTH" ~ 31),
-          index = ifelse(season == "WINTER" & stock_abbrev == "SOUTH",33,index),
-         season = 4, # only have spring & winter right now. ifelse(season=="SPRING",4,10),
-         cal = no_at_length) |>
+    index = case_when(
+      series == "ALBATROSS" & stock_abbrev == "NORTH" ~ 28,
+      series == "ALBATROSS" & stock_abbrev == "SOUTH" ~ 29,
+      series == "BIGELOW" & stock_abbrev == "NORTH" ~ 30,
+      series == "BIGELOW" & stock_abbrev == "SOUTH" ~ 31),
+    index = ifelse(season == "WINTER" & stock_abbrev == "SOUTH",33,index),
+    season = 4, # only have spring & winter right now. ifelse(season=="SPRING",4,10),
+    cal = no_at_length) |>
   select(year, season, index, length, cal)
 
 nefsc_samp <- nefsc.pos.tows |>
   clean_names() |>
   mutate(index = case_when(
-          year < 2009 & stock_abbrev == "NORTH" ~ 28,
-          year < 2009 & stock_abbrev == "SOUTH" ~ 29,
-          year >= 2009 & stock_abbrev == "NORTH" ~ 30,
-          year >= 2009 & stock_abbrev == "SOUTH" ~ 31),
-         index = ifelse(season == "WINTER" & stock_abbrev == "SOUTH", 33, index),
-         season = 4) |>
+    year < 2009 & stock_abbrev == "NORTH" ~ 28,
+    year < 2009 & stock_abbrev == "SOUTH" ~ 29,
+    year >= 2009 & stock_abbrev == "NORTH" ~ 30,
+    year >= 2009 & stock_abbrev == "SOUTH" ~ 31),
+    index = ifelse(season == "WINTER" & stock_abbrev == "SOUTH", 33, index),
+    season = 4) |>
   group_by(index, year, season) |>
   summarise(nsamp = sum(stations_pos_catch, na.rm = TRUE), .groups = "drop")
 
 nefsc_lens <- nefsc_lens |>
-  left_join(nefsc_samp)
+  left_join(nefsc_samp) |>
+  relocate(index, year, cal, season, length, nsamp)
 
 #nefsc_lens
 
 #winter survey not split N/S
 
-  # "#LF_NEFSC_N_Spring_Trawl",
-  # NEFSC.N.spr.LF = nefsc.lfreq[nefsc.lfreq$STOCK_ABBREV == "NORTH" & nefsc.lfreq$SEASON == "SPRING" & nefsc.lfreq$SERIES == "ALBATROSS" ,c(-1,-2,-4,-7)] %>% 
-  #   pivot_wider(
-  #     names_from = LENGTH,
-  #     names_sort = T,
-  #     values_from = NUMLEN,
-  #     values_fn = sum,
-  #     values_fill = list(NUMLEN = 0)) %>%
-  #   add_column(Seas = 4, Index = 31, Gender = 0, 
-  #              Part = 0, NSamp = tapply(nefsc.lfreq$NUMLEN, list(nefsc.lfreq$STOCK_ABBREV, nefsc.lfreq$YEAR, nefsc.lfreq$SERIES), sum)[1,1:20,1], 
-  #              .after = "YEAR") %>% data.frame,
-  # "#LF_NEFSC_S_Spring_Trawl",
-  # NEFSC.S.spr.LF = nefsc.lfreq[nefsc.lfreq$STOCK_ABBREV == "SOUTH" & nefsc.lfreq$SEASON == "SPRING" & nefsc.lfreq$SERIES == "ALBATROSS",c(-1,-2,-4,-7)] %>% 
-  #   pivot_wider(
-  #     names_from = LENGTH,
-  #     names_sort = T,
-  #     values_from = NUMLEN,
-  #     values_fn = sum,
-  #     values_fill = list(NUMLEN = 0)) %>%
-  #   add_column(Seas = 4, Index = 32, Gender = 0, 
-  #              Part = 0, NSamp = tapply(nefsc.lfreq$NUMLEN, list(nefsc.lfreq$STOCK_ABBREV, nefsc.lfreq$YEAR, nefsc.lfreq$SERIES), sum)[2,1:20,1], 
-  #              .after = "YEAR") %>% data.frame,
-  # "#_Bigelow_N_Spring_Trawl",
-  # Big.N.spr.LF = nefsc.lfreq[nefsc.lfreq$STOCK_ABBREV == "NORTH" & nefsc.lfreq$SEASON == "SPRING" & nefsc.lfreq$SERIES == "BIGELOW",c(-1,-2,-4,-7)] %>% 
-  #   pivot_wider(
-  #     names_from = LENGTH,
-  #     names_sort = T,
-  #     values_from = NUMLEN,
-  #     values_fn = sum,
-  #     values_fill = list(NUMLEN = 0)) %>%
-  #   add_column(Seas = 4, Index = 35, Gender = 0, 
-  #              Part = 0, NSamp = tapply(nefsc.lfreq$NUMLEN, list(nefsc.lfreq$STOCK_ABBREV, nefsc.lfreq$YEAR, nefsc.lfreq$SERIES), sum)[1,21:33,2], 
-  #              .after = "YEAR") %>% data.frame,
-  # "#_Bigelow_S_Spring_Trawl",
-  # Big.S.spr.LF = nefsc.lfreq[nefsc.lfreq$STOCK_ABBREV == "SOUTH" & nefsc.lfreq$SEASON == "SPRING" & nefsc.lfreq$SERIES == "BIGELOW",c(-1,-2,-4,-7)] %>% 
-  #   pivot_wider(
-  #     names_from = LENGTH,
-  #     names_sort = T,
-  #     values_from = NUMLEN,
-  #     values_fn = sum,
-  #     values_fill = list(NUMLEN = 0)) %>%
-  #   add_column(Seas = 4, Index = 36, Gender = 0, 
-  #              Part = 0, NSamp = tapply(nefsc.lfreq$NUMLEN, list(nefsc.lfreq$STOCK_ABBREV, nefsc.lfreq$YEAR, nefsc.lfreq$SERIES), sum)[2,21:33,2], 
-  #              .after = "YEAR") %>% data.frame,
-  ####NOTE: Winter survey not broken N-S, so couldn't update, but should be the same as before?
+# "#LF_NEFSC_N_Spring_Trawl",
+# NEFSC.N.spr.LF = nefsc.lfreq[nefsc.lfreq$STOCK_ABBREV == "NORTH" & nefsc.lfreq$SEASON == "SPRING" & nefsc.lfreq$SERIES == "ALBATROSS" ,c(-1,-2,-4,-7)] %>% 
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 4, Index = 31, Gender = 0, 
+#              Part = 0, NSamp = tapply(nefsc.lfreq$NUMLEN, list(nefsc.lfreq$STOCK_ABBREV, nefsc.lfreq$YEAR, nefsc.lfreq$SERIES), sum)[1,1:20,1], 
+#              .after = "YEAR") %>% data.frame,
+# "#LF_NEFSC_S_Spring_Trawl",
+# NEFSC.S.spr.LF = nefsc.lfreq[nefsc.lfreq$STOCK_ABBREV == "SOUTH" & nefsc.lfreq$SEASON == "SPRING" & nefsc.lfreq$SERIES == "ALBATROSS",c(-1,-2,-4,-7)] %>% 
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 4, Index = 32, Gender = 0, 
+#              Part = 0, NSamp = tapply(nefsc.lfreq$NUMLEN, list(nefsc.lfreq$STOCK_ABBREV, nefsc.lfreq$YEAR, nefsc.lfreq$SERIES), sum)[2,1:20,1], 
+#              .after = "YEAR") %>% data.frame,
+# "#_Bigelow_N_Spring_Trawl",
+# Big.N.spr.LF = nefsc.lfreq[nefsc.lfreq$STOCK_ABBREV == "NORTH" & nefsc.lfreq$SEASON == "SPRING" & nefsc.lfreq$SERIES == "BIGELOW",c(-1,-2,-4,-7)] %>% 
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 4, Index = 35, Gender = 0, 
+#              Part = 0, NSamp = tapply(nefsc.lfreq$NUMLEN, list(nefsc.lfreq$STOCK_ABBREV, nefsc.lfreq$YEAR, nefsc.lfreq$SERIES), sum)[1,21:33,2], 
+#              .after = "YEAR") %>% data.frame,
+# "#_Bigelow_S_Spring_Trawl",
+# Big.S.spr.LF = nefsc.lfreq[nefsc.lfreq$STOCK_ABBREV == "SOUTH" & nefsc.lfreq$SEASON == "SPRING" & nefsc.lfreq$SERIES == "BIGELOW",c(-1,-2,-4,-7)] %>% 
+#   pivot_wider(
+#     names_from = LENGTH,
+#     names_sort = T,
+#     values_from = NUMLEN,
+#     values_fn = sum,
+#     values_fill = list(NUMLEN = 0)) %>%
+#   add_column(Seas = 4, Index = 36, Gender = 0, 
+#              Part = 0, NSamp = tapply(nefsc.lfreq$NUMLEN, list(nefsc.lfreq$STOCK_ABBREV, nefsc.lfreq$YEAR, nefsc.lfreq$SERIES), sum)[2,21:33,2], 
+#              .after = "YEAR") %>% data.frame,
+####NOTE: Winter survey not broken N-S, so couldn't update, but should be the same as before?
 
 # rec_cpue_lens <- rec.CAL |>
 #   clean_names() |>
@@ -1053,8 +1060,8 @@ nefsc_lens <- nefsc_lens |>
 # now put the lengths together, create proportions by length bin, and put in ss format
 len_data <- bind_rows(state_survey_lens, 
                       neamap_lens, 
-                      nefsc_lens) |> 
-                      # rec_cpue_lens) |>
+                      nefsc_lens) |>
+  # , rec_cpue_lens) |>
   left_join(lenbins) |>
   select(-length)
 # no observations in bin 28 so create dummy table to fill these columns
@@ -1076,7 +1083,7 @@ len_data <-  len_data |>
               values_from = cal,
               names_sort = TRUE,
               values_fill = 0
-              ) |>
+  ) |>
   mutate(gender = 0,
          part = 0) |>
   #Yr Seas Flt/Svy Gender Part Nsamp datavector(female-male)
@@ -1201,12 +1208,12 @@ unsexed_ageatlen <- fishery_agelens |>
     region == "SOUTH" & semester == 1 ~ 2,
     region == "NORTH" & semester == 2 ~ 3,
     region == "SOUTH" & semester == 2 ~ 4,
-    ),
-    part = 2,
-    ageerr= 1, 
-    #nsamp = 25,
-    lobin = ibin,
-    month = ifelse(semester==1,4,10)) |>
+  ),
+  part = 2,
+  ageerr= 1, 
+  #nsamp = 25,
+  lobin = ibin,
+  month = ifelse(semester==1,4,10)) |>
   select(-region,-semester) |>
   select(year, month, index, sex, part, ageerr, lobin, ibin, nsamp, everything()) |>
   arrange(year, month, index, ibin) |>
@@ -1237,7 +1244,7 @@ sexed_ageatlen <- fishery_agelens |>
               names_sort = FALSE, #TRUE,
               values_from = num,
               values_fill = 0
-              ) |>
+  ) |>
   mutate(index = case_when(
     region == "NORTH" & semester == 1 ~ 1,
     region == "SOUTH" & semester == 1 ~ 2,
