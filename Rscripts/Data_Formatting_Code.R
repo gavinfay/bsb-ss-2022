@@ -1064,11 +1064,13 @@ len_data <- bind_rows(state_survey_lens,
   # , rec_cpue_lens) |>
   left_join(lenbins) |>
   select(-length)
-# no observations in bin 28 so create dummy table to fill these columns
+# no observations in bin 27 & 28 so create dummy table to fill these columns
 bigfish <- len_data |>
-  slice(1) |>
-  mutate(ibin = 28,
-         cal = 0)
+  slice(c(1,2)) |>
+  mutate(ibin = 27,
+         cal = 0) 
+bigfish$ibin[2] <- 28
+
 #bigfish
 # now create proportions by bin and wrangle into ss shape
 len_data <-  len_data |>
