@@ -267,7 +267,7 @@
 
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1987 # first year of main recr_devs; early devs can preceed this era
-2014 # last year of main recr_devs; forecast devs start in following year
+2019 # last year of main recr_devs; forecast devs start in following year
 3 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
@@ -277,7 +277,7 @@
  1965 #_last_yr_nobias_adj_in_MPD; begin of ramp
  1988 #_first_yr_fullbias_adj_in_MPD; begin of plateau
  2012 #_last_yr_fullbias_adj_in_MPD
- 2020 #_end_yr_for_ramp_in_MPD (can be in forecast to shape ramp, but SS sets bias_adj to 0.0 for fcast yrs)
+ 2023 #_end_yr_for_ramp_in_MPD (can be in forecast to shape ramp, but SS sets bias_adj to 0.0 for fcast yrs)
  0.98 #_max_bias_adj_in_MPD (typical ~0.8; -3 sets all years to 0.0; -2 sets all non-forecast yrs w/ estimated recdevs to 1.0; -1 sets biasadj=1.0 for all yrs w/ recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -15 #min rec_dev
@@ -816,26 +816,7 @@
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=WtFreq; 7=sizeage; 8=catch; 
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  wtfreq_method
-5 1 1 0.4 1   # down weight age data via lambda instead of var adjustment to preserve sample size structure
-5 2 1 0.4 1   # down weight age data via lambda instead of var adjustment to preserve sample size structure
-1 14 1 0 1   # turn off MA Fll surv
-4 14 1 0 1    # turn off MA Fll lengths
-1 15 1 0 1   # turn off MA age 1s
-1 17 1 0 1    #turn off RI age 1s because these data are in RI Spring trawl index, fleet 13
-1 19 1 0 1   # turn off CT age 1s
-1 22 1 0 1   # turn off NJ age 1s
-1 25 1 0 1  #Turn off VIMS
-1 27 1 0 1    # turn off NEAMAP Spring South index
-4 27 1 0 1    # turn off NEAMAP Spring South lengths
-1 29 1 0 1   # turn off Neamap Nrth Fall 
-4 29 1 0 1    # turn off NEAMAP North Fall lengths
-1 30 1 0 1   # turn off NEAMAP Sth Fall
-4 30 1 0 1    # turn off NEAMAP Fall South lengths
-5 33 1 0.4 1  #down weight age data via lambda instead of var adjustment to preserve sample size structure
-5 34 1 0.4 1  #down weight age data via lambda instead of var adjustment to preserve sample size structure
-#1 37 1 0 1   #turn off North winter BTS
-#4 37 1 0 1   #turn off North winter BTS lengths
-#1 39 1 0 1    # turn off GSWI index on recruitment
+
 -9999 1 1 1 1
 
 0 # read specs for more stddev reporting
