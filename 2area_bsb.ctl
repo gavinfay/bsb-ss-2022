@@ -708,8 +708,88 @@
 # Tag loss and Tag reporting parameters go next
 # need no_tag_groups lines for TG_loss_init, TG_loss_chronic, TG_overdispersion
 # and no_fleets lines for TG_report_fleet and TG_rpt_decayfleet
-0 # TG_custom:  0=no read; 1=read
+1 # TG_custom:  0=no read; 1=read
 #_LO HI INIT PRIOR SD PR_type PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn  
+-10 10 -9  -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_2
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_3
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_4
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_5
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_6
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_7
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_8
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_9
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_10
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_11
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_12
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_13
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_14
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_15
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_16
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_17
+ -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_18
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_2
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_3
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_4
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_5
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_6
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_7
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_8
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_9
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_10
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_11
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_12
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_13
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_14
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_15
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_16
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_17
+ -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_18
+ 1 10 2  2 0.001 1 -4 0 0 0 0 0 0 0 # TG_overdispersion_1
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_2
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_3
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_4
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_5
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_6
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_7
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_8
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_9
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_10
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_11
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_12
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_13
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_14
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_15
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_16
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_17
+ 1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_18
+ # 70.70% reporting rate (Moser & Shepherd 2009)        
+ -10 10 0.881  0.881 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_2
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_3
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_4
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_5
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_6
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_7
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_8
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_9
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_10
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_11
+ -10 10 7  7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_report_fleet:_12
+ -4 0 0  0 2 6 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_2
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_3
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_4
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_5
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_6
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_7
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_8
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_9
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_10
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_11
+ -4 0 0  0 2 6 -1000 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_12
+
 
 #_Variance_adjustments_to_input_values
 #_factor fleet value
@@ -731,86 +811,7 @@
 
 
 
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
--10 10 -9 -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_1_
-# set overdispersion to do 2, likelihood profile on this (use same val for all tag
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-1 1000 2 2 0.001 1 -7 0 0 0 0 0 0 0 # TG_overdispersion_1_
-# 70.70% reporting rate (Moser & Shepherd 2009)        
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--10 20 0.881 0.88 0.001 1 -4 0 0 0 0 0 0 0 # TG_report_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
--4 4 0 0 2 0 -4 0 0 0 0 0 0 0 # TG_rpt_decay_fleet:_1_
+
 
 
 #variance adjustment
