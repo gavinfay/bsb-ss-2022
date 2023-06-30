@@ -10,7 +10,7 @@ bsb.dat
 1 # Include prior_like for non-estimated parameters (0,1) 
 1 # Use Soft Boundaries to aid convergence (0,1) (recommended)
 1 # Number of datafiles to produce: 1st is input, 2nd is estimates, 3rd and higher are bootstrap
-0 # Turn off estimation for parameters entering after this phase
+10 # Turn off estimation for parameters entering after this phase
 0 # MCeval burn interval
 1 # MCeval thin interval
 0 # jitter initial parm value by this fractionsub
