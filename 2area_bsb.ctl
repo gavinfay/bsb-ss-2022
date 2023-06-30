@@ -28,11 +28,11 @@
 1989 1997
 2009 2016
 # 1995 2002 2003 2007
-1989 1999 2000 2010
+2000 2010 2011 2021
 
 1 #_block deviation adjust method
-0 0 0 0 0 #autogen of time-varying params (1= no autogen)
-#1 1 1 1 1 #autogen of time-varying params (1= no autogen)
+#0 0 0 0 0 #autogen of time-varying params (1= no autogen)
+1 1 1 1 1 #autogen of time-varying params (1= no autogen)
 
 0 #_natM_type:_0=1Parm; 1=N_breakpoints;_2=Lorenzen;_3=agespecific;_4=agespec_withseasinterpolate
 #2 #_N_breakpoints
@@ -141,6 +141,66 @@
 
 # 0  #custom_MG-env_setup (0/1)
 # -2 2 0 0 -1 99 -2 #_placeholder for no MG-environ parameters
+
+#_  LO  HI  INIT    PRIOR   PR_SD   PR_type PHASE       
+    0.1 0.45    0.4 0.25    99  0   -6  #   NatM_uniform_Fem_GP_1_BLK3repl_2000
+    0.1 0.45    0.4 0.25    99  0   -6  #   NatM_uniform_Fem_GP_1_BLK3repl_2011
+    1   20  12.88   10  99  0   -1  #   L_at_Amin_Fem_GP_1_BLK3repl_2000
+    1   20  11  10  99  0   -1  #   L_at_Amin_Fem_GP_1_BLK3repl_2011
+    40  100 77.47   65  99  0   5   #   L_at_Amax_Fem_GP_1_BLK3repl_2000
+    40  100 47.72   65  99  0   5   #   L_at_Amax_Fem_GP_1_BLK3repl_2011
+    0.02    0.65    0.134   0.18    99  0   4   #   VonBert_K_Fem_GP_1_BLK3repl_2000
+    0.02    0.65    0.285   0.18    99  0   4   #   VonBert_K_Fem_GP_1_BLK3repl_2011
+    -3  3   1.62E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2000
+    -3  3   1.81E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2011
+    -3  4   2.955   3   0.8 0   -3  #   Wtlen_2_Fem_GP_1_BLK3repl_2000
+    -3  4   2.914   3   0.8 0   -3  #   Wtlen_2_Fem_GP_1_BLK3repl_2011
+    -10 100 22.85   1   0.8 0   -3  #   Mat50%_Fem_GP_1_BLK3repl_2000
+    -10 100 22.69   1   0.8 0   -3  #   Mat50%_Fem_GP_1_BLK3repl_2011
+    -10 10  -0.42   -1  0.8 0   -3  #   Mat_slope_Fem_GP_1_BLK3repl_2000
+    -10 10  -0.63   -1  0.8 0   -3  #   Mat_slope_Fem_GP_1_BLK3repl_2011
+    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Fem_GP_2_BLK3repl_2000
+    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Fem_GP_2_BLK3repl_2011
+    -3  20  -0.106396249    10  99  0   -1  #   L_at_Amin_Fem_GP_2_BLK3repl_2000
+    -3  20  -0.106396249    10  99  0   -1  #   L_at_Amin_Fem_GP_2_BLK3repl_2011
+    -3  100 -0.330449362    65  99  0   5   #   L_at_Amax_Fem_GP_2_BLK3repl_2000
+    -3  100 -0.330449362    65  99  0   5   #   L_at_Amax_Fem_GP_2_BLK3repl_2011
+    -3  0.65    0.458746475 0.18    99  0   4   #   VonBert_K_Fem_GP_2_BLK3repl_2000
+    -3  0.65    0.458746475 0.18    99  0   4   #   VonBert_K_Fem_GP_2_BLK3repl_2011
+    -3  3   0.0000163   0   0.8 0   -3  #   Wtlen_1_Fem_GP_2_BLK3repl_2000
+    -3  3   0.0000212   0   0.8 0   -3  #   Wtlen_1_Fem_GP_2_BLK3repl_2011
+    -3  4   2.944   3   0.8 0   -3  #   Wtlen_2_Fem_GP_2_BLK3repl_2000
+    -3  4   2.861   3   0.8 0   -3  #   Wtlen_2_Fem_GP_2_BLK3repl_2011
+    -10 100 21.11   1   0.8 0   -3  #   Mat50%_Fem_GP_2_BLK3repl_2000
+    -10 100 22.73   1   0.8 0   -3  #   Mat50%_Fem_GP_2_BLK3repl_2011
+    -10 10  -0.4    -1  0.8 0   -3  #   Mat_slope_Fem_GP_2_BLK3repl_2000
+    -10 10  -0.43   -1  0.8 0   -3  #   Mat_slope_Fem_GP_2_BLK3repl_2011
+    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_1_BLK3repl_2000
+    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_1_BLK3repl_2011
+    -3  20  -0.244130886    10  99  0   -1  #   L_at_Amin_Mal_GP_1_BLK3repl_2000
+    -3  20  -0.023567469    10  99  0   -1  #   L_at_Amin_Mal_GP_1_BLK3repl_2011
+    -3  100 -0.178430852    65  99  0   5   #   L_at_Amax_Mal_GP_1_BLK3repl_2000
+    -3  100 -0.201373724    65  99  0   5   #   L_at_Amax_Mal_GP_1_BLK3repl_2011
+    -3  0.65    0.425170179 0.18    99  0   4   #   VonBert_K_Mal_GP_1_BLK3repl_2000
+    -3  0.65    0.295117051 0.18    99  0   4   #   VonBert_K_Mal_GP_1_BLK3repl_2011
+    -3  3   0.0000144   0   0.8 0   -3  #   Wtlen_1_Mal_GP_1_BLK3repl_2000
+    -3  3   0.0000303   0   0.8 0   -3  #   Wtlen_1_Mal_GP_1_BLK3repl_2011
+    -3  4   2.98    3   0.8 0   -3  #   Wtlen_2_Mal_GP_1_BLK3repl_2000
+    -3  4   2.745   3   0.8 0   -3  #   Wtlen_2_Mal_GP_1_BLK3repl_2011
+    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_2_BLK3repl_2000
+    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_2_BLK3repl_2011
+    -3  20  -0.219655852    10  99  0   -1  #   L_at_Amin_Mal_GP_2_BLK3repl_2000
+    -3  20  -0.057523844    10  99  0   -1  #   L_at_Amin_Mal_GP_2_BLK3repl_2011
+    -3  100 -0.226149226    65  99  0   5   #   L_at_Amax_Mal_GP_2_BLK3repl_2000
+    -3  100 -0.026685691    65  99  0   5   #   L_at_Amax_Mal_GP_2_BLK3repl_2011
+    -3  0.65    0.444494452 0.18    99  0   4   #   VonBert_K_Mal_GP_2_BLK3repl_2000
+    -3  0.65    -0.127155175    0.18    99  0   4   #   VonBert_K_Mal_GP_2_BLK3repl_2011
+    -3  3   0.0000144   0   0.8 0   -3  #   Wtlen_1_Mal_GP_2_BLK3repl_2000
+    -3  3   0.0000298   0   0.8 0   -3  #   Wtlen_1_Mal_GP_2_BLK3repl_2011
+    -3  4   2.973   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2000
+    -3  4   2.743   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2011
+    0.0001  2   0.5 0.5 0.5 6   -5  #   RecrDist_GP_1_area_1_month_10_dev_se
+    -0.99   0.99    0   0   0.5 6   -6  #   RecrDist_GP_1_area_1_month_10_dev_autocorr
 
 #_seasonal_effects_on_biology_parms
 #C possibly include this for w-l relationships
@@ -701,6 +761,56 @@
 
 #34	GSWI
 
+# timevary selex parameters 
+#_          LO            HI          INIT         PRIOR         PR_SD       PR_type    PHASE  #  parm_name
+             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_South_Trawl_1(2)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_South_Trawl_1(2)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_South_Trawl_1(2)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_South_Trawl_1(2)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_2(3)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_2(3)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_2(3)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_2(3)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_South_Trawl_2(4)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_South_Trawl_2(4)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_South_Trawl_2(4)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_South_Trawl_2(4)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Nontrawl_1(5)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Nontrawl_1(5)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Nontrawl_1(5)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Nontrawl_1(5)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_South_Nontrawl_1(6)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_South_Nontrawl_1(6)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_South_Nontrawl_1(6)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_South_Nontrawl_1(6)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Nontrawl_2(7)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Nontrawl_2(7)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Nontrawl_2(7)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Nontrawl_2(7)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_South_Nontrawl_2(8)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_South_Nontrawl_2(8)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_South_Nontrawl_2(8)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_South_Nontrawl_2(8)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Rec_1(9)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Rec_1(9)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Rec_1(9)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Rec_1(9)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_South_Rec_1(10)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_South_Rec_1(10)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_South_Rec_1(10)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_South_Rec_1(10)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Rec_2(11)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Rec_2(11)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Rec_2(11)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Rec_2(11)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_South_Rec_2(12)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_South_Rec_2(12)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_South_Rec_2(12)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_South_Rec_2(12)_BLK1repl_1989
 
 0 #_2D AR selectivity
 
