@@ -241,7 +241,7 @@
  1 #_lambda for Fcast_recr_like occurring before endyr+1
  1965 #_last_yr_nobias_adj_in_MPD; begin of ramp
  1988 #_first_yr_fullbias_adj_in_MPD; begin of plateau
- 2012 #_last_yr_fullbias_adj_in_MPD
+ 2017 #_last_yr_fullbias_adj_in_MPD
  2023 #_end_yr_for_ramp_in_MPD (can be in forecast to shape ramp, but SS sets bias_adj to 0.0 for fcast yrs)
  0.98 #_max_bias_adj_in_MPD (typical ~0.8; -3 sets all years to 0.0; -2 sets all non-forecast yrs w/ estimated recdevs to 1.0; -1 sets biasadj=1.0 for all yrs w/ recdevs)
  0 #_period of cycles in recruitment (N parms read below)
