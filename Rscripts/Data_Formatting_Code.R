@@ -159,13 +159,13 @@ SS_BSB_dat1 = list(
   RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "9",obs = RecCPA.agg[RecCPA.agg$Region == "North", 3], CV = 0.38), #Note: Using previous average for RecCPUE CV until can get from Jeff
   "#_RecCPUE_S_spr",
   RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "11",obs = RecCPA.agg[RecCPA.agg$Region == "South", 3], CV = 0.25), #Note: Using previous average for RecCPUE CV until can get from Jeff
-  "VAST_N_spr",
+  "#_VAST_N_spr",
   VAST.N.spr = data.frame(year = spring_N_index$Year, seas = "4", index = "35", obs = spring_N_index$Index, CV = spring_N_index$Index_SD/spring_N_index$Index),
-  "VAST_S_spr",
+  "#_VAST_S_spr",
   VAST.S.spr = data.frame(year = spring_S_index$Year, seas = "4", index = "36", obs = spring_S_index$Index, CV = spring_S_index$Index_SD/spring_S_index$Index),
-  "VAST_N_fall",
+  "#_VAST_N_fall",
   VAST.N.fall = data.frame(year = fall_N_index$Year, seas = "10", index = "37", obs = fall_N_index$Index, CV = fall_N_index$IndexSD/fall_N_index$Index),
-  "VAST_S_fall",
+  "#_VAST_S_fall",
   VAST.S.fall = data.frame(year = fall_S_index$Year, seas = "10", index = "38", obs = fall_S_index$Index, CV = fall_S_index$Index_SD/fall_S_index$Index),
   
   "###############################################",

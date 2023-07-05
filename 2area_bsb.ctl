@@ -309,7 +309,11 @@
 31 3 0 0 1 0 #Bigelow_Spr_Sth 
 #32 3 0 0 1 0 #NEFSC_Wint_Nrth 
 #33 3 0 0 1 0 #NEFSC_Wint_Sth 
-#34 3 0 0 1 0 #GS_Index  
+#34 3 0 0 1 0 #GS_Index
+35 3 0 0 1 0 #VAST_N_Spr
+36 3 0 0 1 0 #VAST_S_Spr
+37 3 0 0 1 0 #VAST_N_Fall 
+38 3 0 0 1 0 #VAST_S_Fall  
 -9999 0 0 0 0 0
 
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
@@ -363,7 +367,15 @@
 #-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q NEFSC Winter BTS South	(33)
 #0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, NEFSC Winter BTS South (33)
 #-35	10	-8	0	99	0	-1	0	0	0	0	0	0	0	#	ln_q GSWI (34)
-#	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, GSWI (34)			
+#	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, GSWI (34)
+-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q VAST North Spring (35)  
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, VAST North Spring(35)  
+-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q VAST South Spring (36)  
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, VAST South Spring (36)  
+-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q VAST North Fall (37)  
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, VAST North Fall (37)  
+-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q VAST South Fall (38)  
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, VAST South Fall (38)  			
 
 
 #_size_selex_types
@@ -402,6 +414,10 @@
 24	0	0	0	#32	North_Winter_BTS
 24	0	0	0	#33	South_Winter_BTS
 0	0	0	0	#34	GSWI
+24  0   0   0   #35 VAST_North_Spr
+24  0   0   0   #36 VAST_South_Spr
+24  0   0   0   #37 VAST_North_Fall
+24  0   0   0   #38 VAST_South_Fall
  
 #_age_selex_types
 #_Pattern Discard Male Special
@@ -439,6 +455,10 @@
 0	0	0	0
 0	0	0	0
 0	0	0	0
+0   0   0   0
+0   0   0   0
+0   0   0   0
+0   0   0   0
 
 #
 #_LO	HI	INIT	PRIOR	SD	PR_type	PHASE	env-var	use_dev	dev_minyr	dev_maxyr	dev_stddev	Block	Block_Fxn
@@ -760,6 +780,38 @@
 -10	10	-9	-0.35	99	0	3	0	0	0	0	0	0	0
 
 #34	GSWI
+
+#35 VAST_North_Spr
+    5   59  25  65  99  0   2   0   0   0   0   0   0   0
+-10     4   -2  0   99  0   2   0   0   0   0   0   0   0
+0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
+0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
+-10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
+-10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+
+#36 VAST_South_Spr
+    5   59  25  65  99  0   2   0   0   0   0   0   0   0
+-10     4   -2  0   99  0   2   0   0   0   0   0   0   0
+0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
+0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
+-10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
+-10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+
+#37 VAST_North_Fall
+    5   59  25  65  99  0   2   0   0   0   0   0   0   0
+-10     4   -2  0   99  0   2   0   0   0   0   0   0   0
+0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
+0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
+-10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
+-10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+
+#38 VAST_South_Fall
+    5   59  25  65  99  0   2   0   0   0   0   0   0   0
+-10     4   -2  0   99  0   2   0   0   0   0   0   0   0
+0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
+0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
+-10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
+-10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
 
 # timevary selex parameters 
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type    PHASE  #  parm_name
