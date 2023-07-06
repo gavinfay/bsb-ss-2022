@@ -57,18 +57,17 @@
 1 #Inclue males in spawning biomass 0=no males in SSB, 1=simple add of males to females, xx - more options to come...
 
 
-2 #_parameter_offset_approach (1=none, 2= M, G, CV_G as offset from female-GP1, 3=like SS2 V1.x)
+3 #_parameter_offset_approach (1=none, 2= M, G, CV_G as offset from female-GP1, 3=like SS2 V1.x)
 #1 #_env/block/dev_adjust_method (1=standard; 2=with logistic trans to keep within base parm bounds)
-
 
 #LO HI  INIT    PRIOR   SD  PR_Type PHASE   env-var use_dev dev_minyr   dev_maxyr   dev_stdev   Block   Block_Fxn       
 #female,    growth  pattern 1, decade 1                                             
 0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   3   2   #   NatM_p_1_Fem_GP:1_
-1   20  12.88   10  99  0   -1  0   0   0   0   0   3   2   #   Lmin-Fem_GP_1_
-40  100 77.47   65  99  0   5   0   0   0   0   0   3   2   #   Lmax-Fem_GP_1_
-0.02    0.65    0.134   0.18    99  0   4   0   0   0   0   0   3   2   #   VBK-Fem_GP_1_
-0.01    0.5 0.25    0.3 99  0   4   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_1_
-0.01    0.5 0.01    0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
+1   20  12.88   10  99  0   3  0   0   0   0   0   3   2   #   Lmin-Fem_GP_1_
+40  100 77.47   65  99  0   3   0   0   0   0   0   3   2   #   Lmax-Fem_GP_1_
+0.02    0.65    0.134   0.18    99  0   3   0   0   0   0   0   3   2   #   VBK-Fem_GP_1_
+0.01    0.5 0.25    0.3 99  0   3   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_1_
+-5    5 0    0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
 1.00E-07    3   0.00000937  0   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen1-Fem
 -3  4   3.143   3   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen2-Fem
 -10 100 20.31   1   0.8 0   -3  0   0   0   0   0   3   2   #   Mat50-Fem
@@ -76,42 +75,40 @@
 -3  3   1   1   0.8 0   -3  0   0   0   0   0   0   0   #   Eggs1-Fem
 -3  3   0   0   0.8 0   -3  0   0   0   0   0   0   0   #   Eggs2-Fem
                                                             
-                                                            
-#female,    growth  pattern 2, decade 1                                             
--3  0.45    0   0.25    99  0   -6  0   0   0   0   0   3   2   #   NatM_p_1_Fem_GP:2_
--3  20  -1.06E-01   10  99  0   -1  0   0   0   0   0   3   2   #   Lmin-Fem_GP_2_
--3  100 -1.10E-01   65  99  0   5   0   0   0   0   0   3   2   #   Lmax-Fem_GP_2_
--3  0.65    -0.007490672    0.18    99  0   4   0   0   0   0   0   3   2   #   VBK-Fem_GP_2_
--3  0.5 0   0.3 99  0   4   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_2_
--3  0.5 0   0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
+#female, growth  pattern 2,  decade  1                                       
+-10 10  0   0.25    99  0   -6  0   0   0   0   0   3   2   #   NatM_p_1_Fem_GP:2_
+-10 10  -1.06E-01   10  99  0   3  0   0   0   0   0   3   2   #   Lmin-Fem_GP_2_
+-10 10  -1.10E-01   65  99  0   3   0   0   0   0   0   3   2   #   Lmax-Fem_GP_2_
+-10 10  -0.007490672    0.18    99  0   3   0   0   0   0   0   3   2   #   VBK-Fem_GP_2_
+-10 10  0   0.3 99  0   4   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_2_
+-10 10  0   0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
 -3  3   0.0000171   0   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen1-Fem
 -3  4   2.928   3   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen2-Fem
 -10 100 20.91   1   0.8 0   -3  0   0   0   0   0   3   2   #   Mat50-Fem
 -10 10  -0.29   -1  0.8 0   -3  0   0   0   0   0   3   2   #   Matslp-Fem
 -3  3   1   1   0.8 0   -3  0   0   0   0   0   0   0   #   Eggs1-Fem
 -3  3   0   0   0.8 0   -3  0   0   0   0   0   0   0   #   Eggs2-Fem
-                                                            
-                                                            
-#_male, growth  pattern 1, decade 1                                             
--3  0.45    0   0.25    99  0   -6  0   0   0   0   0   3   2   #   NatM_p_1_M_GP:1_
--3  20  -0.265163209    10  99  0   -1  0   0   0   0   0   3   2   #   Lmin-M_GP_1_
--3  100 -0.496556756    65  99  0   5   0   0   0   0   0   3   2   #   Lmax-M_GP_1_
--3  1   0.95148498  0.18    99  0   4   0   0   0   0   0   3   2   #   VBK-M_GP_1_
--3  0.5 0   0.3 99  0   4   0   0   0   0   0   0   0   #   CV_yng-M_GP_1_
--3  0.5 0   0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
+                                                                                                              
+#_male, growth  pattern 1,  decade  1                                       
+-10 10  0   0.25    99  0   -6  0   0   0   0   0   3   2   #   NatM_p_1_M_GP:1_
+-10 10  -0.265163209    10  99  0   3  0   0   0   0   0   3   2   #   Lmin-M_GP_1_
+-10 10  -0.496556756    65  99  0   3   0   0   0   0   0   3   2   #   Lmax-M_GP_1_
+-10 10  0.95148498  0.18    99  0   3   0   0   0   0   0   3   2   #   VBK-M_GP_1_
+-10 10  0   0.3 99  0   4   0   0   0   0   0   0   0   #   CV_yng-M_GP_1_
+-10 10  0   0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
 -3  3   0.0000104   0   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen1-M
 -3  4   3.094   3   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen2-M
                                                             
-                                                            
-#_male, growth  pattern 2, decade 1                                             
--3  0.45    0   0.25    99  0   -6  0   0   0   0   0   3   2   #   NatM_p_1_M_GP:2_
--3  20  -0.25509263 10  99  0   -1  0   0   0   0   0   3   2   #   Lmin-M_GP_2_
--3  100 -0.25537955 65  99  0   5   0   0   0   0   0   3   2   #   Lmax-M_GP_2_
--3  1   0.400477567 0.18    99  0   4   0   0   0   0   0   3   2   #   VBK-M_GP_2_
--3  0.5 0   0.3 99  0   4   0   0   0   0   0   0   0   #   CV_yng-M_GP_2_
--3  0.5 0   0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
+#_male, growth  pattern 2,  decade  1                                       
+-10 10  0   0.25    99  0   -6  0   0   0   0   0   3   2   #   NatM_p_1_M_GP:2_
+-10 10  -0.25509263 10  99  0   3  0   0   0   0   0   3   2   #   Lmin-M_GP_2_
+-10 10  -0.25537955 65  99  0   3   0   0   0   0   0   3   2   #   Lmax-M_GP_2_
+-10 10  0.400477567 0.18    99  3   4   0   0   0   0   0   3   2   #   VBK-M_GP_2_
+-10 10  0   0.3 99  0   4   0   0   0   0   0   0   0   #   CV_yng-M_GP_2_
+-10 10  0   0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
 -3  3   0.0000158   0   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen1-M
--3  4   2.951   3   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen2-M						
+-3  4   2.951   3   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen2-M
+
 
 #Hermaphroditism parameters                    
 # inflection about 4                   
@@ -122,11 +119,11 @@
 
 #C Recruitment distributions
 #C RecrDist-settlement-1_
- -8 8 -1.1 0 99 0 2 0 2 1989 2014 5 0 0 # 
+ -8 8 -1.1 0 99 0 2 0 2 1989 2019 5 0 0 # 
 #C RecrDist-settlement-2_
- -4 4 -4 0 99 0 -1 0 0 0 0 0.5 0 0 # 
+ -4 4 -4 0 99 0 -1 0 0 0 0 0 0 0 # 
 #Cohort growth dev
- 0.1 3 1 1 99 0 -3 0 0 0 0 0.5 0 0#CohortGrowDev
+ 0.1 3 1 1 99 0 -3 0 0 0 0 0 0 0#CohortGrowDev
 
 #C Movement parameters
  -15 15 15 0 99 0 5 0 0 0 0 0 0 0 # MoveParm_A_seas_1_GP_1from_2to_1
@@ -143,64 +140,65 @@
 # -2 2 0 0 -1 99 -2 #_placeholder for no MG-environ parameters
 
 #_  LO  HI  INIT    PRIOR   PR_SD   PR_type PHASE       
-    0.1 0.45    0.4 0.25    99  0   -6  #   NatM_uniform_Fem_GP_1_BLK3repl_2000
-    0.1 0.45    0.4 0.25    99  0   -6  #   NatM_uniform_Fem_GP_1_BLK3repl_2011
-    1   20  12.88   10  99  0   -1  #   L_at_Amin_Fem_GP_1_BLK3repl_2000
-    1   20  11  10  99  0   -1  #   L_at_Amin_Fem_GP_1_BLK3repl_2011
-    40  100 77.47   65  99  0   5   #   L_at_Amax_Fem_GP_1_BLK3repl_2000
-    40  100 47.72   65  99  0   5   #   L_at_Amax_Fem_GP_1_BLK3repl_2011
-    0.02    0.65    0.134   0.18    99  0   4   #   VonBert_K_Fem_GP_1_BLK3repl_2000
-    0.02    0.65    0.285   0.18    99  0   4   #   VonBert_K_Fem_GP_1_BLK3repl_2011
-    -3  3   1.62E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2000
-    -3  3   1.81E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2011
-    -3  4   2.955   3   0.8 0   -3  #   Wtlen_2_Fem_GP_1_BLK3repl_2000
-    -3  4   2.914   3   0.8 0   -3  #   Wtlen_2_Fem_GP_1_BLK3repl_2011
-    -10 100 22.85   1   0.8 0   -3  #   Mat50%_Fem_GP_1_BLK3repl_2000
-    -10 100 22.69   1   0.8 0   -3  #   Mat50%_Fem_GP_1_BLK3repl_2011
-    -10 10  -0.42   -1  0.8 0   -3  #   Mat_slope_Fem_GP_1_BLK3repl_2000
-    -10 10  -0.63   -1  0.8 0   -3  #   Mat_slope_Fem_GP_1_BLK3repl_2011
-    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Fem_GP_2_BLK3repl_2000
-    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Fem_GP_2_BLK3repl_2011
-    -3  20  -0.106396249    10  99  0   -1  #   L_at_Amin_Fem_GP_2_BLK3repl_2000
-    -3  20  -0.106396249    10  99  0   -1  #   L_at_Amin_Fem_GP_2_BLK3repl_2011
-    -3  100 -0.330449362    65  99  0   5   #   L_at_Amax_Fem_GP_2_BLK3repl_2000
-    -3  100 -0.330449362    65  99  0   5   #   L_at_Amax_Fem_GP_2_BLK3repl_2011
-    -3  0.65    0.458746475 0.18    99  0   4   #   VonBert_K_Fem_GP_2_BLK3repl_2000
-    -3  0.65    0.458746475 0.18    99  0   4   #   VonBert_K_Fem_GP_2_BLK3repl_2011
-    -3  3   0.0000163   0   0.8 0   -3  #   Wtlen_1_Fem_GP_2_BLK3repl_2000
-    -3  3   0.0000212   0   0.8 0   -3  #   Wtlen_1_Fem_GP_2_BLK3repl_2011
-    -3  4   2.944   3   0.8 0   -3  #   Wtlen_2_Fem_GP_2_BLK3repl_2000
-    -3  4   2.861   3   0.8 0   -3  #   Wtlen_2_Fem_GP_2_BLK3repl_2011
-    -10 100 21.11   1   0.8 0   -3  #   Mat50%_Fem_GP_2_BLK3repl_2000
-    -10 100 22.73   1   0.8 0   -3  #   Mat50%_Fem_GP_2_BLK3repl_2011
-    -10 10  -0.4    -1  0.8 0   -3  #   Mat_slope_Fem_GP_2_BLK3repl_2000
-    -10 10  -0.43   -1  0.8 0   -3  #   Mat_slope_Fem_GP_2_BLK3repl_2011
-    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_1_BLK3repl_2000
-    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_1_BLK3repl_2011
-    -3  20  -0.244130886    10  99  0   -1  #   L_at_Amin_Mal_GP_1_BLK3repl_2000
-    -3  20  -0.023567469    10  99  0   -1  #   L_at_Amin_Mal_GP_1_BLK3repl_2011
-    -3  100 -0.178430852    65  99  0   5   #   L_at_Amax_Mal_GP_1_BLK3repl_2000
-    -3  100 -0.201373724    65  99  0   5   #   L_at_Amax_Mal_GP_1_BLK3repl_2011
-    -3  0.65    0.425170179 0.18    99  0   4   #   VonBert_K_Mal_GP_1_BLK3repl_2000
-    -3  0.65    0.295117051 0.18    99  0   4   #   VonBert_K_Mal_GP_1_BLK3repl_2011
-    -3  3   0.0000144   0   0.8 0   -3  #   Wtlen_1_Mal_GP_1_BLK3repl_2000
-    -3  3   0.0000303   0   0.8 0   -3  #   Wtlen_1_Mal_GP_1_BLK3repl_2011
-    -3  4   2.98    3   0.8 0   -3  #   Wtlen_2_Mal_GP_1_BLK3repl_2000
-    -3  4   2.745   3   0.8 0   -3  #   Wtlen_2_Mal_GP_1_BLK3repl_2011
-    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_2_BLK3repl_2000
-    -3  0.45    0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_2_BLK3repl_2011
-    -3  20  -0.219655852    10  99  0   -1  #   L_at_Amin_Mal_GP_2_BLK3repl_2000
-    -3  20  -0.057523844    10  99  0   -1  #   L_at_Amin_Mal_GP_2_BLK3repl_2011
-    -3  100 -0.226149226    65  99  0   5   #   L_at_Amax_Mal_GP_2_BLK3repl_2000
-    -3  100 -0.026685691    65  99  0   5   #   L_at_Amax_Mal_GP_2_BLK3repl_2011
-    -3  0.65    0.444494452 0.18    99  0   4   #   VonBert_K_Mal_GP_2_BLK3repl_2000
-    -3  0.65    -0.127155175    0.18    99  0   4   #   VonBert_K_Mal_GP_2_BLK3repl_2011
-    -3  3   0.0000144   0   0.8 0   -3  #   Wtlen_1_Mal_GP_2_BLK3repl_2000
-    -3  3   0.0000298   0   0.8 0   -3  #   Wtlen_1_Mal_GP_2_BLK3repl_2011
-    -3  4   2.973   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2000
-    -3  4   2.743   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2011
-    0.0001  2   0.5 0.5 0.5 6   -5  #   RecrDist_GP_1_area_1_month_10_dev_se
-    -0.99   0.99    0   0   0.5 6   -6  #   RecrDist_GP_1_area_1_month_10_dev_autocorr
+0.1 0.45    0.4 0.25    99  0   -6  #   NatM_uniform_Fem_GP_1_BLK3repl_2000
+0.1 0.45    0.4 0.25    99  0   -6  #   NatM_uniform_Fem_GP_1_BLK3repl_2011
+1   20  12.88   10  99  0   -1  #   L_at_Amin_Fem_GP_1_BLK3repl_2000
+1   20  11  10  99  0   -1  #   L_at_Amin_Fem_GP_1_BLK3repl_2011
+40  100 77.47   65  99  0   5   #   L_at_Amax_Fem_GP_1_BLK3repl_2000
+40  100 47.72   65  99  0   5   #   L_at_Amax_Fem_GP_1_BLK3repl_2011
+0.02    0.65    0.134   0.18    99  0   4   #   VonBert_K_Fem_GP_1_BLK3repl_2000
+0.02    0.65    0.285   0.18    99  0   4   #   VonBert_K_Fem_GP_1_BLK3repl_2011
+-3  3   1.62E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2000
+-3  3   1.81E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2011
+-3  4   2.955   3   0.8 0   -3  #   Wtlen_2_Fem_GP_1_BLK3repl_2000
+-3  4   2.914   3   0.8 0   -3  #   Wtlen_2_Fem_GP_1_BLK3repl_2011
+-10 100 22.85   1   0.8 0   -3  #   Mat50%_Fem_GP_1_BLK3repl_2000
+-10 100 22.69   1   0.8 0   -3  #   Mat50%_Fem_GP_1_BLK3repl_2011
+-10 10  -0.42   -1  0.8 0   -3  #   Mat_slope_Fem_GP_1_BLK3repl_2000
+-10 10  -0.63   -1  0.8 0   -3  #   Mat_slope_Fem_GP_1_BLK3repl_2011
+-10 10  0   0.25    99  0   -6  #   NatM_uniform_Fem_GP_2_BLK3repl_2000
+-10 10  0   0.25    99  0   -6  #   NatM_uniform_Fem_GP_2_BLK3repl_2011
+-10 10  -0.106396249    10  99  0   -1  #   L_at_Amin_Fem_GP_2_BLK3repl_2000
+-10 10  -0.106396249    10  99  0   -1  #   L_at_Amin_Fem_GP_2_BLK3repl_2011
+-10 10  -0.330449362    65  99  0   5   #   L_at_Amax_Fem_GP_2_BLK3repl_2000
+-10 10  -0.330449362    65  99  0   5   #   L_at_Amax_Fem_GP_2_BLK3repl_2011
+-10 10  0.458746475 0.18    99  0   4   #   VonBert_K_Fem_GP_2_BLK3repl_2000
+-10 10  0.458746475 0.18    99  0   4   #   VonBert_K_Fem_GP_2_BLK3repl_2011
+-3  3   0.0000163   0   0.8 0   -3  #   Wtlen_1_Fem_GP_2_BLK3repl_2000
+-3  3   0.0000212   0   0.8 0   -3  #   Wtlen_1_Fem_GP_2_BLK3repl_2011
+-3  4   2.944   3   0.8 0   -3  #   Wtlen_2_Fem_GP_2_BLK3repl_2000
+-3  4   2.861   3   0.8 0   -3  #   Wtlen_2_Fem_GP_2_BLK3repl_2011
+-10 100 21.11   1   0.8 0   -3  #   Mat50%_Fem_GP_2_BLK3repl_2000
+-10 100 22.73   1   0.8 0   -3  #   Mat50%_Fem_GP_2_BLK3repl_2011
+-10 10  -0.4    -1  0.8 0   -3  #   Mat_slope_Fem_GP_2_BLK3repl_2000
+-10 10  -0.43   -1  0.8 0   -3  #   Mat_slope_Fem_GP_2_BLK3repl_2011
+-10 10  0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_1_BLK3repl_2000
+-10 10  0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_1_BLK3repl_2011
+-10 10  -0.244130886    10  99  0   -1  #   L_at_Amin_Mal_GP_1_BLK3repl_2000
+-10 10  -0.023567469    10  99  0   -1  #   L_at_Amin_Mal_GP_1_BLK3repl_2011
+-10 10  -0.178430852    65  99  0   5   #   L_at_Amax_Mal_GP_1_BLK3repl_2000
+-10 10  -0.201373724    65  99  0   5   #   L_at_Amax_Mal_GP_1_BLK3repl_2011
+-10 10  0.425170179 0.18    99  0   4   #   VonBert_K_Mal_GP_1_BLK3repl_2000
+-10 10  0.295117051 0.18    99  0   4   #   VonBert_K_Mal_GP_1_BLK3repl_2011
+-3  3   0.0000144   0   0.8 0   -3  #   Wtlen_1_Mal_GP_1_BLK3repl_2000
+-3  3   0.0000303   0   0.8 0   -3  #   Wtlen_1_Mal_GP_1_BLK3repl_2011
+-3  4   2.98    3   0.8 0   -3  #   Wtlen_2_Mal_GP_1_BLK3repl_2000
+-3  4   2.745   3   0.8 0   -3  #   Wtlen_2_Mal_GP_1_BLK3repl_2011
+-10 10  0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_2_BLK3repl_2000
+-10 10  0   0.25    99  0   -6  #   NatM_uniform_Mal_GP_2_BLK3repl_2011
+-10 10  -0.219655852    10  99  0   -1  #   L_at_Amin_Mal_GP_2_BLK3repl_2000
+-10 10  -0.057523844    10  99  0   -1  #   L_at_Amin_Mal_GP_2_BLK3repl_2011
+-10 10  -0.226149226    65  99  0   5   #   L_at_Amax_Mal_GP_2_BLK3repl_2000
+-10 10  -0.026685691    65  99  0   5   #   L_at_Amax_Mal_GP_2_BLK3repl_2011
+-10 10  0.444494452 0.18    99  0   4   #   VonBert_K_Mal_GP_2_BLK3repl_2000
+-10 10  -0.127155175    0.18    99  0   4   #   VonBert_K_Mal_GP_2_BLK3repl_2011
+-3  3   0.0000144   0   0.8 0   -3  #   Wtlen_1_Mal_GP_2_BLK3repl_2000
+-3  3   0.0000298   0   0.8 0   -3  #   Wtlen_1_Mal_GP_2_BLK3repl_2011
+-3  4   2.973   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2000
+-3  4   2.743   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2011
+
+0.0001  2   0.7 0 0 0   -5  #   RecrDist_GP_1_area_1_month_10_dev_se
+-0.99   0.99    0   0   0 0   -6  #   RecrDist_GP_1_area_1_month_10_dev_autocorr
 
 #_seasonal_effects_on_biology_parms
 #C possibly include this for w-l relationships
@@ -265,18 +263,18 @@
 
 #_initial_F_parms
 #_LO    HI  INIT    PRIOR   PR_type SD  PHASE
-0 1 0.2 0 99 0 1 # InitF_1_
-0 1 0.2 0 99 0 1 # InitF_2_
-0 1 0.2 0 99 0 1 # InitF_3_
-0 1 0.2 0 99 0 1 # InitF_4_
-0 1 0.2 0 99 0 1 # InitF_5_
-0 1 0.2 0 99 0 1 # InitF_6_
-0 1 0.2 0 99 0 1 # InitF_7_
-0 1 0.2 0 99 0 1 # InitF_8_
-0 1 0.2 0 99 0 1 # InitF_9_
-0 1 0.2 0 99 0 1 # InitF_10_
-0 1 0.2 0 99 0 1 # InitF_11_
-0 1 0.2 0 99 0 1 # InitF_12_
+0 0.4 0.2 0 99 0 1 # InitF_1_
+0 0.4 0.2 0 99 0 1 # InitF_2_
+0 0.4 0.2 0 99 0 1 # InitF_3_
+0 0.4 0.2 0 99 0 1 # InitF_4_
+0 0.4 0.2 0 99 0 1 # InitF_5_
+0 0.4 0.2 0 99 0 1 # InitF_6_
+0 0.4 0.2 0 99 0 1 # InitF_7_
+0 0.4 0.2 0 99 0 1 # InitF_8_
+0 0.4 0.2 0 99 0 1 # InitF_9_
+0 0.4 0.2 0 99 0 1 # InitF_10_
+0 0.4 0.2 0 99 0 1 # InitF_11_
+0 0.4 0.2 0 99 0 1 # InitF_12_
 
 
 #_Q_setup
@@ -421,45 +419,46 @@
  
 #_age_selex_types
 #_Pattern Discard Male Special
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0	0	0	0
-0   0   0   0
-0   0   0   0
-0   0   0   0
-0   0   0   0
+0   0   0   0       
+0   0   0   0       
+0   0   0   0       
+0   0   0   0       
+0   0   0   0       
+0   0   0   0       
+0   0   0   0       
+0   0   0   0       
+0   0   0   0       
+0   0   0   0       
+0   0   0   0       
+0   0   0   0       
+0   0   0   0   #13 MA_Spring_Trawl
+0   0   0   0   #14 MA_Fall_Trawl
+0   0   0   0   #15 RI_Spring_Trawl
+0   0   0   0   #16 RI_Fall_Trawl
+0   0   0   0   #17 CT_Spring_Trawl
+0   0   0   0   #18 CT_Fall_Trawl
+11   0   0   0   #19 NY_Age1_StdIndex_1
+0   0   0   0   #20 NJ_Trawl
+11   0   0   0   #21 DE_CPT_Age1_GeoMean_1
+11   0   0   0   #22 MD_Age1_LOGMEAN_1
+11   0   0   0   #23 VIMS_Age1_GeoMean_1
+0   0   0   0   #24 North_NEAMAP_1
+0   0   0   0   #25 South_NEAMAP_1
+0   0   0   0   #26 North_NEAMAP_2
+0   0   0   0   #27 South_NEAMAP_2
+0   0   0   0   #28 Albatross_Spring_North
+0   0   0   0   #29 Albatross_Spring_South
+0   0   0   0   #30 Bigelow_Nrth_Spr
+0   0   0   0   #31 Bigelow_Sth_Spr
+0   0   0   0   #32 North_Winter_BTS
+0   0   0   0   #33 South_Winter_BTS
+0   0   0   0   #34 GSWI
+0   0   0   0   #35 VAST_North_Spr
+0   0   0   0   #36 VAST_South_Spr
+0   0   0   0   #37 VAST_North_Fall
+0   0   0   0   #38 VAST_South_Fall
 
+#selectivity parameters
 #
 #_LO	HI	INIT	PRIOR	SD	PR_type	PHASE	env-var	use_dev	dev_minyr	dev_maxyr	dev_stddev	Block	Block_Fxn
 
@@ -782,36 +781,56 @@
 #34	GSWI
 
 #35 VAST_North_Spr
-    5   59  25  65  99  0   2   0   0   0   0   0   0   0
--10     4   -2  0   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
--10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
--10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+    5   59  25  65  99  0   -2   0   0   0   0   0   0   0
+-10     4   -2  0   99  0   -2   0   0   0   0   0   0   0
+0.01    9   5.1 5   99  0   -2   0   0   0   0   0   0   0
+0.01    9   5.9 5   99  0   -2   0   0   0   0   0   0   0
+-10 10  -2  -1.15   99  0   -2   0   0   0   0   0   0   0
+-10 10  -9  -0.35   99  0   -3   0   0   0   0   0   0   0
 
 #36 VAST_South_Spr
-    5   59  25  65  99  0   2   0   0   0   0   0   0   0
--10     4   -2  0   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
--10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
--10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+    5   59  25  65  99  0   -2   0   0   0   0   0   0   0
+-10     4   -2  0   99  0   -2   0   0   0   0   0   0   0
+0.01    9   5.1 5   99  0   -2   0   0   0   0   0   0   0
+0.01    9   5.9 5   99  0   -2   0   0   0   0   0   0   0
+-10 10  -2  -1.15   99  0   -2   0   0   0   0   0   0   0
+-10 10  -9  -0.35   99  0   -3   0   0   0   0   0   0   0
 
 #37 VAST_North_Fall
-    5   59  25  65  99  0   2   0   0   0   0   0   0   0
--10     4   -2  0   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
--10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
--10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+    5   59  25  65  99  0   -2   0   0   0   0   0   0   0
+-10     4   -2  0   99  0   -2   0   0   0   0   0   0   0
+0.01    9   5.1 5   99  0   -2   0   0   0   0   0   0   0
+0.01    9   5.9 5   99  0   -2   0   0   0   0   0   0   0
+-10 10  -2  -1.15   99  0   -2   0   0   0   0   0   0   0
+-10 10  -9  -0.35   99  0   -3   0   0   0   0   0   0   0
 
 #38 VAST_South_Fall
-    5   59  25  65  99  0   2   0   0   0   0   0   0   0
--10     4   -2  0   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
--10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
--10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+    5   59  25  65  99  0   -2   0   0   0   0   0   0   0
+-10     4   -2  0   99  0   -2   0   0   0   0   0   0   0
+0.01    9   5.1 5   99  0   -2   0   0   0   0   0   0   0
+0.01    9   5.9 5   99  0   -2   0   0   0   0   0   0   0
+-10 10  -2  -1.15   99  0   -2   0   0   0   0   0   0   0
+-10 10  -9  -0.35   99  0   -3   0   0   0   0   0   0   0
+
+
+#age-based selectivity
+
+#19 NY_Age1_StdIndex_1
+-10 10  1   -0.35   99  0   -4  0   0   0   0   0 0   0
+-10 10  1 -0.35   99  0   -4  0   0   0   0   0 0   0
+
+#21 DE_CPT_Age1_GeoMean_1
+-10 10  1   -0.35   99  0   -4  0   0   0   0   0 0   0
+-10 10  1 -0.35   99  0   -4  0   0   0   0   0 0   0
+
+#22 MD_Age1_LOGMEAN_1
+-10 10  1   -0.35   99  0   -4  0   0   0   0   0 0   0
+-10 10  1 -0.35   99  0   -4  0   0   0   0   0 0   0
+
+#23 VIMS_Age1_GeoMean_1
+-10 10  1   -0.35   99  0   -4  0   0   0   0   0 0   0
+-10 10  1 -0.35   99  0   -4  0   0   0   0   0 0   0
+
 
 # timevary selex parameters 
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type    PHASE  #  parm_name
@@ -963,7 +982,18 @@
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=WtFreq; 7=sizeage; 8=catch; 
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  wtfreq_method
-
+1 35 1 0 1
+1 36 1 0 1
+1 37 1 0 1
+1 38 1 0 1
+1 35 4 0 1
+1 36 4 0 1
+1 37 4 0 1
+1 38 4 0 1
+1 35 5 0 1
+1 36 5 0 1
+1 37 5 0 1
+1 38 5 0 1
 -9999 1 1 1 1
 
 0 # read specs for more stddev reporting

@@ -280,7 +280,7 @@ comlens <- comlen.region.sem.mkt.gr |>
          season = ifelse(semester==1,4,10)) |>
   select(-semester) |>
   left_join(lenbins) |>
-  group_by(index, year, ibin, season, mktnm) |>
+  group_by(index, year, ibin, season) |>
   summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
   group_by(index, year, season) |>
   mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
@@ -300,16 +300,17 @@ comlens_samp <- comlen.nsamp.region.sem.mkt.gr |>
   select(-bsb_gear_cat2) |>
   left_join(fishery_ids) |>
   mutate(season = ifelse(semester==1,4,10), nsamp = nsamples) |>
-  group_by(index, year, season, mktnm) |>
+  group_by(index, year, season) |>
   summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 2) |>
   I()
 
-# combine comlens and sample sizes
-comlens <- comlens |>
-  left_join(comlens_samp, by = c("index", "year", "season", "mktnm")) |>
-  group_by(index, year, ibin, season, gender, part) |>
-  summarise(cal =  sum(cal, na.rm = TRUE), nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
-  I()
+# # combine comlens and sample sizes
+# comlens <- comlens |>
+#   left_join(comlens_samp) |> #, by = c("index", "year", "season", "mktnm")) |>
+#   #group_by(index, year, ibin, season, gender, part) |>
+#   #summarise(cal =  sum(cal, na.rm = TRUE), nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
+#   I()
 
 fishery_lens <- comlens  
 
@@ -356,7 +357,7 @@ reclensharv <- rec.ab1.len |>
          -n_ab1,
          -region) |>	
   left_join(lenbins) |>
-  group_by(index, year, ibin, season) |>
+  group_by(index, year, season) |>
   summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
   mutate(part = 2) |>
   I()
@@ -376,18 +377,18 @@ reclensdisc <- rec.b2.len |>
          -region,
          -sample_size_scaled) |>
   left_join(lenbins) |>
-  group_by(index, year, ibin, season) |>
+  group_by(index, year, season) |>
   summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
   mutate(part = 1) |>
   I()
 reclensdisc
 
-# integrate discard sample size  
-reclens <- reclens |>
-  left_join(reclensharv) |>
-  left_join(reclensdisc) |>
-  na.omit() |> # missing sample sizes for discards in certain years
-  I()
+# # integrate discard sample size  
+# reclens <- reclens |>
+#   left_join(reclensharv) |>
+#   left_join(reclensdisc) |>
+#   na.omit() |> # missing sample sizes for discards in certain years
+#   I()
 
 fishery_lens <- bind_rows(comlens, reclens)
 
@@ -422,8 +423,10 @@ comdisc_samp_trawl <- comdisc.nhaul.fleet |>
   mutate(season = ifelse(semester==1,4,10)) |>
   group_by(index, year, season) |>
   summarize(nsamp = sum(trawl, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 1) |>
+  filter(nsamp > 0) |>
   I()
-comdisc_samp_trawl
+#comdisc_samp_trawl
 
 comdisc_samp_nontrawl<- comdisc.nhaul.fleet |>
   clean_names() |>
@@ -433,17 +436,19 @@ comdisc_samp_nontrawl<- comdisc.nhaul.fleet |>
   mutate(season = ifelse(semester==1,4,10)) |>
   group_by(index, year, season) |>
   summarize(nsamp = sum(non_trawl, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 1) |>
+  filter(nsamp>0) |>
   I()
-comdisc_samp_nontrawl
+#comdisc_samp_nontrawl
 
-disc_lens <- disc_lens |>
-  left_join(comdisc_samp_trawl, by = c("index", "year", "season")) |> # joins only by index, year, season
-  left_join(comdisc_samp_nontrawl, by = c("index", "year", "season")) |>
-  mutate(nsamp_temp = ifelse(index < 0, 25, NA)) |># sample size for CFRF?
-  rowwise() |> mutate(nsamp = sum(nsamp.x, nsamp.y, nsamp_temp, na.rm = TRUE)) |>
-  select(-nsamp.x, -nsamp.y, -nsamp_temp) |> 
-  I()
-disc_lens
+# disc_lens <- disc_lens |>
+#   left_join(comdisc_samp_trawl, by = c("index", "year", "season")) |> # joins only by index, year, season
+#   left_join(comdisc_samp_nontrawl, by = c("index", "year", "season")) |>
+#   mutate(nsamp_temp = ifelse(index < 0, 25, NA)) |># sample size for CFRF?
+#   rowwise() |> mutate(nsamp = sum(nsamp.x, nsamp.y, nsamp_temp, na.rm = TRUE)) |>
+#   select(-nsamp.x, -nsamp.y, -nsamp_temp) |> 
+#   I()
+# disc_lens
 
 fishery_lens <- bind_rows(comlens, reclens, disc_lens)
 
@@ -457,7 +462,7 @@ filllens <- fishery_lens |>
 
 fishery_lens <- fishery_lens |>
   bind_rows(filllens) |>
-  group_by(index, year, ibin, season, gender, part, nsamp) |>
+  group_by(index, year, ibin, season, gender, part) |>
   summarise(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
   ungroup() |>
   pivot_wider(names_from = ibin,
@@ -467,16 +472,30 @@ fishery_lens <- fishery_lens |>
               values_fill = 0
   ) |>
   group_by(index, year, season, gender, part) |>
-  summarize(across(c(nsamp, everything()), sum)) |>
+  summarize(across(c(everything()), sum)) |>
   ungroup() |>
   #Yr Seas Flt/Svy Gender Part Nsamp datavector(female-male)
-  select(year, season, index, gender, part, nsamp, everything()) |>
+  #select(year, season, index, gender, part, nsamp, everything()) |>
+  select(year, season, index, gender, part, everything()) |>
   I()
 fishery_lens2 <- fishery_lens |>
-  select(-(1:6)) |>
+  select(-(1:5)) |>
   mutate_all(.funs = function(x) 0*x) |>
   rename_with(.fn = function(x) str_c("m_",x))
 fishery_lens_write <- bind_cols(fishery_lens, fishery_lens2)  
+
+len_samps <- bind_rows(comlens_samp,
+                       comdisc_samp_trawl,
+                       comdisc_samp_nontrawl,
+                       reclensharv,
+                       reclensdisc) |>
+  mutate(index = as.numeric(index))
+
+
+fishery_lens_write <- left_join(fishery_lens_write, len_samps) |>
+  select(year, season, index, gender, part, nsamp, everything()) %>% 
+  mutate(nsamp = ifelse(is.na(nsamp),25,nsamp))
+#replace any NAs with 25
 
 
 # "###############################################",
@@ -1354,10 +1373,10 @@ sexed_ageatlen <- index_agelens |>
               values_fill = 0
   ) |>
   mutate(index = case_when(
-    region == "NORTH" & semester == 1 ~ 1,
-    region == "SOUTH" & semester == 1 ~ 2,
-    region == "NORTH" & semester == 2 ~ 3,
-    region == "SOUTH" & semester == 2 ~ 4,
+    region == "NORTH" & semester == 1 ~ 30,  #assigning to bigelow
+    region == "SOUTH" & semester == 1 ~ 31,
+    region == "NORTH" & semester == 2 ~ 26,  #assigning to neamap because need a fall survey
+    region == "SOUTH" & semester == 2 ~ 27,
   ),
   part = 2,
   ageerr= 1, 
