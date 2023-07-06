@@ -784,13 +784,13 @@ state_survey_lens <- map_dfr(objects, function(x) get(x)|>clean_names()|>
   )
 state_survey_lens
 
-samp_objects <- c("MA.fall", "MA.spr",
-                  "RI.fall", "RI.spr",
-                  "LIS.fall", "LIS.spr")
+samp_objects <- c("MA.spr", "MA.fall", 
+                  "RI.spr", "RI.fall", 
+                  "LIS.spr", "LIS.fall")
 state_samp <- map_dfr(samp_objects, function(x) get(x) |> clean_names(),
                       .id = "index") |>
   mutate(index = survey_index[as.integer(index)],
-         season = ifelse(month > 6, 4, 10)) |>
+         season = ifelse(month > 6, 10, 4)) |>
   group_by(index, year, season) |>
   summarise(nsamp = sum(tot_n, na.rm = TRUE), .groups = "drop") |>
   mutate_if(is.factor, as.character) |>
