@@ -923,7 +923,8 @@ neamap_samp <- neamap.all |>
            season == 10 & bsb_region == "NORTH" ~ 26,
            season == 10 & bsb_region == "SOUTH" ~ 27)) |>
   group_by(index, year, season) |>
-  summarise(nsamp = sum(tot_n, na.rm = TRUE), .groups = "drop")
+  #summarise(nsamp = sum(tot_n, na.rm = TRUE), .groups = "drop")
+  summarise(nsamp = length(which(tot_n>0)), .groups = "drop") #updates to count number of tows with BSB
 
 neamap_lens <- neamap_lens |>
   left_join(neamap_samp)
