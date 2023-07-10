@@ -1290,10 +1290,10 @@ sexed_ageatlen <- fishery_agelens |>
     region == "SOUTH" & semester == 2 ~ 4,
   ),
   part = 2,
-  ageerr= 1, 
   #nsamp = 25,
   lobin = ibin,
-  month = ifelse(semester==1,4,10)) |>
+  month = ifelse(semester==1,4,10),
+  ageerr= ifelse(month==4,1,2)) |>
   select(-region,-semester) |>
   select(year, month, index, sex, part, ageerr, lobin, ibin, nsamp, everything()) |>
   arrange(year, month, index, ibin) |>
@@ -1338,10 +1338,10 @@ unsexed_ageatlen <- index_agelens |>
     region == "SOUTH" & semester == 2 ~ 27,
   ),
   part = 2,
-  ageerr= 1, 
   #nsamp = 25,
   lobin = ibin,
-  month = ifelse(semester==1,4,10)) |>
+  month = ifelse(semester==1,4,10),
+  ageerr= ifelse(month==4,1,2)) |>
   select(-region,-semester) |>
   select(year, month, index, sex, part, ageerr, lobin, ibin, nsamp, everything()) |>
   arrange(year, month, index, ibin) |>
@@ -1380,10 +1380,10 @@ sexed_ageatlen <- index_agelens |>
     region == "SOUTH" & semester == 2 ~ 27,
   ),
   part = 2,
-  ageerr= 1, 
   #nsamp = 25,
   lobin = ibin,
-  month = ifelse(semester==1,4,10)) |>
+  month = ifelse(semester==1,4,10),
+  ageerr= ifelse(month==4,1,2)) |>
   select(-region,-semester) |>
   select(year, month, index, sex, part, ageerr, lobin, ibin, nsamp, everything()) |>
   arrange(year, month, index, ibin) |>
@@ -1405,7 +1405,8 @@ lentemp2 <- lentemp %>%
          ibin = as.numeric(ibin)) %>% 
   group_by(year, season, index, gender, part, ibin) %>% 
   complete(age = 0:15) %>% 
-  fill(nsamp, lprop)
+  #fill(nsamp, lprop)
+  fill(lprop)
 ## get the total ages (aggregated by sex)
 nu_agelens <- fishery.age.data |>
   clean_names() |>
@@ -1468,7 +1469,7 @@ ghost_fishery_agecomp_write <- nu_agecomp %>%
          lo = 1,
          hi = 28,
          nsamp = 25,
-         ageerr = 1) %>% 
+         ageerr = ifelse(season==4,1,2)) %>% 
   select(year, season, index, gender, part, ageerr, lo, hi, nsamp, everything()) |>
   I()
 #ghost_fishery_agecomp_write
