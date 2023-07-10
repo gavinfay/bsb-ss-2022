@@ -435,7 +435,8 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -450,7 +451,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -465,7 +466,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -480,7 +481,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -495,7 +496,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -509,7 +510,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -523,7 +524,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -537,7 +538,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -551,7 +552,7 @@
 																					
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -566,7 +567,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -580,7 +581,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -595,7 +596,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10	10	10	4.59512	99	0	5	0	0	1989	2015	-1	0	0	#_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
