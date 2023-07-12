@@ -12,14 +12,16 @@
 0 #  placeholder for recruitment interaction request
 #_growth pattern settlement
 #GP Mth Area age@settlement
+#1 7 1 0  
+#2 7 2 0 
 1 10 1 0  
 2 10 2 0 
 
-2 #_Cond 0 # N_movement_definitions goes here if N_areas > 1
-1.0 #_Cond 1.0 # first age that moves (real age at begin of season, not integer) also cond on do_migration>0
+0 #2 #_Cond 0 # N_movement_definitions goes here if N_areas > 1
+#1.0 #_Cond 1.0 # first age that moves (real age at begin of season, not integer) also cond on do_migration>0
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
-1 1 2 1 21 25   
-2 1 1 2 21 25   
+#1 1 2 1 21 25   
+#2 1 1 2 21 25   
 
 3 #_Nblock_patterns
 1 1 2 #_blocks_per_pattern
@@ -111,24 +113,24 @@
 
 #Hermaphroditism parameters                    
 # inflection about 4                   
-0 20 4 4 99 0 7 0 0 0 0 0 0 0 # Inflection_age_for_fem-male    
+0 20 4 4 99 0 -7 0 0 0 0 0 0 0 # Inflection_age_for_fem-male    
 # std deviation in age                 
-0.1 10 2 2 99 0 7 0 0 0 0 0 0 0 # std_dev_(in age)_for_distribution_of_fem-male
+0.1 10 2 2 99 0 -7 0 0 0 0 0 0 0 # std_dev_(in age)_for_distribution_of_fem-male
 0.2 1 0.99 0.95 0.8 0 -3 0 0 0 0 0 0 0 # asymptotic_rate      
 
 #C Recruitment distributions
 #C RecrDist-settlement-1_
- -8 8 -1.1 0 99 0 2 0 2 1989 2019 5 0 0 # 
+ -8 8 -1.1 0 99 0 2 0 2 1989 2019 3 0 0 # 
 #C RecrDist-settlement-2_
  -4 4 -4 0 99 0 -1 0 0 0 0 0 0 0 # 
 #Cohort growth dev
  0.1 3 1 1 99 0 -3 0 0 0 0 0 0 0#CohortGrowDev
 
 #C Movement parameters
- -15 15 15 0 99 0 5 0 0 0 0 0 0 0 # MoveParm_A_seas_1_GP_1from_2to_1
- -15 15 -15 0 99 0 -3 0 0 0 0 0 0 0 # MoveParm_B_seas_1_GP_1from_2to_1
- -15 15 -0.5 0 99 0 2 0 0 0 0 0 0 0 # MoveParm_A_seas_2_GP_1from_1to_2
- -15 15 -15 0 99 0 -4 0 0 0 0 0 0 0 # MoveParm_B_seas_2_GP_1from_1to_2 
+# -15 15 15 0 99 0 2 0 0 0 0 0 0 0 # MoveParm_A_seas_1_GP_1from_2to_1
+# -15 15 -15 0 99 0 -3 0 0 0 0 0 0 0 # MoveParm_B_seas_1_GP_1from_2to_1
+# -15 15 -0.5 0 99 0 2 0 0 0 0 0 0 0 # MoveParm_A_seas_2_GP_1from_1to_2
+# -15 15 -15 0 99 0 -4 0 0 0 0 0 0 0 # MoveParm_B_seas_2_GP_1from_1to_2 
 
 #0.63 #_fracfemale  #0.37 are male (OJensen 2015/12/01)
 1e-006 0.999999 0.63 0.63 0.5 0 -99 0 0 0 0 0 0 0 # FracFemale_GP_1
@@ -552,7 +554,7 @@
 																					
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   4   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -567,7 +569,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   4   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -581,7 +583,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   4   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -596,7 +598,7 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
--10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   4   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -903,10 +905,10 @@
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=WtFreq; 7=sizeage; 8=catch; 
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  wtfreq_method
-4 9 1 0.1 1
-4 10 1 0.1 1
-4 11 1 0.1 1
-4 12 1 0.1 1
+#4 9 1 0.1 1
+#4 10 1 0.1 1
+#4 11 1 0.1 1
+#4 12 1 0.1 1
 1 35 1 0 1
 1 36 1 0 1
 1 37 1 0 1
