@@ -201,7 +201,6 @@
 -3  3   2.48E-05   0   0.8 0   -3  #   Wtlen_1_Mal_GP_2_BLK3repl_2011
 -3  4   3.044   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2000
 -3  4   2.800   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2011
-
 0.0001  2   0.7 0 0 0   -5  #   RecrDist_GP_1_area_1_month_10_dev_se
 -0.99   0.99    0   0   0 0   -6  #   RecrDist_GP_1_area_1_month_10_dev_autocorr
 
@@ -237,7 +236,7 @@
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1987 # first year of main recr_devs; early devs can preceed this era
 2019 # last year of main recr_devs; forecast devs start in following year
-3 #_recdev phase 
+4 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  -3 #_recdev_early_phase
@@ -291,7 +290,7 @@
 #_5:  0/1 to float
 #fleet type info extrasd bias_adj float   
 9 3 0 0 1 0
-11 3 0 0 1 0
+10 3 0 0 1 0
 13 3 0 0 1 0 #MA_Spr  
 14 3 0 0 1 0 #MA_Fll  
 15 3 0 0 1 0 #RI_Spr  
@@ -326,8 +325,8 @@
 #_LO	HI	INIT	PRIOR	SD	PR_type	PHASE	env-var	use_dev	dev_minyr	dev_maxyr	dev_stddev	Block	Block_Fxn
 -35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q fleet 9
 0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, fleet 9
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q fleet 11	
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, fleet 11
+-35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q fleet 10	
+0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, fleet 10
 -35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q MA	Spring 1+ (13)	
 0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, MA Spring 1+ (13)	
 -35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q MA Fall (14)			
@@ -474,8 +473,8 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
-#-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
--10 10  10  4.59512 99  0   2   0   2   1998    2020    2   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -489,8 +488,8 @@
                                                                                         
 5       59  15  65  99  0   2   0   0   0   0   0   1   2   #_Retain_L_infl_North_Trawl_1(1)
 0.01    9   7   5   99  0   2   0   0   0   0   0   1   2   #_Retain_L_width_North_Trawl_1(1)
-#-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
--10 10  10  4.59512 99  0   2   0   2   1998    2020    2   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -504,8 +503,8 @@
                                                                                         
 5       59  15  65  99  0   2   0   0   0   0   0   1   2   #_Retain_L_infl_North_Trawl_1(1)
 0.01    9   7   5   99  0   2   0   0   0   0   0   1   2   #_Retain_L_width_North_Trawl_1(1)
-#-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
--10 10  10  4.59512 99  0   2   0   2   1998    2020    2   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -519,8 +518,8 @@
                                                                                         
 5       59  15  65  99  0   2   0   0   0   0   0   1   2   #_Retain_L_infl_North_Trawl_1(1)
 0.01    9   7   5   99  0   2   0   0   0   0   0   1   2   #_Retain_L_width_North_Trawl_1(1)
-#-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
--10 10  10  4.59512 99  0   2   0   2   1998    2020    2   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -534,8 +533,8 @@
                                                                                         
 5       59  15  65  99  0   2   0   0   0   0   0   1   2   #_Retain_L_infl_North_Trawl_1(1)
 0.01    9   7   5   99  0   2   0   0   0   0   0   1   2   #_Retain_L_width_North_Trawl_1(1)
-#-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
--10 10  10  4.59512 99  0   2   0   2   1998    2020    2   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -549,8 +548,8 @@
                                                                                         
 5       59  15  65  99  0   2   0   0   0   0   0   1   2   #_Retain_L_infl_North_Trawl_1(1)
 0.01    9   7   5   99  0   2   0   0   0   0   0   1   2   #_Retain_L_width_North_Trawl_1(1)
-#-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
--10 10  10  4.59512 99  0   2   0   2   1998    2020    2   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -564,8 +563,8 @@
                                                                                         
 5       59  15  65  99  0   2   0   0   0   0   0   1   2   #_Retain_L_infl_North_Trawl_1(1)
 0.01    9   7   5   99  0   2   0   0   0   0   0   1   2   #_Retain_L_width_North_Trawl_1(1)
-#-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
--10 10  10  4.59512 99  0   2   0   2   1998    2020    2   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -579,8 +578,8 @@
                                                                                         
 5       59  15  65  99  0   2   0   0   0   0   0   1   2   #_Retain_L_infl_North_Trawl_1(1)
 0.01    9   7   5   99  0   2   0   0   0   0   0   1   2   #_Retain_L_width_North_Trawl_1(1)
-#-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
--10 10  10  4.59512 99  0   2   0   2   1998    2020    2   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   -5   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -595,6 +594,7 @@
 5		59	15	65	99	0	2	0	0	0	0	0	4	2	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	4	2	#_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   2   0   0   0   0   0   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -610,6 +610,7 @@
 5       59  15  65  99  0   2   0   0   0   0   0   4   2   #_Retain_L_infl_North_Trawl_1(1)
 0.01    9   7   5   99  0   2   0   0   0   0   0   4   2   #_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   2   0   0   0   0   0   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10 10  0   -0.35   99  0   -4  0   0   0   0   0   0   0   #_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -624,6 +625,7 @@
 5       59  15  65  99  0   2   0   0   0   0   0   4   2   #_Retain_L_infl_North_Trawl_1(1)
 0.01    9   7   5   99  0   2   0   0   0   0   0   4   2   #_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   2   0   0   0   0   0   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10 10  0   -0.35   99  0   -4  0   0   0   0   0   0   0   #_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -639,6 +641,7 @@
 5       59  15  65  99  0   2   0   0   0   0   0   4   2   #_Retain_L_infl_North_Trawl_1(1)
 0.01    9   7   5   99  0   2   0   0   0   0   0   4   2   #_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   2   0   0   0   0   0   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   2   0   2   1998    2020    5   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10 10  0   -0.35   99  0   -4  0   0   0   0   0   0   0   #_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -844,72 +847,78 @@
 
 # timevary selex parameters 
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type    PHASE  #  parm_name
-
 # commercial selecgtivity
              5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+#0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #          
              5            59            25            65            99             0      2  # Size_inflection_South_Trawl_1(2)_BLK1repl_1989
           0.01             9           5.1             5            99             0      2  # Size_95%width_South_Trawl_1(2)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_South_Trawl_1(2)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_South_Trawl_1(2)_BLK1repl_1989
+#0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #
              5            59            25            65            99             0      2  # Size_inflection_North_Trawl_2(3)_BLK1repl_1989
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_2(3)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_2(3)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_2(3)_BLK1repl_1989
+#0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #
              5            59            25            65            99             0      2  # Size_inflection_South_Trawl_2(4)_BLK1repl_1989
           0.01             9           5.1             5            99             0      2  # Size_95%width_South_Trawl_2(4)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_South_Trawl_2(4)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_South_Trawl_2(4)_BLK1repl_1989
+#0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #
              5            59            25            65            99             0      2  # Size_inflection_North_Nontrawl_1(5)_BLK1repl_1989
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Nontrawl_1(5)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Nontrawl_1(5)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Nontrawl_1(5)_BLK1repl_1989
+#0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #             
              5            59            25            65            99             0      2  # Size_inflection_South_Nontrawl_1(6)_BLK1repl_1989
           0.01             9           5.1             5            99             0      2  # Size_95%width_South_Nontrawl_1(6)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_South_Nontrawl_1(6)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_South_Nontrawl_1(6)_BLK1repl_1989
+#0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #
              5            59            25            65            99             0      2  # Size_inflection_North_Nontrawl_2(7)_BLK1repl_1989
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Nontrawl_2(7)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Nontrawl_2(7)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Nontrawl_2(7)_BLK1repl_1989
+#0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #
              5            59            25            65            99             0      2  # Size_inflection_South_Nontrawl_2(8)_BLK1repl_1989
           0.01             9           5.1             5            99             0      2  # Size_95%width_South_Nontrawl_2(8)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_South_Nontrawl_2(8)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_South_Nontrawl_2(8)_BLK1repl_1989
+#0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #
 
 #recreational selectivity
              5            59            15            65            99             0      2  # Retain_L_infl_North_Rec_1(9)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Rec_1(9)_BLK1repl_1989
           -10 10  10  4.59512 99  0   -2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#          0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #
              5            59            15            65            99             0      2  # Retain_L_infl_South_Rec_1(10)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_South_Rec_1(10)_BLK1repl_1989
           -10 10  10  4.59512 99  0   -2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#          0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #
              5            59            15            65            99             0      2  # Retain_L_infl_North_Rec_2(11)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Rec_2(11)_BLK1repl_1989
           -10 10  10  4.59512 99  0   -2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#          0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #
              5            59            15            65            99             0      2  # Retain_L_infl_South_Rec_2(12)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_South_Rec_2(12)_BLK1repl_1989
           -10 10  10  4.59512 99  0   -2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#          0.0001  2   0.4 0 0 0   -5  #   
+#-0.99   0.99    0   0   0 0   -6  #
 
-
-0.0001  2   0.4 0 0 0   -5  #   
--0.99   0.99    0   0   0 0   -6  #
-0.0001  2   0.4 0 0 0   -5  #   
--0.99   0.99    0   0   0 0   -6  #
-0.0001  2   0.4 0 0 0   -5  #   
--0.99   0.99    0   0   0 0   -6  #
-0.0001  2   0.4 0 0 0   -5  #   
--0.99   0.99    0   0   0 0   -6  # 
-0.0001  2   0.4 0 0 0   -5  #   
--0.99   0.99    0   0   0 0   -6  #
-0.0001  2   0.4 0 0 0   -5  #   
--0.99   0.99    0   0   0 0   -6  #
-0.0001  2   0.4 0 0 0   -5  #   
--0.99   0.99    0   0   0 0   -6  #
-0.0001  2   0.4 0 0 0   -5  #   
--0.99   0.99    0   0   0 0   -6  # 
 
 
 0 #_2D AR selectivity
@@ -1003,6 +1012,8 @@
 
 #_Variance_adjustments_to_input_values
 #_factor fleet value
+#1 14 0.1
+#1 15 0.1
 4 9 0.1
 4 10 0.1
 4 11 0.1
@@ -1014,14 +1025,6 @@
 4 17 0.1
 4 18 0.1
 4 20 0.1
-5 1 0.25
-5 2 0.25
-5 3 0.25
-5 4 0.25
-5 26 0.25
-5 27 0.25
-5 30 0.25
-5 31 0.25
 -9999 0 0
 
 10 #_maxlambdaphase
@@ -1030,6 +1033,14 @@
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=WtFreq; 7=sizeage; 8=catch; 
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  wtfreq_method
+5 1 1 0.25 1
+5 2 1 0.25 1
+5 3 1 0.25 1
+5 4 1 0.25 1
+5 26 1 0.25 1
+5 27 1 0.25 1
+5 30 1 0.25 1
+5 31 1 0.25 1
 1 35 1 0 1
 1 36 1 0 1
 1 37 1 0 1
@@ -1430,3 +1441,27 @@
           0.01             9           5.1             5            99             0      2  # Size_95%width_South_Rec_2(12)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_South_Rec_2(12)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_South_Rec_2(12)_BLK1repl_1989
+
+
+
+## NOW
+
+
+
+0.0001  2   0.4 0 0 0   -5  #   
+-0.99   0.99    0   0   0 0   -6  #
+0.0001  2   0.4 0 0 0   -5  #   
+-0.99   0.99    0   0   0 0   -6  #
+0.0001  2   0.4 0 0 0   -5  #   
+-0.99   0.99    0   0   0 0   -6  #
+0.0001  2   0.4 0 0 0   -5  #   
+-0.99   0.99    0   0   0 0   -6  #
+0.0001  2   0.4 0 0 0   -5  #   
+-0.99   0.99    0   0   0 0   -6  #
+0.0001  2   0.4 0 0 0   -5  #   
+-0.99   0.99    0   0   0 0   -6  #
+0.0001  2   0.4 0 0 0   -5  #   
+-0.99   0.99    0   0   0 0   -6  #
+
+
+          
