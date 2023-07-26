@@ -160,9 +160,9 @@ SS_BSB_dat1 = list(
                               CV = round(sqrt(log(1+nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 12]^2)),digits=3)),
   ####NOTE: Winter survey not broken N-S, so couldn't update, but should be the same as before?
   "#_RecCPUE_N_spr",
-  RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "9",obs = round(RecCPA.agg[RecCPA.agg$Region == "North", 3],digits=5), CV = 0.38), #round(sqrt(log(1+0.38^2)),digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "39",obs = round(RecCPA.agg[RecCPA.agg$Region == "North", 3],digits=5), CV = 0.38), #round(sqrt(log(1+0.38^2)),digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
   "#_RecCPUE_S_spr",
-  RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "10",obs = round(RecCPA.agg[RecCPA.agg$Region == "South", 3],digits=5), CV = 0.25), #round(sqrt(log(1+0.25^2)), digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "40",obs = round(RecCPA.agg[RecCPA.agg$Region == "South", 3],digits=5), CV = 0.25), #round(sqrt(log(1+0.25^2)), digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
   "#_VAST_N_spr",
   VAST.N.spr = data.frame(year = spring_N_index$Year, seas = "4", index = "35", obs = round(spring_N_index$Index,digits=5), CV = round(sqrt(log(1+(spring_N_index$Index_SD/spring_N_index$Index)^2)), digits=3)),
   "#_VAST_S_spr",
