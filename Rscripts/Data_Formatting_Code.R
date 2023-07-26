@@ -355,7 +355,7 @@ reclensharv <- rec.ab1.len |>
   clean_names() |>
   left_join(recfishery_ids) |>
   mutate(season = ifelse(semester==1,4,10)) |>
-  rename(nsamp = sample_size) |>
+  rename(nsamp = sample_size_trip) |>
   rename(length = l_cm_bin) |>
   select(-semester,
          -n_ab1,
@@ -372,7 +372,7 @@ reclensdisc <- rec.b2.len |>
   clean_names() |>
   left_join(recfishery_ids) |>
   mutate(season = ifelse(semester==1,4,10)) |>
-  rename(nsamp = sample_size) |>
+  rename(nsamp = sample_size_trip) |>
   rename(length = l_cm_bin) |>
   filter(nsamp > 0) |>
   select(-disposition, 
@@ -419,6 +419,7 @@ disc_lens <- comdisc.len |>
 disc_lens
 
 # sample size for comdisc.len
+# number of tows
 comdisc_samp_trawl <- comdisc.nhaul.fleet |>
   clean_names() |>
   select(-non_trawl) |>
