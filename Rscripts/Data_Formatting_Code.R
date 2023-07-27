@@ -494,7 +494,7 @@ len_samps <- bind_rows(comlens_samp,
                        comdisc_samp_nontrawl,
                        reclensharv,
                        reclensdisc) |>
-  mutate(index = as.numeric(index))
+  mutate(nsamp = round(nsamp), index = as.numeric(index))
 
 
 fishery_lens_write <- left_join(fishery_lens_write, len_samps) |>
