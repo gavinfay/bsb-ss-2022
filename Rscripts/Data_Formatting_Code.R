@@ -160,9 +160,9 @@ SS_BSB_dat1 = list(
                               CV = round(sqrt(log(1+nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 12]^2)),digits=3)),
   ####NOTE: Winter survey not broken N-S, so couldn't update, but should be the same as before?
   "#_RecCPUE_N_spr",
-  RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "9",obs = round(RecCPA.agg[RecCPA.agg$Region == "North", 3],digits=5), CV = 0.38), #round(sqrt(log(1+0.38^2)),digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "39",obs = round(RecCPA.agg[RecCPA.agg$Region == "North", 3],digits=5), CV = 0.38), #round(sqrt(log(1+0.38^2)),digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
   "#_RecCPUE_S_spr",
-  RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "10",obs = round(RecCPA.agg[RecCPA.agg$Region == "South", 3],digits=5), CV = 0.25), #round(sqrt(log(1+0.25^2)), digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "40",obs = round(RecCPA.agg[RecCPA.agg$Region == "South", 3],digits=5), CV = 0.25), #round(sqrt(log(1+0.25^2)), digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
   "#_VAST_N_spr",
   VAST.N.spr = data.frame(year = spring_N_index$Year, seas = "4", index = "35", obs = round(spring_N_index$Index,digits=5), CV = round(sqrt(log(1+(spring_N_index$Index_SD/spring_N_index$Index)^2)), digits=3)),
   "#_VAST_S_spr",
@@ -355,7 +355,7 @@ reclensharv <- rec.ab1.len |>
   clean_names() |>
   left_join(recfishery_ids) |>
   mutate(season = ifelse(semester==1,4,10)) |>
-  rename(nsamp = sample_size) |>
+  rename(nsamp = sample_size_trip) |>
   rename(length = l_cm_bin) |>
   select(-semester,
          -n_ab1,
@@ -372,7 +372,7 @@ reclensdisc <- rec.b2.len |>
   clean_names() |>
   left_join(recfishery_ids) |>
   mutate(season = ifelse(semester==1,4,10)) |>
-  rename(nsamp = sample_size) |>
+  rename(nsamp = sample_size_trip) |>
   rename(length = l_cm_bin) |>
   filter(nsamp > 0) |>
   select(-disposition, 
@@ -419,6 +419,7 @@ disc_lens <- comdisc.len |>
 disc_lens
 
 # sample size for comdisc.len
+# number of tows
 comdisc_samp_trawl <- comdisc.nhaul.fleet |>
   clean_names() |>
   select(-non_trawl) |>
@@ -493,7 +494,7 @@ len_samps <- bind_rows(comlens_samp,
                        comdisc_samp_nontrawl,
                        reclensharv,
                        reclensdisc) |>
-  mutate(index = as.numeric(index))
+  mutate(nsamp = round(nsamp, 3), index = as.numeric(index))
 
 
 fishery_lens_write <- left_join(fishery_lens_write, len_samps) |>

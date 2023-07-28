@@ -285,8 +285,6 @@
 #_4:  0/1 for biasadj or not
 #_5:  0/1 to float
 #fleet type info extrasd bias_adj float   
-5 3 0 0 1 0
-7 3 0 0 1 0
 9	3	0	0	1	0	#MA_Spr
 10	3	0	0	1	0	#MA_Fll
 11	3	0	0	1	0	#RI_Spr
@@ -313,16 +311,14 @@
 32	3	0	0	1	0	#VAST_S_Spr
 33	3	0	0	1	0	#VAST_N_Fall
 34	3	0	0	1	0	#VAST_S_Fall
+35	3	0	0	1	0	#RecCPUE_North_Spr
+36	3	0	0	1	0	#RecCPUE_South_Spr
 -9999 0 0 0 0 0
 
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 
 #_Q_parms(if_any)  
 #_LO	HI	INIT	PRIOR	SD	PR_type	PHASE	env-var	use_dev	dev_minyr	dev_maxyr	dev_stddev	Block	Block_Fxn
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q fleet 9
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, fleet 9
--35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q fleet 11	
-0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, fleet 11
 -35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q MA	Spring 1+ (13)	
 0	10	0	0	99	0	-2	0	0	0	0	0	0	0	#	power_param, MA Spring 1+ (13)	
 -35	10	-8	0	99	0	1	0	0	0	0	0	0	0	#	ln_q MA Fall (14)			
@@ -374,7 +370,11 @@
 -35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q VAST North Fall (37)  
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, VAST North Fall (37)  
 -35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q VAST South Fall (38)  
-0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, VAST South Fall (38)  			
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, VAST South Fall (38)
+-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q Rec CPUE North Spring (39)  
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, Rec CPUE North Spring (39)  
+-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q Rec CPUE South Spring (40)  
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, Rec CPUE South Spring (40)   			
 
 
 #_size_selex_types
@@ -413,6 +413,8 @@
 24  0   0   0   #36 VAST_South_Spr
 24  0   0   0   #37 VAST_North_Fall
 24  0   0   0   #38 VAST_South_Fall
+5 	0 	0 	9  	#39 RecCPUE_North_Spring
+5 	0 	0 	10 	#40 RecCPUE_South_Spring
  
 #_age_selex_types
 #_Pattern Discard Male Special
@@ -450,6 +452,8 @@
 0   0   0   0   #36 VAST_South_Spr
 0   0   0   0   #37 VAST_North_Fall
 0   0   0   0   #38 VAST_South_Fall
+0   0   0   0   #39 RecCPUE_North_Spr
+0   0   0   0   #40 RecCPUE_South_Spr
 
 #selectivity parameters
 #
@@ -751,6 +755,13 @@
 0.01    9   5.9 5   99  0   -2   0   0   0   0   0   0   0
 -10 10  -2  -1.15   99  0   -2   0   0   0   0   0   0   0
 -10 10  -9  -0.35   99  0   -3   0   0   0   0   0   0   0
+
+#Rec CPUE
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0	0	0	
+-10	10	35	-0.35	99	0	-4	0	0	0	0	0	0	0	
+
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0	0	0	
+-10	10	35	-0.35	99	0	-4	0	0	0	0	0	0	0
 
 
 #age-based selectivity

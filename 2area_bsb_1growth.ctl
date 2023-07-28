@@ -316,8 +316,8 @@
 36 3 0 0 1 0 #VAST_S_Spr
 37 3 0 0 1 0 #VAST_N_Fall 
 38 3 0 0 1 0 #VAST_S_Fall  
-39 3 0 0 1 0
-40 3 0 0 1 0
+39 3 0 0 1 0 #RecCPUE_North_Spr
+40 3 0 0 1 0 #RecCPUE_South_Spr
 -9999 0 0 0 0 0
 
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
@@ -376,10 +376,10 @@
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, VAST North Fall (37)  
 -35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q VAST South Fall (38)  
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, VAST South Fall (38)  			
--35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 9
-0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 9
--35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 10   
-0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 10
+-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q Rec CPUE North Spring (39)  
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, Rec CPUE North Spring (39)  
+-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q Rec CPUE South Spring (40)  
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, Rec CPUE South Spring (40) 
 
 #_size_selex_types
 #_Pattern Discard Male Special
@@ -425,9 +425,9 @@
 24  0   0   0   #36 VAST_South_Spr
 24  0   0   0   #37 VAST_North_Fall
 24  0   0   0   #38 VAST_South_Fall
-5 0 0 9  #39 RecCPUE_North_Spring
-5 0 0 10 #40 RecCPUE_South_Spring
-
+5 	0 	0 	9  	#39 RecCPUE_North_Spring
+5 	0 	0 	10 	#40 RecCPUE_South_Spring
+ 
 #_age_selex_types
 #_Pattern Discard Male Special
 0   0   0   0       
@@ -835,6 +835,13 @@
 0.01    9   5.9 5   99  0   -2   0   0   0   0   0   0   0
 -10 10  -2  -1.15   99  0   -2   0   0   0   0   0   0   0
 -10 10  -9  -0.35   99  0   -3   0   0   0   0   0   0   0
+
+#Rec CPUE
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0	0	0	
+-10	10	35	-0.35	99	0	-4	0	0	0	0	0	0	0	
+
+-10	10	1	-0.35	99	0	-4	0	0	0	0	0	0	0	
+-10	10	35	-0.35	99	0	-4	0	0	0	0	0	0	0	
 
 
 #Rec CPUE
