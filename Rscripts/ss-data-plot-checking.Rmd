@@ -1,0 +1,35 @@
+
+2023/04/17
+Gavin Fay
+
+Check `bsb.dat` file by creating the `r4ss` data plots
+
+
+```{r}
+#load libraries
+suppressPackageStartupMessages(library(tidyverse))
+library(janitor)
+# install.packages("pak")
+# pak::pkg_install("r4ss/r4ss")
+library(r4ss)
+```
+
+grab the output
+
+```{r}
+# read the model output and print diagnostic messages
+replist <- SS_output(
+  dir = "..",
+  verbose = TRUE,
+  printstats = TRUE
+)
+```
+
+
+```{r}
+# plots the results
+#SS_plots(replist, plot = c(7,9,11,12:19,21), dir = here::here())
+#SS_plots(replist, plot = c(2), dir = here::here())
+SS_plots(replist, dir = here::here())
+```
+
