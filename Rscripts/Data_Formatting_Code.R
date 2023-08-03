@@ -494,7 +494,7 @@ len_samps <- bind_rows(comlens_samp,
                        comdisc_samp_nontrawl,
                        reclensharv,
                        reclensdisc) |>
-  mutate(nsamp = round(nsamp, 3), index = as.numeric(index))
+  mutate(nsamp = ceiling(nsamp), index = as.numeric(index))
 
 
 fishery_lens_write <- left_join(fishery_lens_write, len_samps) |>
@@ -1497,6 +1497,39 @@ ghost2 <- ghost_fishery_agecomp_write |>
 ghost_fishery_agecomp_write <- bind_cols(ghost_fishery_agecomp_write, ghost2)
 
 
+####### VAST age comps #######
+objects <- c("spring_N_index", "spring_S_index",
+             "fall_N_index", "fall_S_index")
+VAST_ac <- map_dfr(objects, function(x) get(x)|>clean_names(),
+                       .id = "index") |>
+  mutate(index = case_when(
+           index == 1 ~ 35,
+           index == 2 ~ 36,
+           index == 3 ~ 37,
+           index == 4 ~ 38),
+         season = ifelse(as.numeric(index)<37, 4, 10),
+         gender = 0,
+         part = 0,
+         lo = 1,
+         hi = 28,
+         nsamp = 25,
+         ageerr = ifelse(season==4,1,2)) |>
+  select(-x, -index_sd) |>
+  rename_with(.fn = ~ str_replace(.x, "x", "age_"),
+              .cols = starts_with("x")) |>
+  add_column(!!!set_names(as.list(rep(0, length(c(0,9:15)))),nm=paste0("age_", c(0,9:15)))) |>
+  select(year, season, index, gender, part, ageerr, lo, hi, nsamp, age_0, everything()) |>
+  I()
+
+VAST_ac2 <- VAST_ac |>
+  select(-(1:9)) |>
+  mutate_all(.funs = function(x) 0*x) |>
+  rename_with(.fn = function(x) str_c("m_",x))
+
+VAST_ac_write <- bind_cols(VAST_ac, VAST_ac2)
+
+
+
 ##############################
 # write to file
 # GF NB that print does not work for tables - as it truncates the output
@@ -1548,6 +1581,15 @@ write("###############################################", file = file.path("SS_BS
 write("##  Ghost Age Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write.table(ghost_fishery_agecomp_write, #ac_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  VAST Age Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(VAST_ac_write, #ac_write, 
             file = "SS_BSB_dat.txt", 
             append = TRUE, 
             row.names = FALSE,
