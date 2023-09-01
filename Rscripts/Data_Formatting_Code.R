@@ -784,6 +784,7 @@ state_survey_lens <- map_dfr(objects, function(x) get(x)|>clean_names()|>
                              .id = "index") |>
   mutate(index = survey_index[as.integer(index)],
          season = ifelse(semester==1,4,10),
+         nsamp = 50
          #gender = 0,
          #part = 0,
   )
@@ -792,18 +793,18 @@ state_survey_lens
 samp_objects <- c("MA.spr", "MA.fall", 
                   "RI.spr", "RI.fall", 
                   "LIS.spr", "LIS.fall")
-state_samp <- map_dfr(samp_objects, function(x) get(x) |> clean_names(),
-                      .id = "index") |>
-  mutate(index = survey_index[as.integer(index)],
-         season = ifelse(month > 6, 10, 4)) |>
-  group_by(index, year, season) |>
-  summarise(nsamp = sum(tot_n, na.rm = TRUE), .groups = "drop") |>
-  mutate_if(is.factor, as.character) |>
-  mutate_if(is.character, as.numeric) 
+# state_samp <- map_dfr(samp_objects, function(x) get(x) |> clean_names(),
+#                       .id = "index") |>
+#   mutate(index = survey_index[as.integer(index)],
+#          season = ifelse(month > 6, 10, 4)) |>
+#   group_by(index, year, season) |>
+#   summarise(nsamp = 50, .groups = "drop") |>
+#   mutate_if(is.factor, as.character) |>
+#   mutate_if(is.character, as.numeric) 
 
-state_survey_lens <- state_survey_lens |>
-  left_join(state_samp) |>
-  na.omit()
+# state_survey_lens <- state_survey_lens |>
+#   left_join(state_samp) |>
+#   na.omit()
 
 nj <- NJ.CAL |>
   clean_names() |>
@@ -814,7 +815,7 @@ nj <- NJ.CAL |>
 nj_samp <- NJ.June |>
   clean_names() |>
   group_by(year) |>
-  summarise(nsamp = sum(tot_n), .groups = "drop")
+  summarise(nsamp = 50, .groups = "drop")
 
 nj <- nj |>
   left_join(nj_samp)
@@ -929,7 +930,7 @@ neamap_samp <- neamap.all |>
            season == 10 & bsb_region == "SOUTH" ~ 27)) |>
   group_by(index, year, season) |>
   #summarise(nsamp = sum(tot_n, na.rm = TRUE), .groups = "drop")
-  summarise(nsamp = length(which(tot_n>0)), .groups = "drop") #updates to count number of tows with BSB
+  summarise(nsamp = 50, .groups = "drop") #updates to count number of tows with BSB
 
 neamap_lens <- neamap_lens |>
   left_join(neamap_samp)
