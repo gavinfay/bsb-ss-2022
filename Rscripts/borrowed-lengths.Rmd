@@ -1,0 +1,248 @@
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+library(janitor)
+
+```
+
+```{r}
+load('../../BSB.Comm.Catch/Landings/commercialSizeComps/commercialSizeComps_image.RData')
+out$comLen_all
+out$comLen_all %>%
+  select(YEAR, LENGTH, BrwFlag)
+
+
+comlens <- out$comLen_all %>% 
+  clean_names() %>%
+  mutate(gear = ifelse(bsb_gear_cat1 == "TRAWL", "trawl", "non-trawl")) %>% 
+  group_by(year, stock, semester, gear, length) %>% 
+  summarize(nal = sum(n), .groups = "drop")
+comlens
+```
+
+```{r}
+comlens %>% 
+  filter(stock == "NORTH", semester == 1) %>% 
+  ggplot() +
+  aes(x = length, y = nal, group = gear, col = factor(gear)) %>% 
+  geom_line() +
+  geom_vline(xintercept = 30) +
+  #geom_point() +
+  facet_wrap(~year, dir = "v", scales = "free_y")
+```
+
+### Discards
+
+```{r}
+load('../../BSB.Comm.Catch/Discards/Discards.at.length/Filled.discard.LenFreqs.RDATA')
+```
+
+
+```{r}
+disclens <- lfreq.gr.final %>% 
+  clean_names() %>% 
+  rename(gear = gear_simple)
+disclens
+```
+
+```{r}
+disclens %>% 
+  filter(region == "South", semester == 2) %>% 
+  ggplot() +
+  aes(x = length, y = numlen, group = gear, col = factor(gear)) %>% 
+  geom_line() +
+  geom_vline(xintercept = 30) +
+  #geom_point() +
+  facet_wrap(~year, dir = "v", scales = "free_y")
+```
+
+```{r}
+# define length bins & a length lookup
+Lbins <- c(seq(2,48,2),52,58,64,70)
+nlenbins <- length(Lbins)
+lenbins <- tibble(length = 1:100,
+                  ibin = sapply(length,function(x) max(which(Lbins<x)))) |>
+  mutate(ibin = ifelse(ibin==-Inf,1,ibin)) |>
+  I()
+```
+
+```{r}
+#create lookup table for commercial fleets
+fishery_ids <- expand.grid(stock = c("NORTH","SOUTH"),
+                           semester = 1:2,
+                           gear = c("trawl", "non-trawl")) |>
+  tibble() |>
+  mutate_if(is.factor, as.character) |>
+  mutate(index = 1:8) |>
+  I()
+fishery_ids
+```
+
+```{r}
+fishery_lens <- comlens |>
+  left_join(fishery_ids) |>
+  left_join(lenbins) |>
+  rename(season = semester) |>
+  mutate(season = ifelse(season==1,4,10)) |>
+  group_by(index, year, ibin, season) |>
+  summarize(cal = sum(nal, na.rm = TRUE), .groups = "drop") |>
+  group_by(index, year, season) |>
+  mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
+  ungroup() |>
+  mutate(gender = 0,
+         part = 2) |> 
+  I()
+```
+
+```{r}
+disc_lens <- disclens |>
+  mutate(stock = ifelse(region == "North", "NORTH","SOUTH"),
+         gear = tolower(gear)) |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  left_join(lenbins) |>
+  select(-semester,-region,-length) |>
+  group_by(index, year, season, ibin) |>
+  summarize(cal = n(), .groups = "drop") |>
+  group_by(index, year, season) |>
+  mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
+  ungroup() |>
+  mutate(gender = 0,
+         part = 1) |>
+         #index = ifelse(source == "CFRF",-1*index,index)) |>
+  #select(-source) |>
+  I()
+disc_lens
+```
+
+```{r}
+fishery_lens <- bind_rows(fishery_lens, disc_lens)
+```
+
+
+```{r}
+fillbins <- unique(lenbins$ibin)[!unique(lenbins$ibin) %in% fishery_lens$ibin]
+filllens <- fishery_lens |>
+  slice(1:length(fillbins)) |>
+  mutate(cal = 0,
+         ibin = fillbins) |>
+  I()
+filllens
+```
+```{r}
+fishery_lens <- fishery_lens |>
+  bind_rows(filllens) |>
+  group_by(index, year, ibin, season, gender, part) |>
+  summarise(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
+  ungroup() |>
+  pivot_wider(names_from = ibin,
+              names_prefix = "bin_",
+              values_from = cal,
+              names_sort = TRUE,
+              values_fill = 0
+  ) |>
+  group_by(index, year, season, gender, part) |>
+  summarize(across(c(everything()), sum)) |>
+  ungroup() |>
+  #Yr Seas Flt/Svy Gender Part Nsamp datavector(female-male)
+  #select(year, season, index, gender, part, nsamp, everything()) |>
+  select(year, season, index, gender, part, everything()) |>
+  I()
+```
+
+
+```{r}
+fishery_lens2 <- fishery_lens |>
+  select(-(1:5)) |>
+  mutate_all(.funs = function(x) 0*x) |>
+  rename_with(.fn = function(x) str_c("m_",x))
+fishery_lens_write <- bind_cols(fishery_lens, fishery_lens2)  
+fishery_lens_write
+```
+
+```{r}
+load("../data/BSB.Fishery.Data.For.SS.RDATA")
+```
+
+
+```{r}
+# comlens sample size
+comlens_samp <- comlen.nsamp.region.sem.mkt.gr |>
+  ungroup() |>
+  clean_names() |>
+  filter(stock %in% c("NORTH", "SOUTH")) |>
+  mutate(gear = ifelse(bsb_gear_cat2=="TRAWL","trawl","non-trawl")) |>
+  filter(stock != "UNK") |>
+  select(-bsb_gear_cat2) |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10), nsamp = nsamples) |>
+  group_by(index, year, season) |>
+  summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 2) |>
+  I()
+comlens_samp
+```
+
+```{r}
+# sample size for comdisc.len
+# number of tows
+comdisc_samp_trawl <- comdisc.nhaul.fleet |>
+  clean_names() |>
+  select(-non_trawl) |>
+  mutate(gear = "trawl") |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  group_by(index, year, season) |>
+  summarize(nsamp = sum(trawl, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 1) |>
+  filter(nsamp > 0) |>
+  I()
+#comdisc_samp_trawl
+
+comdisc_samp_nontrawl<- comdisc.nhaul.fleet |>
+  clean_names() |>
+  select(-trawl) |>
+  mutate(gear = "non-trawl") |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  group_by(index, year, season) |>
+  summarize(nsamp = sum(non_trawl, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 1) |>
+  filter(nsamp>0) |>
+  I()
+#comdisc_samp_nontrawl
+
+```
+
+```{r}
+len_samps <- bind_rows(comlens_samp,
+                       comdisc_samp_trawl,
+                       comdisc_samp_nontrawl) |>
+  mutate(nsamp = round(nsamp, 3), index = as.numeric(index))
+```
+
+
+```{r}
+fishery_lens_write <- fishery_lens_write |> 
+  left_join(len_samps) |>
+  select(year, season, index, gender, part, nsamp, everything()) |>
+  mutate(index = ifelse(is.na(nsamp), -1*index, index),
+         nsamp = ifelse(is.na(nsamp), 25, nsamp))
+fishery_lens_write
+```
+
+
+
+
+
+```{r}
+write("###############################################", file = file.path("../SS_BSB_dat.txt"), append = TRUE)
+write("##  Borrowed Commercial Length Composition Data", file = file.path("../SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("../SS_BSB_dat.txt"), append = TRUE)
+write.table(fishery_lens_write, 
+            file = "../SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+```
+

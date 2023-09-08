@@ -456,6 +456,7 @@ comdisc_samp_nontrawl<- comdisc.nhaul.fleet |>
 # disc_lens
 
 fishery_lens <- bind_rows(comlens, reclens, disc_lens)
+fishery_lens <- bind_rows(reclens, disc_lens)
 
 
 fillbins <- unique(lenbins$ibin)[!unique(lenbins$ibin) %in% fishery_lens$ibin]
@@ -489,7 +490,7 @@ fishery_lens2 <- fishery_lens |>
   rename_with(.fn = function(x) str_c("m_",x))
 fishery_lens_write <- bind_cols(fishery_lens, fishery_lens2)  
 
-len_samps <- bind_rows(comlens_samp,
+len_samps <- bind_rows(#comlens_samp,
                        comdisc_samp_trawl,
                        comdisc_samp_nontrawl,
                        reclensharv,
