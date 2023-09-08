@@ -1428,6 +1428,37 @@ ghost2 <- ghost_fishery_agecomp_write |>
 ghost_fishery_agecomp_write <- bind_cols(ghost_fishery_agecomp_write, ghost2)
 
 
+####### VAST age comps #######
+objects <- c("spring_N_index", "spring_S_index",
+             "fall_N_index", "fall_S_index")
+VAST_ac <- map_dfr(objects, function(x) get(x)|>clean_names(),
+                       .id = "index") |>
+  mutate(index = case_when(
+           index == 1 ~ 31,
+           index == 2 ~ 32,
+           index == 3 ~ 33,
+           index == 4 ~ 34),
+         season = ifelse(as.numeric(index)<33, 4, 10),
+         gender = 0,
+         part = 0,
+         lo = 1,
+         hi = 28,
+         nsamp = 25,
+         ageerr = ifelse(season==4,1,2)) |>
+  select(-x, -index_sd) |>
+  rename_with(.fn = ~ str_replace(.x, "x", "age_"),
+              .cols = starts_with("x")) |>
+  add_column(!!!set_names(as.list(rep(0, length(c(0,9:15)))),nm=paste0("age_", c(0,9:15)))) |>
+  select(year, season, index, gender, part, ageerr, lo, hi, nsamp, age_0, everything()) |>
+  I()
+
+VAST_ac2 <- VAST_ac |>
+  select(-(1:9)) |>
+  mutate_all(.funs = function(x) 0*x) |>
+  rename_with(.fn = function(x) str_c("m_",x))
+
+VAST_ac_write <- bind_cols(VAST_ac, VAST_ac2)
+
 
 # rejig fleet numbers for tag recaps
 recaps <- read_table("tag_recap_agg.txt") %>% 
@@ -1491,6 +1522,15 @@ write("##  Ghost Age Composition Data", file = file.path("aggcomm_SS_BSB_dat.txt
 write("###############################################", file = file.path("aggcomm_SS_BSB_dat.txt"), append = TRUE)
 write.table(ghost_fishery_agecomp_write, #ac_write, 
             file = "aggcomm_SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  VAST Age Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(VAST_ac_write, #ac_write, 
+            file = "SS_BSB_dat.txt", 
             append = TRUE, 
             row.names = FALSE,
             col.names = FALSE)
