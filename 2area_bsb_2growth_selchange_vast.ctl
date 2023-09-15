@@ -321,6 +321,8 @@
 38 3 0 0 1 0 #VAST_S_Fall  
 39 3 0 0 1 0
 40 3 0 0 1 0
+41 3 0 0 1 0
+#42 3 1 0 1 0
 -9999 0 0 0 0 0
 
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
@@ -383,6 +385,10 @@
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 9
 -35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 10   
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 10
+-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 10   
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 10
+# -35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 10   
+# 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 10
 
 #_size_selex_types
 #_Pattern Discard Male Special
@@ -430,6 +436,8 @@
 24  0   0   0   #38 VAST_South_Fall
 5 0 0 9  #39 RecCPUE_North_Spring
 5 0 0 10 #40 RecCPUE_South_Spring
+0 0 0 0  #41 
+# 0 0 0 0  #42 
 
 #_age_selex_types
 #_Pattern Discard Male Special
@@ -473,6 +481,8 @@
 10   0   0   0   #38 VAST_South_Fall
 0   0   0   0   #39 RecCPA_North_Spring
 0   0   0   0   #40 RecCPA_South_Spring
+0   0   0   0   #41 
+# 0   0   0   0   #42 
 
 #selectivity parameters
 #
@@ -847,6 +857,8 @@
 -10     10     1    -0.35    99 0    -4      0  0  0  0  0  0  0   
 -10     10    35    -0.35    99 0    -4      0  0  0  0  0  0  0  
 
+# Botttom temp region and North
+
 
 #age-based selectivity
 
@@ -1160,10 +1172,6 @@
 #5 37 1 0 1
 #5 38 1 0 1
 -9999 1 1 1 1
-
-0 # read specs for more stddev reporting
-
-999  #end of file
 
 
 

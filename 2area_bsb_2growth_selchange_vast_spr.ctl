@@ -321,6 +321,8 @@
 38 3 0 0 1 0 #VAST_S_Fall  
 39 3 0 0 1 0
 40 3 0 0 1 0
+41 3 0 0 1 0
+#42 3 1 0 1 0
 -9999 0 0 0 0 0
 
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
@@ -383,6 +385,10 @@
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 9
 -35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 10   
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 10
+-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 9
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 9
+#-35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 10   
+#0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 10
 
 #_size_selex_types
 #_Pattern Discard Male Special
@@ -430,6 +436,8 @@
 24  0   0   0   #38 VAST_South_Fall
 5 0 0 9  #39 RecCPUE_North_Spring
 5 0 0 10 #40 RecCPUE_South_Spring
+0 0 0 0 #41
+#0 0 0 0 #42
 
 #_age_selex_types
 #_Pattern Discard Male Special
@@ -473,6 +481,8 @@
 10   0   0   0   #38 VAST_South_Fall
 0   0   0   0   #39 RecCPA_North_Spring
 0   0   0   0   #40 RecCPA_South_Spring
+0   0   0   0   #41
+#0   0   0   0   #42
 
 #selectivity parameters
 #
@@ -1101,10 +1111,50 @@
 1	31	1	0	1
 1	32	1	0	1
 1	33	1	0	1
-1	37	1	0	1
-1	38	1	0	1
+4	13	1	0	1
+4	14	1	0	1
+4	15	1	0	1
+4	16	1	0	1
+4	17	1	0	1
+4	18	1	0	1
+4	19	1	0	1
+4	20	1	0	1
+4	21	1	0	1
+4	22	1	0	1
+4	23	1	0	1
+4	24	1	0	1
+4	25	1	0	1
+4	26	1	0	1
+4	27	1	0	1
+4	28	1	0	1
+4	29	1	0	1
+4	30	1	0	1
+4	31	1	0	1
+4	32	1	0	1
+4	33	1	0	1
 4 37 1 0 1
 4 38 1 0 1
+5	13	1	0	1
+5	14	1	0	1
+5	15	1	0	1
+5	16	1	0	1
+5	17	1	0	1
+5	18	1	0	1
+5	19	1	0	1
+5	20	1	0	1
+5	21	1	0	1
+5	22	1	0	1
+5	23	1	0	1
+5	24	1	0	1
+5	25	1	0	1
+5	26	1	0	1
+5	27	1	0	1
+5	28	1	0	1
+5	29	1	0	1
+5	30	1	0	1
+5	31	1	0	1
+5	32	1	0	1
+5	33	1	0	1
 5 37 1 0 1
 5 38 1 0 1
 #5 26 1 0.25 1
