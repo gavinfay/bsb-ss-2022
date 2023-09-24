@@ -160,9 +160,10 @@
 
 #C Recruitment distributions
 #C RecrDist-settlement-1_
- -8 8 -1.1 0 99 0 1 0 2 1990 2019 3 0 0 # 
+ -8 8 -1 0 99 0 1 0 23 1990 2021 3 0 0 # 
+#-8 8 -1.1 0 99 0.5 1 0 2 1990 2019 1 0 0 #  
 #C RecrDist-settlement-2_
- -4 4 -4 0 99 0 -1 0 0 0 0 0 0 0 # 
+ -4 4 -1 0 99 0 -1 0 0 0 0 0 0 0 # 
 #Cohort growth dev
  0.1 3 1 1 99 0 -3 0 0 0 0 0 0 0#CohortGrowDev
 
@@ -238,8 +239,8 @@
              0           0.5             0             0            99             0         -3          0          0          0          0          0          0          0 # SR_autocorr
 
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
-1992 #1987 # first year of main recr_devs; early devs can preceed this era
-2019 # last year of main recr_devs; forecast devs start in following year
+1987 #1992 #1987 # first year of main recr_devs; early devs can preceed this era
+2020 # last year of main recr_devs; forecast devs start in following year
 1 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
@@ -321,6 +322,7 @@
 38 3 0 0 1 0 #VAST_S_Fall  
 39 3 0 0 1 0
 40 3 0 0 1 0
+41 3 0 0 1 0
 -9999 0 0 0 0 0
 
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
@@ -383,6 +385,8 @@
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 9
 -35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 10   
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 10
+-35 10  -1.23  0   99  0   -1   0   0   0   0   0   0   0   #   ln_q fleet 41   
+0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 41
 
 #_size_selex_types
 #_Pattern Discard Male Special
@@ -430,6 +434,7 @@
 24  0   0   0   #38 VAST_South_Fall
 5 0 0 9  #39 RecCPUE_North_Spring
 5 0 0 10 #40 RecCPUE_South_Spring
+0 0 0 0
 
 #_age_selex_types
 #_Pattern Discard Male Special
@@ -473,6 +478,7 @@
 10   0   0   0   #38 VAST_South_Fall
 0   0   0   0   #39 RecCPA_North_Spring
 0   0   0   0   #40 RecCPA_South_Spring
+0 0 0 0
 
 #selectivity parameters
 #
@@ -610,9 +616,9 @@
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
-5		59	25	65	99	0	-2	0	0	0	0	0	0	0
-0.01	9	2	5	99	0	-2	0	0	0	0	0	0	0
-0		1	1	1	99	0	-2	0	0	0	0	0	0	0
+1		59	1	65	99	0	-2	0	0	0	0	0	0	0
+0.001	9	0.001	5	99	0	-2	0	0	0	0	0	0	0
+0		1	0.15	1	99	0	-2	0	0	0	0	0	0	0
 0		25	0	0	99	0	-2	0	0	0	0	0	0	0
 
 #Fleet 10 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
@@ -626,9 +632,9 @@
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10 10  0   -0.35   99  0   -4  0   0   0   0   0   0   0   #_Retain_L_maleoffset_North_Trawl_1(1)
 
-5		59	25	65	99	0	-2	0	0	0	0	0	0	0
-0.01	9	2	5	99	0	-2	0	0	0	0	0	0	0
-0		1	1	1	99	0	-2	0	0	0	0	0	0	0
+1		59	1	65	99	0	-2	0	0	0	0	0	0	0
+0.001	9	0.001	5	99	0	-2	0	0	0	0	0	0	0
+0		1	0.15	1	99	0	-2	0	0	0	0	0	0	0
 0		25	0	0	99	0	-2	0	0	0	0	0	0	0
 
 #Fleet 11 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
@@ -641,9 +647,9 @@
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10 10  0   -0.35   99  0   -4  0   0   0   0   0   0   0   #_Retain_L_maleoffset_North_Trawl_1(1)
 
-5		59	25	65	99	0	-2	0	0	0	0	0	0	0
-0.01	9	2	5	99	0	-2	0	0	0	0	0	0	0
-0		1	1	1	99	0	-2	0	0	0	0	0	0	0
+1		59	1	65	99	0	-2	0	0	0	0	0	0	0
+0.001	9	0.001	5	99	0	-2	0	0	0	0	0	0	0
+0		1	0.15	1	99	0	-2	0	0	0	0	0	0	0
 0		25	0	0	99	0	-2	0	0	0	0	0	0	0
 
 #Fleet 12 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
@@ -657,11 +663,10 @@
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   4   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10 10  0   -0.35   99  0   -4  0   0   0   0   0   0   0   #_Retain_L_maleoffset_North_Trawl_1(1)
 
-5		59	25	65	99	0	-2	0	0	0	0	0	0	0
-0.01	9	2	5	99	0	-2	0	0	0	0	0	0	0
-0		1	1	1	99	0	-2	0	0	0	0	0	0	0
+1		59	1	65	99	0	-2	0	0	0	0	0	0	0
+0.001	9	0.001	5	99	0	-2	0	0	0	0	0	0	0
+0		1	0.15	1	99	0	-2	0	0	0	0	0	0	0
 0		25	0	0	99	0	-2	0	0	0	0	0	0	0
-
 
 #13	MA_Spring_Trawl
 	5	59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -971,7 +976,9 @@
 # and no_fleets lines for TG_report_fleet and TG_rpt_decayfleet
 1 # TG_custom:  0=no read; 1=read
 #_LO HI INIT PRIOR SD PR_type PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn  
--10 10 -9  -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1
+#-10 10 -9  -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1
+# 10% initial tag loss (Moser and Shepherd 2009)
+-10 10 -2.197225  -9 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_init_1
  -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_2
  -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_3
  -10 10 -7  -7 0.001 1 -1000 0 0 0 0 0 0 0 # TG_loss_init_4
@@ -1007,7 +1014,7 @@
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_16
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_17
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_18
- 1 10 2  2 0.001 1 -4 0 0 0 0 0 0 0 # TG_overdispersion_1
+ 1 10 2  2 0.001 1 4 0 0 0 0 0 0 0 # TG_overdispersion_1
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_2
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_3
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_4
@@ -1056,6 +1063,16 @@
 #_factor fleet value
 1 14 0.15
 1 15 0.15
+1 39 0.15
+1 40 0.15
+4	1	0.1
+4	2	0.1
+4	3	0.1
+4	4	0.1
+4	5	0.1
+4	6	0.1
+4	7	0.1
+4	8	0.1
 4 9 0.05
 4 10 0.05
 4 11 0.05
@@ -1075,11 +1092,12 @@
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=WtFreq; 7=sizeage; 8=catch; 
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  wtfreq_method
-5 1 1 0.25 1
-5 2 1 0.25 1
-5 3 1 0.25 1
-5 4 1 0.25 1
+5 1 1 0.1 1
+5 2 1 0.1 1
+5 3 1 0.1 1
+5 4 1 0.1 1
 # turn off data from objective function for surveys other than VAST & RecCPA
+1   41 1 0 1
 1	13	1	0	1
 1	14	1	0	1
 1	15	1	0	1
@@ -1155,10 +1173,10 @@
 #4 36 1 0 1
 #4 37 1 0 1
 #4 38 1 0 1
-#5 35 1 0 1
-#5 36 1 0 1
-#5 37 1 0 1
-#5 38 1 0 1
+5 35 1 0.1 1
+5 36 1 0.1 1
+5 37 1 0.1 1
+5 38 1 0.1 1
 -9999 1 1 1 1
 
 0 # read specs for more stddev reporting

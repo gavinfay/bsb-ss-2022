@@ -47,7 +47,7 @@ disclens
 
 ```{r}
 disclens %>% 
-  filter(region == "South", semester == 2) %>% 
+  filter(region == "North", semester == 2) %>% 
   ggplot() +
   aes(x = length, y = numlen, group = gear, col = factor(gear)) %>% 
   geom_line() +

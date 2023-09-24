@@ -16,15 +16,28 @@ load(file.path(here::here(), "data","BSB.Index.Data.For.ESS.RDATA"))
 load(file.path(here::here(),"data","BSB.Fishery.Data.For.SS.RDATA"))
 load(file.path(here::here(),"data","BSB.Age.Data.With.Sex.For.SS.RDATA"))
 load(file.path(here::here(), "data","BSB.Biological.Data.RDATA"))
-fall_N_index <- read.csv(file.path(here::here(), "data","fall_northv2.csv"))
+load("../BSB.2023.RT.Data/BSB.Index.Data.For.SS.RDATA")
+load("../BSB.2023.RT.Data/BSB.Index.Data.For.ESS.RDATA")
+load("../BSB.2023.RT.Data/BSB.Fishery.Data.For.SS.RDATA")
+load("../BSB.2023.RT.Data/BSB.Age.Data.With.Sex.For.SS.RDATA")
+load("../BSB.2023.RT.Data/BSB.Biological.Data.RDATA")
+# fall_N_index <- read.csv(file.path(here::here(), "data","fall_northv2.csv"))
+#   fall_N_index <- as_tibble(fall_N_index)
+# fall_S_index <- read.csv(file.path(here::here(), "data","fall_southv2.csv"))
+#   fall_S_index <- as_tibble(fall_S_index)
+# spring_N_index <- read.csv(file.path(here::here(), "data","spring_north.csv"))
+#   spring_N_index <- as_tibble(spring_N_index)
+# spring_S_index <- read.csv(file.path(here::here(), "data","spring_south.csv"))
+#   spring_S_index <- as_tibble(spring_S_index)
+fall_N_index <- read.csv("../BSB.2023.RT.Data/VAST/fall_north_revised.csv")
   fall_N_index <- as_tibble(fall_N_index)
-fall_S_index <- read.csv(file.path(here::here(), "data","fall_southv2.csv"))
+fall_S_index <- read.csv("../BSB.2023.RT.Data/VAST/fall_south_revised.csv")
   fall_S_index <- as_tibble(fall_S_index)
-spring_N_index <- read.csv(file.path(here::here(), "data","spring_north.csv"))
+  spring_N_index <- read.csv("../BSB.2023.RT.Data/VAST/spring_north.csv")
   spring_N_index <- as_tibble(spring_N_index)
-spring_S_index <- read.csv(file.path(here::here(), "data","spring_south.csv"))
+  spring_S_index <- read.csv("../BSB.2023.RT.Data/VAST/spring_south.csv")
   spring_S_index <- as_tibble(spring_S_index)
-
+  
 
 # define length bins & a length lookup
 Lbins <- c(seq(2,48,2),52,58,64,70)
@@ -160,9 +173,9 @@ SS_BSB_dat1 = list(
                               CV = round(sqrt(log(1+nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 12]^2)),digits=3)),
   ####NOTE: Winter survey not broken N-S, so couldn't update, but should be the same as before?
   "#_RecCPUE_N_spr",
-  RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "39",obs = round(RecCPA.agg[RecCPA.agg$Region == "North", 3],digits=5), CV = RecCPA.agg$CV[which(RecCPA.agg$Region == "North")]), #round(sqrt(log(1+0.38^2)),digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "39",obs = round(RecCPA.agg[RecCPA.agg$Region == "North", 3],digits=5), CV = round(sqrt(log(1+(RecCPA.agg$CV[which(RecCPA.agg$Region == "North")])^2)), digits=3)), #round(sqrt(log(1+0.38^2)),digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
   "#_RecCPUE_S_spr",
-  RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "40",obs = round(RecCPA.agg[RecCPA.agg$Region == "South", 3],digits=5), CV = RecCPA.agg$CV[which(RecCPA.agg$Region == "South")]), #round(sqrt(log(1+0.25^2)), digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "40",obs = round(RecCPA.agg[RecCPA.agg$Region == "South", 3],digits=5), CV = round(sqrt(log(1+(RecCPA.agg$CV[which(RecCPA.agg$Region == "South")])^2)), digits=3)), #round(sqrt(log(1+0.25^2)), digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
   "#_VAST_N_spr",
   VAST.N.spr = data.frame(year = spring_N_index$Year, seas = "4", index = "35", obs = round(spring_N_index$Index,digits=5), CV = round(sqrt(log(1+(spring_N_index$Index_SD/spring_N_index$Index)^2)), digits=3)),
   "#_VAST_S_spr",
@@ -275,7 +288,8 @@ comland
 comlens <- comlen.region.sem.mkt.gr |>
   ungroup() |>
   clean_names() |>
-  filter(stock %in% c("NORTH", "SOUTH")) |> #about 240 fish that don't have a region (UNK) assigned to them
+  filter(stock %in% c("NORTH", "SOUTH"),
+         bsb_gear_cat1 != "UNKNOWN") |> #about 240 fish that don't have a region (UNK) assigned to them
   mutate(gear = ifelse(bsb_gear_cat1=="TRAWL","trawl","non-trawl")) |>
   select(-bsb_gear_cat1) |>
   left_join(comland) |>
@@ -341,6 +355,7 @@ reclens <- rec.exp.ab1b2.len |>
   filter(cal>0) |>
   mutate(part = as.numeric(ifelse(part == "n_ab1",2,1))) |>
   left_join(lenbins) |>
+  mutate(cal = ifelse(season == 10 & ibin <=6, 0, cal)) |>
   group_by(index, year, ibin, season, part) |>
   summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
   group_by(index, year, season, part) |>
@@ -408,6 +423,7 @@ disc_lens <- comdisc.len |>
   select(-semester,-region,-length) |>
   group_by(index, year, season, source, ibin) |>
   summarize(cal = n(), .groups = "drop") |>
+  mutate(cal = ifelse(season==10 & ibin <=6, 0, cal)) |>
   group_by(index, year, season, source) |>
   mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
   ungroup() |>
@@ -456,7 +472,7 @@ comdisc_samp_nontrawl<- comdisc.nhaul.fleet |>
 # disc_lens
 
 fishery_lens <- bind_rows(comlens, reclens, disc_lens)
-fishery_lens <- bind_rows(reclens, disc_lens)
+#fishery_lens <- bind_rows(reclens, disc_lens)
 
 
 fillbins <- unique(lenbins$ibin)[!unique(lenbins$ibin) %in% fishery_lens$ibin]
@@ -490,11 +506,12 @@ fishery_lens2 <- fishery_lens |>
   rename_with(.fn = function(x) str_c("m_",x))
 fishery_lens_write <- bind_cols(fishery_lens, fishery_lens2)  
 
-len_samps <- bind_rows(#comlens_samp,
+len_samps <- bind_rows(comlens_samp,
                        comdisc_samp_trawl,
                        comdisc_samp_nontrawl,
                        reclensharv,
-                       reclensdisc) |>
+                       reclensdisc
+                       ) |>
   mutate(nsamp = ceiling(nsamp), index = as.numeric(index))
 
 
@@ -1310,7 +1327,8 @@ t(sexed_ageatlen[1,])
 
 colnames(unsexed_ageatlen_write) <- c(colnames(unsexed_ageatlen_write)[1:9],colnames(sexed_ageatlen)[-(1:9)])
 fishery_ageatlen_write <- bind_rows(unsexed_ageatlen_write, sexed_ageatlen) |>
-  arrange(year, month, index, sex, ibin)
+  arrange(year, month, index, sex, ibin) |>
+  filter(!(month==10 & ibin <= 6))
 
 
 ### index age data
@@ -1381,10 +1399,14 @@ sexed_ageatlen <- index_agelens |>
               values_fill = 0
   ) |>
   mutate(index = case_when(
-    region == "NORTH" & semester == 1 ~ 30,  #assigning to bigelow
-    region == "SOUTH" & semester == 1 ~ 31,
-    region == "NORTH" & semester == 2 ~ 26,  #assigning to neamap because need a fall survey
-    region == "SOUTH" & semester == 2 ~ 27,
+    region == "NORTH" & semester == 1 ~ 35,  #VASTing
+    region == "SOUTH" & semester == 1 ~ 36,
+    region == "NORTH" & semester == 2 ~ 37,  
+    region == "SOUTH" & semester == 2 ~ 38,
+    # region == "NORTH" & semester == 1 ~ 30,  #assigning to bigelow
+    # region == "SOUTH" & semester == 1 ~ 31,
+    # region == "NORTH" & semester == 2 ~ 26,  #assigning to neamap because need a fall survey
+    # region == "SOUTH" & semester == 2 ~ 27,
   ),
   part = 2,
   #nsamp = 25,
@@ -1400,7 +1422,8 @@ sexed_ageatlen <- index_agelens |>
 
 colnames(unsexed_ageatlen_write) <- c(colnames(unsexed_ageatlen_write)[1:9],colnames(sexed_ageatlen)[-(1:9)])
 index_ageatlen_write <- bind_rows(unsexed_ageatlen_write, sexed_ageatlen) |>
-  arrange(year, month, index, sex, ibin)
+  arrange(year, month, index, sex, ibin) |>
+  filter(!(month==10 & ibin <= 6))
 
 bob <- index_ageatlen_write %>% 
   mutate(index = case_when(
@@ -1566,7 +1589,7 @@ write.table(len_data_write,
 
 
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
-write("##  Age Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Age at Lengtn Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write.table(fishery_ageatlen_write, #ac_write, 
             file = "SS_BSB_dat.txt", 
@@ -1592,6 +1615,55 @@ write("###############################################", file = file.path("SS_BS
 write("##  VAST Age Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write.table(VAST_ac_write, #ac_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+
+
+#recreational catches
+rec_cat <- rec.agg.region.sem %>% 
+  group_by(REGION, SEMESTER, YEAR) %>% 
+  summarize(Catch = round(AB1/1000, digits= 0),
+            CV = round(sqrt(log(1+AB1_cv^2)), digits = 3),
+            .groups = "drop") %>% 
+  mutate(Seas = ifelse(SEMESTER == 1, 1, 2),
+         fleet = case_when(
+           REGION == "North" & SEMESTER == 1 ~ 9,
+           REGION == "South" & SEMESTER == 1 ~ 10,
+           REGION == "North" & SEMESTER == 2 ~ 11,
+           REGION == "South" & SEMESTER == 2 ~ 12
+         )) %>% 
+  select(YEAR, Seas, fleet, Catch, CV)
+#rec_cat
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Recreational Catch Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(rec_cat, #ac_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+
+# recreational discards
+rec_disc <- rec.agg.region.sem %>% 
+  group_by(REGION, SEMESTER, YEAR) %>% 
+  summarize(Disc = round(B2/1000, digits= 0),
+            CV = round(sqrt(log(1+B2_cv^2)), digits = 3),
+            .groups = "drop") %>% 
+  mutate(Seas = ifelse(SEMESTER == 1, 4, 10),
+         fleet = case_when(
+           REGION == "North" & SEMESTER == 1 ~ 9,
+           REGION == "South" & SEMESTER == 1 ~ 10,
+           REGION == "North" & SEMESTER == 2 ~ 11,
+           REGION == "South" & SEMESTER == 2 ~ 12
+         )) %>% 
+  select(YEAR, Seas, fleet, Disc, CV)
+#rec_disc
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Recreational Discard Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(rec_disc, #ac_write, 
             file = "SS_BSB_dat.txt", 
             append = TRUE, 
             row.names = FALSE,

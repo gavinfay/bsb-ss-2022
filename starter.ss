@@ -1,6 +1,6 @@
 #C Black sea bass 2016 in v3.30.19
-bsb_borrowedlens.dat #bsb.dat #aggcomm_bsb.dat #
-2area_bsb_2growth_selchange_vast.ctl #2area_bsb_2growth_selchange.ctl #2area_bsb_2growth_noselchange.ctl #2area_bsb_2growth.ctl #2area_bsb_1growth.ctl #aggcomm.ctl #
+bsb_rawlens_20230923.dat #bsb.dat #aggcomm_bsb.dat #
+2area_bsb_2growth_selchange_vast_20230923.ctl #2area_bsb_2growth_selchange.ctl #2area_bsb_2growth_noselchange.ctl #2area_bsb_2growth.ctl #2area_bsb_1growth.ctl #aggcomm.ctl #
 0 # 0=use init values in control file; 1=use ss3.par
 1 # run display detail (0,1,2)
 1 # detailed age-structured reports in REPORT.SSO (0,1) 
