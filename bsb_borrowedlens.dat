@@ -53,6 +53,8 @@
 3 1 1 1 0 RecCPUE_North_Spr #39
 3 1 2 1 0 RecCPUE_South_Spr #40
 3 1 1 1 0 coastwide_bottom_temperature #41
+# 3 1 1 1 0 Bottom_temp_North #42
+
 
 # CATCH
 # year season fleet catch se
@@ -1782,7 +1784,8 @@
 -0.0001 1e-007 0 0 0 0 1 #_VAST_S_Fall
 -0.0001 1e-007 0 0 0 0 1 #_RecCPUE_North_Spr
 -0.0001 1e-007 0 0 0 0 1 #_RecCPUE_South_Spr
--0.0001 1e-007 0 0 0 0 1 #_RecCPUE_South_Spr
+-0.0001 1e-007 0 0 0 0 1 #_Bottom_temp_region
+
 #-0.0001 1e-007 0 0 0 0 1 #_Dummy_Age_North_2
 #-0.0001 1e-007 0 0 0 0 1 #_Dummy_Age_South_2
 # sex codes:  0=combined; 1=use female only; 2=use male only; 3=use both as joint sexxlength distribution
@@ -2711,7 +2714,7 @@
 -0.0001 1e-007 0 0 0 0 1 #_VAST_S_fall
 -0.0001 1e-007 0 0 0 0 1 #_RecCPUE_North_Spr
 -0.0001 1e-007 0 0 0 0 1 #_RecCPUE_South_Spr
--0.0001 1e-007 0 0 0 0 1 #_RecCPUE_South_Spr
+-0.0001 1e-007 0 0 0 0 1 #_Bottom_temp_region
 
 2 #_bin_method_for_age_data
 # sex codes:  0=combined; 1=use female only; 2=use male only; 3=use both as joint sexxlength distribution

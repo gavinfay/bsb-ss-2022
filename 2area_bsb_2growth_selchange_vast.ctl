@@ -434,7 +434,7 @@
 24  0   0   0   #38 VAST_South_Fall
 5 0 0 9  #39 RecCPUE_North_Spring
 5 0 0 10 #40 RecCPUE_South_Spring
-0 0 0 0
+0 0 0 0  #41 
 
 #_age_selex_types
 #_Pattern Discard Male Special
@@ -852,6 +852,8 @@
 -10     10     1    -0.35    99 0    -4      0  0  0  0  0  0  0   
 -10     10    35    -0.35    99 0    -4      0  0  0  0  0  0  0  
 
+# Botttom temp region and North
+
 
 #age-based selectivity
 
@@ -1178,10 +1180,6 @@
 5 37 1 0.1 1
 5 38 1 0.1 1
 -9999 1 1 1 1
-
-0 # read specs for more stddev reporting
-
-999  #end of file
 
 
 
