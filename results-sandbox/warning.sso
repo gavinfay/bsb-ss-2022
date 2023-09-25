@@ -5,19 +5,23 @@ Warning 4 : bias adjustment ramp extends into forecast; biasadj set to 0.0 inter
 Warning 5 Adjustment: size selex mirror length is > nlength for fleet: 39 reset to nlength
 Warning 6 Adjustment: size selex mirror length is > nlength for fleet: 40 reset to nlength
 Warning 7 : parameter init value is less than parameter min 0 < 1 for parm: 26; search for <now check> in echoinput.sso for parm_type
-Warning 8 : parameter init value is less than parameter min 0 < 0.02 for parm: 28; search for <now check> in echoinput.sso for parm_type
-Warning 9 : parameter init value is less than parameter min 0 < 0.01 for parm: 29; search for <now check> in echoinput.sso for parm_type
-Warning 10 : parameter init value is less than parameter min 0 < 0.01 for parm: 30; search for <now check> in echoinput.sso for parm_type
-Warning 11 : parameter init value is less than parameter min 0 < 1 for parm: 34; search for <now check> in echoinput.sso for parm_type
-Warning 12 : parameter init value is less than parameter min 0 < 0.02 for parm: 36; search for <now check> in echoinput.sso for parm_type
-Warning 13 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
-Warning 14 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
-Warning 15 : Setting in starter does not request all priors, and 81 parameters have priors and are not estimated, so their prior not included in obj_fun.
-Warning 16 : Fleet: 35  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 981
-Warning 17 : Fleet: 36  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 1157
-Warning 18 : Fleet: 37  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 845
-Warning 19 : Fleet: 38  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 597
-Warning 20 : Final gradient: 0.218193 is larger than final_conv: 0.0001
-Warning 21 : Reminder: Number of lamdas !=0.0 and !=1.0:  8
-Note 1 Information:  N parameters that are on or within 1% of min-max bound: 15; check results, variance may be suspect
- 21 warnings  and 1 note 
+Warning 8 : parameter init value is less than parameter min 0 < 30 for parm: 27; search for <now check> in echoinput.sso for parm_type
+Warning 9 : parameter init value is less than parameter min 0 < 0.02 for parm: 28; search for <now check> in echoinput.sso for parm_type
+Warning 10 : parameter init value is less than parameter min 0 < 0.01 for parm: 29; search for <now check> in echoinput.sso for parm_type
+Warning 11 : parameter init value is less than parameter min 0 < 0.01 for parm: 30; search for <now check> in echoinput.sso for parm_type
+Warning 12 : parameter init value is less than parameter min 0 < 1 for parm: 34; search for <now check> in echoinput.sso for parm_type
+Warning 13 : parameter init value is less than parameter min 0 < 30 for parm: 35; search for <now check> in echoinput.sso for parm_type
+Warning 14 : parameter init value is less than parameter min 0 < 0.02 for parm: 36; search for <now check> in echoinput.sso for parm_type
+Warning 15 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
+Warning 16 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
+Warning 17 : Setting in starter does not request all priors, and 81 parameters have priors and are not estimated, so their prior not included in obj_fun.
+Warning 18 : Fleet: 35  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 981
+Warning 19 : Fleet: 36  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 1157
+Warning 20 : Fleet: 37  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 845
+Warning 21 : Fleet: 38  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 597
+Warning 22 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 1 settle: 1; L= 70.9246
+Warning 23 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 70.9246
+Warning 24 : Final gradient: 0.00158783 is larger than final_conv: 0.0001
+Warning 25 : Reminder: Number of lamdas !=0.0 and !=1.0:  8
+Note 1 Information:  N parameters that are on or within 1% of min-max bound: 16; check results, variance may be suspect
+ 25 warnings  and 1 note 
