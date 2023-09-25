@@ -385,7 +385,7 @@
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 9
 -35 10  -8  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 10   
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 10
--35 10  -1.23  0   99  0   -1   0   0   0   0   0   0   0   #   ln_q fleet 41   
+-35 10  -1.23  0   99  0   1   0   0   0   0   0   0   0   #   ln_q fleet 41   
 0   10  0   0   99  0   -2  0   0   0   0   0   0   0   #   power_param, fleet 41
 
 #_size_selex_types
@@ -428,10 +428,10 @@
 1 0 0 0 #24	0	0	0	#32	North_Winter_BTS
 1 0 0 0 #24	0	0	0	#33	South_Winter_BTS
 0	0	0	0	#34	GSWI
-24  0   0   0   #35 VAST_North_Spr
-24  0   0   0   #36 VAST_South_Spr
-24  0   0   0   #37 VAST_North_Fall
-24  0   0   0   #38 VAST_South_Fall
+1 0 0 0 #24  0   0   0   #35 VAST_North_Spr
+1 0 0 0 #24  0   0   0   #36 VAST_South_Spr
+1 0 0 0 #24  0   0   0   #37 VAST_North_Fall
+1 0 0 0 #24  0   0   0   #38 VAST_South_Fall
 5 0 0 9  #39 RecCPUE_North_Spring
 5 0 0 10 #40 RecCPUE_South_Spring
 0 0 0 0
@@ -547,11 +547,11 @@
 0		25	0	0	99	0	-2	0	0	0	0	0	0	0
 
 #Fleet 5 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
-5		59	25	65	99	0	2	0	0	0	0	0	0	0
-0.01	9	5.1	5	99	0	2	0	0	0	0	0	0	0
+5		59	25	65	99	0	2	0	0	0	0	0	1	2
+0.01	9	5.1	5	99	0	2	0	0	0	0	0	1	2
 																						
-5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
-0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
+5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
+0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   -2   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
@@ -562,11 +562,11 @@
 0		25	0	0	99	0	-2	0	0	0	0	0	0	0
 
 #Fleet 6 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
-5		59	25	65	99	0	2	0	0	0	0	0	0	0
-0.01	9	5.1	5	99	0	2	0	0	0	0	0	0	0
+5		59	25	65	99	0	2	0	0	0	0	0	1	2
+0.01	9	5.1	5	99	0	2	0	0	0	0	0	1	2
 																						
-5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
-0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
+5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
+0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   -2   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
@@ -577,14 +577,14 @@
 0		25	0	0	99	0	-2	0	0	0	0	0	0	0
 
 #Fleet 7 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
-5		59	25	65	99	0	2	0	0	0	0	0	0	0
-0.01	9	5.1	5	99	0	2	0	0	0	0	0	0	0
+5		59	25	65	99	0	2	0	0	0	0	0	1	2
+0.01	9	5.1	5	99	0	2	0	0	0	0	0	1	2
 																						
-5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
-0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
+5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
+0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   -2   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
--10	10	0	-0.35	99	0	-4	0	0	0	0	0	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
 0.01	9	2	5	99	0	-2	0	0	0	0	0	0	0
@@ -592,14 +592,14 @@
 0		25	0	0	99	0	-2	0	0	0	0	0	0	0
 
 #Fleet 8 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
-5		59	25	65	99	0	2	0	0	0	0	0	0	0
-0.01	9	5.1	5	99	0	2	0	0	0	0	0	0	0
+5		59	25	65	99	0	2	0	0	0	0	0	1	2
+0.01	9	5.1	5	99	0	2	0	0	0	0	0	1	2
 																						
-5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
-0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
+5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
+0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   -2   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
--10	10	0	-0.35	99	0	-4	0	0	0	0	0	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
+-10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
 0.01	9	2	5	99	0	-2	0	0	0	0	0	0	0
@@ -814,35 +814,35 @@
 
 #35 VAST_North_Spr
     5   59  25  65  99  0   2   0   0   0   0   0   0   0
--10     4   -2  0   99  0   2   0   0   0   0   0   0   0
+#-10     4   -2  0   99  0   2   0   0   0   0   0   0   0
 0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
--10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
--10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+#0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
+#-10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
+#-10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
 
 #36 VAST_South_Spr
     5   59  25  65  99  0   2   0   0   0   0   0   0   0
--10     4   -2  0   99  0   2   0   0   0   0   0   0   0
+#-10     4   -2  0   99  0   2   0   0   0   0   0   0   0
 0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
--10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
--10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+#0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
+#-10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
+#-10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
 
 #37 VAST_North_Fall
     5   59  25  65  99  0   2   0   0   0   0   0   0   0
--10     4   -2  0   99  0   2   0   0   0   0   0   0   0
+#-10     4   -2  0   99  0   2   0   0   0   0   0   0   0
 0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
--10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
--10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+#0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
+#-10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
+#-10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
 
 #38 VAST_South_Fall
     5   59  25  65  99  0   2   0   0   0   0   0   0   0
--10     4   -2  0   99  0   2   0   0   0   0   0   0   0
+#-10     4   -2  0   99  0   2   0   0   0   0   0   0   0
 0.01    9   5.1 5   99  0   2   0   0   0   0   0   0   0
-0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
--10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
--10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
+#0.01    9   5.9 5   99  0   2   0   0   0   0   0   0   0
+#-10 10  -2  -1.15   99  0   2   0   0   0   0   0   0   0
+#-10 10  -9  -0.35   99  0   3   0   0   0   0   0   0   0
 
 
 #Rec CPUE
@@ -895,25 +895,25 @@
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 
-#             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
-#             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 
-#             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
-#             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 
-#             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
-#             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 
-#             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
-#             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 
 
 #recreational selectivity
@@ -1065,18 +1065,18 @@
 1 15 0.15
 1 39 0.15
 1 40 0.15
-#4	1	0.1
-#4	2	0.1
-#4	3	0.1
-#4	4	0.1
-#4	5	0.1
-#4	6	0.1
-#4	7	0.1
-#4	8	0.1
-#4 9 0.05
-#4 10 0.05
-#4 11 0.05
-#4 12 0.05
+4	1	0.2
+4	2	0.2
+4	3	0.2
+4	4	0.2
+4	5	0.2
+4	6	0.2
+4	7	0.2
+4	8	0.2
+4 9 0.2
+4 10 0.2
+4 11 0.2
+4 12 0.2
 #4 13 0.05
 #4 14 0.05
 #4 15 0.05
@@ -1097,7 +1097,7 @@
 5 3 1 0.1 1
 5 4 1 0.1 1
 # turn off data from objective function for surveys other than VAST & RecCPA
-1   41 1 0 1
+#1   41 1 0 1
 1	13	1	0	1
 1	14	1	0	1
 1	15	1	0	1
