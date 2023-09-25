@@ -31,6 +31,6 @@ replist <- SS_output(
 #SS_plots(replist, plot = c(7,9,11,12:19,21), dir = here::here())
 #SS_plots(replist, plot = c(2), dir = here::here())
 #SS_plots(replist, dir = here::here())
-SS_plots(replist, plot = c(13, 15), dir = here::here())
+SS_plots(replist, plot = c(13), dir = here::here())
 ```
 

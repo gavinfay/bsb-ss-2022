@@ -280,6 +280,8 @@ comland <- comland.region.sem.mkt.gr |>
   clean_names() |>
   mutate(gear = ifelse(bsb_gear_cat1=="TRAWL","trawl","non-trawl")) |>
   select(-bsb_gear_cat1) |>
+  group_by(stock, semester, year, mktnm, gear) |>
+  summarize(land_mt = sum(land_mt), .groups="drop") |>
   left_join(fishery_ids) |>
   I()
 comland

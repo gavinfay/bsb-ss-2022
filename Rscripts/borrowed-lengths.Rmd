@@ -37,6 +37,24 @@ comlens %>%
 load('../../BSB.Comm.Catch/Discards/Discards.at.length/Filled.discard.LenFreqs.RDATA')
 ```
 
+```{r}
+load("../../BSB.Comm.Catch/Discards/Discards.at.length/Expanded.Discards.at.Length.RDATA")
+```
+
+
+```{r}
+exp.disc.at.length %>% 
+  clean_names()  %>% 
+  filter(region == "North", semester == 2) %>% 
+  ggplot() +
+  aes(x = length, y = exp_number, group = fleet, col = factor(fleet)) %>% 
+  geom_line() +
+  geom_vline(xintercept = 30) +
+  #geom_point() +
+  facet_wrap(~year, dir = "v", scales = "free_y")
+
+```
+
 
 ```{r}
 disclens <- lfreq.gr.final %>% 
@@ -86,6 +104,7 @@ fishery_lens <- comlens |>
   mutate(season = ifelse(season==1,4,10)) |>
   group_by(index, year, ibin, season) |>
   summarize(cal = sum(nal, na.rm = TRUE), .groups = "drop") |>
+  mutate(cal = ifelse(season == 10 & ibin <= 6, 0, cal)) |>
   group_by(index, year, season) |>
   mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
   ungroup() |>
@@ -103,7 +122,8 @@ disc_lens <- disclens |>
   left_join(lenbins) |>
   select(-semester,-region,-length) |>
   group_by(index, year, season, ibin) |>
-  summarize(cal = n(), .groups = "drop") |>
+  summarize(cal = sum(numlen), .groups = "drop") |>
+  mutate(cal = ifelse(season == 10 & ibin <= 6, 0, cal)) |>
   group_by(index, year, season) |>
   mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
   ungroup() |>
@@ -245,4 +265,61 @@ write.table(fishery_lens_write,
             row.names = FALSE,
             col.names = FALSE)
 ```
+
+
+
+
+```{r}
+load('../../MRIPData/MRIPAssessmentInputs.RData') 
+
+recRelDat_asap
+recRelDat_ss
+```
+
+
+```{r}
+### Load catch-at-length
+load("../../MRIPData/recInputs.RData")
+
+fyr <- 1989
+lyr <- 2021
+rec.disc.mort <- 0.15
+yr.vec <- fyr:lyr
+
+catch.length.orig <- recInputs$recAB1B2Size_yrs %>%
+  filter(YEAR %in% yr.vec) %>%
+  mutate(dead_N_B2 = N_B2 * rec.disc.mort,
+         dead_N_AB1B2 = N_AB1 + dead_N_B2) %>%
+  filter(L_CM_BIN <= 70)
+
+unique(catch.length.orig$SEMESTER)
+range(catch.length.orig$YEAR)
+
+catch.length <- catch.length.orig%>%
+  rename(LENGTH = L_CM_BIN) %>%
+  group_by(YEAR, SEMESTER, REGION, LENGTH) %>%
+  summarize(rec.land.N = sum(N_AB1),
+            rec.disc.N = sum(dead_N_B2)
+  ) %>%
+  ungroup() %>%
+  mutate(rec.catch.N = rec.land.N+rec.disc.N)
+
+
+```
+
+```{r}
+catch.length %>% 
+  clean_names()  %>% 
+  left_join(lenbins) %>% 
+  group_by(year, semester, region, ibin) %>% 
+  summarize(rec_disc_n = sum(rec_disc_n)) %>% 
+  filter(region == "North", semester == 1) %>% 
+  ggplot() +
+  aes(x = ibin, y = rec_disc_n) %>% 
+  geom_line() +
+  geom_vline(xintercept = 30) +
+  #geom_point() +
+  facet_wrap(~year, dir = "v", scales = "free_y")  
+```
+
 
