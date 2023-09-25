@@ -1359,10 +1359,10 @@ unsexed_ageatlen <- index_agelens |>
               values_from = num,
               values_fill = 0) |>
   mutate(index = case_when(
-    region == "NORTH" & semester == 1 ~ 30,  #assigning to bigelow
-    region == "SOUTH" & semester == 1 ~ 31,
-    region == "NORTH" & semester == 2 ~ 26,  #assigning to neamap because need a fall survey
-    region == "SOUTH" & semester == 2 ~ 27,
+    region == "NORTH" & semester == 1 ~ 35,  #assigning to bigelow
+    region == "SOUTH" & semester == 1 ~ 36,
+    region == "NORTH" & semester == 2 ~ 37,  #assigning to neamap because need a fall survey
+    region == "SOUTH" & semester == 2 ~ 38,
   ),
   part = 2,
   #nsamp = 25,
