@@ -1670,3 +1670,551 @@ write.table(rec_disc, #ac_write,
             append = TRUE, 
             row.names = FALSE,
             col.names = FALSE)
+
+
+
+#fishery lengths without any comps that required borrowing in WHAM
+nulens_write <- fishery_lens_write %>% 
+  filter(!(part == 1 & index == 1 & year %in% c(1990:1994, 1995, 2002))) %>% 
+  filter(!(part == 1 & index == 3 & year %in% c(1989:1995, 1998:1999)))  %>% 
+  filter(!(part == 1 & index == 2 & year %in% c(1990:1995, 1999, 2001))) %>% 
+  filter(!(part == 1 & index == 4 & year %in% c(1989:1993, 1997:2000))) %>% 
+  filter(!(part == 1 & index %in% c(5:8) & year %in% c(1989:2002))) %>% 
+  filter(!(part == 1 & index == 5 & year %in% c(2003:2006, 2009, 2010, 2012))) %>% 
+  filter(!(part == 1 & index == 6 & year %in% c(2005:2006))) %>% 
+  filter(!(part == 1 & index == 7 & year %in% c(2004, 2006, 2010:2012))) %>% 
+  filter(!(part == 1 & index == 8 & year %in% c(2005, 2007, 2010:2013))) %>% 
+  filter(!(part == 2 & index == 1 & year %in% c(1990:1995, 2002))) %>% 
+  filter(!(part == 2 & index == 3 & year %in% c(1989, 1990:1995, 1998:1999))) %>% 
+  filter(!(part == 2 & index == 2 & year %in% c(1990:1994, 1995, 1999, 2001))) %>% 
+  filter(!(part == 2 & index == 4 & year %in% c(1989:2000))) %>% 
+  filter(!(part == 2 & index == 5 & year %in% c(2001:2006, 2009, 2010, 2012))) %>% 
+  filter(!(part == 2 & index == 7 & year %in% c(1990:1994, 1998, 2001:2002, 2004, 2006, 2010:2012))) %>% 
+  filter(!(part == 2 & index == 6 & year %in% c(1990:1994, 2002, 2005:2006))) %>% 
+  filter(!(part == 2 & index == 8 & year %in% c(1990:1998, 2000:2001, 2005, 2007, 2010:2013))) %>% 
+  filter(!(part == 1 & index == 9 & year %in% c(1989:1994, 2000, 2002:2003, 2005))) %>% 
+  filter(!(part == 1 & index == 11 & year %in% c(1989:1990, 1993:1994))) %>% 
+  filter(!(part == 1 & index == 10 & year %in% c(1989:1999))) %>% 
+  filter(!(part == 1 & index == 12 & year %in% c(1989, 1996)))
+
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Fishery Length Composition Data Without Any Comps That WHAM would Borrow", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(nulens_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+
+#########################################
+######## Aggregate commercial fleets
+##Start collecting re-organized data in a list
+SS_BSB_dat2 = list(
+  
+  "###############################################",
+  "##  Catch Data",
+  "###############################################",
+  "#_North_Trawl_1",
+  N.Trawl.spr.Cat = comland.region.sem.mkt.gr %>% filter(STOCK == "NORTH", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Catch=round(sum(land.mt),digits=0)) %>%
+    add_column(Seas = 1, fleet = 1, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.01, 
+               .after = "Catch") %>% data.frame,  ##Note:Here season is 1 and 2, not 4 and 10 for months
+  "#_South_Trawl_1",
+  S.Trawl.spr.Cat = comland.region.sem.mkt.gr %>% filter(STOCK == "SOUTH", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Catch=round(sum(land.mt), digits=0)) %>%
+    add_column(Seas = 1, fleet = 2, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.01, 
+               .after = "Catch") %>% data.frame ,
+  "#_North_Trawl_2",
+  N.Trawl.fall.Cat = comland.region.sem.mkt.gr %>% filter(STOCK == "NORTH", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Catch=round(sum(land.mt), digits = 0)) %>%
+    add_column(Seas = 2, fleet = 3, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.01, 
+               .after = "Catch") %>% data.frame,
+  "#_South_Trawl_2",
+  S.Trawl.fall.Cat = comland.region.sem.mkt.gr %>% filter(STOCK == "SOUTH", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Catch=round(sum(land.mt), digits= 0)) %>%
+    add_column(Seas = 2, fleet = 4, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.01, 
+               .after = "Catch") %>% data.frame,
+  # "#_North_NonTrawl_1",
+  # N.NonTrawl.spr.Cat = comland.region.sem.mkt.gr %>% filter(STOCK == "NORTH", SEMESTER == 1, BSB.GEAR.CAT1 != "TRAWL") %>% group_by(YEAR) %>% summarise(Catch=round(sum(land.mt), digits=0)) %>%
+  #   add_column(Seas = 1, fleet = 5, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.01, 
+  #              .after = "Catch") %>% data.frame,
+  # "#_South_NonTrawl_1",
+  # S.NonTrawl.spr.Cat = comland.region.sem.mkt.gr %>% filter(STOCK == "SOUTH", SEMESTER == 1, BSB.GEAR.CAT1 != "TRAWL") %>% group_by(YEAR) %>% summarise(Catch=round(sum(land.mt), digits=0)) %>%
+  #   add_column(Seas = 1, fleet = 6, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.01, 
+  #              .after = "Catch") %>% data.frame,
+  # "#_North_NonTrawl_2",
+  # N.NonTrawl.fall.Cat = comland.region.sem.mkt.gr %>% filter(STOCK == "NORTH", SEMESTER == 2, BSB.GEAR.CAT1 != "TRAWL") %>% group_by(YEAR) %>% summarise(Catch=round(sum(land.mt), digits=0)) %>%
+  #   add_column(Seas = 2, fleet = 7, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.01, 
+  #              .after = "Catch") %>% data.frame,
+  # "#_South_NonTrawl_2",
+  # S.NonTrawl.fall.Cat = comland.region.sem.mkt.gr %>% filter(STOCK == "SOUTH", SEMESTER == 2, BSB.GEAR.CAT1 != "TRAWL") %>% group_by(YEAR) %>% summarise(Catch=round(sum(land.mt), digits = 0)) %>%
+  #   add_column(Seas = 2, fleet = 8, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.01, 
+  #              .after = "Catch") %>% data.frame,
+  
+  "#_North_Rec_1",
+  N.Rec.spr.Cat = rec.agg.region.sem %>% filter(REGION == "North", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Catch=round(sum(AB1)/1000, digits= 0)) %>%
+    add_column(Seas = 1, fleet = 5, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Catch") %>% data.frame,  ###Just made up CV for now, need to discuss
+  "#_South_Rec_1",
+  S.Rec.spr.Cat = rec.agg.region.sem %>% filter(REGION == "South", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Catch=round(sum(AB1)/1000, digits=0)) %>%
+    add_column(Seas = 1, fleet = 6, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Catch") %>% data.frame,
+  "#_North_Rec_2",
+  N.Rec.fall.Cat = rec.agg.region.sem %>% filter(REGION == "North", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Catch=round(sum(AB1)/1000, digits=0)) %>%
+    add_column(Seas = 2, fleet = 7, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Catch") %>% data.frame,  ###Just made up CV for now, need to discuss
+  "#_South_Rec_2",
+  S.Rec.fall.Cat = rec.agg.region.sem %>% filter(REGION == "South", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Catch=round(sum(AB1)/1000, digits=0)) %>%
+    add_column(Seas = 2, fleet = 8, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Catch") %>% data.frame,
+  "###############################################",
+  "##  Survey Index Data",
+  "###############################################",
+  # "#_MA_Spring_Trawl",
+  # MA.spr.std = data.frame(year = MA.spr.agg[MA.spr.agg$Type == "Std", 1], seas = "4", index = "13",obs = round(MA.spr.agg[MA.spr.agg$Type == "Std", 2],digits=5), CV = round(sqrt(log(1+MA.spr.agg[MA.spr.agg$Type == "Std", 5]^2)),digits=3)), 
+  # "#_MA_Fall_Trawl",
+  # MA.fall.std = data.frame(year = MA.fall.agg[MA.fall.agg$Type == "Std", 1], seas = "10", index = "14",obs = round(MA.fall.agg[MA.fall.agg$Type == "Std", 2],digits=5), CV = round(sqrt(log(1+MA.fall.agg[MA.fall.agg$Type == "Std", 5]^2)),digits=3)),
+  # "#_RI_Spring_Trawl",
+  # RI.spr.std = data.frame(year = RI.spr.agg[RI.spr.agg$Type == "Std", 1], seas = "4", index = "15",obs = round(RI.spr.agg[RI.spr.agg$Type == "Std", 2],digits=5), CV = round(sqrt(log(1+RI.spr.agg[RI.spr.agg$Type == "Std", 5]^2)),digits=3)),
+  # "#_RI_Fall_Trawl",
+  # RI.fall.std = data.frame(year = RI.fall.agg[RI.fall.agg$Type == "Std", 1], seas = "10", index = "16",obs = round(RI.fall.agg[RI.fall.agg$Type == "Std", 2],digits=5), CV = round(sqrt(log(1+RI.fall.agg[RI.fall.agg$Type == "Std", 5]^2)),digits=3)),  #survey is new, how to number?
+  # "#_CT_Spring_Trawl",
+  # CT.spr.std = data.frame(year = CT.spr.agg[CT.spr.agg$Type == "Std", 1], seas = "4", index = "17",obs = round(CT.spr.agg[CT.spr.agg$Type == "Std", 2],digits=5), CV = round(sqrt(log(1+CT.spr.agg[CT.spr.agg$Type == "Std", 5]^2)),digits=3)),
+  # "#_CT_Fall_Trawl",
+  # CT.fall.std = data.frame(year = CT.fall.agg[CT.fall.agg$Type == "Std", 1], seas = "10", index = "18",obs = round(CT.fall.agg[CT.fall.agg$Type == "Std", 2],digits=5), CV = round(sqrt(log(1+CT.fall.agg[CT.fall.agg$Type == "Std", 5]^2)),digits=3)),
+  # "#_NY_Spring_Trawl_Age1",
+  # NY.mean = data.frame(year = NY.agg[, 1], seas = "4", index = "19",obs = round(NY.agg[, 2],digits=5), CV = round(sqrt(log(1+NY.agg[, 4]^2)),digits=3)),
+  # "#_NJ_Trawl",
+  # NJ.mean = data.frame(year = NJ[, 1], seas = "4", index = "20",obs = round(NJ[, 2],digits=5), CV = round(sqrt(log(1+NJ[, 4]^2)), digits=3)),
+  # "#_DE_Trawl",
+  # DE.mean = data.frame(year = DE.agg[-13, 1], seas = "4", index = "21",obs = round(DE.agg[-13, 2],digits=5), CV = round(sqrt(log(1+(DE.agg[-13, 3]/DE.agg[-13, 2])^2)),digits=3)) |> filter(se!=0),  #Note: DE doesn't have a CV so CV is actually a SE, removed missing 1990 (the - row 13)
+  # "#_MD_Trawl",
+  # MD.mean = data.frame(year = MD.agg[, 1], seas = "4", index = "22",obs = round(MD.agg[, 3],digits=5), CV = round(MD.agg[, 4],digits=3)) |> filter(YEAR!=1996),  #Note: MD doesn't have a CV so CV is actually a SE, also index is a "LogMean"
+  # "#_VIMS_Trawl",
+  # VA.mean = data.frame(year = vims.agg[-32, 1], seas = "4", index = "23",obs = round(vims.agg[-32, 2], digits=5), CV = 0.67),  #Note: No uncertainty estimate so just added 0.67 from previous dat file
+  # "#_NEAMAP_N_Spring_Trawl",
+  # NEAMAP.N.spr.mean = data.frame(year = neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 2], seas = "4", index = "24",obs = round(neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 3],digits=5), CV = round(sqrt(log(1+(neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 5]/neamap.spr.agg[neamap.spr.agg$BSB.Region == "NORTH", 3])^2)),digits=3)), 
+  # "#_NEAMAP_S_Spring_Trawl",
+  # NEAMAP.S.spr.mean = data.frame(year = neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 2], seas = "4", index = "25",obs = round(neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 3],digits=5), CV = round(sqrt(log(1+(neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 5]/neamap.spr.agg[neamap.spr.agg$BSB.Region == "SOUTH", 3])^2)),digits=3)),
+  # "#_NEAMAP_N_Fall_Trawl",
+  # NEAMAP.N.fall.mean = data.frame(year = neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 2], seas = "10", index = "26",obs = round(neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 3],digits=5), CV = round(sqrt(log(1+(neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 5]/neamap.fall.agg[neamap.fall.agg$BSB.Region == "NORTH", 3])^2)),digits=3)), 
+  # "#_NEAMAP_S_Fall_Trawl",
+  # NEAMAP.S.fall.mean = data.frame(year = neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 2], seas = "10", index = "27",obs = round(neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 3],digits=5), CV = round(sqrt(log(1+(neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 5]/neamap.fall.agg[neamap.fall.agg$BSB.Region == "SOUTH", 3])^2)),digits=3)),
+  # "#_NEFSC_N_Spring_Trawl",
+  # NEFSC.N.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 3], seas = "4", index = "28",obs = round(nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 9],digits=5), 
+  #                               CV = round(sqrt(log(1+nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 12]^2)),digits=3)), 
+  # "#_NEFSC_S_Spring_Trawl",
+  # NEFSC.S.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 3], seas = "4", index = "29",obs = round(nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 9],digits=5), 
+  #                               CV = round(sqrt(log(1+nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "ALBATROSS", 12]^2)),digits=3)),
+  # "#_Bigelow_N_Spring_Trawl",
+  # Big.N.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 3], seas = "4", index = "30",obs = round(nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 9],digits=5), 
+  #                             CV = round(sqrt(log(1+nefsc.agg[nefsc.agg$STOCK_ABBREV == "NORTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 12]^2)),digits=3)), 
+  # "#_Bigelow_S_Spring_Trawl",
+  # Big.S.spr.mean = data.frame(year = nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 3], seas = "4", index = "31",obs = round(nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 9],digits=5), 
+  #                             CV = round(sqrt(log(1+nefsc.agg[nefsc.agg$STOCK_ABBREV == "SOUTH" & nefsc.agg$SEASON == "SPRING" & nefsc.agg$SERIES == "BIGELOW", 12]^2)),digits=3)),
+  ####NOTE: Winter survey not broken N-S, so couldn't update, but should be the same as before?
+  # "#_RecCPUE_N_spr",
+  # RecCPUE.N.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "North", 2], seas = "4", index = "9",obs = round(RecCPA.agg[RecCPA.agg$Region == "North", 3],digits=5), CV = round(sqrt(log(1+(RecCPA.agg$CV[which(RecCPA.agg$Region == "North")])^2)), digits=3)), #round(sqrt(log(1+0.38^2)),digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  # "#_RecCPUE_S_spr",
+  # RecCPUE.S.mean = data.frame(year = RecCPA.agg[RecCPA.agg$Region == "South", 2], seas = "4", index = "10",obs = round(RecCPA.agg[RecCPA.agg$Region == "South", 3],digits=5), CV = round(sqrt(log(1+(RecCPA.agg$CV[which(RecCPA.agg$Region == "South")])^2)), digits=3)), #round(sqrt(log(1+0.25^2)), digits=3)), #Note: Using previous average for RecCPUE CV until can get from Jeff
+  "#_VAST_N_spr",
+  VAST.N.spr = data.frame(year = spring_N_index$Year, seas = "4", index = "11", obs = round(spring_N_index$Index,digits=5), CV = round(sqrt(log(1+(spring_N_index$Index_SD/spring_N_index$Index)^2)), digits=3)),
+  "#_VAST_S_spr",
+  VAST.S.spr = data.frame(year = spring_S_index$Year, seas = "4", index = "12", obs = round(spring_S_index$Index,digits=5), CV = round(sqrt(log(1+(spring_S_index$Index_SD/spring_S_index$Index)^2)), digits=3)),
+  "#_VAST_N_fall",
+  VAST.N.fall = data.frame(year = fall_N_index$Year, seas = "10", index = "13", obs = round(fall_N_index$Index,digits=5), CV = round(sqrt(log(1+(fall_N_index$IndexSD/fall_N_index$Index)^2)), digits=3)),
+  "#_VAST_S_fall",
+  VAST.S.fall = data.frame(year = fall_S_index$Year, seas = "10", index = "14", obs = round(fall_S_index$Index,digits=5), CV = round(sqrt(log(1+(fall_S_index$Index_SD/fall_S_index$Index)^2)), digits=3)),
+  
+  "###############################################",
+  "##  Discard Data",
+  "###############################################",
+  "#Disc_North_Trawl_1",
+  N.Trawl.spr.Disc = comdisc.gr.sem %>% filter(REGION == "NORTH", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Discards=round(sum(Dead.Disc.mt),digits=2)) %>%
+    add_column(Seas = 4, fleet = 1, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame,  ##Note: Dead discards for now, may want to switch to all discards, need to discuss; Also, here season is 4 and 10 for months and CV set to .3
+  "#Disc_South_Trawl_1",
+  S.Trawl.spr.Disc = comdisc.gr.sem %>% filter(REGION == "SOUTH", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Discards=round(sum(Dead.Disc.mt),digits=2)) %>%
+    add_column(Seas = 4, fleet = 2, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame,
+  "#Disc_North_Trawl_2",
+  N.Trawl.fall.Disc = comdisc.gr.sem %>% filter(REGION == "NORTH", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Discards=round(sum(Dead.Disc.mt),digits=2)) %>%
+    add_column(Seas = 10, fleet = 3, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame,  
+  "#Disc_South_Trawl_2",
+  S.Trawl.spr.Disc = comdisc.gr.sem %>% filter(REGION == "SOUTH", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Discards=round(sum(Dead.Disc.mt),digits=2)) %>%
+    add_column(Seas = 10, fleet = 4, 
+               .after = "YEAR") %>%
+    add_column(CV = 0.3, 
+               .after = "Discards") %>% data.frame)
+  # "#Disc_North_NonTrawl_1",
+  # N.NonTrawl.spr.Disc = comdisc.gr.sem %>% filter(REGION == "NORTH", SEMESTER == 1, FLEET == "NON-TRAWL") %>% group_by(YEAR) %>% summarise(Discards=round(sum(Dead.Disc.mt),digits=2)) %>%
+  #   add_column(Seas = 4, fleet = 5, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.3, 
+  #              .after = "Discards") %>% data.frame,  
+  # "#Disc_South_NonTrawl_1",
+  # S.NonTrawl.spr.Disc = comdisc.gr.sem %>% filter(REGION == "SOUTH", SEMESTER == 1, FLEET == "NON-TRAWL") %>% group_by(YEAR) %>% summarise(Discards=round(sum(Dead.Disc.mt),digits=2)) %>%
+  #   add_column(Seas = 4, fleet = 6, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.3, 
+  #              .after = "Discards") %>% data.frame,
+  # "#Disc_North_NonTrawl_2",
+  # N.NonTrawl.fall.Disc = comdisc.gr.sem %>% filter(REGION == "NORTH", SEMESTER == 2, FLEET == "NON-TRAWL") %>% group_by(YEAR) %>% summarise(Discards=round(sum(Dead.Disc.mt),digits=2)) %>%
+  #   add_column(Seas = 10, fleet = 7, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.3, 
+  #              .after = "Discards") %>% data.frame,  
+  # "#Disc_South_NonTrawl_2",
+  # S.NonTrawl.spr.Disc = comdisc.gr.sem %>% filter(REGION == "SOUTH", SEMESTER == 2, FLEET == "NON-TRAWL") %>% group_by(YEAR) %>% summarise(Discards=round(sum(Dead.Disc.mt),digits=2)) %>%
+  #   add_column(Seas = 10, fleet = 8, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.3, 
+  #              .after = "Discards") %>% data.frame,
+  # "#Disc_North_Rec_1",
+  # N.Rec.spr.Disc = rec.agg.region.sem %>% filter(REGION == "North", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Discards=round(sum(B2_dead)/1000,digits=2)) %>%
+  #   add_column(Seas = 4, fleet = 9, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.3, 
+  #              .after = "Discards") %>% data.frame,  ###Just made up CV for now, need to discuss and B2_dead or all B2s
+  # "#Disc_South_Rec_1",
+  # S.Rec.spr.Disc = rec.agg.region.sem %>% filter(REGION == "South", SEMESTER == 1) %>% group_by(YEAR) %>% summarise(Discards=round(sum(B2_dead)/1000,digits=2)) %>%
+  #   add_column(Seas = 4, fleet = 10, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.3, 
+  #              .after = "Discards") %>% data.frame,
+  # "#Disc_North_Rec_2",
+  # N.Rec.fall.Disc = rec.agg.region.sem %>% filter(REGION == "North", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Discards=round(sum(B2_dead)/1000,digits=2)) %>%
+  #   add_column(Seas = 10, fleet = 11, 
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.3, 
+  #              .after = "Discards") %>% data.frame,  
+  # "#Disc_South_Rec_2",
+  # S.Rec.fall.Disc = rec.agg.region.sem %>% filter(REGION == "South", SEMESTER == 2) %>% group_by(YEAR) %>% summarise(Discards=round(sum(B2_dead)/1000,digits=2)) %>%
+  #   add_column(Seas = 10, fleet = 12,
+  #              .after = "YEAR") %>%
+  #   add_column(CV = 0.3, 
+  #              .after = "Discards") %>% data.frame)
+
+#########################
+# aggregated commercial lengths
+##########################
+#create lookup table for commercial fleets
+fishery_ids <- expand.grid(stock = c("NORTH","SOUTH"),
+                           semester = 1:2,
+                           gear = c("trawl", "non-trawl")) |>
+  tibble() |>
+  mutate_if(is.factor, as.character) |>
+  mutate(index = 1:8) |>
+  I()
+fishery_ids
+
+
+### length frequency of catch
+
+# landings by mkt category, needed to weight the length comps
+comland <- comland.region.sem.mkt.gr |>
+  ungroup() |>
+  clean_names() |>
+  mutate(gear = ifelse(bsb_gear_cat1=="TRAWL","trawl","non-trawl")) |>
+  select(-bsb_gear_cat1) |>
+  group_by(stock, semester, year, mktnm, gear) |>
+  summarize(land_mt = sum(land_mt), .groups="drop") |>
+  left_join(fishery_ids) |>
+  I()
+comland
+
+
+comlens <- comlen.region.sem.mkt.gr |>
+  ungroup() |>
+  clean_names() |>
+  filter(stock %in% c("NORTH", "SOUTH"),
+         bsb_gear_cat1 != "UNKNOWN") |> #about 240 fish that don't have a region (UNK) assigned to them
+  mutate(gear = ifelse(bsb_gear_cat1=="TRAWL","trawl","non-trawl")) |>
+  select(-bsb_gear_cat1) |>
+  left_join(comland) |>
+  filter(!is.na(index)) |> # remove one(!) fish of length bin 32 in 2008, semester 2, trawl, unclassified market category, because no corresponding weight
+  mutate(cal = numlen*land_mt,
+         season = ifelse(semester==1,4,10)) |>
+  select(-semester) |>
+  mutate(index = ifelse(index >= 5, index-4, index)) |>
+  left_join(lenbins) |>
+  group_by(index, year, ibin, season) |>
+  summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
+  group_by(index, year, season) |>
+  mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
+  ungroup() |>
+  mutate(gender = 0,
+         part = 2) |> 
+  I()
+#comlens
+
+# comlens sample size
+comlens_samp <- comlen.nsamp.region.sem.mkt.gr |>
+  ungroup() |>
+  clean_names() |>
+  filter(stock %in% c("NORTH", "SOUTH")) |>
+  mutate(gear = ifelse(bsb_gear_cat2=="TRAWL","trawl","non-trawl")) |>
+  filter(stock != "UNK") |>
+  select(-bsb_gear_cat2) |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10), nsamp = nsamples) |>
+  mutate(index = ifelse(index >= 5, index-4, index)) |>
+  group_by(index, year, season) |>
+  summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 2) |>
+  I()
+
+# recreational lengths
+
+recfishery_ids <- expand.grid(region = c("North","South"),
+                              semester = 1:2) |>
+  tibble() |>
+  mutate_if(is.factor,as.character) |>
+  mutate(index = 9:12)
+recfishery_ids  
+
+reclens <- rec.exp.ab1b2.len |>
+  clean_names() |>
+  left_join(recfishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  rename(length = l_cm_bin) |>
+  select(-semester, 
+         -n_ab1b2,
+         -region) |>
+  pivot_longer(cols = c("n_ab1","n_b2"),
+               names_to = "part",
+               values_to = "cal") |>
+  filter(cal>0) |>
+  mutate(part = as.numeric(ifelse(part == "n_ab1",2,1))) |>
+  left_join(lenbins) |>
+  mutate(cal = ifelse(season == 10 & ibin <=6, 0, cal)) |>
+  group_by(index, year, ibin, season, part) |>
+  summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
+  group_by(index, year, season, part) |>
+  mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
+  ungroup() |>
+  mutate(gender = 0) |> 
+  I()
+reclens
+
+# extract sample size for harvest
+reclensharv <- rec.ab1.len |>
+  clean_names() |>
+  left_join(recfishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  rename(nsamp = sample_size_trip) |>
+  rename(length = l_cm_bin) |>
+  select(-semester,
+         -n_ab1,
+         -region) |>	
+  left_join(lenbins) |>
+  group_by(index, year, season) |>
+  summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 2) |>
+  I()
+reclensharv
+
+# extract sample size for discard
+reclensdisc <- rec.b2.len |>
+  clean_names() |>
+  left_join(recfishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  rename(nsamp = sample_size_trip) |>
+  rename(length = l_cm_bin) |>
+  filter(nsamp > 0) |>
+  select(-disposition, 
+         -data_source,
+         -semester,
+         -region,
+         -sample_size_scaled) |>
+  left_join(lenbins) |>
+  group_by(index, year, season) |>
+  summarise(nsamp = sum(nsamp, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 1) |>
+  I()
+reclensdisc
+
+################
+# aggregate commercial discard length comps
+################
+
+comdisc <- comdisc.gr.sem |>
+  ungroup() |>
+  clean_names() |>
+  mutate(fleet = ifelse(fleet=="TRAWL","trawl","non-trawl")) |>
+  #select(-bsb_gear_cat1) |>
+  group_by(region, semester, year, fleet) |>
+  summarize(dead_disc_mt = sum(dead_disc_mt), .groups="drop") |>
+  rename(stock = region,
+         gear = fleet) |>
+  left_join(fishery_ids) |>
+  I()
+comdisc
+
+# commercial discards
+disc_lens <- comdisc.len |>
+  clean_names() |>
+  rename(gear = bsb_fleet) |>
+  mutate(gear = tolower(gear)) |>
+  select(-bsb_gear_cat) |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  left_join(lenbins) |>
+  select(-semester,-region,-length) |>
+  group_by(index, year, season, source, ibin) |>
+  summarize(cal = n(), .groups = "drop") |>
+  left_join(comdisc) |>
+  mutate(cal = ifelse(season==10 & ibin <=6, 0, cal*dead_disc_mt),
+         index = ifelse(index >= 5, index-4, index)) |>
+  group_by(index, year, season, source, ibin) |>
+  summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
+  group_by(index, year, season, source) |>
+  mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
+  ungroup() |>
+  mutate(gender = 0,
+         part = 1,
+         index = ifelse(source == "CFRF",-1*index,index)) |>
+  select(-source) |>
+  I()
+#disc_lens
+
+# sample size for comdisc.len
+# number of tows
+comdisc_samp_trawl <- comdisc.nhaul.fleet |>
+  clean_names() |>
+  select(-non_trawl) |>
+  mutate(gear = "trawl") |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  group_by(index, year, season) |>
+  summarize(nsamp = sum(trawl, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 1) |>
+  filter(nsamp > 0) |>
+  I()
+#comdisc_samp_trawl
+
+comdisc_samp_nontrawl<- comdisc.nhaul.fleet |>
+  clean_names() |>
+  select(-trawl) |>
+  mutate(gear = "non-trawl") |>
+  left_join(fishery_ids) |>
+  mutate(season = ifelse(semester==1,4,10)) |>
+  group_by(index, year, season) |>
+  summarize(nsamp = sum(non_trawl, na.rm = TRUE), .groups = "drop") |>
+  mutate(part = 1) |>
+  filter(nsamp>0) |>
+  I()
+
+comdisc_samp <- bind_rows(comdisc_samp_trawl, comdisc_samp_nontrawl) |>
+  mutate(index = ifelse(index >= 5, index-4, index)) |>
+  group_by(index, year, season, part) |>
+  summarize(nsamp = sum(nsamp), .groups = "drop")
+comdisc_samp
+
+
+reclens <- reclens |>
+  mutate(index = index - 4)
+  
+fishery_lens <- bind_rows(comlens, reclens, disc_lens)
+#fishery_lens <- bind_rows(reclens, disc_lens)
+
+
+fillbins <- unique(lenbins$ibin)[!unique(lenbins$ibin) %in% fishery_lens$ibin]
+filllens <- fishery_lens |>
+  slice(1:length(fillbins)) |>
+  mutate(cal = 0,
+         ibin = fillbins) |>
+  I()
+
+fishery_lens <- fishery_lens |>
+  bind_rows(filllens) |>
+  group_by(index, year, ibin, season, gender, part) |>
+  summarise(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
+  ungroup() |>
+  pivot_wider(names_from = ibin,
+              names_prefix = "bin_",
+              values_from = cal,
+              names_sort = TRUE,
+              values_fill = 0
+  ) |>
+  group_by(index, year, season, gender, part) |>
+  summarize(across(c(everything()), sum)) |>
+  ungroup() |>
+  #Yr Seas Flt/Svy Gender Part Nsamp datavector(female-male)
+  #select(year, season, index, gender, part, nsamp, everything()) |>
+  select(year, season, index, gender, part, everything()) |>
+  I()
+fishery_lens2 <- fishery_lens |>
+  select(-(1:5)) |>
+  mutate_all(.funs = function(x) 0*x) |>
+  rename_with(.fn = function(x) str_c("m_",x))
+fishery_lens_write <- bind_cols(fishery_lens, fishery_lens2)  
+
+
+reclensharv <- reclensharv |>
+  mutate(index = index - 4)
+reclensdisc <- reclensdisc |>
+  mutate(index = index - 4)
+
+len_samps <- bind_rows(comlens_samp,
+                       comdisc_samp,
+                       reclensharv,
+                       reclensdisc
+) |>
+  mutate(nsamp = ceiling(nsamp), index = as.numeric(index))
+
+
+fishery_lens_write <- left_join(fishery_lens_write, len_samps) |>
+  select(year, season, index, gender, part, nsamp, everything()) %>% 
+  mutate(nsamp = ifelse(is.na(nsamp),25,nsamp))
+#replace any NAs with 25
+
+##############################
+# write aggregated data to file
+# GF NB that print does not work for tables - as it truncates the output
+write("### AGGREGATED COMMERCIAL DATA", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+xx <- map(SS_BSB_dat2, write.table,
+          file = file.path("SS_BSB_dat.txt"),
+          row.names = FALSE,
+          quote = FALSE,
+          col.names = FALSE,
+          append = TRUE)
+#capture.output(print(SS_BSB_dat1), file = file.path("SS_BSB_dat.txt"))
+
+
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Aggregated Fishery Length Composition Data", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(fishery_lens_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+

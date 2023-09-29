@@ -19,7 +19,8 @@ grab the output
 ```{r}
 # read the model output and print diagnostic messages
 replist <- SS_output(
-  dir = "..",
+  #dir = "../results-sandbox",
+  dir = here::here(),
   verbose = TRUE,
   printstats = TRUE
 )
