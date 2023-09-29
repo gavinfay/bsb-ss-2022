@@ -19,8 +19,8 @@ grab the output
 ```{r}
 # read the model output and print diagnostic messages
 replist <- SS_output(
-  #dir = "../results-sandbox",
-  dir = here::here(),
+  dir = "../results-sandbox",
+  #dir = here::here(),
   verbose = TRUE,
   printstats = TRUE
 )
@@ -31,7 +31,7 @@ replist <- SS_output(
 # plots the results
 #SS_plots(replist, plot = c(7,9,11,12:19,21), dir = here::here())
 #SS_plots(replist, plot = c(2), dir = here::here())
-#SS_plots(replist, dir = here::here())
-SS_plots(replist, plot = c(13), dir = here::here())
+SS_plots(replist, dir = here::here())
+#SS_plots(replist, plot = c(13), dir = here::here())
 ```
 
