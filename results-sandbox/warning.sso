@@ -15,13 +15,8 @@ Warning 14 : parameter init value is less than parameter min 0 < 0.02 for parm: 
 Warning 15 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
 Warning 16 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
 Warning 17 : Setting in starter does not request all priors, and 73 parameters have priors and are not estimated, so their prior not included in obj_fun.
-Warning 18 : Fleet: 9  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 981
-Warning 19 : Fleet: 10  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 1157
-Warning 20 : Fleet: 11  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 845
-Warning 21 : Fleet: 12  agecomp has obs with partition==2; will treat as partition=0 because retention not defined; N= 597
-Warning 22 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 1 settle: 1; L= 70.9246
-Warning 23 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 70.9246
-Warning 24 : Forecast F capped by max possible F from control file3.99
-Warning 25 : Reminder: Number of lamdas !=0.0 and !=1.0:  8
-Note 1 Information:  N parameters that are on or within 1% of min-max bound: 12; check results, variance may be suspect
- 25 warnings  and 1 note 
+Warning 18 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 1 settle: 1; L= 72.7969
+Warning 19 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 72.7969
+Warning 20 : Reminder: Number of lamdas !=0.0 and !=1.0:  8
+Note 1 Information:  N parameters that are on or within 1% of min-max bound: 13; check results, variance may be suspect
+ 20 warnings  and 1 note 
