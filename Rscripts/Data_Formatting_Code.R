@@ -2218,3 +2218,36 @@ write.table(fishery_lens_write,
             row.names = FALSE,
             col.names = FALSE)
 
+#
+# aggregated fishery lengths without any comps that required borrowing in WHAM
+nulens_write <- fishery_lens_write %>% 
+  # filter(!(part == 1 & index == 1 & year %in% c(1990:1994, 1995, 2002))) %>% 
+  # filter(!(part == 1 & index == 3 & year %in% c(1989:1995, 1998:1999)))  %>% 
+  # filter(!(part == 1 & index == 2 & year %in% c(1990:1995, 1999, 2001))) %>% 
+  # filter(!(part == 1 & index == 4 & year %in% c(1989:1993, 1997:2000))) %>% 
+  # filter(!(part == 1 & index %in% c(5:8) & year %in% c(1989:2002))) %>% 
+  # filter(!(part == 1 & index == 5 & year %in% c(2003:2006, 2009, 2010, 2012))) %>% 
+  # filter(!(part == 1 & index == 6 & year %in% c(2005:2006))) %>% 
+  # filter(!(part == 1 & index == 7 & year %in% c(2004, 2006, 2010:2012))) %>% 
+  # filter(!(part == 1 & index == 8 & year %in% c(2005, 2007, 2010:2013))) %>% 
+  # filter(!(part == 2 & index == 1 & year %in% c(1990:1995, 2002))) %>% 
+  # filter(!(part == 2 & index == 3 & year %in% c(1989, 1990:1995, 1998:1999))) %>% 
+  # filter(!(part == 2 & index == 2 & year %in% c(1990:1994, 1995, 1999, 2001))) %>% 
+  # filter(!(part == 2 & index == 4 & year %in% c(1989:2000))) %>% 
+  # filter(!(part == 2 & index == 5 & year %in% c(2001:2006, 2009, 2010, 2012))) %>% 
+  # filter(!(part == 2 & index == 7 & year %in% c(1990:1994, 1998, 2001:2002, 2004, 2006, 2010:2012))) %>% 
+  # filter(!(part == 2 & index == 6 & year %in% c(1990:1994, 2002, 2005:2006))) %>% 
+  # filter(!(part == 2 & index == 8 & year %in% c(1990:1998, 2000:2001, 2005, 2007, 2010:2013))) %>% 
+  filter(!(part == 1 & index == 5 & year %in% c(1989:1994, 2000, 2002:2003, 2005))) %>% 
+  filter(!(part == 1 & index == 6 & year %in% c(1989:1990, 1993:1994))) %>% 
+  filter(!(part == 1 & index == 7 & year %in% c(1989:1999))) %>% 
+  filter(!(part == 1 & index == 8 & year %in% c(1989, 1996)))
+
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Aggregated Fishery Length Composition Data Without Any Comps That WHAM would Borrow", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(nulens_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
