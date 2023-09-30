@@ -356,8 +356,8 @@
 
 ##
 #Fleet 1 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
-5		59	25	65	99	0	2	0	0	0	0	0	0	0
-0.01	9	5.1	5	99	0	2	0	0	0	0	0	0	0
+5		59	25	65	99	0	2	0	0	0	0	0	1	2
+0.01	9	5.1	5	99	0	2	0	0	0	0	0	1	2
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
@@ -371,8 +371,8 @@
 0		25	0	0	99	0	-2	0	0	0	0	0	0	0
 
 #Fleet 2 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
-5		59	25	65	99	0	2	0	0	0	0	0	0	0
-0.01	9	5.1	5	99	0	2	0	0	0	0	0	0	0
+5		59	25	65	99	0	2	0	0	0	0	0	1	2
+0.01	9	5.1	5	99	0	2	0	0	0	0	0	1	2
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
@@ -389,8 +389,8 @@
 5		59	25	65	99	0	2	0	0	0	0	0	0	0
 0.01	9	5.1	5	99	0	2	0	0	0	0	0	0	0
 																						
-5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
-0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
+5		59	15	65	99	0	2	0	0	0	0	0	0	0	#_Retain_L_infl_North_Trawl_1(1)
+0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   -2   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
@@ -401,8 +401,8 @@
 0		25	0	0	99	0	-2	0	0	0	0	0	0	0
 
 #Fleet 4 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
-5		59	25	65	99	0	2	0	0	0	0	0	0	0
-0.01	9	5.1	5	99	0	2	0	0	0	0	0	0	0
+5		59	25	65	99	0	2	0	0	0	0	0	1	2
+0.01	9	5.1	5	99	0	2	0	0	0	0	0	1	2
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
@@ -524,23 +524,23 @@
 # timevary selex parameters 
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type    PHASE  #  parm_name
 # commercial selecgtivity
-#             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+
+             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 
 #             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
 #          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
-             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
-          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+#            5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
+#          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 
-#             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
-            5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
-          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
-
-#             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
-#          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 
@@ -705,14 +705,14 @@
 #1 15 0.15
 1 13 0.15
 1 14 0.15
-#4	1	0.2
-#4	2	0.2
-#4	3	0.2
-#4	4	0.2
-#4	5	0.2
-#4	6	0.2
-#4	7	0.2
-#4	8	0.2
+4	1	0.25
+4	2	0.25
+4	3	0.25
+4	4	0.25
+4	5	0.25
+4	6	0.25
+4	7	0.25
+4	8	0.25
 #4 9 0.2
 #4 10 0.2
 #4 11 0.2
