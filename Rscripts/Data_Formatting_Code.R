@@ -1277,7 +1277,8 @@ unsexed_ageatlen <- fishery_agelens |>
   ageerr= 1, 
   #nsamp = 25,
   lobin = ibin,
-  month = ifelse(semester==1,4,10)) |>
+  month = ifelse(semester==1,4,10),
+  ageerr= ifelse(month==4,1,2)) |>
   select(-region,-semester) |>
   select(year, month, index, sex, part, ageerr, lobin, ibin, nsamp, everything()) |>
   arrange(year, month, index, ibin) |>
