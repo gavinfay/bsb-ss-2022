@@ -60,7 +60,7 @@
 1 #Inclue males in spawning biomass 0=no males in SSB, 1=simple add of males to females, xx - more options to come...
 
 
-1 #_parameter_offset_approach (1=none, 2= M, G, CV_G as offset from female-GP1, 3=like SS2 V1.x)
+3 #_parameter_offset_approach (1=none, 2= M, G, CV_G as offset from female-GP1, 3=like SS2 V1.x)
 #1 #_env/block/dev_adjust_method (1=standard; 2=with logistic trans to keep within base parm bounds)
 
 #LO HI  INIT    PRIOR   SD  PR_Type PHASE   env-var use_dev dev_minyr   dev_maxyr   dev_stdev   Block   Block_Fxn       
@@ -79,13 +79,20 @@
 -3  3   1   1   0.8 0   -3  0   0   0   0   0   0   0   #   Eggs1-Fem
 -3  3   0   0   0.8 0   -3  0   0   0   0   0   0   0   #   Eggs2-Fem
 
-#female,    growth  pattern 2,  decade  1                                       
-0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:2_
-1   20  11.58   10  99  0   3  0   0   0   0   0   0   0   #   Lmin-Fem_GP_2_
-30  100 69.4    65  99  0   3   0   0   0   0   0   0   0   #   Lmax-Fem_GP_2_
-0.02    0.65    0.133   0.18    99  0   3   0   0   0   0   0   0   0   #   VBK-Fem_GP_2_
-0.01    0.25 0.15    0.3 99  0   3   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_2_
-0.01    0.25 0.15    0.04    99  0   4  0   0   0   0   0   0   0   #   CV_old
+#female,    growth  pattern 2,  decade  1
+-10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:2_
+-10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:2_
+-10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:2_
+-10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:2_
+-10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:2_
+-10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:2_
+
+#0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:2_
+#1   20  11.58   10  99  0   3  0   0   0   0   0   0   0   #   Lmin-Fem_GP_2_
+#30  100 69.4    65  99  0   3   0   0   0   0   0   0   0   #   Lmax-Fem_GP_2_
+#0.02    0.65    0.133   0.18    99  0   3   0   0   0   0   0   0   0   #   VBK-Fem_GP_2_
+#0.01    0.25 0.15    0.3 99  0   3   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_2_
+#0.01    0.25 0.15    0.04    99  0   4  0   0   0   0   0   0   0   #   CV_old
 -3  3   1.55E-05    0   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen1-Fem
 -3  4   2.963   3   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen2-Fem
 -10 100 20.91   1   0.8 0   -3  0   0   0   0   0   3   2   #   Mat50-Fem
@@ -108,7 +115,8 @@
 #-3  3   0   0   0.8 0   -3  0   0   0   0   0   0   0   #   Eggs2-Fem
 
 #_male, growth  pattern 1,  decade  1                                       
-0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
+0.1 0.45    0 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
+#0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 1   20  0    10  99  0   -3  0   0   0   0   0   0   0   #   Lmin-M_GP_1_
 30  100 0   65  99  0   -3   0   0   0   0   0   0   0   #   Lmax-M_GP_1_
 #30  100 69   65  99  0   3   0   0   0   0   0   0   0   #   Lmax-M_GP_1_
@@ -130,7 +138,8 @@
 #-3  4   3.094   3   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen2-M
                                                             
 #_male, growth  pattern 2,  decade  1                                       
-0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:2_
+0.1 0.45    0 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:2_
+#0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:2_
 1   20  0    10  99  0   -3  0   0   0   0   0   0   0   #   Lmin-M_GP_2_
 #30  100 60.01   65  99  0   3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
 30  100 0   65  99  0   -3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
@@ -1014,7 +1023,7 @@
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_16
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_17
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_18
- 1 10 2  2 0.001 1 -4 0 0 0 0 0 0 0 # TG_overdispersion_1
+ 1 10 2  2 0.001 1 4 0 0 0 0 0 0 0 # TG_overdispersion_1
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_2
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_3
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_4
