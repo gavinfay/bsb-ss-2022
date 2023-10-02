@@ -32,10 +32,12 @@
 # year season fleet catch se
 # new initial catches sum across fleets in area/season combos
 # rec catch turned to t based on previous fit report (ret_bio given ret_num input)
--999	1	1	244	0.1	#_North_Trawl_1
--999	1	2	716	0.1	#_South_Trawl_1
--999	2	3	378	0.1	#_North_Trawl_2
--999	2	4	1800	0.1	#_South_Trawl_2
+#-999	1	1	244	0.1	#_North_Trawl_1
+#-999	1	2	716	0.1	#_South_Trawl_1
+#-999	2	3	378	0.1	#_North_Trawl_2
+#-999	2	4	1800	0.1	#_South_Trawl_2
+-999 1 6 1522 0.1
+-999 2 8 2332 0.1
 ###
 ###############################################
 ##  Catch Data

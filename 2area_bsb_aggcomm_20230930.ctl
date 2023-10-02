@@ -284,8 +284,8 @@
 #_LO    HI  INIT    PRIOR   PR_type SD  PHASE
 0 1.8 0.25 0 99 0 1 # InitF_1_
 0 1.8 0.25 0 99 0 1 # InitF_2_
-0 1.8 0.25 0 99 0 1 # InitF_3_
-0 1.8 0.25 0 99 0 1 # InitF_4_
+#0 1.8 0.25 0 99 0 1 # InitF_3_
+#0 1.8 0.25 0 99 0 1 # InitF_4_
 
 
 #_Q_setup
