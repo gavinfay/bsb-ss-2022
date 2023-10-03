@@ -2315,4 +2315,12 @@ write.table(nulens_write,
             col.names = FALSE)
 
 
-  
+ial2 <- index_ageatlen_write %>% filter(month == 10) %>% mutate(index = index - 30)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Index Age at Length Data, no spring", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(ial2, #ac_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)

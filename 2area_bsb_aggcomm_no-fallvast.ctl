@@ -749,6 +749,8 @@
 5 2 1 0.1 1
 5 3 1 0.1 1
 5 4 1 0.1 1
+5 7 1 0.1 1
+5 8 1 0.1 1
 # turn off data from objective function for surveys other than VAST & RecCPA
 1   15 1 0 1
 5 9 1 0.5 1
