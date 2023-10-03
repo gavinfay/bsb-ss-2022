@@ -935,10 +935,10 @@ number of D-M definitions needed for both length and age comp data: 0
 2 Lbin method for defined size ranges 
 age_obs_#:1 #  1989 4 1 0 2 1 15 15 3 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 age_obs_#:2 #  1989 4 1 0 2 1 16 16 5 0 0 0 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-1336 N age comp observations 
-age_obs_#:1336 #  2021 10 12 0 0 2 1 28 25 0 0.745875 0.192799 0.0557752 0.000610376 0.00123434 0.00318234 4.1e-05 0.000482661 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+4990 N age comp observations 
+age_obs_#:4990 #  2021 10 12 0 0 2 1 28 25 0 0.745875 0.192799 0.0557752 0.000610376 0.00123434 0.00318234 4.1e-05 0.000482661 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 
-Age_Data Nobs by fleet  397 229 396 182 0 0 0 0 33 33 33 33 0 0 0
+Age_Data Nobs by fleet  397 229 396 182 981 1157 845 597 33 33 33 33 0 0 0
 Age_Data superperiods by fleet  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 process age comps 
 area seas fleet age_bins  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
@@ -950,14 +950,14 @@ area seas fleet age_bins  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 
 1 1 3 cuml  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
 2 1 4 freq  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
 2 1 4 cuml  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
-1 1 5 freq  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-1 1 5 cuml  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-2 1 6 freq  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-2 1 6 cuml  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-1 1 7 freq  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-1 1 7 cuml  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-2 1 8 freq  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-2 1 8 cuml  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 1 5 freq  9.99998e-08 0.177537 0.248099 0.217623 0.148052 0.0901362 0.0575356 0.0331901 0.0124316 0.00685317 0.00506979 0.0018831 0.00107943 9.99998e-08 9.99998e-08 0.000509783
+1 1 5 cuml  9.99998e-08 0.177537 0.425636 0.643259 0.791311 0.881447 0.938983 0.972173 0.984605 0.991458 0.996527 0.998411 0.99949 0.99949 0.99949 1
+2 1 6 freq  0.000432251 0.175148 0.284287 0.193701 0.154797 0.10403 0.0484815 0.0197168 0.0130871 0.00329405 0.00302516 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08
+2 1 6 cuml  0.000432251 0.17558 0.459867 0.653568 0.808365 0.912395 0.960876 0.980593 0.99368 0.996974 1 1 1 1 1 1
+1 1 7 freq  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
+1 1 7 cuml  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
+2 1 8 freq  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
+2 1 8 cuml  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
 1 1 9 freq  9.99998e-08 0.14735 0.265326 0.301064 0.162088 0.0714822 0.0331175 0.0100081 0.00956285 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08
 1 1 9 cuml  9.99998e-08 0.147351 0.412677 0.713741 0.875829 0.947311 0.980428 0.990436 0.999999 0.999999 1 1 1 1 1 1
 2 1 10 freq  9.99998e-08 0.254391 0.435691 0.221615 0.058438 0.0205547 0.0064847 0.00134062 0.00148437 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08
@@ -980,14 +980,14 @@ area seas fleet age_bins  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 
 1 2 3 cuml  9.99998e-08 0.124809 0.354205 0.521114 0.652873 0.767815 0.850889 0.916745 0.958786 0.982713 0.994217 0.998207 0.999747 1 1 1
 2 2 4 freq  9.99998e-08 0.0269641 0.0910155 0.231013 0.242061 0.175658 0.115571 0.0526202 0.0201631 0.0213809 0.0156774 9.99998e-08 0.00054955 0.0018316 0.0054946 9.99998e-08
 2 2 4 cuml  9.99998e-08 0.0269642 0.11798 0.348992 0.591054 0.766711 0.882282 0.934903 0.955066 0.976447 0.992124 0.992124 0.992674 0.994505 1 1
-1 2 5 freq  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-1 2 5 cuml  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-2 2 6 freq  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-2 2 6 cuml  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-1 2 7 freq  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-1 2 7 cuml  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-2 2 8 freq  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-2 2 8 cuml  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 2 5 freq  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
+1 2 5 cuml  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
+2 2 6 freq  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
+2 2 6 cuml  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
+1 2 7 freq  0.00380262 0.167684 0.242421 0.191005 0.158417 0.106626 0.0626094 0.0303153 0.0238257 0.00970423 0.00358984 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08
+1 2 7 cuml  0.00380262 0.171486 0.413907 0.604912 0.763329 0.869955 0.932564 0.96288 0.986705 0.99641 1 1 1 1 1 1
+2 2 8 freq  0.0171303 0.381933 0.292119 0.177098 0.0745799 0.0320133 0.0125629 0.00753778 0.00167514 0.00167514 0.00167514 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08
+2 2 8 cuml  0.0171303 0.399063 0.691182 0.86828 0.94286 0.974873 0.987436 0.994974 0.996649 0.998324 1 1 1 1 1 1
 1 2 9 freq  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
 1 2 9 cuml  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
 2 2 10 freq  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
@@ -6419,15 +6419,15 @@ Finished time_series
 Finished survey obj_fun  0 0 0 0 0 0 0 0 817.388 1788.89 1505.8 241.439 7105.09 3605.18 241.283
 Finished discard obj_fun  598.811 272.798 668.631 424.972 2255.21 3285.93 11916.1 19280.4 0 0 0 0 0 0 0
 Finished lencomp obj_fun  363.625 488.727 520.967 568.41 467.43 841.421 2384.11 2500.89 0 0 0 0 0 0 0
-Finished agecomp obj_fun  5437.4 1600.1 5476.41 2392.22 0 0 0 0 957.017 1626.95 0 0 0 0 0
+Finished agecomp obj_fun  5437.4 1600.1 5476.41 2392.22 2882.72 2451.08 2669.23 2834.92 957.017 1626.95 0 0 0 0 0
  initequ_catch -log(L)  0 0 0 0 0 0 0 3098.78 0 0 0 0 0 0 0
  catch -log(L)  3.88137e-13 3.35587e-13 3.49951e-13 3.92206e-13 3.6333e-16 4.34285e-16 1.1519e-15 8.29132e-16 0 0 0 0 0 0 0
 Finished recruitdev obj_fun -10.9523 30.7067 0.98
- OK with obj_func 68235.8
-Iterations: 997
-Calculated Fspr 6.01708 0.4
-Calculated Btgt: 7.9954 0.342
-Calculated Fmsy 6.01708 4862.82
+ OK with obj_func 79073.8
+Iterations: 1158
+Calculated Fspr 3.79758 0.4
+Calculated Btgt: 4.79697 0.342
+Calculated Fmsy 3.79758 5381.71
 Finished calculating benchmarks
 Finished forecast
 Writing wtatage.ss_new
