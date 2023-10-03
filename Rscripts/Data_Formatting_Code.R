@@ -417,12 +417,13 @@ fishery_lens <- bind_rows(comlens, reclens)
 disc_lens <- comdisc.len |>
   clean_names() |>
   rename(gear = bsb_fleet) |>
-  mutate(gear = tolower(gear)) |>
-  select(-bsb_gear_cat) |>
+  mutate(gear = tolower(gear),
+         stock = toupper(region)) |>
+  select(-bsb_gear_cat, -region) |>
   left_join(fishery_ids) |>
   mutate(season = ifelse(semester==1,4,10)) |>
   left_join(lenbins) |>
-  select(-semester,-region,-length) |>
+  select(-semester,-stock,-length) |>
   group_by(index, year, season, source, ibin) |>
   summarize(cal = n(), .groups = "drop") |>
   mutate(cal = ifelse(season==10 & ibin <=6, 0, cal)) |>
@@ -2083,12 +2084,13 @@ comdisc
 disc_lens <- comdisc.len |>
   clean_names() |>
   rename(gear = bsb_fleet) |>
-  mutate(gear = tolower(gear)) |>
-  select(-bsb_gear_cat) |>
+  mutate(gear = tolower(gear),
+         stock = toupper(region)) |>
+  select(-bsb_gear_cat, -region) |>
   left_join(fishery_ids) |>
   mutate(season = ifelse(semester==1,4,10)) |>
   left_join(lenbins) |>
-  select(-semester,-region,-length) |>
+  select(-semester,-stock,-length) |>
   group_by(index, year, season, source, ibin) |>
   summarize(cal = n(), .groups = "drop") |>
   left_join(comdisc) |>
