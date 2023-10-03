@@ -2391,6 +2391,8 @@ create tag labels
  dev vector #:  1 setup:  1 44 25 0 0 0 0 1 23 1990 2021 3 44 0 phase: 3
 13 setting flag to continue last dev 0 141 44 233 
  read var_adjust list until -9999
+ 1 13 0.05
+ 1 14 0.05
  4 1 0.2
  4 2 0.2
  4 3 0.2
@@ -2400,9 +2402,9 @@ create tag labels
  4 7 0.2
  4 8 0.2
  -9999 0 0
- number of variance adjustment records = 8
+ number of variance adjustment records = 10
  Var_adjustments as read 
- 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0.05 0
  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
  0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 1 1 1 1 1 1 1
@@ -6417,18 +6419,18 @@ yr 2021, seas: 2, fleet:12
  sampled  age   0 2020.22 22250.4 25398.7 17047.2 10461.1 6048.54 3371.45 1843.78 998.481 538.097 289.651 155.765 83.6059 44.8121 87.2339 0 1186.48 13388.3 16438.2 12750.4 9750.22 7417.35 5569.58 4102.18 2956.32 2089.43 1455.94 1003.09 684.301 463.326 901.946
  finished time series 
 Finished time_series
-Finished survey obj_fun  0 0 0 0 0 0 0 0 813.847 1791.99 1504.56 241.172 163102 136696 241.283
+Finished survey obj_fun  0 0 0 0 0 0 0 0 813.847 1791.99 1504.56 241.172 30771.7 18527.2 241.283
 Finished discard obj_fun  590.033 272.955 655.714 424.883 2250.33 3284.24 11894.8 19278.1 0 0 0 0 0 0 0
 Finished lencomp obj_fun  355.719 407.047 492.878 516.984 463.837 839.399 2361.28 2499.7 0 0 0 0 0 0 0
 Finished agecomp obj_fun  5435.71 1600.05 5476.09 2392.12 0 0 2668.8 2834.97 945.009 1625.67 0 0 0 0 0
  initequ_catch -log(L)  0 0 0 0 0 0 30976.7 4329.48 0 0 0 0 0 0 0
  catch -log(L)  4.17744e-13 3.38024e-13 3.69828e-13 3.93128e-13 3.69007e-16 4.35797e-16 1.16984e-15 8.31127e-16 0 0 0 0 0 0 0
 Finished recruitdev obj_fun -10.9523 30.7067 0.98
- OK with obj_func 389824
-Iterations: 1945
-Calculated Fspr 5.37875 0.4
-Calculated Btgt: 7.00445 0.342
-Calculated Fmsy 5.37875 3236.2
+ OK with obj_func 139324
+Iterations: 904
+Calculated Fspr 3.81826 0.4
+Calculated Btgt: 5.00488 0.342
+Calculated Fmsy 3.81826 4087.7
 Finished calculating benchmarks
 Finished forecast
 Writing wtatage.ss_new
