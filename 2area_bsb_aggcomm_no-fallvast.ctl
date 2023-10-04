@@ -338,8 +338,8 @@
 1 0 0 0 #24  0   0   0   #36 VAST_South_Spr
 1 0 0 0 #24  0   0   0   #37 VAST_North_Fall
 1 0 0 0 #24  0   0   0   #38 VAST_South_Fall
-5 0 0 5  #39 RecCPUE_North_Spring
-5 0 0 6 #40 RecCPUE_South_Spring
+5 0 0 7  #39 RecCPUE_North_Fall
+5 0 0 8 #40 RecCPUE_South_Fall
 0 0 0 0
 
 #_age_selex_types
