@@ -21,8 +21,8 @@ Warning 20 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; G
 Warning 21 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 2 settle: 1; L= 70.9246
 Warning 22 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 70.9246
 Warning 23 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 2 settle: 1; L= 70.9246
-Warning 24 : Final gradient: 0.0626788 is larger than final_conv: 0.0001
+Warning 24 : Final gradient: 14.3782 is larger than final_conv: 0.0001
 Warning 25 : Forecast F capped by max possible F from control file3.99
 Warning 26 : Reminder: Number of lamdas !=0.0 and !=1.0:  8
-Note 1 Information:  N parameters that are on or within 1% of min-max bound: 7; check results, variance may be suspect
+Note 1 Information:  N parameters that are on or within 1% of min-max bound: 9; check results, variance may be suspect
  26 warnings  and 1 note 
