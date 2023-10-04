@@ -377,8 +377,8 @@
 
 ##
 #Fleet 1 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
-5		59	25	65	99	0	2	0	0	0	0	0	1	2
-0.01	9	5.1	5	99	0	2	0	0	0	0	0	1	2
+5		59	25	65	99	0	2	0	0	0	0	0	0	0
+0.01	9	5.1	5	99	0	2	0	0	0	0	0	0	0
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
@@ -545,8 +545,8 @@
 # timevary selex parameters 
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type    PHASE  #  parm_name
 # commercial selecgtivity
-             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
-          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
+#             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+#          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 -10 10  10  4.59512 99  0   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
