@@ -170,7 +170,7 @@
 
 #C Recruitment distributions
 #C RecrDist-settlement-1_
- -8 8 -1 0 99 0 1 0 23 1990 2021 3 0 0 # 
+ -8 8 -1 0 99 0 1 0 23 1990 2021 1 0 0 # 
 #-8 8 -1.1 0 99 0.5 1 0 2 1990 2019 1 0 0 #  
 #C RecrDist-settlement-2_
  -4 4 -1 0 99 0 -1 0 0 0 0 0 0 0 # 
@@ -216,7 +216,7 @@
 -3  3   2.48E-05   0   0.8 0   -3  #   Wtlen_1_Mal_GP_2_BLK3repl_2011
 -3  4   3.044   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2000
 -3  4   2.800   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2011
-0.0001  2   1.5 0 0 0   -5  #   RecrDist_GP_1_area_1_month_10_dev_se
+0.0001  2   0.7 0 0 0   -5  #   RecrDist_GP_1_area_1_month_10_dev_se
 -0.99   0.99    0   0   0 0   -6  #   RecrDist_GP_1_area_1_month_10_dev_autocorr
 
 #_seasonal_effects_on_biology_parms
@@ -251,7 +251,7 @@
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1989 #1992 #1987 # first year of main recr_devs; early devs can preceed this era
 2019 # last year of main recr_devs; forecast devs start in following year
-3 #_recdev phase 
+1 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  -3 #_recdev_early_phase
