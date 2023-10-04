@@ -1313,8 +1313,8 @@ g a seas subseas ALK_idx real_age calen_age lin_grow first_grow_age
 12  -3 3 0 0 0.8 0 -3 0 0 0 0 0 0 0 Eggs/kg_slope_wt_Fem_GP_1
 13  -10 10 0 0.25 99 0 -6 0 0 0 0 0 0 0 NatM_uniform_Fem_GP_2
 14  -10 10 0 0.25 99 0 -6 0 0 0 0 0 0 0 L_at_Amin_Fem_GP_2
-15  -10 10 0 0.25 99 0 4 0 0 0 0 0 0 0 L_at_Amax_Fem_GP_2
-16  -10 10 0 0.25 99 0 4 0 0 0 0 0 0 0 VonBert_K_Fem_GP_2
+15  -10 10 0 0.25 99 0 -4 0 0 0 0 0 0 0 L_at_Amax_Fem_GP_2
+16  -10 10 0 0.25 99 0 -4 0 0 0 0 0 0 0 VonBert_K_Fem_GP_2
 17  -10 10 0 0.25 99 0 -6 0 0 0 0 0 0 0 CV_young_Fem_GP_2
 18  -10 10 0 0.25 99 0 -6 0 0 0 0 0 0 0 CV_old_Fem_GP_2
 19  -3 3 1.55e-05 0 0.8 0 -3 0 0 0 0 0 3 2 Wtlen_1_Fem_GP_2
@@ -1325,16 +1325,16 @@ g a seas subseas ALK_idx real_age calen_age lin_grow first_grow_age
 24  -3 3 0 0 0.8 0 -3 0 0 0 0 0 0 0 Eggs/kg_slope_wt_Fem_GP_2
 25  0.1 0.45 0 0.25 99 0 -6 0 0 0 0 0 0 0 NatM_uniform_Mal_GP_1
 26  -10 10 0 0.25 99 0 -6 0 0 0 0 0 0 0 L_at_Amin_Mal_GP_1
-27  -10 10 0 0.25 99 0 4 0 0 0 0 0 0 0 L_at_Amax_Mal_GP_1
-28  -10 10 0 0.25 99 0 4 0 0 0 0 0 0 0 VonBert_K_Mal_GP_1
+27  -10 10 0 0.25 99 0 -4 0 0 0 0 0 0 0 L_at_Amax_Mal_GP_1
+28  -10 10 0 0.25 99 0 -4 0 0 0 0 0 0 0 VonBert_K_Mal_GP_1
 29  -10 10 0 0.25 99 0 -6 0 0 0 0 0 0 0 CV_young_Mal_GP_1
 30  -10 10 0 0.25 99 0 -6 0 0 0 0 0 0 0 CV_old_Mal_GP_1
 31  -3 3 3.82e-05 0 0.8 0 -3 0 0 0 0 0 3 2 Wtlen_1_Mal_GP_1
 32  -3 4 2.706 3 0.8 0 -3 0 0 0 0 0 3 2 Wtlen_2_Mal_GP_1
 33  0.1 0.45 0 0.25 99 0 -6 0 0 0 0 0 0 0 NatM_uniform_Mal_GP_2
 34  -10 10 0 0.25 99 0 -6 0 0 0 0 0 0 0 L_at_Amin_Mal_GP_2
-35  -10 10 0 0.25 99 0 4 0 0 0 0 0 0 0 L_at_Amax_Mal_GP_2
-36  -10 10 0 0.25 99 0 4 0 0 0 0 0 0 0 VonBert_K_Mal_GP_2
+35  -10 10 0 0.25 99 0 -4 0 0 0 0 0 0 0 L_at_Amax_Mal_GP_2
+36  -10 10 0 0.25 99 0 -4 0 0 0 0 0 0 0 VonBert_K_Mal_GP_2
 37  -10 10 0 0.25 99 0 -6 0 0 0 0 0 0 0 CV_young_Mal_GP_2
 38  -10 10 0 0.25 99 0 -6 0 0 0 0 0 0 0 CV_old_Mal_GP_2
 39  -3 3 1.21e-05 0 0.8 0 -3 0 0 0 0 0 3 2 Wtlen_1_Mal_GP_2
@@ -2419,24 +2419,24 @@ N parameters: 373
 Parameters plus derived quant: 570
 Adjust the phases 
  requested turn_off phase: 10
-Fcast_dev_phase (read and adjusted): 0 5
-ParCount 373   Active parameters: 152
+Fcast_dev_phase (read and adjusted): 0 4
+ParCount 373   Active parameters: 146
 Turn_off_phase 10
- max_phase 4
+ max_phase 3
 570
-parm 373 covar 152
-deriv_start 373 152
-parm 409 covar 188
-parm 445 covar 224
-parm 479 covar 258
-parm 513 covar 292
-parm 547 covar 326
-parm 564 covar 343  after benchmark 
-parm 567 covar 346  after forecast 
+parm 373 covar 146
+deriv_start 373 146
+parm 409 covar 182
+parm 445 covar 218
+parm 479 covar 252
+parm 513 covar 286
+parm 547 covar 320
+parm 564 covar 337  after benchmark 
+parm 567 covar 340  after forecast 
  do ln(SPB) std labels for 3 years
  do Svy_sdreport labels 0
-parm 570 covar 349  after all derived quantities 
-Active parameters plus derived quantities:  349
+parm 570 covar 343  after all derived quantities 
+Active parameters plus derived quantities:  343
 Begin setting up parameters
  now dimension the selectivity arrays 126
  5 0.01 5 0.01 -10 -10 5 0.01 0 0 5 0.01 5 0.01 -10 -10 5 0.01 0 0 5 0.01 5 0.01 -10 -10 5 0.01 0 0 5 0.01 5 0.01 -10 -10 5 0.01 0 0 5 0.01 5 0.01 -10 -10 1 0.001 0 0 5 0.01 5 0.01 -10 -10 1 0.001 0 0 5 0.01 5 0.01 -10 -10 1 0.001 0 0 5 0.01 5 0.01 -10 -10 1 0.001 0 0 5 0.01 5 0.01 5 0.01 5 0.01 -10 -10 -10 -10 5 0.01 -10 5 0.01 5 0.01 -10 5 0.01 5 5 0.01 0.01 -10 -10 5 5 0.01 0.01 -10 -10 5 5 0.01 0.01 -10 -10 5 5 0.01 0.01 -10 -10
@@ -6376,10 +6376,10 @@ Finished agecomp obj_fun  5438.11 1598.77 5474.91 2390.84 0 0 2668.58 2838.37 94
  catch -log(L)  4.09919e-13 3.61067e-13 3.68153e-13 4.20796e-13 3.71894e-16 4.60422e-16 1.18287e-15 9.03151e-16 0 0 0 0 0 0 0
 Finished recruitdev obj_fun -12.548 35.1806 0.98
  OK with obj_func 69998.8
-Iterations: 962
-Calculated Fspr 10.1984 0.4
-Calculated Btgt: 13.1182 0.342
-Calculated Fmsy 10.1984 7625.52
+Iterations: 723
+Calculated Fspr 7.09919 0.399999
+Calculated Btgt: 9.15349 0.342
+Calculated Fmsy 7.09919 6384.17
 Finished calculating benchmarks
 Finished forecast
 Writing wtatage.ss_new
