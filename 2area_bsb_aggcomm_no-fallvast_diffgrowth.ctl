@@ -30,6 +30,7 @@
 1989 1997
 2009 2016
 # 1995 2002 2003 2007
+#1985 1999 2000 2010 #2011 2021
 2000 2010 2011 2021
 1989 2000 2001 2008
 2014 2019
@@ -68,8 +69,8 @@
 #female,    growth  pattern 1,  decade  1                                       
 0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:1_
 1   20  12.88   10  99  0   3   0   0   0   0   0   0   0   #   Lmin-Fem_GP_1_
-30  100 77.47   65  99  0   3   0   0   0   0   0   0   0   #   Lmax-Fem_GP_1_
-0.02    0.65    0.134   0.18    99  0   3   0   0   0   0   0   0   0   #   VBK-Fem_GP_1_
+30  100 77.47   65  99  0   3   0   0   0   0   0   3   2   #   Lmax-Fem_GP_1_
+0.02    0.65    0.134   0.18    99  0   3   0   0   0   0   0   3   2   #   VBK-Fem_GP_1_
 0.01    0.5 0.15    0.3 99  0   3   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_1_
 -5  5   0   0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
 #0.01  5   0.15   0.15    99  0   4  0   0   0   0   0   0   0   #   CV_old
@@ -203,6 +204,10 @@
 # -2 2 0 0 -1 99 -2 #_placeholder for no MG-environ parameters
 
 #_  LO  HI  INIT    PRIOR   PR_SD   PR_type PHASE       
+30  100 77.47   65  99  0   4   #   Lmax-Fem_GP_1_
+30  100 77.47   65  99  0   4   #   Lmax-Fem_GP_1_
+0.02    0.65    0.134   0.18    99  0   4   #   VBK-Fem_GP_1_
+0.02    0.65    0.134   0.18    99  0   4   #   VBK-Fem_GP_1_
 -3  3   1.76E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2000
 -3  3   1.52E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2011
 -3  4   2.916   3   0.8 0   -3  #   Wtlen_2_Fem_GP_1_BLK3repl_2000
@@ -264,8 +269,8 @@
 2019 # last year of main recr_devs; forecast devs start in following year
 3 #_recdev phase 
 1 # (0/1) to read 13 advanced options
- -5 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
- 3 #_recdev_early_phase
+ 0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
+ -3 #_recdev_early_phase
  0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
  10000000 #_lambda for Fcast_recr_like occurring before endyr+1
  1965 #_last_yr_nobias_adj_in_MPD; begin of ramp
@@ -295,7 +300,7 @@
 #_initial_F_parms
 #_LO    HI  INIT    PRIOR   PR_type SD  PHASE
 0 1.8 0.25 0 99 0 1 # InitF_1_
-#0 1.8 0.25 0 99 0 1 # InitF_2_
+0 1.8 0.25 0 99 0 1 # InitF_2_
 #0 1.8 0.25 0 99 0 1 # InitF_3_
 #0 1.8 0.25 0 99 0 1 # InitF_4_
 
