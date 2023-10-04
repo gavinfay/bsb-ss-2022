@@ -1,7 +1,7 @@
 #V3.30.20.00;_safe;_compile_date:_Sep 30 2022;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_13.0
 bsb_aggcomm_sparselengths.dat #_DataFile 
 2area_bsb_aggcomm_no-fallvast.ctl #_Control 
-Run_Date: Tue Oct  3 17:49:59 2023
+Run_Date: Tue Oct  3 21:01:00 2023
 Final_phase: 4  N_iterations: 813
 #_LIKELIHOOD 
 Label logL*Lambda
@@ -103,7 +103,7 @@ Wtlen_1_Mal_GP_2_BLK3repl_2011 2.48e-05 0 Fix 0.500004
 Wtlen_2_Mal_GP_2_BLK3repl_2000 3.044 0 Fix 0.863428
 Wtlen_2_Mal_GP_2_BLK3repl_2011 2.8 0 Fix 0.828571
 RecrDist_GP_1_area_1_month_7_dev_se 0.7 0 Fix 0.349967
-RecrDist_GP_1_area_1_month_7_dev_autocorr 0 0 Fix 0.5
+RecrDist_GP_1_area_1_month_7_dev_autocorr 1 0 Fix 1.00505
 F-WL1_seas_1 0 0 Fix 0.5
 F-WL1_seas_2 0.115 0 Fix 0.52875
 F-WL2_seas_1 0 0 Fix 0.5
