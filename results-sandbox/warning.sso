@@ -2,6 +2,7 @@ Warning 1 : benchmark year (1957) < styr (1989); change to styr
 Warning 2 : Forecast=0 or -1, so rest of forecast file will not be read and can be omitted;
 Warning 3 : A one year forecast using recent F will be done automatically
 Warning 4 : bias adjustment ramp extends into forecast; biasadj set to 0.0 internally for forecast years
+Note 1 Suggestion: Are you sure you want so few early recrdevs? Better to include in range of main recdevs 5
 Warning 5 Adjustment: size selex mirror length is > nlength for fleet: 13 reset to nlength
 Warning 6 Adjustment: size selex mirror length is > nlength for fleet: 14 reset to nlength
 Warning 7 : parameter init value is less than parameter min 0 < 0.1 for parm: 25; search for <now check> in echoinput.sso for parm_type
@@ -11,7 +12,8 @@ Warning 10 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; G
 Warning 11 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 2 settle: 1; L= 70.9246
 Warning 12 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 70.9246
 Warning 13 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 2 settle: 1; L= 70.9246
-Warning 14 : Final gradient: 0.0010687 is larger than final_conv: 0.0001
-Warning 15 : Reminder: Number of lamdas !=0.0 and !=1.0:  6
-Note 1 Information:  N parameters that are on or within 1% of min-max bound: 8; check results, variance may be suspect
- 15 warnings  and 1 note 
+Warning 14 : Final gradient: 0.00483502 is larger than final_conv: 0.0001
+Warning 15 : Forecast F capped by max possible F from control file3.99
+Warning 16 : Reminder: Number of lamdas !=0.0 and !=1.0:  8
+Note 2 Information:  N parameters that are on or within 1% of min-max bound: 11; check results, variance may be suspect
+ 16 warnings  and 2 notes 
