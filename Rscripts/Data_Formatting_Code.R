@@ -1427,7 +1427,8 @@ sexed_ageatlen <- index_agelens |>
 colnames(unsexed_ageatlen_write) <- c(colnames(unsexed_ageatlen_write)[1:9],colnames(sexed_ageatlen)[-(1:9)])
 index_ageatlen_write <- bind_rows(unsexed_ageatlen_write, sexed_ageatlen) |>
   arrange(year, month, index, sex, ibin) |>
-  filter(!(month==10 & ibin <= 6))
+  #filter(!(month==10 & ibin <= 6))
+  filter(!(month==10 & ibin <= 7))
 
 bob <- index_ageatlen_write %>% 
   mutate(index = case_when(
