@@ -85,8 +85,8 @@
 #female,    growth  pattern 2,  decade  1
 -10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 -10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
--10 10  0   0.25    99  0   -4  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
--10 10  0   0.25    99  0   -4  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
+-10 10  0   0.25    99  0   4  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
+-10 10  0   0.25    99  0   4  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 -10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 -10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 
@@ -149,8 +149,8 @@
 #_male, growth  pattern 2,  decade  1                                       
 0.1 0.45    0 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:2_
 -10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
--10 10  0   0.25    99  0   -4  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
--10 10  0   0.25    99  0   -4  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
+-10 10  0   0.25    99  0   4  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
+-10 10  0   0.25    99  0   4  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 -10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 -10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 #0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:2_
@@ -263,14 +263,14 @@
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn #  parm_name
              3            20            13            12            99             6          1          0          0          0          0          0          0          0 # SR_LN(R0)
            0.2             1          0.95          0.75           0.2             6         -5          0          0          0          0          0          0          0 # SR_BH_steep
-            -2             2           0.9           0.7            99             6         -3          0          0          0          0          0          0          0 # SR_sigmaR
+            -2             2           0.7           0.7            99             6         -3          0          0          0          0          0          0          0 # SR_sigmaR
             -5             5             0             0             1             6         -4          0          0          0          0          0          0          0 # SR_regime
              0           0.5             0             0            99             0         -3          0          0          0          0          0          0          0 # SR_autocorr
 
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1987 #1992 #1987 # first year of main recr_devs; early devs can preceed this era
 2019 # last year of main recr_devs; forecast devs start in following year
-1 #_recdev phase 
+3 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  -3 #_recdev_early_phase
