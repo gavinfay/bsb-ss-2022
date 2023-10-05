@@ -73,8 +73,8 @@
 30  100 77.47   65  99  0   3   0   0   0   0   0   3   2   #   Lmax-Fem_GP_1_
 0.02    0.65    0.134   0.18    99  0   3   0   0   0   0   0   3   2   #   VBK-Fem_GP_1_
 0.01    0.5 0.15    0.3 99  0   3   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_1_
-#-5  5   0   0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
-0.01  5   0.15   0.15    99  0   4  0   0   0   0   0   0   0   #   CV_old
+-5  5   0   0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
+#0.01  5   0.15   0.15    99  0   4  0   0   0   0   0   0   0   #   CV_old
 1.00E-07    3   3.34E-05  0   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen1-Fem
 -3  4   2.753379   3   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen2-Fem
 -10 100 20.31   1   0.8 0   -3  0   0   0   0   0   3   2   #   Mat50-Fem
@@ -390,8 +390,8 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
--10 10  10  4.59512 99  0   -2   0   0   0   0   0  5   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-#-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   -2   0   0   0   0   0  5   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -405,8 +405,8 @@
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
 0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
--10 10  10  4.59512 99  0   -2   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-#-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+#-10 10  10  4.59512 99  0   -2   0   0   0   0   0  0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
 
 5		59	25	65	99	0	-2	0	0	0	0	0	0	0
@@ -563,8 +563,8 @@
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
-#         0.0001  2   0.4 0 0 0   -5  #   
-#-0.99   0.99    0   0   0 0   -6  #
+         0.0001  2   0.4 0 0 0   -5  #   
+-0.99   0.99    0   0   0 0   -6  #
 
 #             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
 #          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
@@ -576,8 +576,8 @@
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
-#0.0001  2   0.4 0 0 0   -5  #   
-#-0.99   0.99    0   0   0 0   -6  #
+0.0001  2   0.4 0 0 0   -5  #   
+-0.99   0.99    0   0   0 0   -6  #
 
  #            5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
  #         0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
@@ -741,14 +741,14 @@
 #1 15 0.15
 1 13 0.15
 1 14 0.15
-4	1	0.2
-4	2	0.2
-4	3	0.2
-4	4	0.2
-4	5	0.2
-4	6	0.2
-4	7	0.2
-4	8	0.2
+#4	1	0.2
+#4	2	0.2
+#4	3	0.2
+#4	4	0.2
+#4	5	0.2
+#4	6	0.2
+#4	7	0.2
+#4	8	0.2
 #4 9 0.2
 #4 10 0.2
 #4 11 0.2
