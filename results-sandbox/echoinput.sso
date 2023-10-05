@@ -935,10 +935,10 @@ number of D-M definitions needed for both length and age comp data: 0
 2 Lbin method for defined size ranges 
 age_obs_#:1 #  1989 4 1 0 2 1 15 15 3 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 age_obs_#:2 #  1989 4 1 0 2 1 16 16 5 0 0 0 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-2808 N age comp observations 
-age_obs_#:2808 #  2021 10 12 0 0 2 1 28 25 0 0.745875 0.192799 0.0557752 0.000610376 0.00123434 0.00318234 4.1e-05 0.000482661 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2701 N age comp observations 
+age_obs_#:2701 #  2021 10 12 0 0 2 1 28 25 0 0.745875 0.192799 0.0557752 0.000610376 0.00123434 0.00318234 4.1e-05 0.000482661 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 
-Age_Data Nobs by fleet  397 229 396 182 0 0 845 597 33 33 33 33 0 0 0
+Age_Data Nobs by fleet  397 229 396 182 0 0 812 523 33 33 33 33 0 0 0
 Age_Data superperiods by fleet  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 process age comps 
 area seas fleet age_bins  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
@@ -984,10 +984,10 @@ area seas fleet age_bins  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 
 1 2 5 cuml  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 2 2 6 freq  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 2 2 6 cuml  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-1 2 7 freq  0.00380262 0.167684 0.242421 0.191005 0.158417 0.106626 0.0626094 0.0303153 0.0238257 0.00970423 0.00358984 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08
-1 2 7 cuml  0.00380262 0.171486 0.413907 0.604912 0.763329 0.869955 0.932564 0.96288 0.986705 0.99641 1 1 1 1 1 1
-2 2 8 freq  0.0171303 0.381933 0.292119 0.177098 0.0745799 0.0320133 0.0125629 0.00753778 0.00167514 0.00167514 0.00167514 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08
-2 2 8 cuml  0.0171303 0.399063 0.691182 0.86828 0.94286 0.974873 0.987436 0.994974 0.996649 0.998324 1 1 1 1 1 1
+1 2 7 freq  0.00245195 0.137474 0.250161 0.198768 0.164855 0.110959 0.0651539 0.0315474 0.024794 0.0100986 0.00373573 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08
+1 2 7 cuml  0.00245195 0.139926 0.390088 0.588855 0.753711 0.86467 0.929824 0.961371 0.986165 0.996264 1 1 1 1 1 1
+2 2 8 freq  0.00812171 0.308088 0.331278 0.202156 0.0851323 0.0365429 0.0143404 0.00860429 0.00191214 0.00191214 0.00191214 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08 9.99998e-08
+2 2 8 cuml  0.00812171 0.316209 0.647487 0.849643 0.934775 0.971318 0.985659 0.994263 0.996175 0.998087 1 1 1 1 1 1
 1 2 9 freq  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
 1 2 9 cuml  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
 2 2 10 freq  -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan -nan
@@ -1011,12 +1011,13 @@ Successful processing of age data
 here
 bins 
  finished processing sizefreq data 
-1 Do_TagData(0/1/2) 
+2 Do_TagData(0/1/2) 
 #  where 2 indicates additional read of TG_min_recap
 18 N tag groups 
 194 N recapture events
 1  Latency period for mixing
 12 N periods to track recoveries
+10 min recaps >= mixperiod for inclusion in logL
  Tag Releases 
 TG area year seas tindex gender age N_released 
  1 1 2002 2 999 0 3 1727
@@ -6862,15 +6863,15 @@ Finished time_series
 Finished survey obj_fun  0 0 0 0 0 0 0 0 810.037 1817.31 1503.41 236.813 7181.34 3384.9 241.283
 Finished discard obj_fun  585.465 272.263 653.033 424.645 2249.36 3279.92 11889.3 19262 0 0 0 0 0 0 0
 Finished lencomp obj_fun  362.275 721.701 564.079 746.977 464.442 839.968 2361.3 2491.01 0 0 0 0 0 0 0
-Finished agecomp obj_fun  5438.06 1599.81 5476.98 2391.26 0 0 2668.91 2839.48 942.078 1621.32 0 0 0 0 0
+Finished agecomp obj_fun  5438.06 1599.81 5476.98 2391.26 0 0 2612.29 1898.99 942.078 1621.32 0 0 0 0 0
  initequ_catch -log(L)  0 0 0 0 0 0 30976.7 4329.48 0 0 0 0 0 0 0
  catch -log(L)  4.31973e-13 3.5013e-13 3.81852e-13 4.06867e-13 3.74561e-16 4.50583e-16 1.18985e-15 8.65776e-16 0 0 0 0 0 0 0
 Finished recruitdev obj_fun -11.6362 32.6241 0.98
- OK with obj_func 102250
-Iterations: 1172
-Calculated Fspr 3.7308 0.4
-Calculated Btgt: 4.83547 0.342
-Calculated Fmsy 3.7308 5581.79
+ OK with obj_func 101912
+Iterations: 987
+Calculated Fspr 3.09874 0.4
+Calculated Btgt: 4.01877 0.342
+Calculated Fmsy 3.09874 5528.84
 Finished calculating benchmarks
 Finished forecast
 Writing wtatage.ss_new
