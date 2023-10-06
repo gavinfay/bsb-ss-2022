@@ -183,7 +183,7 @@
 
 #C Recruitment distributions
 #C RecrDist-settlement-1_
- -8 8 -1 0 99 0 1 0 23 1990 2021 1 0 0 # 
+ -8 8 -1 0 99 0 1 0 23 1990 2021 3 0 0 # 
 #-8 8 -1.1 0 99 0.5 1 0 2 1990 2019 1 0 0 #  
 #C RecrDist-settlement-2_
  -4 4 -1 0 99 0 -1 0 0 0 0 0 0 0 # 
@@ -270,7 +270,7 @@
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1987 #1992 #1987 # first year of main recr_devs; early devs can preceed this era
 2019 # last year of main recr_devs; forecast devs start in following year
-1 #_recdev phase 
+3 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  -4 #_recdev_early_phase
@@ -699,7 +699,7 @@
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_16
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_17
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_18
- 1 10 2  2 0.001 1 -4 0 0 0 0 0 0 0 # TG_overdispersion_1
+ 1 10 2  2 0.001 1 4 0 0 0 0 0 0 0 # TG_overdispersion_1
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_2
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_3
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_4
