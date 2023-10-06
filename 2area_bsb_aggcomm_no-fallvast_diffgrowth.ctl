@@ -272,8 +272,8 @@
 2019 # last year of main recr_devs; forecast devs start in following year
 3 #_recdev phase 
 1 # (0/1) to read 13 advanced options
- -5 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
- 4 #_recdev_early_phase
+ 0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
+ -4 #_recdev_early_phase
  0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
  10000000 #_lambda for Fcast_recr_like occurring before endyr+1
  1965 #_last_yr_nobias_adj_in_MPD; begin of ramp
@@ -302,8 +302,8 @@
 
 #_initial_F_parms
 #_LO    HI  INIT    PRIOR   PR_type SD  PHASE
-0 1.8 0.25 0 99 0 1 # InitF_1_
-0 1.8 0.25 0 99 0 1 # InitF_2_
+0 3.99 1.2 0 99 0 1 # InitF_1_
+0 3.99 1.2 0 99 0 1 # InitF_2_
 #0 1.8 0.25 0 99 0 1 # InitF_3_
 #0 1.8 0.25 0 99 0 1 # InitF_4_
 
