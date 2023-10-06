@@ -263,7 +263,7 @@
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn #  parm_name
              3            20            13            12            99             6          1          0          0          0          0          0          0          0 # SR_LN(R0)
            0.2             1          0.95          0.75           0.2             6         -5          0          0          0          0          0          0          0 # SR_BH_steep
-            -2             2           0.7           0.7            99             6         -3          0          0          0          0          0          0          0 # SR_sigmaR
+            -2             2           1.5           0.7            99             6         -3          0          0          0          0          0          0          0 # SR_sigmaR
             -5             5             0             0             1             6         -4          0          0          0          0          0          0          0 # SR_regime
              0           0.5             0             0            99             0         -3          0          0          0          0          0          0          0 # SR_autocorr
 
@@ -303,7 +303,7 @@
 #_initial_F_parms
 #_LO    HI  INIT    PRIOR   PR_type SD  PHASE
 0 3.99 1.2 0 99 0 1 # InitF_1_
-#0 3.99 1.2 0 99 0 1 # InitF_2_
+0 3.99 1.2 0 99 0 1 # InitF_2_
 #0 1.8 0.25 0 99 0 1 # InitF_3_
 #0 1.8 0.25 0 99 0 1 # InitF_4_
 
