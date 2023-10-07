@@ -563,7 +563,7 @@
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
-0.0001  2   0.25 0 0 0   -5  #   
+0.0001  2   0.4 0 0 0   -5  #   
 -0.99   0.99    0   0   0 0   -6  #
 
 #             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
@@ -576,7 +576,7 @@
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
-0.0001  2   0.25 0 0 0   -5  #   
+0.0001  2   0.4 0 0 0   -5  #   
 -0.99   0.99    0   0   0 0   -6  #
 
  #            5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
@@ -739,8 +739,8 @@
 #_factor fleet value
 #1 14 0.15
 #1 15 0.15
-1 13 0.15
-1 14 0.15
+1 13 0.05
+1 14 0.05
 4	1	0.2
 4	2	0.2
 4	3	0.2
