@@ -69,7 +69,7 @@
 #LO HI  INIT    PRIOR   SD  PR_Type PHASE   env-var use_dev dev_minyr   dev_maxyr   dev_stdev   Block   Block_Fxn       
 #female,    growth  pattern 1,  decade  1                                       
 0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:1_
-1   20  12.88   10  99  0   3   0   0   0   0   0   0   0   #   Lmin-Fem_GP_1_
+1   20  12.88   10  99  0   3   0   0   0   0   0   3   2   #   Lmin-Fem_GP_1_
 30  100 77.47   65  99  0   3   0   0   0   0   0   3   2   #   Lmax-Fem_GP_1_
 0.02    0.65    0.134   0.18    99  0   3   0   0   0   0   0   3   2   #   VBK-Fem_GP_1_
 0.01    0.5 0.15    0.3 99  0   3   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_1_
@@ -205,8 +205,8 @@
 # -2 2 0 0 -1 99 -2 #_placeholder for no MG-environ parameters
 
 #_  LO  HI  INIT    PRIOR   PR_SD   PR_type PHASE       
-#1   20  12.88   10  99  0   3   #   Lmin-Fem_GP_1_
-#1   20  12.88   10  99  0   3   #   Lmin-Fem_GP_1_
+1   20  12.88   10  99  0   3   #   Lmin-Fem_GP_1_
+1   20  12.88   10  99  0   3   #   Lmin-Fem_GP_1_
 30  100 77.47   65  99  0   3   #   Lmax-Fem_GP_1_
 30  100 77.47   65  99  0   3   #   Lmax-Fem_GP_1_
 0.02    0.65    0.134   0.18    99  0   3   #   VBK-Fem_GP_1_
@@ -302,8 +302,8 @@
 
 #_initial_F_parms
 #_LO    HI  INIT    PRIOR   PR_type SD  PHASE
-0 3.99 1.2 0 99 0 1 # InitF_1_
-0 3.99 1.2 0 99 0 1 # InitF_2_
+0 3.99 1.9 0 99 0 1 # InitF_1_
+#0 3.99 1.2 0 99 0 1 # InitF_2_
 #0 1.8 0.25 0 99 0 1 # InitF_3_
 #0 1.8 0.25 0 99 0 1 # InitF_4_
 
@@ -739,8 +739,8 @@
 #_factor fleet value
 #1 14 0.15
 #1 15 0.15
-1 13 0.05
-1 14 0.05
+1 13 0.15
+1 14 0.15
 4	1	0.2
 4	2	0.2
 4	3	0.2
