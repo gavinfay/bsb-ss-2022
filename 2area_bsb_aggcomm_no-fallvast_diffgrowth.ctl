@@ -50,7 +50,7 @@
 0.2 #_exponential decay for growth above max age
 0 #_placeholder
 0 #_SD_add_to_LAA (set to 0.1 for SS2 V1.x compatibility)
-0 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A)
+1 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A)
 
 1 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity
 #_placeholder for empirical age-maturity by growth pattern
@@ -74,7 +74,7 @@
 0.02    0.65    0.134   0.18    99  0   3   0   0   0   0   0   6   2   #   VBK-Fem_GP_1_
 0.01    0.5 0.15    0.3 99  0   3   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_1_
 #-5  5   0   0.04    99  0   -3  0   0   0   0   0   0   0   #   CV_old
-0.01  5   0.05   0.15    99  0   3  0   0   0   0   0   0   0   #   CV_old
+0.01  5   0.05   0.15    99  0   -3  0   0   0   0   0   0   0   #   CV_old
 1.00E-07    3   3.34E-05  0   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen1-Fem
 -3  4   2.753379   3   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen2-Fem
 -10 100 20.31   1   0.8 0   -3  0   0   0   0   0   3   2   #   Mat50-Fem
