@@ -2327,3 +2327,21 @@ write.table(ial2, #ac_write,
             append = TRUE, 
             row.names = FALSE,
             col.names = FALSE)
+
+
+combi_age <- index_ageatlen_write %>% 
+  mutate(sex_sum = ifelse(sex == 0, 0, 3)) %>% 
+  group_by(year, month, index, sex_sum, part, ageerr, lobin, ibin) %>% 
+  summarize_all(sum) %>% 
+  select(-sex) %>% 
+  rename(sex = sex_sum) %>% filter(month == 10) %>% mutate(index = index - 30)
+#combi_age
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Index Age at Length Data, no spring, sex-specific data in same observations", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(combi_age, #ac_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+
