@@ -208,7 +208,7 @@
 #1   20  12.88   10  99  0   3   #   Lmin-Fem_GP_1_
 #1   20  12.88   10  99  0   3   #   Lmin-Fem_GP_1_
 30  100 77.47   65  99  0   3   #   Lmax-Fem_GP_1_
-30  100 77.47   65  99  0   3   #   Lmax-Fem_GP_1_
+#30  100 77.47   65  99  0   3   #   Lmax-Fem_GP_1_
 #0.02    0.65    0.134   0.18    99  0   3   #   VBK-Fem_GP_1_
 #0.02    0.65    0.134   0.18    99  0   3   #   VBK-Fem_GP_1_
 -3  3   1.76E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2000
@@ -227,6 +227,7 @@
 -10 100 22.73   1   0.8 0   -3  #   Mat50%_Fem_GP_2_BLK3repl_2011
 -10 10  -0.4    -1  0.8 0   -3  #   Mat_slope_Fem_GP_2_BLK3repl_2000
 -10 10  -0.43   -1  0.8 0   -3  #   Mat_slope_Fem_GP_2_BLK3repl_2011
+30  100 77.47   65  99  0   3   #   Lmax-Mal_GP_1_
 -3  3   9.7E-06   0   0.8 0   -3  #   Wtlen_1_Mal_GP_1_BLK3repl_2000
 -3  3   2.78E-05   0   0.8 0   -3  #   Wtlen_1_Mal_GP_1_BLK3repl_2011
 -3  4   3.091    3   0.8 0   -3  #   Wtlen_2_Mal_GP_1_BLK3repl_2000
