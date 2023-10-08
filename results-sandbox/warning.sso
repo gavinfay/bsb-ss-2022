@@ -12,8 +12,10 @@ Warning 11 : parameter init value is less than parameter min 0 < 0.02 for parm: 
 Warning 12 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
 Warning 13 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
 Warning 14 : Setting in starter does not request all priors, and 73 parameters have priors and are not estimated, so their prior not included in obj_fun.
-Warning 15 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 2 settle: 1; L= 68.0226
-Warning 16 : Final gradient: 0.000144098 is larger than final_conv: 0.0001
-Warning 17 : Reminder: Number of lamdas !=0.0 and !=1.0:  8
+Warning 15 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 2 settle: 1; L= 80.8595
+Warning 16 : 1st iteration warning: ssb(endyr)/ssb(styr)= 6.03681e-05; suggest start with larger R0 to get near 0.4; or use depletion fleet option
+Warning 17 : 1st iteration warning: catch logL > 50% total logL; check configuration; suggest start with larger R0
+Warning 18 : Final gradient: 0.00329563 is larger than final_conv: 0.0001
+Warning 19 : Reminder: Number of lamdas !=0.0 and !=1.0:  8
 Note 1 Information:  N parameters that are on or within 1% of min-max bound: 9; check results, variance may be suspect
- 17 warnings  and 1 note 
+ 19 warnings  and 1 note 
