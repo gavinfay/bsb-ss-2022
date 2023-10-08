@@ -46,7 +46,7 @@
 
 1 # GrowthModel: 1=vonBert with L1&L2; 2=Richards with L1&L2; 3=not implemented; 4=not implemented
 0.75 #_Growth_Age_for_L1  
-999 #_Growth_Age_for_L2 (999 to use as Linf)
+5.75 #999 #_Growth_Age_for_L2 (999 to use as Linf)
 0.2 #_exponential decay for growth above max age
 0 #_placeholder
 0 #_SD_add_to_LAA (set to 0.1 for SS2 V1.x compatibility)
