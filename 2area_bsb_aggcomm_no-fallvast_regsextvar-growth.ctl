@@ -179,7 +179,7 @@
 # std deviation in age                 
 0.1 10 2 2 99 0 -7 0 0 0 0 0 0 0 # std_dev_(in age)_for_distribution_of_fem-male
 #0.01 1 0.99 0.95 0.8 0 -3 0 0 0 0 0 0 0 # asymptotic_rate      
-0.01 1 0.1 0.95 0.8 0 -3 0 0 0 0 0 0 0 # asymptotic_rate      
+0.01 1 0.1 0.95 0.8 0 3 0 0 0 0 0 0 0 # asymptotic_rate      
 
 #C Recruitment distributions
 #C RecrDist-settlement-1_
