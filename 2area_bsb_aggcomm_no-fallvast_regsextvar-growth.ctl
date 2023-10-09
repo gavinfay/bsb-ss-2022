@@ -155,9 +155,9 @@
 #-10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:2_
 1   20  0    10  99  0   -3  0   0   0   0   0   0   0   #   Lmin-M_GP_2_
-30  100 0   65  99  0   -3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
+30  100 0   65  99  0   3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
 #30  100 50   65  99  0   3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
-0.02    0.65    0 0.18    99  0   -3   0   0   0   0   0   0   0   #   VBK-M_GP_2_
+0.02    0.65    0 0.18    99  0   3   0   0   0   0   0   0   0   #   VBK-M_GP_2_
 0.01    0.5 0    0.3 99  0   -4  0   0   0   0   0   0   0   #   CV_yng-M_GP_2_
 0.01    0.5 0    0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
 -3  3   1.21E-05    0   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen1-M
@@ -265,10 +265,10 @@
 0  #  future feature:  0/1 to make realized sigmaR a function of SR curvature
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn #  parm_name
              3            20            13            12            99             6          1          0          0          0          0          0          0          0 # SR_LN(R0)
-           0.2             1          0.73          0.75           0.2             6         -5          0          0          0          0          0          0          0 # SR_BH_steep
-            -2             2           0.778           0.7            99             6         -3          0          0          0          0          0          0          0 # SR_sigmaR
+           0.2             1          0.95          0.75           0.2             6         -5          0          0          0          0          0          0          0 # SR_BH_steep
+            -2             2           0.7           0.7            99             6         -3          0          0          0          0          0          0          0 # SR_sigmaR
             -5             5             0             0             1             6         -4          0          0          0          0          0          0          0 # SR_regime
-             0           0.5             0.490             0            99             0         -3          0          0          0          0          0          0          0 # SR_autocorr
+             0           0.5             0             0            99             0         -3          0          0          0          0          0          0          0 # SR_autocorr
 
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1987 #1992 #1987 # first year of main recr_devs; early devs can preceed this era
