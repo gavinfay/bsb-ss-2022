@@ -36,3 +36,33 @@ SS_plots(replist, plot = c(1:25), dir = here::here())
 #SS_plots(replist, plot = c(13), dir = here::here())
 ```
 
+
+## plot comparisons among runs
+```{r}
+runs_to_compare <- c(235,243:244,247:248, 250)
+replists <- SSgetoutput(dirvec = file.path(
+  "~/research/bsb-ss-2022/results", 
+  paste("run_", runs_to_compare, sep = "")
+))
+
+# create list summarizing model results
+mod.sum <- SSsummarize(replists)
+
+# plot comparisons
+SSplotComparisons(mod.sum) #, legendlabels = c("First model", "Second model"))
+
+# # Example showing comparison of MLE to MCMC results where the mcmc would have
+# # been run in the subdirectory 'c:/SS/mod1/mcmc'
+# mod1 <- SS_output(dir = "c:/SS/mod1", dir.mcmc = "mcmc")
+# # pass the same model twice to SSsummarize in order to plot it twice
+# mod.sum <- SSsummarize(list(mod1, mod1))
+# # compare MLE to MCMC
+# SSplotComparisons(mod.sum,
+#   legendlabels = c("MCMC", "MLE"),
+#   mcmcVec = c(TRUE, FALSE)
+)
+
+```
+
+
+
