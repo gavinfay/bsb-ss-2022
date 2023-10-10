@@ -8,13 +8,12 @@ Warning 7 : parameter init value is less than parameter min 0 < 1 for parm: 26; 
 Warning 8 : parameter init value is less than parameter min 0 < 0.01 for parm: 29; search for <now check> in echoinput.sso for parm_type
 Warning 9 : parameter init value is less than parameter min 0 < 0.01 for parm: 30; search for <now check> in echoinput.sso for parm_type
 Warning 10 : parameter init value is less than parameter min 0 < 1 for parm: 34; search for <now check> in echoinput.sso for parm_type
-Warning 11 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
-Warning 12 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
-Warning 13 : Setting in starter does not request all priors, and 73 parameters have priors and are not estimated, so their prior not included in obj_fun.
-Warning 14 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 2 settle: 1; L= 84.168
-Warning 15 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 68.1499
-Warning 16 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 2 settle: 1; L= 84.168
-Warning 17 : Final gradient: 0.0227745 is larger than final_conv: 0.0001
-Warning 18 : Reminder: Number of lamdas !=0.0 and !=1.0:  8
+Warning 11 : parameter init value is less than parameter min 0 < 0.02 for parm: 36; search for <now check> in echoinput.sso for parm_type
+Warning 12 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
+Warning 13 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
+Warning 14 : Setting in starter does not request all priors, and 73 parameters have priors and are not estimated, so their prior not included in obj_fun.
+Warning 15 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 2 settle: 1; L= 79.4043
+Warning 16 : Final gradient: 0.000380697 is larger than final_conv: 0.0001
+Warning 17 : Reminder: Number of lamdas !=0.0 and !=1.0:  8
 Note 1 Information:  N parameters that are on or within 1% of min-max bound: 10; check results, variance may be suspect
- 18 warnings  and 1 note 
+ 17 warnings  and 1 note 
