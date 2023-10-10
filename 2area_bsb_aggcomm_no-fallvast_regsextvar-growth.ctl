@@ -45,7 +45,7 @@
 # 4 4 # age(real) at M breakpoints
 
 1 # GrowthModel: 1=vonBert with L1&L2; 2=Richards with L1&L2; 3=not implemented; 4=not implemented
-1.25 #0.75 #_Growth_Age_for_L1  
+0.75 #_Growth_Age_for_L1  
 7.75 #999 #_Growth_Age_for_L2 (999 to use as Linf)
 0.2 #_exponential decay for growth above max age
 0 #_placeholder
@@ -271,7 +271,7 @@
              0           0.5             0             0            99             0         -3          0          0          0          0          0          0          0 # SR_autocorr
 
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
-1987 #1992 #1987 # first year of main recr_devs; early devs can preceed this era
+1989 #1992 #1987 # first year of main recr_devs; early devs can preceed this era
 2019 # last year of main recr_devs; forecast devs start in following year
 3 #_recdev phase 
 1 # (0/1) to read 13 advanced options
@@ -306,7 +306,7 @@
 #_initial_F_parms
 #_LO    HI  INIT    PRIOR   PR_type SD  PHASE
 0 3.99 1.9 0 99 0 1 # InitF_1_
-0 3.99 1.2 0 99 0 1 # InitF_2_
+#0 3.99 1.2 0 99 0 1 # InitF_2_
 #0 1.8 0.25 0 99 0 1 # InitF_3_
 #0 1.8 0.25 0 99 0 1 # InitF_4_
 
