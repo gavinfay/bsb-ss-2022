@@ -155,8 +155,8 @@
 #-10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:2_
 1   20  0    10  99  0   -3  0   0   0   0   0   0   0   #   Lmin-M_GP_2_
-30  100 0   65  99  0   -3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
-#30  100 50   65  99  0   3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
+#30  100 60.01   65  99  0   3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
+30  100 50   65  99  0   3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
 0.02    0.65    0 0.18    99  0   -3   0   0   0   0   0   0   0   #   VBK-M_GP_2_
 0.01    0.5 0    0.3 99  0   -4  0   0   0   0   0   0   0   #   CV_yng-M_GP_2_
 0.01    0.5 0    0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
@@ -179,7 +179,7 @@
 # std deviation in age                 
 0.1 10 2 2 99 0 -7 0 0 0 0 0 0 0 # std_dev_(in age)_for_distribution_of_fem-male
 #0.01 1 0.99 0.95 0.8 0 -3 0 0 0 0 0 0 0 # asymptotic_rate      
-0.01 1 0.1 0.95 0.8 0 3 0 0 0 0 0 0 0 # asymptotic_rate      
+0.01 1 0.1 0.95 0.8 0 -3 0 0 0 0 0 0 0 # asymptotic_rate      
 
 #C Recruitment distributions
 #C RecrDist-settlement-1_
@@ -306,7 +306,7 @@
 #_initial_F_parms
 #_LO    HI  INIT    PRIOR   PR_type SD  PHASE
 0 3.99 1.9 0 99 0 1 # InitF_1_
-#0 3.99 1.2 0 99 0 1 # InitF_2_
+0 3.99 1.2 0 99 0 1 # InitF_2_
 #0 1.8 0.25 0 99 0 1 # InitF_3_
 #0 1.8 0.25 0 99 0 1 # InitF_4_
 
