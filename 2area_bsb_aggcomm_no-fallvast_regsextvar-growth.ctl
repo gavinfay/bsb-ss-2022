@@ -45,7 +45,7 @@
 # 4 4 # age(real) at M breakpoints
 
 1 # GrowthModel: 1=vonBert with L1&L2; 2=Richards with L1&L2; 3=not implemented; 4=not implemented
-0.75 #_Growth_Age_for_L1  
+1.25 #0.75 #_Growth_Age_for_L1  
 7.75 #999 #_Growth_Age_for_L2 (999 to use as Linf)
 0.2 #_exponential decay for growth above max age
 0 #_placeholder
