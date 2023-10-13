@@ -40,14 +40,14 @@
 2 # basis for fcast catch tuning and for fcast catch caps and allocation  (2=deadbio; 3=retainbio; 5=deadnum; 6=retainnum); NOTE: same units for all fleets
 # Conditional input if relative F choice = 2
 # enter list of:  season,  fleet, relF; if used, terminate with season=-9999
-# 1 1 0.0828762
-# 1 2 0.0803658
-# 1 5 0.16788
-# 1 6 0.162812
-# 2 3 0.0842924
-# 2 4 0.0574593
-# 2 7 0.197865
-# 2 8 0.166449
+# 1 1 0.0328697
+# 1 2 0.0780108
+# 1 5 0.174907
+# 1 6 0.172705
+# 2 3 0.0387335
+# 2 4 0.0465616
+# 2 7 0.143221
+# 2 8 0.312991
 # -9999 0 0  # terminator for list of relF
 # enter list of: fleet number, max annual catch for fleets with a max; terminate with fleet=-9999
 1 0
