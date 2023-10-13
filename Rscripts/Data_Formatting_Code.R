@@ -2094,8 +2094,16 @@ disc_lens <- comdisc.len |>
   select(-semester,-stock,-length) |>
   group_by(index, year, season, source, ibin) |>
   summarize(cal = n(), .groups = "drop") |>
+  # mutate(cal = ifelse(season==10 & ibin <=6, 0, cal*dead_disc_mt),
+  #        index = ifelse(index >= 5, index-4, index)) |>
+  mutate(cal = ifelse(season==10 & ibin <=6, 0, cal)) |>
+  group_by(index, year, season, source, ibin) |>
+  summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
   left_join(comdisc) |>
-  mutate(cal = ifelse(season==10 & ibin <=6, 0, cal*dead_disc_mt),
+  group_by(index, year, season, source) |>
+  mutate(cal = round(cal/sum(cal, na.rm = TRUE), digits = 7)) |>
+  ungroup() |>
+  mutate(cal = cal*dead_disc_mt,
          index = ifelse(index >= 5, index-4, index)) |>
   group_by(index, year, season, source, ibin) |>
   summarize(cal = sum(cal, na.rm = TRUE), .groups = "drop") |>
