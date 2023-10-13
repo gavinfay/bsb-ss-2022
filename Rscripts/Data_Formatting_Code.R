@@ -2326,9 +2326,16 @@ write.table(nulens_write,
             col.names = FALSE)
 
 
-ial2 <- index_ageatlen_write %>% filter(month == 10) %>% mutate(index = index - 30)
+#ial2 <- index_ageatlen_write %>% filter(month == 10) %>% mutate(index = index - 30)
+# remove data that were included in VAST ALKs, claw back some (not much) spring data! :)
+ial2 <- index_ageatlen_write %>% mutate(index = index - 30) %>%
+  filter(!(index == 5 & year %in% c(2008:2021))) %>% 
+  filter(!(index == 6 & year %in% c(1992, 1994:1995, 2001:2006, 2008:2021))) #%>% 
+  #filter(!(index == 7 & year %in% c(2009:2021))) %>% 
+  #filter(!(index == 8 & year %in% c(1989, 1992, 1993:1995, 1997, 2004:2005, 2008:2021)))
+  
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
-write("##  Index Age at Length Data, no spring", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Index Age at Length Data, no data used in VAST ALKs", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write.table(ial2, #ac_write, 
             file = "SS_BSB_dat.txt", 
@@ -2342,10 +2349,13 @@ combi_age <- index_ageatlen_write %>%
   group_by(year, month, index, sex_sum, part, ageerr, lobin, ibin) %>% 
   summarize_all(sum) %>% 
   select(-sex) %>% 
-  rename(sex = sex_sum) %>% filter(month == 10) %>% mutate(index = index - 30)
+  rename(sex = sex_sum) %>% #filter(month == 10) %>% mutate(index = index - 30)
+  mutate(index = index - 30) %>%
+  filter(!(index == 5 & year %in% c(2008:2021))) %>% 
+  filter(!(index == 6 & year %in% c(1992, 1994:1995, 2001:2006, 2008:2021))) #%>% 
 #combi_age
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
-write("##  Index Age at Length Data, no spring, sex-specific data in same observations", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Index Age at Length Data, , no data used in VAST ALKs, sex-specific data in same observations", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write.table(combi_age, #ac_write, 
             file = "SS_BSB_dat.txt", 
@@ -2353,3 +2363,60 @@ write.table(combi_age, #ac_write,
             row.names = FALSE,
             col.names = FALSE)
 
+
+
+fal2 <- fishery_ageatlen_write %>% 
+  filter(!(index == 1 & year %in% c(2008:2021))) %>% 
+  filter(!(index == 2 & year %in% c(1992, 1994:1995, 2001:2006, 2008:2021))) #%>% 
+ #filter(!(index == 3 & year %in% c(2009:2021))) %>% 
+ #filter(!(index == 4 & year %in% c(1989, 1992, 1993:1995, 1997, 2004:2005, 2008:2021)))
+
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Fishery Age at Length Data, no data used in VAST ALKs", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(fal2, #ac_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+
+
+
+combi_fal2 <- fishery_ageatlen_write %>%
+  mutate(sex_sum = ifelse(sex == 0, 0, 3)) %>% 
+  group_by(year, month, index, sex_sum, part, ageerr, lobin, ibin) %>% 
+  summarize_all(sum) %>% 
+  select(-sex) %>% 
+  rename(sex = sex_sum) %>%
+  filter(!(index == 1 & year %in% c(2008:2021))) %>% 
+  filter(!(index == 2 & year %in% c(1992, 1994:1995, 2001:2006, 2008:2021))) #%>% 
+#filter(!(index == 3 & year %in% c(2009:2021))) %>% 
+#filter(!(index == 4 & year %in% c(1989, 1992, 1993:1995, 1997, 2004:2005, 2008:2021)))
+
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  Fishery Age at Length Data, no data used in VAST ALKs,  sex-specific data in same observations", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(combi_fal2, #ac_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)
+
+
+sparse_vast_ac <- VAST_ac_write %>% 
+  mutate(index = index - 26,
+         lo = -1,
+         hi = -1) %>%
+  filter((index == 9 & year %in% c(2008:2021)) |
+         (index == 10 & year %in% c(1992, 1994:1995, 2001:2006, 2008:2021)) |
+         (index == 11 & year %in% c(2009:2021)) |
+         (index == 12 & year %in% c(1989, 1992, 1993:1995, 1997, 2004:2005, 2008:2021)))
+
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("##  VAST Age Composition Data, only from 'preferred' ALK years", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
+write.table(sparse_vast_ac, #ac_write, 
+            file = "SS_BSB_dat.txt", 
+            append = TRUE, 
+            row.names = FALSE,
+            col.names = FALSE)

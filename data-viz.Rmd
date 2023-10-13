@@ -1,0 +1,375 @@
+
+```{r}
+combi_age %>% group_by(index, lobin) %>% summarize(f1 = sum(age_5_1), m1 = sum(age_5_2), .groups = "drop") %>% group_by(index) %>% mutate(f1 = f1/sum(f1), m1 = m1/sum(m1)) %>% arrange(index,desc(lobin))
+```
+
+```{r}
+expand_lens <- function(x,y) rep(x, each = y)
+bob <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(index_agelens) %>%
+  ungroup() %>% 
+#  filter(year >= 1989) %>% 
+  group_by(region, semester, sex, age) %>% 
+  summarize(mulen = sum(len*num)/sum(num),
+            sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
+            cvlen = sdlen/mulen)
+```
+
+
+```{r}
+bob %>% 
+  filter(sex != 0) %>% 
+  mutate(sex = as.factor(sex)) %>% 
+  ggplot() +
+  aes(x = age, y = mulen, group = sex, col = sex) +
+  geom_point() +
+  facet_grid(region~semester)
+```
+
+```{r}
+bob %>% 
+  filter(sex != 0,
+         age != 0) %>% 
+  mutate(sex = as.factor(sex)) %>% 
+  ggplot() +
+  aes(x = age, y = cvlen, group = sex, col = sex) +
+  geom_point() +
+  facet_grid(region~semester)
+
+```
+
+```{r}
+bob2 <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(index_agelens) %>%
+  ungroup() %>% 
+  filter(age == 1) %>% 
+  group_by(region, semester, sex, year) %>% 
+  summarize(mulen = sum(len*num)/sum(num),
+            sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
+            cvlen = sdlen/mulen)
+```
+
+```{r}
+bob2 %>% 
+  #filter(sex != 0) %>% 
+  mutate(sex = as.factor(sex)) %>% 
+  ggplot() +
+  aes(x = year, y = mulen, group = sex, col = sex) +
+  geom_point() +
+  facet_grid(region~semester)
+```
+
+```{r}
+bob2 %>% 
+  #filter(sex != 0) %>% 
+  mutate(sex = as.factor(sex)) %>% 
+  ggplot() +
+  aes(x = year, y = cvlen, group = sex, col = sex) +
+  geom_point() +
+  facet_grid(region~semester)
+
+```
+
+
+```{r}
+bob3 <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(index_agelens) %>%
+  ungroup() %>% 
+  filter(age == 4) %>% 
+  group_by(region, semester, sex, year) %>% 
+  summarize(mulen = sum(len*num)/sum(num),
+            sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
+            cvlen = sdlen/mulen)
+```
+
+```{r}
+bob3 %>% 
+  #filter(sex != 0) %>% 
+  mutate(sex = as.factor(sex)) %>% 
+  ggplot() +
+  aes(x = year, y = mulen, group = sex, col = sex) +
+  geom_point() +
+  facet_grid(region~semester) +
+  geom_vline(aes(xintercept=2012.5))
+```
+
+
+
+## Fishery age at length data
+
+
+```{r}
+bob <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(fishery_agelens) %>%
+  ungroup() %>% 
+#  filter(year >= 1989) %>% 
+  group_by(region, semester, sex, age) %>% 
+  summarize(mulen = sum(len*num)/sum(num),
+            sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
+            cvlen = sdlen/mulen)
+```
+
+
+```{r}
+bob %>% 
+  #filter(sex != 0) %>% 
+  mutate(sex = as.factor(sex)) %>% 
+  ggplot() +
+  aes(x = age, y = mulen, group = sex, col = sex) +
+  geom_point() +
+  facet_grid(region~semester)
+```
+
+
+```{r}
+bob3 <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(fishery_agelens) %>%
+  ungroup() %>% 
+  filter(age == 8) %>% 
+  group_by(region, semester, sex, year) %>% 
+  summarize(mulen = sum(len*num)/sum(num),
+            sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
+            cvlen = sdlen/mulen)
+```
+
+```{r}
+bob3 %>% 
+  #filter(sex != 0) %>% 
+  mutate(sex = as.factor(sex)) %>% 
+  ggplot() +
+  aes(x = year, y = mulen, group = sex, col = sex) +
+  geom_point() +
+  facet_grid(region~semester) +
+  geom_vline(aes(xintercept=2011.5))
+```
+
+
+## EXamine cohort effects in survey age data
+
+```{r}
+cohort <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(index_agelens) %>%
+  ungroup() %>% 
+  mutate(cohort = year - age) %>% 
+  #filter(age == 4) %>% 
+  group_by(region, semester, sex, age, cohort) %>% 
+  summarize(mulen = sum(len*num)/sum(num),
+            sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
+            cvlen = sdlen/mulen)
+```
+
+```{r}
+cohort %>% 
+  filter(age != 0) %>% 
+  filter(sex == 2) %>% 
+  #mutate(sex = as.factor(sex)) %>% 
+  mutate(age = as.factor(age)) %>% 
+  ggplot() +
+  aes(x = cohort, y = mulen, group = age, col = age) +
+  geom_line() +
+  facet_grid(region~semester) #+
+  #geom_vline(aes(xintercept=2012.5))
+```
+```{r}
+cohort %>% 
+  filter(age != 0) %>% 
+  filter(sex == 1) %>% 
+  #mutate(sex = as.factor(sex)) %>% 
+  mutate(age = as.factor(age)) %>% 
+  ggplot() +
+  aes(x = cohort, y = mulen, group = age, col = age) +
+  geom_line() +
+  facet_grid(region~semester) #+
+  #geom_vline(aes(xintercept=2012.5))
+```
+
+## EXamine year effects in survey age data
+
+```{r}
+cohort <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(index_agelens) %>%
+  ungroup() %>% 
+  mutate(cohort = year - age) %>% 
+  #filter(age == 4) %>% 
+  group_by(region, semester, sex, age, year) %>% 
+  summarize(mulen = sum(len*num)/sum(num),
+            sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
+            cvlen = sdlen/mulen)
+```
+
+```{r}
+cohort %>% 
+  filter(age != 0) %>% 
+  filter(sex == 1) %>% 
+  #mutate(sex = as.factor(sex)) %>% 
+  mutate(age = as.factor(age)) %>% 
+  ggplot() +
+  aes(x = year, y = mulen, group = age, col = age) +
+  geom_line() +
+  facet_grid(region~semester) #+
+  #geom_vline(aes(xintercept=2012.5))
+```
+
+## EXamine cohort effects in fishery age data
+
+```{r}
+cohort <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(fishery_agelens) %>%
+  ungroup() %>% 
+  mutate(cohort = year - age) %>% 
+  #filter(age == 4) %>% 
+  group_by(region, semester, sex, age, cohort) %>% 
+  summarize(mulen = sum(len*num)/sum(num),
+            sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
+            cvlen = sdlen/mulen)
+```
+
+```{r}
+cohort %>% 
+  filter(age != 0) %>% 
+  filter(sex == 0) %>% 
+  #mutate(sex = as.factor(sex)) %>% 
+  mutate(age = as.factor(age)) %>% 
+  ggplot() +
+  aes(x = cohort, y = mulen, group = age, col = age) +
+  geom_line() +
+  facet_grid(region~semester) #+
+  #geom_vline(aes(xintercept=2012.5))
+```
+
+
+## Growth increments in survey age data
+
+```{r}
+cohort <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(index_agelens) %>%
+  ungroup() %>% 
+  mutate(cohort = year - age) %>% 
+  #filter(age == 4) %>% 
+  group_by(region, semester, sex, age, cohort) %>% 
+  summarize(mulen = sum(len*num)/sum(num),
+            sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
+            cvlen = sdlen/mulen)
+```
+
+```{r}
+increment <- cohort %>% 
+  ungroup() %>% 
+  filter(age != 0, region == "NORTH", cohort >= 1995) %>% 
+  group_by(region, semester, sex, cohort) %>% 
+  arrange(age) %>% 
+  mutate(incr = c(diff(mulen),NA)) %>% 
+  select(-sdlen, -cvlen) %>% 
+  I()
+increment
+```
+
+```{r}
+increment %>% 
+  ungroup() %>% 
+  #filter(age != 0) %>% 
+  filter(sex == 1, age <=5) %>% 
+  #mutate(sex = as.factor(sex)) %>% 
+  mutate(age = as.factor(age)) %>% 
+  ggplot() +
+  aes(x = cohort, y = incr, group = age, col = age) +
+  geom_point() +
+  facet_wrap(~semester) #+
+  #geom_vline(aes(xintercept=2012.5))
+```
+
+
+## Growth increments in survey age data
+
+```{r}
+cohort <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(index_agelens) %>%
+  ungroup() %>% 
+  mutate(cohort = year - age) %>% 
+  #filter(age == 4) %>% 
+  group_by(region, semester, sex, age, year) %>% 
+  summarize(mulen = sum(len*num)/sum(num),
+            sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
+            cvlen = sdlen/mulen)
+```
+
+```{r}
+increment <- cohort %>% 
+  ungroup() %>% 
+  filter(age != 0, region == "NORTH") %>% 
+  group_by(region, semester, sex, year) %>% 
+  arrange(age) %>% 
+  mutate(incr = c(diff(mulen),NA)) %>% 
+  select(-sdlen, -cvlen) %>% 
+  I()
+increment
+```
+
+```{r}
+increment %>% 
+  ungroup() %>% 
+  #filter(age != 0) %>% 
+  filter(sex == 1, age <=5) %>% 
+  #mutate(sex = as.factor(sex)) %>% 
+  mutate(age = as.factor(age)) %>% 
+  ggplot() +
+  aes(x = year, y = incr, group = age, col = age) +
+  geom_line() +
+  facet_wrap(~semester) #+
+  #geom_vline(aes(xintercept=2012.5))
+```
+
+
+
+```{r}
+
+comland %>% group_by(stock,semester,year,gear) %>% summarize(land_mt = sum(land_mt)) %>% group_by(stock,semester,year) %>% mutate(land_prop = land_mt/sum(land_mt)) %>% 
+  filter(gear == "trawl") %>% 
+  ggplot() +
+  aes(x = year, y = land_prop) +
+  geom_point() +
+  geom_line() +
+  facet_grid(stock~semester)
+```
+
+
+```{r}
+
+comdisc %>% group_by(stock,semester,year,gear) %>% summarize(land_mt = sum(dead_disc_mt)) %>% group_by(stock,semester,year) %>% mutate(land_prop = land_mt/sum(land_mt)) %>% 
+  filter(gear == "trawl") %>% 
+  #arrange(desc(land_prop))
+  ggplot() +
+  aes(x = year, y = land_prop) +
+  geom_point() +
+  geom_line() +
+  facet_grid(stock~semester) +
+  labs(y = "proportion dead discards that are trawl")
+```
+
+
+Discard ratio (aggregated)
+
+```{r}
+comland %>% group_by(stock,semester,year,gear) %>% summarize(land_mt = sum(land_mt)) %>% 
+  ungroup() %>% 
+  left_join(comdisc) %>% 
+  group_by(stock,semester,year) %>% 
+  summarize(disc_ratio = sum(dead_disc_mt) / (sum(dead_disc_mt) + sum(land_mt))) %>% 
+  #filter(gear == "trawl") %>% 
+  ggplot() +
+  aes(x = year, y = disc_ratio) +
+  geom_point() +
+  geom_line() +
+  facet_grid(stock~semester) +
+  labs(y = "discard ratio")
+```
+
+Discard ratio by gear
+
+```{r}
+comland %>% group_by(stock,semester,year,gear) %>% summarize(land_mt = sum(land_mt)) %>% 
+  ungroup() %>% 
+  left_join(comdisc) %>% 
+  group_by(stock,semester,year, gear) %>% 
+  summarize(disc_ratio = sum(dead_disc_mt) / (sum(dead_disc_mt) + sum(land_mt))) %>% 
+  #filter(gear == "trawl") %>% 
+  filter(gear == "non-trawl") %>% 
+  ggplot() +
+  aes(x = year, y = disc_ratio) +
+  geom_point() +
+  geom_line() +
+  facet_grid(stock~semester) +
+  labs(y = "discard ratio",
+       #subtitle = "Discard ratio (Trawl)")
+       subtitle = "Discard ratio (Non-trawl)")
+```

@@ -156,7 +156,7 @@
 0.1 0.45    0.4 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:2_
 1   20  0    10  99  0   -3  0   0   0   0   0   0   0   #   Lmin-M_GP_2_
 #30  100 60.01   65  99  0   3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
-30  100 50   65  99  0   3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
+30  100 0   65  99  0   -3   0   0   0   0   0   0   0   #   Lmax-M_GP_2_
 0.02    0.65    0 0.18    99  0   -3   0   0   0   0   0   0   0   #   VBK-M_GP_2_
 0.01    0.5 0    0.3 99  0   -4  0   0   0   0   0   0   0   #   CV_yng-M_GP_2_
 0.01    0.5 0    0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
@@ -238,7 +238,7 @@
 -3  3   2.48E-05   0   0.8 0   -3  #   Wtlen_1_Mal_GP_2_BLK3repl_2011
 -3  4   3.044   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2000
 -3  4   2.800   3   0.8 0   -3  #   Wtlen_2_Mal_GP_2_BLK3repl_2011
-0.0001  2   1.7 0 0 0   -5  #   RecrDist_GP_1_area_1_month_10_dev_se
+0.0001  2   0.7 0 0 0   -5  #   RecrDist_GP_1_area_1_month_10_dev_se
 -0.99   0.99    0   0   0 0   -6  #   RecrDist_GP_1_area_1_month_10_dev_autocorr
 
 #_seasonal_effects_on_biology_parms
