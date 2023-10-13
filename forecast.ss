@@ -22,8 +22,8 @@
 0.75 # Control rule target as fraction of Flimit (e.g. 0.75) 
 1 #_N forecast loops (1=OFL only; 2=ABC; 3=get F from forecast ABC catch with allocations applied)
 3 #_First forecast loop with stochastic recruitment
-3 #_Forecast recruitment
-10 #_scalar or number of years of recent main recruitments to average
+0 #_Forecast recruitment
+1 #_scalar or number of years of recent main recruitments to average
 0 #_Forecast loop control #5 (reserved for future bells&whistles) 
 2015  #FirstYear for caps and allocations (should be after years with fixed inputs) 
 0 # stddev of log(realized catch/target catch) in forecast (set value>0.0 to cause active impl_error)

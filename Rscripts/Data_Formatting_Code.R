@@ -2292,6 +2292,11 @@ write.table(bob3,"filtering-badlengths.out",row.names=F)
 #
 # aggregated fishery lengths without any comps that required borrowing in WHAM
 nulens_write <- fishery_lens_write %>% 
+  # get rid of fish in first 3 length bins?
+  mutate(bin_1 = 0,
+         bin_2 = 0,
+         bin_3 = 0) %>% 
+  ##
   filter(!(part == 1 & index == 1 & year %in% c(1990:1995, 1999, 2002))) %>% 
   filter(!(part == 1 & index == 3 & year %in% c(1990:1995, 1997:1999)))  %>% 
   filter(!(part == 1 & index == 2 & year %in% c(1990:1995, 1999))) %>% 
