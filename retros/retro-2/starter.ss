@@ -17,7 +17,7 @@ bsb_aggcomm_sparselengths-ages.dat #_datfile
 10 #_last_estimation_phase
 0 #_MCMCburn
 1 #_MCMCthin
-0.005 #_jitter_fraction
+0.05 #_jitter_fraction
 -1 #_minyr_sdreport
 -1 #_maxyr_sdreport
 0 #_N_STD_yrs

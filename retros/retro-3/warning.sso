@@ -9,23 +9,22 @@ Warning 8 : Block:4 2 ends in: 2022 after retroyr+1:  2019
 Warning 9 : Block:6 1 ends in: 2022 after retroyr+1:  2019
 Warning 10 : Block:7 6 starts after retroyr+1; should not estimate 
 Warning 11 : Block:7 6 ends in: 2020 after retroyr+1:  2019
-Warning 12 : bias adjustment ramp extends into forecast; biasadj set to 0.0 internally for forecast years
-Warning 13 Adjustment: size selex mirror length is > nlength for fleet: 13 reset to nlength
-Warning 14 Adjustment: size selex mirror length is > nlength for fleet: 14 reset to nlength
-Warning 15 : parameter init value is less than parameter min 0 < 1 for parm: 26; search for <now check> in echoinput.sso for parm_type
-Warning 16 : parameter init value is less than parameter min 0 < 0.01 for parm: 29; search for <now check> in echoinput.sso for parm_type
-Warning 17 : parameter init value is less than parameter min 0 < 0.01 for parm: 30; search for <now check> in echoinput.sso for parm_type
-Warning 18 : parameter init value is less than parameter min 0 < 1 for parm: 34; search for <now check> in echoinput.sso for parm_type
-Warning 19 : parameter init value is less than parameter min 0 < 30 for parm: 35; search for <now check> in echoinput.sso for parm_type
-Warning 20 : parameter init value is less than parameter min 0 < 0.02 for parm: 36; search for <now check> in echoinput.sso for parm_type
-Warning 21 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
-Warning 22 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
-Warning 23 : Setting in starter does not request all priors, and 73 parameters have priors and are not estimated, so their prior not included in obj_fun.
-Warning 24 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 1 settle: 1; L= 67.6996
-Warning 25 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 2 settle: 1; L= 69.2445
-Warning 26 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 68.6657
-Warning 27 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 2 settle: 1; L= 69.2445
-Warning 28 : Final gradient: 0.00028295 is larger than final_conv: 0.0001
-Warning 29 : Reminder: Number of lamdas !=0.0 and !=1.0:  10
-Note 1 Information:  N parameters that are on or within 1% of min-max bound: 15; check results, variance may be suspect
- 29 warnings  and 1 note 
+Warning 12 Adjustment: size selex mirror length is > nlength for fleet: 13 reset to nlength
+Warning 13 Adjustment: size selex mirror length is > nlength for fleet: 14 reset to nlength
+Warning 14 : parameter init value is less than parameter min 0 < 1 for parm: 26; search for <now check> in echoinput.sso for parm_type
+Warning 15 : parameter init value is less than parameter min 0 < 0.01 for parm: 29; search for <now check> in echoinput.sso for parm_type
+Warning 16 : parameter init value is less than parameter min 0 < 0.01 for parm: 30; search for <now check> in echoinput.sso for parm_type
+Warning 17 : parameter init value is less than parameter min 0 < 1 for parm: 34; search for <now check> in echoinput.sso for parm_type
+Warning 18 : parameter init value is less than parameter min 0 < 30 for parm: 35; search for <now check> in echoinput.sso for parm_type
+Warning 19 : parameter init value is less than parameter min 0 < 0.02 for parm: 36; search for <now check> in echoinput.sso for parm_type
+Warning 20 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
+Warning 21 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
+Warning 22 : Setting in starter does not request all priors, and 73 parameters have priors and are not estimated, so their prior not included in obj_fun.
+Warning 23 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 1 settle: 1; L= 67.4895
+Warning 24 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 2 settle: 1; L= 68.3742
+Warning 25 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 69.0408
+Warning 26 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 2 settle: 1; L= 68.3742
+Warning 27 : Final gradient: 0.00044275 is larger than final_conv: 0.0001
+Warning 28 : Reminder: Number of lamdas !=0.0 and !=1.0:  10
+Note 1 Information:  N parameters that are on or within 1% of min-max bound: 13; check results, variance may be suspect
+ 28 warnings  and 1 note 

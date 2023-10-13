@@ -184,7 +184,7 @@
 
 #C Recruitment distributions
 #C RecrDist-settlement-1_
- -8 8 -1 0 99 0 1 0 23 1990 2021 3 0 0 # 
+ -8 8 -1 0 99 0 1 0 23 1990 2018 3 0 0 # 
 #-8 8 -1.1 0 99 0.5 1 0 2 1990 2019 1 0 0 #  
 #C RecrDist-settlement-2_
  -4 4 -1 0 99 0 -1 0 0 0 0 0 0 0 # 
@@ -282,8 +282,8 @@
  10000000 #_lambda for Fcast_recr_like occurring before endyr+1
  1965 #_last_yr_nobias_adj_in_MPD; begin of ramp
  1988 #_first_yr_fullbias_adj_in_MPD; begin of plateau
- 2017 #_last_yr_fullbias_adj_in_MPD
- 2023 #_end_yr_for_ramp_in_MPD (can be in forecast to shape ramp, but SS sets bias_adj to 0.0 for fcast yrs)
+ 2014 #_last_yr_fullbias_adj_in_MPD
+ 2020 #_end_yr_for_ramp_in_MPD (can be in forecast to shape ramp, but SS sets bias_adj to 0.0 for fcast yrs)
  0.98 #_max_bias_adj_in_MPD (typical ~0.8; -3 sets all years to 0.0; -2 sets all non-forecast yrs w/ estimated recdevs to 1.0; -1 sets biasadj=1.0 for all yrs w/ recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -15 #min rec_dev

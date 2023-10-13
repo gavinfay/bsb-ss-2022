@@ -14,7 +14,7 @@ bsb_aggcomm_sparselengths-ages.dat #_datfile
 0 #_prior_like
 1 #_soft_bounds
 1 #_N_bootstraps
-0 #_last_estimation_phase
+10 #_last_estimation_phase
 0 #_MCMCburn
 1 #_MCMCthin
 0.005 #_jitter_fraction
