@@ -1,0 +1,35 @@
+###
+console output
+2023-10-13 10:38:42
+###
+ 
+ reading from starter.ss
+ reading from data file
+Data read sucessful 999
+
+ reading forecast file 
+ reading from control file
+End of control file successful! 999
+Begin setting up parameters ...  end of parameter section 
+Evaluating biology calculations once ... done
+Starting optimization of 'ss_osx' in phase 1 of 1 at Fri Oct 13 10:38:32 2023
+Finished tag obj_fun  98.1948 0 110.146 0 48.432 54.0108 0 256.001 0 126.643 0 147.394 0 30.9173 80.6234 0 257.878 67.3775
+ 73.5122 0 93.1007 0 29.0306 45.5855 0 144.185 0 60.4319 0 121.47 0 36.6636 60.1524 0 126.676 48.0277
+1 1 -log(L): 253298  Spbio: 38140 383043
+phase= 1 | nvar=  1 | iter=  0 | nll=2.53e+05 | mag=3.14e-14 | par[  1]=dummy_parm
+Optimization completed after 1.6 s with final statistics:
+  nll=253297.890328 | mag=3.13908e-14 | par[  1]=dummy_parm
+
+1 2 -log(L): 253298  Spbio: 38140 383043
+Iterations: 2
+Finished calculating benchmarks
+Finished forecast
+Writing wtatage.ss_new
+Finished posteriors
+Finished final writing of report.sso
+Begin writing *.ss_new output files ... Finished writing *.ss_new output files
+
+!!  Run has completed  !! 
+!!  See warning.sso for 27 warnings 
+
+Finished running model 'ss_osx' after 9.6 s.
