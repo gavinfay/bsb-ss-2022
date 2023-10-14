@@ -3,22 +3,22 @@ Warning 1 : Block:1 1 ends in: 2030 after retroyr+1:  2022
 Warning 2 : Block:1 1 ends in: 2030 reset to YrMax:  2026
 Warning 3 : Block:3 2 ends in: 2030 after retroyr+1:  2022
 Warning 4 : Block:3 2 ends in: 2030 reset to YrMax:  2026
-Warning 5 : bias adjustment ramp extends into forecast; biasadj set to 0.0 internally for forecast years
-Warning 6 Adjustment: size selex mirror length is > nlength for fleet: 13 reset to nlength
-Warning 7 Adjustment: size selex mirror length is > nlength for fleet: 14 reset to nlength
-Warning 8 : parameter init value is less than parameter min 0 < 1 for parm: 26; search for <now check> in echoinput.sso for parm_type
-Warning 9 : parameter init value is less than parameter min 0 < 0.01 for parm: 29; search for <now check> in echoinput.sso for parm_type
-Warning 10 : parameter init value is less than parameter min 0 < 0.01 for parm: 30; search for <now check> in echoinput.sso for parm_type
-Warning 11 : parameter init value is less than parameter min 0 < 1 for parm: 34; search for <now check> in echoinput.sso for parm_type
-Warning 12 : parameter init value is less than parameter min 0 < 0.02 for parm: 36; search for <now check> in echoinput.sso for parm_type
-Warning 13 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
-Warning 14 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
-Warning 15 : Setting in starter does not request all priors, and 73 parameters have priors and are not estimated, so their prior not included in obj_fun.
-Warning 16 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 1 settle: 1; L= 67.6024
-Warning 17 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 2 settle: 1; L= 69.1367
-Warning 18 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 69.1615
-Warning 19 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 2 settle: 1; L= 82.956
-Warning 20 : Final gradient: 0.000703916 is larger than final_conv: 0.0001
+Warning 5 : Block:4 2 ends in: 2030 after retroyr+1:  2022
+Warning 6 : Block:4 2 ends in: 2030 reset to YrMax:  2026
+Warning 7 : bias adjustment ramp extends into forecast; biasadj set to 0.0 internally for forecast years
+Warning 8 Adjustment: size selex mirror length is > nlength for fleet: 13 reset to nlength
+Warning 9 Adjustment: size selex mirror length is > nlength for fleet: 14 reset to nlength
+Warning 10 : parameter init value is less than parameter min 0 < 0.1 for parm: 25; search for <now check> in echoinput.sso for parm_type
+Warning 11 : parameter init value is less than parameter min 0 < 1 for parm: 26; search for <now check> in echoinput.sso for parm_type
+Warning 12 : parameter init value is less than parameter min 0 < 0.01 for parm: 29; search for <now check> in echoinput.sso for parm_type
+Warning 13 : parameter init value is less than parameter min 0 < 0.01 for parm: 30; search for <now check> in echoinput.sso for parm_type
+Warning 14 : parameter init value is less than parameter min 0 < 0.1 for parm: 33; search for <now check> in echoinput.sso for parm_type
+Warning 15 : parameter init value is less than parameter min 0 < 1 for parm: 34; search for <now check> in echoinput.sso for parm_type
+Warning 16 : parameter init value is less than parameter min 0 < 0.02 for parm: 36; search for <now check> in echoinput.sso for parm_type
+Warning 17 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
+Warning 18 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
+Warning 19 : Setting in starter does not request all priors, and 73 parameters have priors and are not estimated, so their prior not included in obj_fun.
+Warning 20 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 69.9731
 Warning 21 : Forecast F capped by max possible F from control file3.99
 Warning 22 : Reminder: Number of lamdas !=0.0 and !=1.0:  10
 Note 2 Information:  N parameters that are on or within 1% of min-max bound: 14; check results, variance may be suspect
