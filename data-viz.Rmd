@@ -40,7 +40,7 @@ bob %>%
 ```{r}
 bob2 <- lenbins %>% group_by(ibin) %>% summarize(len = mean(length),.groups="drop") %>% right_join(index_agelens) %>%
   ungroup() %>% 
-  filter(age == 1) %>% 
+  filter(age == 3) %>% 
   group_by(region, semester, sex, year) %>% 
   summarize(mulen = sum(len*num)/sum(num),
             sdlen = sd(unlist(map2(len, num, ~rep(.x, each = .y)))),
