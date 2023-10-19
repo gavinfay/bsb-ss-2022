@@ -23,8 +23,8 @@
 1 1 2 1 21 25   
 2 1 1 2 21 25   
 
-7 #_Nblock_patterns
-1 1 2 2 1 1 6 #_blocks_per_pattern
+8 #_Nblock_patterns
+1 1 2 2 1 1 6 2 #_blocks_per_pattern
 # begin and end years of blocks
 #1989 1997 1998 2001  #for trawl
 1998 2030 #1989 1997
@@ -36,6 +36,7 @@
 2014 2019
 2012 2022 #1985 2000
 1992 1992 1996 1996 2004 2004 2011 2011 2019 2019 2020 2020
+1998 2011 2012 2030
 
 1 #_block deviation adjust method
 #0 0 0 0 0 #autogen of time-varying params (1= no autogen)
@@ -396,11 +397,11 @@
 
 ##
 #Fleet 1 - logistic selectivity, with time block 1, retention (block 1) [tv asymptote turned off], discard mortality 100%
-5		59	25	65	99	0	2	0	0	0	0	0	1	2
-0.01	9	5.1	5	99	0	2	0	0	0	0	0	1	2
+5		59	25	65	99	0	2	0	0	0	0	0	8	2
+0.01	9	5.1	5	99	0	2	0	0	0	0	0	8	2
 																						
-5		59	15	65	99	0	2	0	0	0	0	0	1	2	#_Retain_L_infl_North_Trawl_1(1)
-0.01	9	7	5	99	0	2	0	0	0	0	0	1	2	#_Retain_L_width_North_Trawl_1(1)
+5		59	15	65	99	0	2	0	0	0	0	0	8	2	#_Retain_L_infl_North_Trawl_1(1)
+0.01	9	7	5	99	0	2	0	0	0	0	0	8	2	#_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   -2   0   0   0   0   0  5   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
@@ -567,8 +568,12 @@
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type    PHASE  #  parm_name
 # commercial selecgtivity
              5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
+             5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 -10 10  10  4.59512 99  0   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 
