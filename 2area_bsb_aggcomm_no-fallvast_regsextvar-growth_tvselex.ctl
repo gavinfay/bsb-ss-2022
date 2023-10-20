@@ -52,7 +52,7 @@
 0.2 #_exponential decay for growth above max age
 0 #_placeholder
 0 #_SD_add_to_LAA (set to 0.1 for SS2 V1.x compatibility)
-1 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A)
+0 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A)
 
 1 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity
 #_placeholder for empirical age-maturity by growth pattern
