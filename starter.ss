@@ -10,10 +10,10 @@ bsb_aggcomm_sparselengths-ages.dat #bsb_aggcomm_sparselengths-ages_extra-fleets.
 0 # Include prior_like for non-estimated parameters (0,1) 
 1 # Use Soft Boundaries to aid convergence (0,1) (recommended)
 1 # Number of datafiles to produce: 1st is input, 2nd is estimates, 3rd and higher are bootstrap
-0 # Turn off estimation for parameters entering after this phase
+10 # Turn off estimation for parameters entering after this phase
 0 # MCeval burn interval
 1 # MCeval thin interval
-0.001 # jitter initial parm value by this fractionsub
+0.01 # jitter initial parm value by this fractionsub
 -1 # min yr for sdreport outputs (-1 for styr)
 -1 # max yr for sdreport outputs (-1 for endyr; -2 for endyr+Nforecastyrs
 0 # N individual STD years 
