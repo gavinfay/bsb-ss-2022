@@ -3481,6 +3481,7 @@
 
 3 #_N_environ_variables
 #Yr Variable Value
+### regional bottom temperature (from S Large Oct 2023)
 1988	1	-0.593597576
 1989	1	0.855367443
 1990	1	0.349875521
@@ -3517,6 +3518,7 @@
 2021	1	0
 2022	1	0
 2023	1	0
+# GSWI? From 2016 model
 1982 2 -1.163441661
 1983 2 0.817156689
 1984 2 -0.347055897
@@ -3553,6 +3555,7 @@
 #2015 & 2016 made up
 2015   2 0.142430061
 2016   2 0.142430061
+# North MAB winter bottom temperature (from SCott Large, OCt 2023)
 1988	3	-0.6323
 1989	3	0.7126
 1990	3	0.2667
