@@ -133,8 +133,8 @@
 30  100 55   65  99  0   3   0   0   0   0   0   6   2   #   Lmax-M_GP_1_
 0.02    0.65    0.18   0.18    99  0   3   0   0   0   0   0   6   2   #   VBK-M_GP_1_
 #0.02    0.65    0   0.18    99  0   -3   0   0   0   0   0   0   0   #   VBK-M_GP_1_
-0.01    0.5  0    0.3 99  0   -4  0   0   0   0   0   0   0   #   CV_yng-M_GP_1_
-0.01    0.5  0    0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
+0.01    0.5 0    0.3 99  0   -4  0   0   0   0   0   0   0   #   CV_yng-M_GP_1_
+0.01    0.5 0    0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
 -3  3   3.82E-05    0   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen1-M
 -3  4   2.706   3   0.8 0   -3  0   0   0   0   0   3   2   #   Wtlen2-M
 
@@ -401,7 +401,7 @@
 0.01	9	5.1	5	99	0	2	0	0	0	0	0	8	2
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	8	2	#_Retain_L_infl_North_Trawl_1(1)
-0.01	9	7	5	99	0	2	0	0	0	0	0	8	2	#_Retain_L_width_North_Trawl_1(1)
+0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   -2   0   0   0   0   0  5   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
@@ -573,8 +573,8 @@
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
-          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
-          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+          #0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+          #0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 -10 10  10  4.59512 99  0   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 
              5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
@@ -583,12 +583,12 @@
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 #0.0001  2   0.4 0 0 0   -5  #   
 #-0.99   0.99    0   0   0 0   -6  #
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 
 #             5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
 #          0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
@@ -602,12 +602,12 @@
           0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 #0.0001  2   0.4 0 0 0   -5  #   
 #-0.99   0.99    0   0   0 0   -6  #
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
-          -5 5  4.99  4.59512 99  0   -4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
+          -5 5  4.99  4.59512 99  0   4   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 
  #            5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
  #         0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
