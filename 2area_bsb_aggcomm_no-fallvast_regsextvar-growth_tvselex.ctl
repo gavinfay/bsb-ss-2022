@@ -270,7 +270,7 @@
 0  #  future feature:  0/1 to make realized sigmaR a function of SR curvature
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn #  parm_name
              3            20            13            12            99             6          1          0          0          0          0          0          0          0 # SR_LN(R0)
-           0.2             1          0.95          0.75           0.2             6         -5          0          0          0          0          0          0          0 # SR_BH_steep
+           0.2             1          0.73          0.75           0.2             6         -5          0          0          0          0          0          0          0 # SR_BH_steep
             -2             2           0.7           0.7            99             6         -3          0          0          0          0          0          0          0 # SR_sigmaR
             -5             5             0             0             1             6         -4          0          0          0          0          0          0          0 # SR_regime
              0           0.5             0             0            99             0         -3          0          0          0          0          0          0          0 # SR_autocorr
@@ -804,10 +804,6 @@
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=WtFreq; 7=sizeage; 8=catch; 
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  wtfreq_method
-4 1 1 5 1
-4 2 1 5 1
-4 3 1 5 1
-4 4 1 5 1
 5 1 1 0.1 1
 5 2 1 0.1 1
 5 3 1 0.1 1
