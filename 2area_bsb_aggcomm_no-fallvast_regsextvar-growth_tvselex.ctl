@@ -34,7 +34,7 @@
 2000 2010 2011 2030
 2001 2008 2009 2030 #1989 2000 2001 2008
 2014 2019
-2014 2030 #1985 2000
+2012 2030 #1985 2000
 1992 1992 1996 1996 2004 2004 2011 2011 2019 2019 2020 2020
 1998 2011 2012 2030
 
@@ -804,6 +804,10 @@
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=WtFreq; 7=sizeage; 8=catch; 
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  wtfreq_method
+4 1 1 5 1
+4 2 1 5 1
+4 3 1 5 1
+4 4 1 5 1
 5 1 1 0.1 1
 5 2 1 0.1 1
 5 3 1 0.1 1
