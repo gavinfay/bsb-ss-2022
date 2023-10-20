@@ -72,8 +72,8 @@
 #female,    growth  pattern 1,  decade  1                                       
 0.1 0.7    0.4 0.25    99  0   -4  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:1_
 1   20  12.88   10  99  0   3   0   0   0   0   0   0   0   #   Lmin-Fem_GP_1_
-30  100 50.47   65  99  0   3   0   0   0   0   0   6   2   #   Lmax-Fem_GP_1_
-0.02    0.65    0.134   0.18    99  0   3   0   0   0   0   0   6   2   #   VBK-Fem_GP_1_
+30  100 50.47   65  99  0   3   0   0   0   0   0   3   2   #   Lmax-Fem_GP_1_
+0.02    0.65    0.134   0.18    99  0   3   0   0   0   0   0   3   2   #   VBK-Fem_GP_1_
 0.01    0.5 0.15    0.3 99  0   3   0   0   0   0   0   0   0   #   CV_yng-Fem_GP_1_
 #-5  5   0   0.04    99  0   -3  0   0   0   0   0   0   0   #   CV_old
 0.01  5   0.05   0.15    99  0   3  0   0   0   0   0   0   0   #   CV_old
@@ -130,8 +130,8 @@
 0.1 0.45    0 0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 1   20  0    10  99  0   -3  0   0   0   0   0   0   0   #   Lmin-M_GP_1_
 #30  100 0   65  99  0   -3   0   0   0   0   0   0   0   #   Lmax-M_GP_1_
-30  100 55   65  99  0   3   0   0   0   0   0   6   2   #   Lmax-M_GP_1_
-0.02    0.65    0.18   0.18    99  0   3   0   0   0   0   0   6   2   #   VBK-M_GP_1_
+30  100 55   65  99  0   3   0   0   0   0   0   3   2   #   Lmax-M_GP_1_
+0.02    0.65    0.18   0.18    99  0   3   0   0   0   0   0   3   2   #   VBK-M_GP_1_
 #0.02    0.65    0   0.18    99  0   -3   0   0   0   0   0   0   0   #   VBK-M_GP_1_
 0.01    0.5 0    0.3 99  0   -4  0   0   0   0   0   0   0   #   CV_yng-M_GP_1_
 0.01    0.5 0    0.04    99  0   -4  0   0   0   0   0   0   0   #   CV_old
@@ -210,9 +210,9 @@
 #1   20  12.88   10  99  0   3   #   Lmin-Fem_GP_1_
 #1   20  12.88   10  99  0   3   #   Lmin-Fem_GP_1_
 30  100 77.47   65  99  0   3   #   Lmax-Fem_GP_1_
-#30  100 77.47   65  99  0   3   #   Lmax-Fem_GP_1_
+30  100 77.47   65  99  0   3   #   Lmax-Fem_GP_1_
 0.02    0.65    0.134   0.18    99  0   3   #   VBK-Fem_GP_1_
-#0.02    0.65    0.134   0.18    99  0   3   #   VBK-Fem_GP_1_
+0.02    0.65    0.134   0.18    99  0   3   #   VBK-Fem_GP_1_
 -3  3   1.76E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2000
 -3  3   1.52E-05    0   0.8 0   -3  #   Wtlen_1_Fem_GP_1_BLK3repl_2011
 -3  4   2.916   3   0.8 0   -3  #   Wtlen_2_Fem_GP_1_BLK3repl_2000
@@ -231,6 +231,8 @@
 -10 10  -0.4    -1  0.8 0   -3  #   Mat_slope_Fem_GP_2_BLK3repl_2000
 -10 10  -0.43   -1  0.8 0   -3  #   Mat_slope_Fem_GP_2_BLK3repl_2011
 30  100 50.47   65  99  0   3   #   Lmax-Mal_GP_1_
+30  100 50.47   65  99  0   3   #   Lmax-Mal_GP_1_
+0.02    0.65    0.134   0.18    99  0   3   #   VBK-Mal_GP_1_
 0.02    0.65    0.134   0.18    99  0   3   #   VBK-Mal_GP_1_
 -3  3   9.7E-06   0   0.8 0   -3  #   Wtlen_1_Mal_GP_1_BLK3repl_2000
 -3  3   2.78E-05   0   0.8 0   -3  #   Wtlen_1_Mal_GP_1_BLK3repl_2011
@@ -401,7 +403,7 @@
 0.01	9	5.1	5	99	0	2	0	0	0	0	0	8	2
 																						
 5		59	15	65	99	0	2	0	0	0	0	0	8	2	#_Retain_L_infl_North_Trawl_1(1)
-0.01	9	7	5	99	0	2	0	0	0	0	0	0	0	#_Retain_L_width_North_Trawl_1(1)
+0.01	9	7	5	99	0	2	0	0	0	0	0	8	2	#_Retain_L_width_North_Trawl_1(1)
 -10 10  10  4.59512 99  0   -2   0   0   0   0   0  5   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 #-10 10  10  4.59512 99  0   2   0   2   1990    2020    5   0   0   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 -10	10	0	-0.35	99	0	-4	0	0	0	0	0.5	0	0	#_Retain_L_maleoffset_North_Trawl_1(1)
@@ -573,8 +575,8 @@
           0.01             9           5.1             5            99             0      2  # Size_95%width_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
              5            59            15            65            99             0      2  # Retain_L_infl_North_Trawl_1(1)_BLK1repl_1989
-          #0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
-          #0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
+          0.01             9             7             5            99             0      2  # Retain_L_width_North_Trawl_1(1)_BLK1repl_1989
 -10 10  10  4.59512 99  0   2   #_Retain_L_asymptote_logit_North_Trawl_1(1)
 
              5            59            25            65            99             0      2  # Size_inflection_North_Trawl_1(1)_BLK1repl_1989
@@ -789,10 +791,10 @@
 #4 13 0.05
 #4 14 0.05
 #4 15 0.05
-#4 16 0.05
-#4 17 0.05
-#4 18 0.05
-#4 20 0.05
+#4 16 0.2
+#4 17 0.2
+#4 18 0.2
+#4 19 0.2
 -9999 0 0
 
 10 #_maxlambdaphase
