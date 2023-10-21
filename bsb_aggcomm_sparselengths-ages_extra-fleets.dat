@@ -9,7 +9,7 @@
 2 #_Nsexes
 15 #_Nages
 2 ##_N_areas
-15 #_Nfleet #31 ##_Nsurveys
+19 #_Nfleet #31 ##_Nsurveys
 # Fleets
 #type	timing	area	units	multiplier	name	num
 1 -1 1 1 0 North_Comm_1 #1
@@ -353,7 +353,11 @@
 12 0 0 0
 13 0 0 0
 14 0 0 0
-15 31 0 0
+15 31 -1 0
+16 1 0 0
+17 1 0 0
+18 1 0 0
+19 1 0 0
 
 #CPUE   ## GF: note check What the REC CPUE refers to - if kept only then needs to be tied to the fishing fleet and not its own survey # 
 
