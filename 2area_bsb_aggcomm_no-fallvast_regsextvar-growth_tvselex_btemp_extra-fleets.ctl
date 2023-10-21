@@ -829,6 +829,14 @@
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=WtFreq; 7=sizeage; 8=catch; 
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  wtfreq_method
+4 1 1 5 1
+4 2 1 5 1
+4 3 1 5 1
+4 4 1 5 1
+4 16 1 0.5 1
+4 17 1 0.5 1
+4 18 1 0.5 1
+4 19 1 0.5 1
 5 1 1 0.1 1
 5 2 1 0.1 1
 5 3 1 0.1 1
