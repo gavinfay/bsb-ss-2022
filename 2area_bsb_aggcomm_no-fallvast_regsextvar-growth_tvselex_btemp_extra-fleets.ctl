@@ -70,7 +70,7 @@
 
 #LO HI  INIT    PRIOR   SD  PR_Type PHASE   env-var use_dev dev_minyr   dev_maxyr   dev_stdev   Block   Block_Fxn       
 #female,    growth  pattern 1,  decade  1                                       
-0.1 0.7    0.4 0.25    99  0   -4  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:1_
+0.1 0.7    0.4 0.25    99  0   4  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:1_
 1   20  12.88   10  99  0   3   0   0   0   0   0   0   0   #   Lmin-Fem_GP_1_
 30  100 50.47   65  99  0   3   0   0   0   0   0   6   2   #   Lmax-Fem_GP_1_
 0.02    0.65    0.134   0.18    99  0   3   0   0   0   0   0   6   2   #   VBK-Fem_GP_1_
@@ -92,7 +92,7 @@
 #-10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 #-10 10  0   0.25    99  0   -6  0   0   0   0   0   0   0   #   NatM_p_1_M_GP:1_
 
-0.1 0.7    0.4 0.25    99  0   -4  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:2_
+0.1 0.7    0.4 0.25    99  0   4  0   0   0   0   0   0   0   #   NatM_p_1_Fem_GP:2_
 1   20  11.58   10  99  0   3  0   0   0   0   0   0   0   #   Lmin-Fem_GP_2_
 30  100 50.4    65  99  0   3   0   0   0   0   0   0   0   #   Lmax-Fem_GP_2_
 0.02    0.65    0.133   0.18    99  0   3   0   0   0   0   0   0   0   #   VBK-Fem_GP_2_
@@ -760,7 +760,7 @@
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_16
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_17
  -10 10 -7  -7 0.001 1 -4 0 0 0 0 0 0 0 # TG_loss_chronic_18
- 1 10 2  2 0.001 1 4 0 0 0 0 0 0 0 # TG_overdispersion_1
+ 1 10 2  2 0.001 1 -4 0 0 0 0 0 0 0 # TG_overdispersion_1
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_2
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_3
  1 10 2  2 0.001 1 -1000 0 0 0 0 0 0 0 # TG_overdispersion_4
