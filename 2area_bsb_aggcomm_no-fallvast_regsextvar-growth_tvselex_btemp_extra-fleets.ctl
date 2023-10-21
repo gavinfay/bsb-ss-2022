@@ -34,7 +34,7 @@
 2000 2010 2011 2030
 2001 2008 2009 2030 #1989 2000 2001 2008
 2014 2019
-2012 2030 #1985 2000
+2014 2030 #1985 2000
 1992 1992 1996 1996 2004 2004 2011 2011 2019 2019 2020 2020
 1998 2011 2012 2030
 
@@ -275,7 +275,7 @@
             -5             5             0             0             1             6         -4         201          0          0          0          0          0          0 # SR_regime
              0           0.5             0             0            99             0         -3          0          0          0          0          0          0          0 # SR_autocorr
 
--5 5  0  0 99  0   -1  #env link param for bt
+-5 5  0.1  0 99  0   1  #env link param for bt
 
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1987 #1992 #1987 # first year of main recr_devs; early devs can preceed this era
