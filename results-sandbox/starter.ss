@@ -13,7 +13,7 @@ bsb_aggcomm_sparselengths-ages_extra-fleets.dat #bsb_aggcomm_sparselengths-ages.
 10 # Turn off estimation for parameters entering after this phase
 0 # MCeval burn interval
 1 # MCeval thin interval
-0.01 # jitter initial parm value by this fractionsub
+0.00 # jitter initial parm value by this fractionsub
 -1 # min yr for sdreport outputs (-1 for styr)
 -1 # max yr for sdreport outputs (-1 for endyr; -2 for endyr+Nforecastyrs
 0 # N individual STD years 
