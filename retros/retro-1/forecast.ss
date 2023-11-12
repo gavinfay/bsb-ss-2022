@@ -6,26 +6,26 @@
 0.4 # SPR target (e.g. 0.40)
 0.342 # Biomass target (e.g. 0.40)
 #_Bmark_years: beg_bio, end_bio, beg_selex, end_selex, beg_relF, end_relF, beg_mvt, end_mvt, beg_recruits, end_recruits (enter actual year, or values of 0 or -integer to be rel. endyr)
- 0 0 0 0 0 0 0 0 1957 2007  
-#  2007 2007 2007 2007 2007 2007 1957 2007 # after processing 
+ 0 0 0 0 0 0 0 0 0 0
 1 #Bmark_relF_Basis: 1 = use year range; 2 = set relF same as forecast below
 #
-0 # Forecast: 0=none; 1=F(SPR); 2=F(MSY) 3=F(Btgt); 4=Ave F (uses first-last relF yrs); 5=input annual F scalar
-0 # N forecast years 
-0.2 # F scalar (only used for Do_Forecast==5)
+1 # Forecast: 0=none; 1=F(SPR); 2=F(MSY) 3=F(Btgt); 4=Ave F (uses first-last relF yrs); 5=input annual F scalar
+5 # N forecast years 
+1 # F scalar (only used for Do_Forecast==5)
 #_Fcast_years:  beg_selex, end_selex, beg_relF, end_relF, beg_recruits, end_recruits  (enter actual year, or values of 0 or -integer to be rel. endyr)
- 0 0 -10 0 1957 2007
-#  2007 2007 1997 2007 1957 2007 # after processing 
+ 0 0 0 0 0 0
+# Forecast selectivity option
+1
 0 # Control rule method (1=catch=f(SSB) west coast; 2=F=f(SSB) ) 
 0.4 # Control rule Biomass level for constant F (as frac of Bzero, e.g. 0.40); (Must be > the no F level below) 
 0.1 # Control rule Biomass level for no F (as frac of Bzero, e.g. 0.10) 
 0.75 # Control rule target as fraction of Flimit (e.g. 0.75) 
-0 #_N forecast loops (1=OFL only; 2=ABC; 3=get F from forecast ABC catch with allocations applied)
+1 #_N forecast loops (1=OFL only; 2=ABC; 3=get F from forecast ABC catch with allocations applied)
 3 #_First forecast loop with stochastic recruitment
-0 #_Forecast loop control #3 (reserved for future bells&whistles) 
-0 #_Forecast loop control #4 (reserved for future bells&whistles) 
+0 #_Forecast recruitment
+1 #_scalar or number of years of recent main recruitments to average
 0 #_Forecast loop control #5 (reserved for future bells&whistles) 
-2010  #FirstYear for caps and allocations (should be after years with fixed inputs) 
+2015  #FirstYear for caps and allocations (should be after years with fixed inputs) 
 0 # stddev of log(realized catch/target catch) in forecast (set value>0.0 to cause active impl_error)
 0 # Do West Coast gfish rebuilder output (0/1) 
 1999 # Rebuilder:  first year catch could have been set to zero (Ydecl)(-1 to set to 1999)
