@@ -2356,8 +2356,11 @@ combi_age <- index_ageatlen_write %>%
   select(-sex) %>% 
   rename(sex = sex_sum) %>% #filter(month == 10) %>% mutate(index = index - 30)
   mutate(index = index - 30) %>%
-  filter(!(index == 5 & year %in% c(2008:2021))) %>% 
-  filter(!(index == 6 & year %in% c(1992, 1994:1995, 2001:2006, 2008:2021))) #%>% 
+   filter(!(index == 5 & year %in% c(2008:2021))) %>% 
+   filter(!(index == 6 & year %in% c(1992, 1994:1995, 2001:2006, 2008:2021))) %>% 
+  # filter(!(index == 7 & year %in% c(2009:2021))) %>% 
+  # filter(!(index == 8 & year %in% c(1989, 1992, 1993:1995, 1997, 2004:2005, 2008:2021))) %>% 
+  I()
 #combi_age
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("##  Index Age at Length Data, , no data used in VAST ALKs, sex-specific data in same observations", file = file.path("SS_BSB_dat.txt"), append = TRUE)
@@ -2393,10 +2396,11 @@ combi_fal2 <- fishery_ageatlen_write %>%
   summarize_all(sum) %>% 
   select(-sex) %>% 
   rename(sex = sex_sum) %>%
-  filter(!(index == 1 & year %in% c(2008:2021))) %>% 
-  filter(!(index == 2 & year %in% c(1992, 1994:1995, 2001:2006, 2008:2021))) #%>% 
+#  filter(!(index == 1 & year %in% c(2008:2021))) %>% 
+#  filter(!(index == 2 & year %in% c(1992, 1994:1995, 2001:2006, 2008:2021))) %>% 
 #filter(!(index == 3 & year %in% c(2009:2021))) %>% 
-#filter(!(index == 4 & year %in% c(1989, 1992, 1993:1995, 1997, 2004:2005, 2008:2021)))
+#filter(!(index == 4 & year %in% c(1989, 1992, 1993:1995, 1997, 2004:2005, 2008:2021))) %>% 
+  I()
 
 write("###############################################", file = file.path("SS_BSB_dat.txt"), append = TRUE)
 write("##  Fishery Age at Length Data, no data used in VAST ALKs,  sex-specific data in same observations", file = file.path("SS_BSB_dat.txt"), append = TRUE)
