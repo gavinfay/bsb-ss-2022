@@ -2,7 +2,8 @@ library(r4ss)
 
 # run the retrospective analyses
 retro(
-  dir = "~/research/bsb-ss-2022/results/run_257/retros", # wherever the model files are
+  #dir = "~/research/bsb-ss-2022/results/run_257/retros", # wherever the model files are
+  dir = "~/research/bsb-ss-2022/results/run_276/retros", # wherever the model files are
   oldsubdir = "", # subfolder within dir
   newsubdir = "retrospectives", # new place to store retro runs within dir
   years = 0:-7, # years relative to ending year of model
