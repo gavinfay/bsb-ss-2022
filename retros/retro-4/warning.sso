@@ -14,27 +14,26 @@ Warning 12 : Block:7 6 starts after retroyr+1; should not estimate
 Warning 13 : Block:7 6 ends in: 2020 after retroyr+1:  2018
 Warning 14 : Block:8 2 ends in: 2030 after retroyr+1:  2018
 Warning 15 : Block:8 2 ends in: 2030 reset to YrMax:  2026
-Warning 16 : bias adjustment ramp extends into forecast; biasadj set to 0.0 internally for forecast years
-Warning 17 Adjustment:  recdev_end: 2019 > retro_yr: 2017 reset 
-Warning 18 Adjustment: size selex mirror length is > nlength for fleet: 13 reset to nlength
-Warning 19 Adjustment: size selex mirror length is > nlength for fleet: 14 reset to nlength
-Warning 20 Adjustment: size selex mirror length is > nlength for fleet: 16 reset to nlength
-Warning 21 Adjustment: size selex mirror length is > nlength for fleet: 17 reset to nlength
-Warning 22 Adjustment: size selex mirror length is > nlength for fleet: 18 reset to nlength
-Warning 23 Adjustment: size selex mirror length is > nlength for fleet: 19 reset to nlength
-Warning 24 : parameter init value is less than parameter min 0 < 0.1 for parm: 25; search for <now check> in echoinput.sso for parm_type
-Warning 25 : parameter init value is less than parameter min 0 < 1 for parm: 26; search for <now check> in echoinput.sso for parm_type
-Warning 26 : parameter init value is less than parameter min 0 < 0.01 for parm: 29; search for <now check> in echoinput.sso for parm_type
-Warning 27 : parameter init value is less than parameter min 0 < 0.01 for parm: 30; search for <now check> in echoinput.sso for parm_type
-Warning 28 : parameter init value is less than parameter min 0 < 0.1 for parm: 33; search for <now check> in echoinput.sso for parm_type
-Warning 29 : parameter init value is less than parameter min 0 < 1 for parm: 34; search for <now check> in echoinput.sso for parm_type
-Warning 30 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
-Warning 31 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
-Warning 32 : Setting in starter does not request all priors, and 74 parameters have priors and are not estimated, so their prior not included in obj_fun.
-Warning 33 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 1 settle: 1; L= 68.3865
-Warning 34 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 2 settle: 1; L= 69.0564
-Warning 35 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 68.8352
-Warning 36 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 2 settle: 1; L= 75.9178
-Warning 37 : Main recdev biasadj is >2 times ratio of rmse to sigmaR
-Warning 38 : Reminder: Number of lamdas !=0.0 and !=1.0:  18
- 38 warnings  and 1 note 
+Warning 16 Adjustment: size selex mirror length is > nlength for fleet: 13 reset to nlength
+Warning 17 Adjustment: size selex mirror length is > nlength for fleet: 14 reset to nlength
+Warning 18 Adjustment: size selex mirror length is > nlength for fleet: 16 reset to nlength
+Warning 19 Adjustment: size selex mirror length is > nlength for fleet: 17 reset to nlength
+Warning 20 Adjustment: size selex mirror length is > nlength for fleet: 18 reset to nlength
+Warning 21 Adjustment: size selex mirror length is > nlength for fleet: 19 reset to nlength
+Warning 22 : parameter init value is less than parameter min 0 < 0.1 for parm: 25; search for <now check> in echoinput.sso for parm_type
+Warning 23 : parameter init value is less than parameter min 0 < 1 for parm: 26; search for <now check> in echoinput.sso for parm_type
+Warning 24 : parameter init value is less than parameter min 0 < 0.01 for parm: 29; search for <now check> in echoinput.sso for parm_type
+Warning 25 : parameter init value is less than parameter min 0 < 0.01 for parm: 30; search for <now check> in echoinput.sso for parm_type
+Warning 26 : parameter init value is less than parameter min 0 < 0.1 for parm: 33; search for <now check> in echoinput.sso for parm_type
+Warning 27 : parameter init value is less than parameter min 0 < 1 for parm: 34; search for <now check> in echoinput.sso for parm_type
+Warning 28 : parameter init value is less than parameter min 0 < 0.01 for parm: 37; search for <now check> in echoinput.sso for parm_type
+Warning 29 : parameter init value is less than parameter min 0 < 0.01 for parm: 38; search for <now check> in echoinput.sso for parm_type
+Warning 30 : Setting in starter does not request all priors, and 73 parameters have priors and are not estimated, so their prior not included in obj_fun.
+Warning 31 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 1 settle: 1; L= 67.3163
+Warning 32 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 1; Gpat: 2 settle: 1; L= 77.616
+Warning 33 : Maximum pop size bin:_70; is within 5% of L at maxage for sex: 2; Gpat: 1 settle: 1; L= 72.4809
+Warning 34 : Final gradient: 0.000656074 is larger than final_conv: 0.0001
+Warning 35 : Forecast F capped by max possible F from control file3.99
+Warning 36 : Reminder: Number of lamdas !=0.0 and !=1.0:  18
+Note 2 Information:  N parameters that are on or within 1% of min-max bound: 11; check results, variance may be suspect
+ 36 warnings  and 2 notes 

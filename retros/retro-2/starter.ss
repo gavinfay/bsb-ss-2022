@@ -5,7 +5,7 @@
 #
 bsb_aggcomm_sparselengths-ages_extra-fleets.dat #_datfile
 2area_bsb_aggcomm_no-fallvast_regsextvar-growth_tvselex_btemp_extra-fleets.ctl #_ctlfile
-0 #_init_values_src
+1 #_init_values_src
 1 #_run_display_detail
 1 #_detailed_age_structure
 0 #_checkup
