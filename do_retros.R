@@ -13,36 +13,37 @@ retro(
 
 retroModels <- SSgetoutput(dirvec = file.path(
   "~/research/bsb-ss-2022/retros",
-  paste("retro", 0:-5, sep = "")
+  paste("retro", 0:-7, sep = "")
 ))
 
-saveRDS(retroModels, file = "~/research/bsb-ss-2022/retros/retroModels.rds")
+saveRDS(retroModels, file = "~/research/bsb-ss-2022/results/run_276/retros/retroModels.rds")
+#saveRDS(retroModels, file = "~/research/bsb-ss-2022/retros/retroModels.rds")
 
 
 # summarize the model results
 retroSummary <- SSsummarize(retroModels)
 # create a vector of the ending year of the retrospectives
-endyrvec <- retroSummary[["endyrs"]] + 0:-5
+endyrvec <- retroSummary[["endyrs"]] + 0:-7
 # make plots comparing the 6 models
 # showing 2 out of the 17 plots done by SSplotComparisons
 SSplotComparisons(retroSummary,
                   endyrvec = endyrvec,
-                  legendlabels = paste("Data", 0:-5, "years"),
+                  legendlabels = paste("Data", 0:-7, "years"),
                   subplot = c(1,3,5,7,13:17), # only show one plot in vignette
                   pdf = TRUE, # send plots to PNG file
-                  indexfleets = purrr::map(1:6,~c(9, 10, 13, 14)),
+                  indexfleets = purrr::map(1:8,~c(9, 10, 13, 14)),
                   #plot = FALSE, # don't plot to default graphics device
-                  plotdir = "~/research/bsb-ss-2022/results/run_257/retros/"
+                  plotdir = "~/research/bsb-ss-2022/results/run_276/retros/"
 )
 SSplotComparisons(retroSummary,
                   endyrvec = endyrvec-2,
                   initpoint = 2014,
-                  legendlabels = paste("Data", 0:-5, "years"),
+                  legendlabels = paste("Data", 0:-7, "years"),
                   subplot = c(9,11), # only show one plot in vignette
                   pdf = TRUE, # send plots to PNG file
-                  indexfleets = purrr::map(1:6,~c(9, 10, 13, 14)),
+                  indexfleets = purrr::map(1:8,~c(9, 10, 13, 14)),
                   #plot = FALSE, # don't plot to default graphics device
-                  plotdir = "~/research/bsb-ss-2022/results/run_257/retros/"
+                  plotdir = "~/research/bsb-ss-2022/results/run_276/retros/"
 )
 
 
@@ -50,14 +51,14 @@ SSplotComparisons(retroSummary,
 rho_output <- SSmohnsrho(
   summaryoutput = retroSummary,
   endyrvec = endyrvec,
-  startyr = retroSummary[["endyrs"]] - 5,
+  startyr = retroSummary[["endyrs"]] - 7,
   verbose = FALSE
 )
 #redo for recruitment to look at last estimated value
 rho_output2 <- SSmohnsrho(
   summaryoutput = retroSummary,
   endyrvec = endyrvec-2,
-  startyr = retroSummary[["endyrs"]] - 5,
+  startyr = retroSummary[["endyrs"]] - 7,
   verbose = FALSE
 )
 rho_output$WoodHole_SSB.all
